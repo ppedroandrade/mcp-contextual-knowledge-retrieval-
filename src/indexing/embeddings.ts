@@ -47,11 +47,25 @@ export class OllamaEmbedder implements Embedder {
     return out;
   }
 
+  /**
+   * Modelo, digest e versão do servidor. `sizeVram` é quanto do modelo está na GPU no
+   * momento do registro (0 = só CPU; null = modelo não carregado) e explica a latência.
+   */
   async describe() {
-    const res = await this.fetchFn(`${this.baseUrl}/api/tags`);
-    const body = (await res.json()) as { models?: { name: string; digest: string }[] };
-    const m = body.models?.find((x) => x.name === this.model || x.name === `${this.model}:latest`);
-    return { embedder: 'ollama', model: this.model, digest: m?.digest ?? null };
+    const get = async <T>(path: string) => (await (await this.fetchFn(`${this.baseUrl}${path}`)).json()) as T;
+    const [tags, version, ps] = await Promise.all([
+      get<{ models?: { name: string; digest: string }[] }>('/api/tags'),
+      get<{ version?: string }>('/api/version'),
+      get<{ models?: { name: string; size_vram: number }[] }>('/api/ps'),
+    ]);
+    const isModel = (x: { name: string }) => x.name === this.model || x.name === `${this.model}:latest`;
+    return {
+      embedder: 'ollama',
+      model: this.model,
+      digest: tags.models?.find(isModel)?.digest ?? null,
+      ollamaVersion: version.version ?? null,
+      sizeVram: ps.models?.find(isModel)?.size_vram ?? null,
+    };
   }
 }
 

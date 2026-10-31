@@ -47,6 +47,25 @@ describe('OllamaEmbedder', () => {
     const short = (async () => new Response(JSON.stringify({ embeddings: [[1, 0]] }))) as unknown as typeof fetch;
     await expect(new OllamaEmbedder('http://o', 'x', 8, short).embed(['a', 'b'])).rejects.toThrow(/número de embeddings/);
   });
+
+  it('descreve modelo, digest, versão do Ollama e uso de GPU', async () => {
+    const routes: Record<string, unknown> = {
+      'http://o/api/tags': { models: [{ name: 'outro:latest', digest: 'x' }, { name: 'bge-m3:latest', digest: 'abc' }] },
+      'http://o/api/version': { version: '0.40.13' },
+      'http://o/api/ps': { models: [{ name: 'bge-m3:latest', size_vram: 0 }] },
+    };
+    const f = (async (url: string) => new Response(JSON.stringify(routes[url]))) as unknown as typeof fetch;
+    expect(await new OllamaEmbedder('http://o', 'bge-m3', 8, f).describe()).toEqual({
+      embedder: 'ollama', model: 'bge-m3', digest: 'abc', ollamaVersion: '0.40.13', sizeVram: 0,
+    });
+  });
+
+  it('registra sizeVram nulo quando o modelo não está carregado', async () => {
+    const f = (async (url: string) => new Response(JSON.stringify(url.endsWith('/api/ps') ? { models: [] } : {}))) as unknown as typeof fetch;
+    const d = await new OllamaEmbedder('http://o', 'bge-m3', 8, f).describe();
+    expect(d.sizeVram).toBeNull();
+    expect(d.digest).toBeNull();
+  });
 });
 
 describe('MemoryVectorStore', () => {

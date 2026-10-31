@@ -14,7 +14,8 @@ export function environment(extra: Record<string, unknown> = {}) {
     cpuCount: cpus().length,
     memoryGb: Math.round(totalmem() / 1024 ** 3),
     gitCommit: git('rev-parse HEAD'),
-    gitDirty: (git('status --porcelain') ?? '') !== '',
+    // results/ só guarda saídas de execuções (inclusive a atual); não é código alterado.
+    gitDirty: (git("status --porcelain -- . ':(exclude)results'") ?? '') !== '',
     ...extra,
   };
 }
