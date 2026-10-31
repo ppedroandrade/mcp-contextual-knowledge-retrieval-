@@ -1,4 +1,4 @@
-# TCC 2 — MCP + RAG para recuperação de conhecimento corporativo
+# MCP Contextual Knowledge Retrieval — TCC 2: MCP + RAG para recuperação de conhecimento corporativo
 
 Software do Trabalho de Conclusão de Curso 2 de Pedro Henrique de Andrade Salvaro.
 Compara três abordagens sobre o mesmo corpus sintético e as mesmas perguntas:
