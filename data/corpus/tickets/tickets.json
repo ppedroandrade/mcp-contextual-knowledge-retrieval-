@@ -1,0 +1,1567 @@
+[
+  {
+    "id": "T-1001",
+    "criado_em": "2026-01-08",
+    "cliente": "Lume Energia",
+    "prioridade": "urgente",
+    "status": "resolvido",
+    "servico": "payments-adapter",
+    "assunto": "Problema: nossos clientes não estão conseguindo pagar com cartão",
+    "descricao": "Bom dia. Desde as 7h nossos clientes não estão conseguindo pagar com cartão. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-01-08",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Lume Energia",
+        "data": "2026-01-08",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-001, já resolvido pela equipe responsável. Crédito automático aplicado conforme a política de créditos por indisponibilidade."
+  },
+  {
+    "id": "T-1002",
+    "criado_em": "2026-01-08",
+    "cliente": "Acme Logística",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "invoice-worker",
+    "assunto": "Fatura com status failed",
+    "descricao": "Olá, equipe. Uma fatura ficou com status failed depois de um erro. Dá para gerar de novo sem criar outra?",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-01-08",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como reprocessar uma fatura com falha\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1003",
+    "criado_em": "2026-01-09",
+    "cliente": "Kappa Seguros",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "invoice-worker",
+    "assunto": "CNPJ errado na fatura",
+    "descricao": "Bom dia. A última fatura saiu com o CNPJ da nossa matriz, mas deveria ser o da filial.",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-01-09",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Fatura NF-80910 cancelada e reemitida com o CNPJ da filial."
+  },
+  {
+    "id": "T-1004",
+    "criado_em": "2026-01-09",
+    "cliente": "Jota Telecom",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "reporting-service",
+    "assunto": "Relatório com moeda errada",
+    "descricao": "Bom dia. Os valores do relatório de receita aparecem em dólar, mas cobramos em reais.",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-01-09",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "A moeda padrão dos relatórios da conta foi alterada de USD para BRL."
+  },
+  {
+    "id": "T-1005",
+    "criado_em": "2026-01-10",
+    "cliente": "Acme Logística",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Redução de plano",
+    "descricao": "Olá, equipe. Queremos passar para um plano menor. A partir de quando a mudança vale?",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-01-10",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como mudar o plano de uma assinatura\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1006",
+    "criado_em": "2026-01-12",
+    "cliente": "Farmácias Ipê",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Redução de plano",
+    "descricao": "Prezados, Queremos passar para um plano menor. A partir de quando a mudança vale?",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-01-12",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como mudar o plano de uma assinatura\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1007",
+    "criado_em": "2026-01-20",
+    "cliente": "Banco Horizonte",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Pedido de nota de crédito",
+    "descricao": "Prezados, Fomos cobrados por usuários que já tinham sido desativados. Pedimos o estorno.",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-01-20",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Cobrança indevida confirmada. Nota de crédito de R$ 260,00 emitida para abater na próxima fatura."
+  },
+  {
+    "id": "T-1008",
+    "criado_em": "2026-01-21",
+    "cliente": "Hotel Maré Alta",
+    "prioridade": "alta",
+    "status": "resolvido",
+    "servico": "invoice-worker",
+    "assunto": "Problema: as faturas dos nossos clientes não estão saindo como deveriam",
+    "descricao": "Bom dia. Desde as 14h as faturas dos nossos clientes não estão saindo como deveriam. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-01-21",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Hotel Maré Alta",
+        "data": "2026-01-21",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-002, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1009",
+    "criado_em": "2026-01-21",
+    "cliente": "Clínica Vitalis",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Erro 429 na rotina noturna",
+    "descricao": "Oi, pessoal. Nossa rotina noturna de sincronização recebe muitos erros 429. O que devemos fazer?",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-01-21",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Limites de requisição da API\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1010",
+    "criado_em": "2026-01-23",
+    "cliente": "Editora Pampa",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "customer-portal",
+    "assunto": "Investigar chamada com erro",
+    "descricao": "Prezados, Uma chamada da nossa integração falhou ontem à tarde. Como conseguimos ver o que aconteceu?",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-01-23",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como consultar os logs de requisições\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1011",
+    "criado_em": "2026-01-26",
+    "cliente": "Farmácias Ipê",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "reporting-service",
+    "assunto": "Exportação anual incompleta",
+    "descricao": "Prezados, Precisamos exportar todas as cobranças do ano, mas o arquivo baixado não vem completo.",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-01-26",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como exportar relatórios financeiros\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1012",
+    "criado_em": "2026-02-02",
+    "cliente": "Instituto Saber",
+    "prioridade": "alta",
+    "status": "resolvido",
+    "servico": "webhook-dispatcher",
+    "assunto": "Problema: nosso sistema parou de receber corretamente os eventos de vocês",
+    "descricao": "Olá, equipe. Desde as 10h nosso sistema parou de receber corretamente os eventos de vocês. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-02-02",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Instituto Saber",
+        "data": "2026-02-02",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-003, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1013",
+    "criado_em": "2026-02-10",
+    "cliente": "Kappa Seguros",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "webhook-dispatcher",
+    "assunto": "Validação dos eventos recebidos",
+    "descricao": "Bom dia. Como garantimos que os eventos que chegam no nosso endpoint foram enviados mesmo por vocês?",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-02-10",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como configurar e validar webhooks\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1014",
+    "criado_em": "2026-02-13",
+    "cliente": "Farmácias Ipê",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "invoice-worker",
+    "assunto": "CNPJ errado na fatura",
+    "descricao": "Olá, equipe. A última fatura saiu com o CNPJ da nossa matriz, mas deveria ser o da filial.",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-02-13",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Fatura NF-93929 cancelada e reemitida com o CNPJ da filial."
+  },
+  {
+    "id": "T-1015",
+    "criado_em": "2026-02-13",
+    "cliente": "Hotel Maré Alta",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Mudança do dia de vencimento",
+    "descricao": "Oi, pessoal. Podemos mudar o dia de vencimento das nossas faturas para ficar mais perto do nosso fechamento?",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-02-13",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Vencimento das faturas alterado para o dia 15 de cada mês, a partir do próximo ciclo."
+  },
+  {
+    "id": "T-1016",
+    "criado_em": "2026-02-14",
+    "cliente": "Hotel Maré Alta",
+    "prioridade": "normal",
+    "status": "resolvido",
+    "servico": "reporting-service",
+    "assunto": "Problema: os relatórios que exportamos estão com problema",
+    "descricao": "Bom dia. Desde as 7h os relatórios que exportamos estão com problema. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-02-14",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Hotel Maré Alta",
+        "data": "2026-02-14",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-004, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1017",
+    "criado_em": "2026-02-14",
+    "cliente": "Mercado Serra Azul",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "customer-portal",
+    "assunto": "Alteração do e-mail de cobrança",
+    "descricao": "Oi, pessoal. Precisamos que as faturas passem a ser enviadas para o e-mail do financeiro.",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-02-14",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "E-mail de cobrança alterado para financeiro@mercadoserraazul.example, conforme solicitado."
+  },
+  {
+    "id": "T-1018",
+    "criado_em": "2026-02-21",
+    "cliente": "Mercado Serra Azul",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Erro 429 na rotina noturna",
+    "descricao": "Bom dia. Nossa rotina noturna de sincronização recebe muitos erros 429. O que devemos fazer?",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-02-21",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Limites de requisição da API\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1019",
+    "criado_em": "2026-02-27",
+    "cliente": "Acme Logística",
+    "prioridade": "urgente",
+    "status": "resolvido",
+    "servico": "billing-api",
+    "assunto": "Problema: nossas chamadas à API de cobranças estão falhando",
+    "descricao": "Oi, pessoal. Desde as 9h nossas chamadas à API de cobranças estão falhando. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-02-27",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Acme Logística",
+        "data": "2026-02-27",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-005, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1020",
+    "criado_em": "2026-03-04",
+    "cliente": "Mercado Serra Azul",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Versão antiga do SDK",
+    "descricao": "Oi, pessoal. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-03-04",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como atualizar o SDK oficial para Node.js\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1021",
+    "criado_em": "2026-03-08",
+    "cliente": "Editora Pampa",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Erro 429 na rotina noturna",
+    "descricao": "Prezados, Nossa rotina noturna de sincronização recebe muitos erros 429. O que devemos fazer?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-03-08",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Limites de requisição da API\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1022",
+    "criado_em": "2026-03-11",
+    "cliente": "Lume Energia",
+    "prioridade": "alta",
+    "status": "resolvido",
+    "servico": "notification-service",
+    "assunto": "Problema: nossos clientes estão reclamando dos e-mails de cobrança",
+    "descricao": "Oi, pessoal. Desde as 7h nossos clientes estão reclamando dos e-mails de cobrança. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-03-11",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Lume Energia",
+        "data": "2026-03-11",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-006, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1023",
+    "criado_em": "2026-03-18",
+    "cliente": "Instituto Saber",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "customer-portal",
+    "assunto": "Pedido de exclusão de dados de um titular",
+    "descricao": "Bom dia. Recebemos um pedido de um cliente final para apagar os dados dele. Como encaminhamos?",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-03-18",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Pedido registrado com a etiqueta lgpd e encaminhado ao Jurídico sob o protocolo LGPD-2026-664."
+  },
+  {
+    "id": "T-1024",
+    "criado_em": "2026-03-19",
+    "cliente": "Lume Energia",
+    "prioridade": "urgente",
+    "status": "resolvido",
+    "servico": "webhook-dispatcher",
+    "assunto": "Problema: nosso sistema parou de receber corretamente os eventos de vocês",
+    "descricao": "Oi, pessoal. Desde as 11h nosso sistema parou de receber corretamente os eventos de vocês. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-03-19",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Lume Energia",
+        "data": "2026-03-19",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-007, já resolvido pela equipe responsável. Crédito automático aplicado conforme a política de créditos por indisponibilidade."
+  },
+  {
+    "id": "T-1025",
+    "criado_em": "2026-03-21",
+    "cliente": "Jota Telecom",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Redução de plano",
+    "descricao": "Prezados, Queremos passar para um plano menor. A partir de quando a mudança vale?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-03-21",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como mudar o plano de uma assinatura\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1026",
+    "criado_em": "2026-03-30",
+    "cliente": "Editora Pampa",
+    "prioridade": "normal",
+    "status": "resolvido",
+    "servico": "customer-portal",
+    "assunto": "Problema: o painel de vocês está com um comportamento estranho",
+    "descricao": "Bom dia. Desde as 8h o painel de vocês está com um comportamento estranho. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-03-30",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Editora Pampa",
+        "data": "2026-03-30",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-008, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1027",
+    "criado_em": "2026-04-01",
+    "cliente": "Jota Telecom",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "payments-adapter",
+    "assunto": "Ambiente para testes de cobrança",
+    "descricao": "Prezados, Queremos testar a integração de pagamentos sem cobrar cartões reais. Existe um ambiente para isso?",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-04-01",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como usar o ambiente sandbox\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1028",
+    "criado_em": "2026-04-01",
+    "cliente": "Banco Horizonte",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "auth-service",
+    "assunto": "Usuário bloqueado no painel",
+    "descricao": "Olá, equipe. Uma colega da equipe financeira não consegue entrar no painel; aparece \"conta bloqueada\".",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-04-01",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "A usuária João Pires foi desbloqueada; o bloqueio ocorreu após 5 tentativas de senha incorretas."
+  },
+  {
+    "id": "T-1029",
+    "criado_em": "2026-04-02",
+    "cliente": "Instituto Saber",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "reporting-service",
+    "assunto": "Exportação anual incompleta",
+    "descricao": "Prezados, Precisamos exportar todas as cobranças do ano, mas o arquivo baixado não vem completo.",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-04-02",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como exportar relatórios financeiros\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1030",
+    "criado_em": "2026-04-03",
+    "cliente": "Lume Energia",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "customer-portal",
+    "assunto": "Alteração do e-mail de cobrança",
+    "descricao": "Oi, pessoal. Precisamos que as faturas passem a ser enviadas para o e-mail do financeiro.",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-04-03",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "E-mail de cobrança alterado para financeiro@lumeenergia.example, conforme solicitado."
+  },
+  {
+    "id": "T-1031",
+    "criado_em": "2026-04-07",
+    "cliente": "Kappa Seguros",
+    "prioridade": "alta",
+    "status": "resolvido",
+    "servico": "auth-service",
+    "assunto": "Problema: nossa equipe não consegue acessar o painel",
+    "descricao": "Prezados, Desde as 19h nossa equipe não consegue acessar o painel. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-04-07",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Kappa Seguros",
+        "data": "2026-04-07",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-009, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1032",
+    "criado_em": "2026-04-12",
+    "cliente": "Clínica Vitalis",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "webhook-dispatcher",
+    "assunto": "Validação dos eventos recebidos",
+    "descricao": "Olá, equipe. Como garantimos que os eventos que chegam no nosso endpoint foram enviados mesmo por vocês?",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-04-12",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como configurar e validar webhooks\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1033",
+    "criado_em": "2026-04-14",
+    "cliente": "Editora Pampa",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "customer-portal",
+    "assunto": "Troca da chave de integração",
+    "descricao": "Prezados, Um desenvolvedor saiu da empresa e precisamos trocar a chave usada pela nossa integração. Qual é o procedimento?",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-04-14",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como rotacionar uma chave de API\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1034",
+    "criado_em": "2026-04-16",
+    "cliente": "Editora Pampa",
+    "prioridade": "alta",
+    "status": "resolvido",
+    "servico": "invoice-worker",
+    "assunto": "Problema: as faturas dos nossos clientes não estão saindo como deveriam",
+    "descricao": "Bom dia. Desde as 15h as faturas dos nossos clientes não estão saindo como deveriam. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-04-16",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Editora Pampa",
+        "data": "2026-04-16",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-010, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1035",
+    "criado_em": "2026-04-28",
+    "cliente": "Acme Logística",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "customer-portal",
+    "assunto": "Alteração do e-mail de cobrança",
+    "descricao": "Olá, equipe. Precisamos que as faturas passem a ser enviadas para o e-mail do financeiro.",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-04-28",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "E-mail de cobrança alterado para financeiro@acmelogistica.example, conforme solicitado."
+  },
+  {
+    "id": "T-1036",
+    "criado_em": "2026-04-29",
+    "cliente": "Kappa Seguros",
+    "prioridade": "normal",
+    "status": "resolvido",
+    "servico": "reporting-service",
+    "assunto": "Problema: os relatórios que exportamos estão com problema",
+    "descricao": "Olá, equipe. Desde as 14h os relatórios que exportamos estão com problema. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-04-29",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Kappa Seguros",
+        "data": "2026-04-29",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-011, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1037",
+    "criado_em": "2026-05-01",
+    "cliente": "Acme Logística",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "customer-portal",
+    "assunto": "Troca da chave de integração",
+    "descricao": "Olá, equipe. Um desenvolvedor saiu da empresa e precisamos trocar a chave usada pela nossa integração. Qual é o procedimento?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-05-01",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como rotacionar uma chave de API\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1038",
+    "criado_em": "2026-05-02",
+    "cliente": "Banco Horizonte",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "reporting-service",
+    "assunto": "Exportação anual incompleta",
+    "descricao": "Oi, pessoal. Precisamos exportar todas as cobranças do ano, mas o arquivo baixado não vem completo.",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-05-02",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como exportar relatórios financeiros\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1039",
+    "criado_em": "2026-05-04",
+    "cliente": "Mercado Serra Azul",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "payments-adapter",
+    "assunto": "Ambiente para testes de cobrança",
+    "descricao": "Prezados, Queremos testar a integração de pagamentos sem cobrar cartões reais. Existe um ambiente para isso?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-05-04",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como usar o ambiente sandbox\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1040",
+    "criado_em": "2026-05-06",
+    "cliente": "Clínica Vitalis",
+    "prioridade": "urgente",
+    "status": "resolvido",
+    "servico": "auth-service",
+    "assunto": "Problema: nossa equipe não consegue acessar o painel",
+    "descricao": "Bom dia. Desde as 15h nossa equipe não consegue acessar o painel. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-05-06",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Clínica Vitalis",
+        "data": "2026-05-06",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-012, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1041",
+    "criado_em": "2026-05-09",
+    "cliente": "Acme Logística",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "auth-service",
+    "assunto": "Login com a conta corporativa",
+    "descricao": "Oi, pessoal. Queremos que a nossa equipe entre no painel com o login da nossa empresa, sem senha separada.",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-05-09",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como habilitar login único (SSO)\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1042",
+    "criado_em": "2026-05-10",
+    "cliente": "Banco Horizonte",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "webhook-dispatcher",
+    "assunto": "Validação dos eventos recebidos",
+    "descricao": "Olá, equipe. Como garantimos que os eventos que chegam no nosso endpoint foram enviados mesmo por vocês?",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-05-10",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como configurar e validar webhooks\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1043",
+    "criado_em": "2026-05-15",
+    "cliente": "Grupo Nébula",
+    "prioridade": "alta",
+    "status": "resolvido",
+    "servico": "payments-adapter",
+    "assunto": "Problema: nossos clientes não estão conseguindo pagar com cartão",
+    "descricao": "Olá, equipe. Desde as 13h nossos clientes não estão conseguindo pagar com cartão. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-05-15",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Grupo Nébula",
+        "data": "2026-05-15",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-013, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1044",
+    "criado_em": "2026-05-21",
+    "cliente": "Farmácias Ipê",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Pedido de nota de crédito",
+    "descricao": "Prezados, Fomos cobrados por usuários que já tinham sido desativados. Pedimos o estorno.",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-05-21",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Cobrança indevida confirmada. Nota de crédito de R$ 530,00 emitida para abater na próxima fatura."
+  },
+  {
+    "id": "T-1045",
+    "criado_em": "2026-05-23",
+    "cliente": "Mercado Serra Azul",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Mudança do dia de vencimento",
+    "descricao": "Bom dia. Podemos mudar o dia de vencimento das nossas faturas para ficar mais perto do nosso fechamento?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-05-23",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Vencimento das faturas alterado para o dia 20 de cada mês, a partir do próximo ciclo."
+  },
+  {
+    "id": "T-1046",
+    "criado_em": "2026-05-28",
+    "cliente": "Grupo Nébula",
+    "prioridade": "normal",
+    "status": "resolvido",
+    "servico": "customer-portal",
+    "assunto": "Problema: o painel de vocês está com um comportamento estranho",
+    "descricao": "Olá, equipe. Desde as 14h o painel de vocês está com um comportamento estranho. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-05-28",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Grupo Nébula",
+        "data": "2026-05-28",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-014, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1047",
+    "criado_em": "2026-06-09",
+    "cliente": "Acme Logística",
+    "prioridade": "alta",
+    "status": "resolvido",
+    "servico": "billing-api",
+    "assunto": "Problema: nossas chamadas à API de cobranças estão falhando",
+    "descricao": "Prezados, Desde as 11h nossas chamadas à API de cobranças estão falhando. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-06-09",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Acme Logística",
+        "data": "2026-06-09",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-015, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1048",
+    "criado_em": "2026-06-09",
+    "cliente": "Jota Telecom",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "invoice-worker",
+    "assunto": "Fatura com status failed",
+    "descricao": "Bom dia. Uma fatura ficou com status failed depois de um erro. Dá para gerar de novo sem criar outra?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-06-09",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como reprocessar uma fatura com falha\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1049",
+    "criado_em": "2026-06-10",
+    "cliente": "Lume Energia",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "auth-service",
+    "assunto": "Usuário bloqueado no painel",
+    "descricao": "Olá, equipe. Uma colega da equipe financeira não consegue entrar no painel; aparece \"conta bloqueada\".",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-06-10",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "A usuária João Pires foi desbloqueada; o bloqueio ocorreu após 5 tentativas de senha incorretas."
+  },
+  {
+    "id": "T-1050",
+    "criado_em": "2026-06-11",
+    "cliente": "Editora Pampa",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Versão antiga do SDK",
+    "descricao": "Bom dia. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-06-11",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como atualizar o SDK oficial para Node.js\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1051",
+    "criado_em": "2026-06-12",
+    "cliente": "Kappa Seguros",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "customer-portal",
+    "assunto": "Investigar chamada com erro",
+    "descricao": "Bom dia. Uma chamada da nossa integração falhou ontem à tarde. Como conseguimos ver o que aconteceu?",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-06-12",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como consultar os logs de requisições\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1052",
+    "criado_em": "2026-06-17",
+    "cliente": "Hotel Maré Alta",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "webhook-dispatcher",
+    "assunto": "Webhook para ambiente de homologação",
+    "descricao": "Olá, equipe. Queremos receber os eventos também no nosso ambiente de homologação.",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-06-17",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Cadastrada uma segunda URL de webhook (https://homolog.hotelmarealta.example/webhooks) apenas com eventos de teste."
+  },
+  {
+    "id": "T-1053",
+    "criado_em": "2026-06-18",
+    "cliente": "Clínica Vitalis",
+    "prioridade": "urgente",
+    "status": "resolvido",
+    "servico": "invoice-worker",
+    "assunto": "Problema: as faturas dos nossos clientes não estão saindo como deveriam",
+    "descricao": "Oi, pessoal. Desde as 18h as faturas dos nossos clientes não estão saindo como deveriam. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-06-18",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Clínica Vitalis",
+        "data": "2026-06-18",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-016, já resolvido pela equipe responsável. Crédito automático aplicado conforme a política de créditos por indisponibilidade."
+  },
+  {
+    "id": "T-1054",
+    "criado_em": "2026-06-21",
+    "cliente": "Clínica Vitalis",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "payments-adapter",
+    "assunto": "Ambiente para testes de cobrança",
+    "descricao": "Bom dia. Queremos testar a integração de pagamentos sem cobrar cartões reais. Existe um ambiente para isso?",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-06-21",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como usar o ambiente sandbox\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1055",
+    "criado_em": "2026-06-23",
+    "cliente": "Hotel Maré Alta",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "auth-service",
+    "assunto": "Login com a conta corporativa",
+    "descricao": "Olá, equipe. Queremos que a nossa equipe entre no painel com o login da nossa empresa, sem senha separada.",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-06-23",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como habilitar login único (SSO)\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1056",
+    "criado_em": "2026-06-27",
+    "cliente": "Kappa Seguros",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "customer-portal",
+    "assunto": "Troca do contato técnico",
+    "descricao": "Oi, pessoal. Nosso contato técnico mudou e precisamos atualizar no cadastro.",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-06-27",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Contato técnico atualizado para Paulo Teixeira; os alertas de integração passam a ir para essa pessoa."
+  },
+  {
+    "id": "T-1057",
+    "criado_em": "2026-06-30",
+    "cliente": "Jota Telecom",
+    "prioridade": "normal",
+    "status": "resolvido",
+    "servico": "notification-service",
+    "assunto": "Problema: nossos clientes estão reclamando dos e-mails de cobrança",
+    "descricao": "Prezados, Desde as 9h nossos clientes estão reclamando dos e-mails de cobrança. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-06-30",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Jota Telecom",
+        "data": "2026-06-30",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-017, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1058",
+    "criado_em": "2026-07-07",
+    "cliente": "Lume Energia",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "invoice-worker",
+    "assunto": "Fatura com status failed",
+    "descricao": "Bom dia. Uma fatura ficou com status failed depois de um erro. Dá para gerar de novo sem criar outra?",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-07-07",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como reprocessar uma fatura com falha\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1059",
+    "criado_em": "2026-07-08",
+    "cliente": "Hotel Maré Alta",
+    "prioridade": "alta",
+    "status": "resolvido",
+    "servico": "webhook-dispatcher",
+    "assunto": "Problema: nosso sistema parou de receber corretamente os eventos de vocês",
+    "descricao": "Oi, pessoal. Desde as 10h nosso sistema parou de receber corretamente os eventos de vocês. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-07-08",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Hotel Maré Alta",
+        "data": "2026-07-08",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-018, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1060",
+    "criado_em": "2026-07-10",
+    "cliente": "Jota Telecom",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Versão antiga do SDK",
+    "descricao": "Olá, equipe. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-07-10",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como atualizar o SDK oficial para Node.js\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1061",
+    "criado_em": "2026-07-10",
+    "cliente": "Acme Logística",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Aumento do número de usuários",
+    "descricao": "Prezados, Atingimos o limite de usuários do plano e precisamos incluir mais pessoas.",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-07-10",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Limite do plano ampliado de 5 para 15 usuários, com ajuste pró-rata na próxima fatura."
+  },
+  {
+    "id": "T-1062",
+    "criado_em": "2026-07-12",
+    "cliente": "Banco Horizonte",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "customer-portal",
+    "assunto": "Fatura não aparece no painel",
+    "descricao": "Oi, pessoal. A fatura do mês passado não aparece na lista do painel, mas foi paga.",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-07-12",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "A fatura estava fora do período filtrado. Cliente orientado a limpar o filtro de datas da lista de faturas."
+  },
+  {
+    "id": "T-1063",
+    "criado_em": "2026-07-17",
+    "cliente": "Instituto Saber",
+    "prioridade": "alta",
+    "status": "resolvido",
+    "servico": "reporting-service",
+    "assunto": "Problema: os relatórios que exportamos estão com problema",
+    "descricao": "Prezados, Desde as 13h os relatórios que exportamos estão com problema. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-07-17",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Instituto Saber",
+        "data": "2026-07-17",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-019, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1064",
+    "criado_em": "2026-07-21",
+    "cliente": "Clínica Vitalis",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "customer-portal",
+    "assunto": "Troca da chave de integração",
+    "descricao": "Prezados, Um desenvolvedor saiu da empresa e precisamos trocar a chave usada pela nossa integração. Qual é o procedimento?",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-07-21",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como rotacionar uma chave de API\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1065",
+    "criado_em": "2026-07-27",
+    "cliente": "Kappa Seguros",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Integração com o nosso ERP",
+    "descricao": "Olá, equipe. Vocês têm integração pronta com ERP para lançar as cobranças automaticamente?",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-07-27",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Não há integração nativa. Indicado o conector Pórtico ERP, mantido por parceiro, que usa a API pública."
+  },
+  {
+    "id": "T-1066",
+    "criado_em": "2026-07-29",
+    "cliente": "Acme Logística",
+    "prioridade": "urgente",
+    "status": "resolvido",
+    "servico": "payments-adapter",
+    "assunto": "Problema: nossos clientes não estão conseguindo pagar com cartão",
+    "descricao": "Oi, pessoal. Desde as 16h nossos clientes não estão conseguindo pagar com cartão. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-07-29",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Acme Logística",
+        "data": "2026-07-29",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-020, já resolvido pela equipe responsável. Crédito automático aplicado conforme a política de créditos por indisponibilidade."
+  },
+  {
+    "id": "T-1067",
+    "criado_em": "2026-08-02",
+    "cliente": "Clínica Vitalis",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "webhook-dispatcher",
+    "assunto": "Webhook para ambiente de homologação",
+    "descricao": "Bom dia. Queremos receber os eventos também no nosso ambiente de homologação.",
+    "comentarios": [
+      {
+        "autor": "Carla (suporte)",
+        "data": "2026-08-02",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Cadastrada uma segunda URL de webhook (https://homolog.clinicavitalis.example/webhooks) apenas com eventos de teste."
+  },
+  {
+    "id": "T-1068",
+    "criado_em": "2026-08-06",
+    "cliente": "Editora Pampa",
+    "prioridade": "normal",
+    "status": "resolvido",
+    "servico": "auth-service",
+    "assunto": "Problema: nossa equipe não consegue acessar o painel",
+    "descricao": "Prezados, Desde as 18h nossa equipe não consegue acessar o painel. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-08-06",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Editora Pampa",
+        "data": "2026-08-06",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-021, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1069",
+    "criado_em": "2026-08-11",
+    "cliente": "Hotel Maré Alta",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "customer-portal",
+    "assunto": "Pedido de exclusão de dados de um titular",
+    "descricao": "Prezados, Recebemos um pedido de um cliente final para apagar os dados dele. Como encaminhamos?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-08-11",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Pedido registrado com a etiqueta lgpd e encaminhado ao Jurídico sob o protocolo LGPD-2026-744."
+  },
+  {
+    "id": "T-1070",
+    "criado_em": "2026-08-15",
+    "cliente": "Lume Energia",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "customer-portal",
+    "assunto": "Investigar chamada com erro",
+    "descricao": "Oi, pessoal. Uma chamada da nossa integração falhou ontem à tarde. Como conseguimos ver o que aconteceu?",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-08-15",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como consultar os logs de requisições\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1071",
+    "criado_em": "2026-08-19",
+    "cliente": "Farmácias Ipê",
+    "prioridade": "alta",
+    "status": "resolvido",
+    "servico": "customer-portal",
+    "assunto": "Problema: o painel de vocês está com um comportamento estranho",
+    "descricao": "Oi, pessoal. Desde as 18h o painel de vocês está com um comportamento estranho. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-08-19",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Farmácias Ipê",
+        "data": "2026-08-19",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-022, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1072",
+    "criado_em": "2026-08-19",
+    "cliente": "Mercado Serra Azul",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "customer-portal",
+    "assunto": "Troca do contato técnico",
+    "descricao": "Olá, equipe. Nosso contato técnico mudou e precisamos atualizar no cadastro.",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-08-19",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Contato técnico atualizado para Renata Lobo; os alertas de integração passam a ir para essa pessoa."
+  },
+  {
+    "id": "T-1073",
+    "criado_em": "2026-08-20",
+    "cliente": "Farmácias Ipê",
+    "prioridade": "alta",
+    "status": "fechado",
+    "servico": "reporting-service",
+    "assunto": "Relatório com moeda errada",
+    "descricao": "Prezados, Os valores do relatório de receita aparecem em dólar, mas cobramos em reais.",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-08-20",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "A moeda padrão dos relatórios da conta foi alterada de USD para BRL."
+  },
+  {
+    "id": "T-1074",
+    "criado_em": "2026-08-24",
+    "cliente": "Mercado Serra Azul",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Aumento do número de usuários",
+    "descricao": "Prezados, Atingimos o limite de usuários do plano e precisamos incluir mais pessoas.",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-08-24",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Limite do plano ampliado de 10 para 25 usuários, com ajuste pró-rata na próxima fatura."
+  },
+  {
+    "id": "T-1075",
+    "criado_em": "2026-08-26",
+    "cliente": "Hotel Maré Alta",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "customer-portal",
+    "assunto": "Fatura não aparece no painel",
+    "descricao": "Bom dia. A fatura do mês passado não aparece na lista do painel, mas foi paga.",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-08-26",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "A fatura estava fora do período filtrado. Cliente orientado a limpar o filtro de datas da lista de faturas."
+  },
+  {
+    "id": "T-1076",
+    "criado_em": "2026-09-02",
+    "cliente": "Editora Pampa",
+    "prioridade": "urgente",
+    "status": "resolvido",
+    "servico": "notification-service",
+    "assunto": "Problema: nossos clientes estão reclamando dos e-mails de cobrança",
+    "descricao": "Prezados, Desde as 8h nossos clientes estão reclamando dos e-mails de cobrança. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-09-02",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Editora Pampa",
+        "data": "2026-09-02",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-023, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1077",
+    "criado_em": "2026-09-15",
+    "cliente": "Grupo Nébula",
+    "prioridade": "normal",
+    "status": "resolvido",
+    "servico": "billing-api",
+    "assunto": "Problema: nossas chamadas à API de cobranças estão falhando",
+    "descricao": "Olá, equipe. Desde as 18h nossas chamadas à API de cobranças estão falhando. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-09-15",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Grupo Nébula",
+        "data": "2026-09-15",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-024, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1078",
+    "criado_em": "2026-09-17",
+    "cliente": "Mercado Serra Azul",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "auth-service",
+    "assunto": "Login com a conta corporativa",
+    "descricao": "Oi, pessoal. Queremos que a nossa equipe entre no painel com o login da nossa empresa, sem senha separada.",
+    "comentarios": [
+      {
+        "autor": "Diego (suporte)",
+        "data": "2026-09-17",
+        "texto": "Obrigado pelo contato; vamos responder em seguida."
+      }
+    ],
+    "resolucao": "Enviado ao cliente o artigo \"Como habilitar login único (SSO)\" da base de conhecimento, com orientação para seguir o passo a passo."
+  },
+  {
+    "id": "T-1079",
+    "criado_em": "2026-09-24",
+    "cliente": "Lume Energia",
+    "prioridade": "alta",
+    "status": "resolvido",
+    "servico": "invoice-worker",
+    "assunto": "Problema: as faturas dos nossos clientes não estão saindo como deveriam",
+    "descricao": "Prezados, Desde as 7h as faturas dos nossos clientes não estão saindo como deveriam. Podem verificar com urgência?",
+    "comentarios": [
+      {
+        "autor": "Bruno (suporte)",
+        "data": "2026-09-24",
+        "texto": "Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui."
+      },
+      {
+        "autor": "Lume Energia",
+        "data": "2026-09-24",
+        "texto": "Obrigado, aguardamos."
+      }
+    ],
+    "resolucao": "O problema foi causado pelo incidente INC-2026-025, já resolvido pela equipe responsável."
+  },
+  {
+    "id": "T-1080",
+    "criado_em": "2026-09-24",
+    "cliente": "Acme Logística",
+    "prioridade": "normal",
+    "status": "fechado",
+    "servico": "billing-api",
+    "assunto": "Integração com o nosso ERP",
+    "descricao": "Oi, pessoal. Vocês têm integração pronta com ERP para lançar as cobranças automaticamente?",
+    "comentarios": [
+      {
+        "autor": "Ana (suporte)",
+        "data": "2026-09-24",
+        "texto": "Solicitação recebida; vamos verificar."
+      }
+    ],
+    "resolucao": "Não há integração nativa. Indicado o conector Pórtico ERP, mantido por parceiro, que usa a API pública."
+  }
+]

@@ -1,0 +1,1346 @@
+[
+  {
+    "id": "q001",
+    "text": "Qual é a meta de nível de serviço do notification-service?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-007"
+    ],
+    "evidence": [
+      [
+        "DOC-007#confiabilidade"
+      ]
+    ],
+    "factIds": [
+      "svc.notification-service.slo"
+    ],
+    "referenceAnswer": "99,5% dos e-mails aceitos pelo provedor em até 5 minutos."
+  },
+  {
+    "id": "q002",
+    "text": "Para qual e-mail passaram a ir as faturas do cliente Mercado Serra Azul?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "tickets"
+    ],
+    "relevantDocIds": [
+      "T-1017"
+    ],
+    "evidence": [
+      [
+        "T-1017#resolucao"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1017.resolucao"
+    ],
+    "referenceAnswer": "financeiro@mercadoserraazul.example."
+  },
+  {
+    "id": "q003",
+    "text": "Qual usuária do cliente Lume Energia foi desbloqueada no painel?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "tickets"
+    ],
+    "relevantDocIds": [
+      "T-1049"
+    ],
+    "evidence": [
+      [
+        "T-1049#resolucao"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1049.resolucao"
+    ],
+    "referenceAnswer": "João Pires."
+  },
+  {
+    "id": "q004",
+    "text": "Como o customer-portal lida com novas tentativas em falhas temporárias?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-008"
+    ],
+    "evidence": [
+      [
+        "DOC-008#confiabilidade"
+      ]
+    ],
+    "factIds": [
+      "svc.customer-portal.retry"
+    ],
+    "referenceAnswer": "até 2 tentativas no cliente HTTP para chamadas idempotentes."
+  },
+  {
+    "id": "q005",
+    "text": "O cliente Jota Telecom abriu um chamado sobre \"Redução de plano\". Qual artigo foi enviado e, segundo ele, quando a redução de plano passa a valer?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "T-1025",
+      "DOC-024"
+    ],
+    "evidence": [
+      [
+        "T-1025#resolucao"
+      ],
+      [
+        "DOC-024#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1025.artigo",
+      "howto.mudar-plano.downgrade"
+    ],
+    "referenceAnswer": "Foi enviado o artigo \"Como mudar o plano de uma assinatura\"; próximo ciclo de cobrança."
+  },
+  {
+    "id": "q006",
+    "text": "O cliente Lume Energia abriu um chamado sobre \"Fatura com status failed\". Qual artigo foi enviado e, segundo ele, quantas vezes a fatura pode ser reprocessada?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "T-1058",
+      "DOC-021"
+    ],
+    "evidence": [
+      [
+        "T-1058#resolucao"
+      ],
+      [
+        "DOC-021#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1058.artigo",
+      "howto.reprocessar-fatura.maximo"
+    ],
+    "referenceAnswer": "Foi enviado o artigo \"Como reprocessar uma fatura com falha\"; 3 reprocessamentos."
+  },
+  {
+    "id": "q007",
+    "text": "O cliente Acme Logística abriu um chamado sobre \"Troca da chave de integração\". Qual artigo foi enviado e, segundo ele, em quanto tempo as chaves expiram?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "T-1037",
+      "DOC-017"
+    ],
+    "evidence": [
+      [
+        "T-1037#resolucao"
+      ],
+      [
+        "DOC-017#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1037.artigo",
+      "howto.rotacionar-chave.validade"
+    ],
+    "referenceAnswer": "Foi enviado o artigo \"Como rotacionar uma chave de API\"; 90 dias."
+  },
+  {
+    "id": "q008",
+    "text": "Por qual campo filtro os logs para achar uma chamada específica?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-026"
+    ],
+    "evidence": [
+      [
+        "DOC-026#passo-a-passo"
+      ]
+    ],
+    "factIds": [
+      "howto.consultar-logs.filtro"
+    ],
+    "referenceAnswer": "request_id."
+  },
+  {
+    "id": "q009",
+    "text": "Qual foi a causa técnica do problema que o cliente Lume Energia relatou em 11/03/2026?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "T-1022",
+      "INC-2026-006"
+    ],
+    "evidence": [
+      [
+        "T-1022#resolucao"
+      ],
+      [
+        "INC-2026-006#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1022.incidente",
+      "inc.INC-2026-006.causa"
+    ],
+    "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-006, cuja causa raiz foi: regra de firewall nova bloqueou a saída para os servidores do provedor MailRelay."
+  },
+  {
+    "id": "q010",
+    "text": "Quanto tempo durou o incidente em que houve clientes recebendo o mesmo evento várias vezes?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "INC-2026-018"
+    ],
+    "evidence": [
+      [
+        "INC-2026-018#resumo"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-018.duracao"
+    ],
+    "referenceAnswer": "140 minutos."
+  },
+  {
+    "id": "q011",
+    "text": "Qual fatura foi reemitida para o cliente Farmácias Ipê por causa do CNPJ errado?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "tickets"
+    ],
+    "relevantDocIds": [
+      "T-1014"
+    ],
+    "evidence": [
+      [
+        "T-1014#resolucao"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1014.resolucao"
+    ],
+    "referenceAnswer": "NF-93929."
+  },
+  {
+    "id": "q012",
+    "text": "O que causou o problema de e-mails de fatura não chegando aos clientes em março de 2026?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "INC-2026-006"
+    ],
+    "evidence": [
+      [
+        "INC-2026-006#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-006.causa"
+    ],
+    "referenceAnswer": "regra de firewall nova bloqueou a saída para os servidores do provedor MailRelay."
+  },
+  {
+    "id": "q013",
+    "text": "Durante o incidente em que houve clientes cobrados duas vezes pela mesma fatura, em maio, qual endpoint mostraria a saúde do serviço afetado?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "incidents",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "INC-2026-013",
+      "DOC-011"
+    ],
+    "evidence": [
+      [
+        "INC-2026-013#resumo"
+      ],
+      [
+        "DOC-011#verificacao-de-saude"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-013.servico",
+      "svc.payments-adapter.healthcheck"
+    ],
+    "referenceAnswer": "O serviço afetado foi o payments-adapter; /actuator/health/payments."
+  },
+  {
+    "id": "q014",
+    "text": "Qual comando desfaz um deploy problemático do auth-service?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-013"
+    ],
+    "evidence": [
+      [
+        "DOC-013#rollback"
+      ]
+    ],
+    "factIds": [
+      "svc.auth-service.rollback"
+    ],
+    "referenceAnswer": "orbctl rollback auth-service --to previous --keep-sessions."
+  },
+  {
+    "id": "q015",
+    "text": "Qual foi a causa técnica do problema que o cliente Instituto Saber relatou em 17/07/2026?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "T-1063",
+      "INC-2026-019"
+    ],
+    "evidence": [
+      [
+        "T-1063#resolucao"
+      ],
+      [
+        "INC-2026-019#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1063.incidente",
+      "inc.INC-2026-019.causa"
+    ],
+    "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-019, cuja causa raiz foi: consulta sem partição por mês varrendo toda a tabela de cobranças no ClickHouse."
+  },
+  {
+    "id": "q016",
+    "text": "Onde o invoice-worker armazena seus dados?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-002"
+    ],
+    "evidence": [
+      [
+        "DOC-002#dados-e-dependencias"
+      ]
+    ],
+    "factIds": [
+      "svc.invoice-worker.dados"
+    ],
+    "referenceAnswer": "Em fila RabbitMQ invoices.generate e bucket de objetos orbital-invoices."
+  },
+  {
+    "id": "q017",
+    "text": "Que ação corretiva foi definida depois que houve usuários deslogados após cada deploy em agosto?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "INC-2026-021"
+    ],
+    "evidence": [
+      [
+        "INC-2026-021#acoes"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-021.acao"
+    ],
+    "referenceAnswer": "chave de sessão persistida no cofre e rollback com --keep-sessions."
+  },
+  {
+    "id": "q018",
+    "text": "Qual é o endereço da API de sandbox?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-020"
+    ],
+    "evidence": [
+      [
+        "DOC-020#passo-a-passo"
+      ]
+    ],
+    "factIds": [
+      "howto.ambiente-sandbox.url"
+    ],
+    "referenceAnswer": "https://sandbox.api.orbital.example."
+  },
+  {
+    "id": "q019",
+    "text": "Qual foi a causa técnica do problema que o cliente Clínica Vitalis relatou em 06/05/2026?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "T-1040",
+      "INC-2026-012"
+    ],
+    "evidence": [
+      [
+        "T-1040#resolucao"
+      ],
+      [
+        "INC-2026-012#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1040.incidente",
+      "inc.INC-2026-012.causa"
+    ],
+    "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-012, cuja causa raiz foi: migração do banco identity travou a tabela sessions por causa de um ALTER TABLE sem LOCK TIMEOUT."
+  },
+  {
+    "id": "q020",
+    "text": "Qual time é dono do reporting-service?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-006"
+    ],
+    "evidence": [
+      [
+        "DOC-006#visao-geral"
+      ]
+    ],
+    "factIds": [
+      "svc.reporting-service.time"
+    ],
+    "referenceAnswer": "Time Dados."
+  },
+  {
+    "id": "q021",
+    "text": "O cliente Editora Pampa abriu um chamado sobre \"Erro 429 na rotina noturna\". Qual artigo foi enviado e, segundo ele, qual é o limite padrão de requisições?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "T-1021",
+      "DOC-019"
+    ],
+    "evidence": [
+      [
+        "T-1021#resolucao"
+      ],
+      [
+        "DOC-019#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1021.artigo",
+      "howto.limites-requisicao.limite"
+    ],
+    "referenceAnswer": "Foi enviado o artigo \"Limites de requisição da API\"; 600 requisições por minuto."
+  },
+  {
+    "id": "q022",
+    "text": "Qual é o endpoint de saúde do ledger-service?",
+    "type": "unanswerable",
+    "set": "dev",
+    "sources": [],
+    "relevantDocIds": [],
+    "evidence": [],
+    "factIds": [],
+    "referenceAnswer": "O corpus não descreve nenhum serviço chamado ledger-service."
+  },
+  {
+    "id": "q023",
+    "text": "O cliente Kappa Seguros abriu um chamado sobre \"Validação dos eventos recebidos\". Qual artigo foi enviado e, segundo ele, em quanto tempo o sistema do cliente precisa responder?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "T-1013",
+      "DOC-018"
+    ],
+    "evidence": [
+      [
+        "T-1013#resolucao"
+      ],
+      [
+        "DOC-018#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1013.artigo",
+      "howto.configurar-webhook.timeout"
+    ],
+    "referenceAnswer": "Foi enviado o artigo \"Como configurar e validar webhooks\"; 5 segundos."
+  },
+  {
+    "id": "q024",
+    "text": "Qual time é responsável pelo serviço que teve gráficos de receita do portal aparecendo vazios em março?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "incidents",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "INC-2026-008",
+      "DOC-008"
+    ],
+    "evidence": [
+      [
+        "INC-2026-008#resumo"
+      ],
+      [
+        "DOC-008#visao-geral"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-008.servico",
+      "svc.customer-portal.time"
+    ],
+    "referenceAnswer": "O serviço afetado foi o customer-portal; Time Web."
+  },
+  {
+    "id": "q025",
+    "text": "Se o incidente de abril em que houve usuários com SSO sem conseguir entrar no portal tivesse vindo de um deploy, qual comando faria o rollback do serviço afetado?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "incidents",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "INC-2026-009",
+      "DOC-013"
+    ],
+    "evidence": [
+      [
+        "INC-2026-009#resumo"
+      ],
+      [
+        "DOC-013#rollback"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-009.servico",
+      "svc.auth-service.rollback"
+    ],
+    "referenceAnswer": "O serviço afetado foi o auth-service; orbctl rollback auth-service --to previous --keep-sessions."
+  },
+  {
+    "id": "q026",
+    "text": "O cliente Clínica Vitalis abriu um chamado sobre \"Ambiente para testes de cobrança\". Qual artigo foi enviado e, segundo ele, qual cartão de teste simula uma recusa?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "T-1054",
+      "DOC-020"
+    ],
+    "evidence": [
+      [
+        "T-1054#resolucao"
+      ],
+      [
+        "DOC-020#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1054.artigo",
+      "howto.ambiente-sandbox.cartao-recusa"
+    ],
+    "referenceAnswer": "Foi enviado o artigo \"Como usar o ambiente sandbox\"; 4000 0000 0000 0002."
+  },
+  {
+    "id": "q027",
+    "text": "Que integração com ERP foi indicada ao cliente Kappa Seguros?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "tickets"
+    ],
+    "relevantDocIds": [
+      "T-1065"
+    ],
+    "evidence": [
+      [
+        "T-1065#resolucao"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1065.resolucao"
+    ],
+    "referenceAnswer": "conector Pórtico ERP."
+  },
+  {
+    "id": "q028",
+    "text": "O que causou o problema de API respondendo 503 para todas as chamadas em fevereiro de 2026?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "INC-2026-005"
+    ],
+    "evidence": [
+      [
+        "INC-2026-005#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-005.causa"
+    ],
+    "referenceAnswer": "limite de conexões do PostgreSQL atingido (max_connections = 200) após aumento de réplicas da billing-api."
+  },
+  {
+    "id": "q029",
+    "text": "Qual time é responsável pelo serviço que teve faturas em PDF geradas sem conteúdo em setembro?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "incidents",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "INC-2026-025",
+      "DOC-002"
+    ],
+    "evidence": [
+      [
+        "INC-2026-025#resumo"
+      ],
+      [
+        "DOC-002#visao-geral"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-025.servico",
+      "svc.invoice-worker.time"
+    ],
+    "referenceAnswer": "O serviço afetado foi o invoice-worker; Time Faturamento."
+  },
+  {
+    "id": "q030",
+    "text": "Qual foi a causa técnica do problema que o cliente Grupo Nébula relatou em 28/05/2026?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "T-1046",
+      "INC-2026-014"
+    ],
+    "evidence": [
+      [
+        "T-1046#resolucao"
+      ],
+      [
+        "INC-2026-014#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1046.incidente",
+      "inc.INC-2026-014.causa"
+    ],
+    "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-014, cuja causa raiz foi: uso de API de download não suportada pelo Safari 17."
+  },
+  {
+    "id": "q031",
+    "text": "Por qual canal deveria ser acionado o plantão do serviço afetado no incidente em que houve eventos invoice.paid parados por mais de uma hora?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "incidents",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "INC-2026-007",
+      "DOC-012"
+    ],
+    "evidence": [
+      [
+        "INC-2026-007#resumo"
+      ],
+      [
+        "DOC-012#escalonamento"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-007.servico",
+      "svc.webhook-dispatcher.plantao"
+    ],
+    "referenceAnswer": "O serviço afetado foi o webhook-dispatcher; #oncall-integracoes."
+  },
+  {
+    "id": "q032",
+    "text": "Durante o incidente em que houve clientes Enterprise recebendo 429 abaixo do limite contratado, em junho, qual endpoint mostraria a saúde do serviço afetado?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "incidents",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "INC-2026-015",
+      "DOC-009"
+    ],
+    "evidence": [
+      [
+        "INC-2026-015#resumo"
+      ],
+      [
+        "DOC-009#verificacao-de-saude"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-015.servico",
+      "svc.billing-api.healthcheck"
+    ],
+    "referenceAnswer": "O serviço afetado foi o billing-api; /health/billing."
+  },
+  {
+    "id": "q033",
+    "text": "Se o incidente de janeiro em que houve cobranças com cartão recusadas com erro técnico tivesse vindo de um deploy, qual comando faria o rollback do serviço afetado?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "incidents",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "INC-2026-001",
+      "DOC-011"
+    ],
+    "evidence": [
+      [
+        "INC-2026-001#resumo"
+      ],
+      [
+        "DOC-011#rollback"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-001.servico",
+      "svc.payments-adapter.rollback"
+    ],
+    "referenceAnswer": "O serviço afetado foi o payments-adapter; orbctl rollback payments-adapter --to previous --require-approval."
+  },
+  {
+    "id": "q034",
+    "text": "Quem passou a ser o contato técnico do cliente Mercado Serra Azul?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "tickets"
+    ],
+    "relevantDocIds": [
+      "T-1072"
+    ],
+    "evidence": [
+      [
+        "T-1072#resolucao"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1072.resolucao"
+    ],
+    "referenceAnswer": "Renata Lobo."
+  },
+  {
+    "id": "q035",
+    "text": "Qual é o protocolo do pedido de exclusão de dados aberto pelo cliente Hotel Maré Alta?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "tickets"
+    ],
+    "relevantDocIds": [
+      "T-1069"
+    ],
+    "evidence": [
+      [
+        "T-1069#resolucao"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1069.resolucao"
+    ],
+    "referenceAnswer": "LGPD-2026-744."
+  },
+  {
+    "id": "q036",
+    "text": "Quanto tempo durou o incidente em que houve relatórios demorando mais de 2 horas?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "INC-2026-019"
+    ],
+    "evidence": [
+      [
+        "INC-2026-019#resumo"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-019.duracao"
+    ],
+    "referenceAnswer": "330 minutos."
+  },
+  {
+    "id": "q037",
+    "text": "Qual taxa o gateway cobra por transação aprovada?",
+    "type": "unanswerable",
+    "set": "dev",
+    "sources": [],
+    "relevantDocIds": [],
+    "evidence": [],
+    "factIds": [],
+    "referenceAnswer": "O corpus não informa as taxas do gateway."
+  },
+  {
+    "id": "q038",
+    "text": "Por qual canal deveria ser acionado o plantão do serviço afetado no incidente em que houve faturas emitidas com ISS de 5% em municípios com alíquota de 2%?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "incidents",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "INC-2026-010",
+      "DOC-010"
+    ],
+    "evidence": [
+      [
+        "INC-2026-010#resumo"
+      ],
+      [
+        "DOC-010#escalonamento"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-010.servico",
+      "svc.invoice-worker.plantao"
+    ],
+    "referenceAnswer": "O serviço afetado foi o invoice-worker; #oncall-faturamento."
+  },
+  {
+    "id": "q039",
+    "text": "Para qual e-mail passaram a ir as faturas do cliente Lume Energia?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "tickets"
+    ],
+    "relevantDocIds": [
+      "T-1030"
+    ],
+    "evidence": [
+      [
+        "T-1030#resolucao"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1030.resolucao"
+    ],
+    "referenceAnswer": "financeiro@lumeenergia.example."
+  },
+  {
+    "id": "q040",
+    "text": "Qual botão uso para baixar um relatório financeiro?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-022"
+    ],
+    "evidence": [
+      [
+        "DOC-022#passo-a-passo"
+      ]
+    ],
+    "factIds": [
+      "howto.exportar-relatorios.formato"
+    ],
+    "referenceAnswer": "Exportar CSV."
+  },
+  {
+    "id": "q041",
+    "text": "O cliente Kappa Seguros abriu um chamado sobre \"Investigar chamada com erro\". Qual artigo foi enviado e, segundo ele, por quanto tempo os logs ficam no portal?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "T-1051",
+      "DOC-026"
+    ],
+    "evidence": [
+      [
+        "T-1051#resolucao"
+      ],
+      [
+        "DOC-026#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1051.artigo",
+      "howto.consultar-logs.retencao"
+    ],
+    "referenceAnswer": "Foi enviado o artigo \"Como consultar os logs de requisições\"; 30 dias."
+  },
+  {
+    "id": "q042",
+    "text": "O cliente Mercado Serra Azul abriu um chamado sobre \"Versão antiga do SDK\". Qual artigo foi enviado e, segundo ele, qual é a versão mínima suportada?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "T-1020",
+      "DOC-025"
+    ],
+    "evidence": [
+      [
+        "T-1020#resolucao"
+      ],
+      [
+        "DOC-025#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1020.artigo",
+      "howto.atualizar-sdk.versao-minima"
+    ],
+    "referenceAnswer": "Foi enviado o artigo \"Como atualizar o SDK oficial para Node.js\"; 4.2.0."
+  },
+  {
+    "id": "q043",
+    "text": "Que ação corretiva foi definida depois que houve todas as cobranças falhando por timeout em julho?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "INC-2026-020"
+    ],
+    "evidence": [
+      [
+        "INC-2026-020#acoes"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-020.acao"
+    ],
+    "referenceAnswer": "segunda região do gateway configurada como contingência."
+  },
+  {
+    "id": "q044",
+    "text": "Qual cabeçalho indica quanto tempo esperar depois de um erro 429?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-019"
+    ],
+    "evidence": [
+      [
+        "DOC-019#passo-a-passo"
+      ]
+    ],
+    "factIds": [
+      "howto.limites-requisicao.cabecalho"
+    ],
+    "referenceAnswer": "Retry-After."
+  },
+  {
+    "id": "q045",
+    "text": "Que ação corretiva foi definida depois que houve relatórios de fevereiro exportados sem linhas em fevereiro?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "INC-2026-004"
+    ],
+    "evidence": [
+      [
+        "INC-2026-004#acoes"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-004.acao"
+    ],
+    "referenceAnswer": "testes de fronteira de fuso horário no pipeline de relatórios."
+  },
+  {
+    "id": "q046",
+    "text": "Qual foi a causa técnica do problema que o cliente Grupo Nébula relatou em 15/09/2026?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "T-1077",
+      "INC-2026-024"
+    ],
+    "evidence": [
+      [
+        "T-1077#resolucao"
+      ],
+      [
+        "INC-2026-024#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1077.incidente",
+      "inc.INC-2026-024.causa"
+    ],
+    "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-024, cuja causa raiz foi: rotas v1 removidas antes da data anunciada de descontinuação."
+  },
+  {
+    "id": "q047",
+    "text": "Quantas pessoas trabalham no Time Dados?",
+    "type": "unanswerable",
+    "set": "dev",
+    "sources": [],
+    "relevantDocIds": [],
+    "evidence": [],
+    "factIds": [],
+    "referenceAnswer": "O corpus não informa o tamanho dos times."
+  },
+  {
+    "id": "q048",
+    "text": "O que causou o problema de páginas do portal levando mais de 10 segundos em agosto de 2026?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "INC-2026-022"
+    ],
+    "evidence": [
+      [
+        "INC-2026-022#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-022.causa"
+    ],
+    "referenceAnswer": "chamada sem paginação à billing-api trazendo todas as faturas do cliente."
+  },
+  {
+    "id": "q049",
+    "text": "Qual foi a causa raiz do incidente de 12/10/2026?",
+    "type": "unanswerable",
+    "set": "dev",
+    "sources": [],
+    "relevantDocIds": [],
+    "evidence": [],
+    "factIds": [],
+    "referenceAnswer": "Não há incidente registrado nessa data."
+  },
+  {
+    "id": "q050",
+    "text": "Onde o webhook-dispatcher armazena seus dados?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-004"
+    ],
+    "evidence": [
+      [
+        "DOC-004#dados-e-dependencias"
+      ]
+    ],
+    "factIds": [
+      "svc.webhook-dispatcher.dados"
+    ],
+    "referenceAnswer": "Em Redis 7 (fila de entregas pendentes)."
+  },
+  {
+    "id": "q051",
+    "text": "Qual foi a causa técnica do problema que o cliente Editora Pampa relatou em 02/09/2026?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "T-1076",
+      "INC-2026-023"
+    ],
+    "evidence": [
+      [
+        "T-1076#resolucao"
+      ],
+      [
+        "INC-2026-023#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1076.incidente",
+      "inc.INC-2026-023.causa"
+    ],
+    "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-023, cuja causa raiz foi: laço de novas tentativas sem limite após mudança na biblioteca de fila."
+  },
+  {
+    "id": "q052",
+    "text": "Como ficou o limite de usuários do plano do cliente Acme Logística?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "tickets"
+    ],
+    "relevantDocIds": [
+      "T-1061"
+    ],
+    "evidence": [
+      [
+        "T-1061#resolucao"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1061.resolucao"
+    ],
+    "referenceAnswer": "de 5 para 15 usuários."
+  },
+  {
+    "id": "q053",
+    "text": "Qual foi a causa técnica do problema que o cliente Acme Logística relatou em 29/07/2026?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "T-1066",
+      "INC-2026-020"
+    ],
+    "evidence": [
+      [
+        "T-1066#resolucao"
+      ],
+      [
+        "INC-2026-020#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1066.incidente",
+      "inc.INC-2026-020.causa"
+    ],
+    "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-020, cuja causa raiz foi: indisponibilidade regional do PagaFácil, sem rota alternativa configurada."
+  },
+  {
+    "id": "q054",
+    "text": "Qual time mantém o aplicativo móvel da Orbital?",
+    "type": "unanswerable",
+    "set": "dev",
+    "sources": [],
+    "relevantDocIds": [],
+    "evidence": [],
+    "factIds": [],
+    "referenceAnswer": "O corpus não menciona aplicativo móvel."
+  },
+  {
+    "id": "q055",
+    "text": "Quanto tempo durou o incidente em que houve faturas demorando mais de 2 horas para serem geradas?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "INC-2026-002"
+    ],
+    "evidence": [
+      [
+        "INC-2026-002#resumo"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-002.duracao"
+    ],
+    "referenceAnswer": "165 minutos."
+  },
+  {
+    "id": "q056",
+    "text": "Por quantos dias os logs de requisições ficam visíveis no portal?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-026"
+    ],
+    "evidence": [
+      [
+        "DOC-026#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "howto.consultar-logs.retencao"
+    ],
+    "referenceAnswer": "30 dias."
+  },
+  {
+    "id": "q057",
+    "text": "Qual foi a causa técnica do problema que o cliente Jota Telecom relatou em 30/06/2026?",
+    "type": "multi-source",
+    "set": "dev",
+    "sources": [
+      "tickets",
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "T-1057",
+      "INC-2026-017"
+    ],
+    "evidence": [
+      [
+        "T-1057#resolucao"
+      ],
+      [
+        "INC-2026-017#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1057.incidente",
+      "inc.INC-2026-017.causa"
+    ],
+    "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-017, cuja causa raiz foi: cabeçalho Subject enviado sem codificação MIME UTF-8."
+  },
+  {
+    "id": "q058",
+    "text": "Qual plano o cliente precisa ter para usar login único com SAML?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-023"
+    ],
+    "evidence": [
+      [
+        "DOC-023#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "howto.configurar-sso.plano"
+    ],
+    "referenceAnswer": "plano Enterprise."
+  },
+  {
+    "id": "q059",
+    "text": "De quanto foi a nota de crédito emitida para o cliente Banco Horizonte?",
+    "type": "single-source",
+    "set": "dev",
+    "sources": [
+      "tickets"
+    ],
+    "relevantDocIds": [
+      "T-1007"
+    ],
+    "evidence": [
+      [
+        "T-1007#resolucao"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1007.resolucao"
+    ],
+    "referenceAnswer": "R$ 260,00."
+  },
+  {
+    "id": "q060",
+    "text": "Qual é o limite de requisições por minuto da API GraphQL?",
+    "type": "unanswerable",
+    "set": "dev",
+    "sources": [],
+    "relevantDocIds": [],
+    "evidence": [],
+    "factIds": [],
+    "referenceAnswer": "O corpus não menciona uma API GraphQL."
+  }
+]

@@ -22,25 +22,52 @@ export interface Chunk {
   position: number;
 }
 
+/**
+ * Unidade de evidência: menor trecho que sustenta uma resposta (seção de um documento,
+ * campo de um chamado, etc.). Id no formato `<docId>#<slug>`.
+ */
+export interface EvidenceUnit {
+  id: string;
+  docId: string;
+  source: SourceName;
+  /** Título do documento de origem. */
+  title: string;
+  heading: string;
+  text: string;
+}
+
 /** Item devolvido por uma abordagem de recuperação. */
 export interface Hit {
   chunkId: string;
+  unitId: string;
   docId: string;
   source: SourceName;
   text: string;
   score: number;
 }
 
-/** Pergunta de avaliação com gabarito. */
+export type QuestionType = 'single-source' | 'multi-source' | 'unanswerable';
+export type QuestionSet = 'dev' | 'heldout' | 'policies';
+
+/** Pergunta de avaliação com gabarito derivado dos fatos do corpus. */
 export interface Question {
   id: string;
   text: string;
+  type: QuestionType;
+  set: QuestionSet;
+  /** Fontes que contêm evidência (vazio se não houver resposta no corpus). */
+  sources: SourceName[];
   /** Documentos que contêm a resposta (ground truth da recuperação). */
   relevantDocIds: string[];
-  /** Resposta de referência escrita junto com o corpus. */
+  /**
+   * Evidências necessárias, no nível da unidade. Cada item externo é uma evidência
+   * necessária; cada item interno é uma alternativa que a satisfaz.
+   */
+  evidence: string[][];
+  /** Fatos do mundo em que a resposta se baseia (rastreabilidade). */
+  factIds: string[];
+  /** Resposta de referência gerada a partir dos fatos. */
   referenceAnswer: string;
-  /** Pergunta que exige evidências de mais de uma fonte. */
-  multiSource: boolean;
 }
 
 /** Contrato único das abordagens comparadas. */
