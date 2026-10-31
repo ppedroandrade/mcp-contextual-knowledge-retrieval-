@@ -29,6 +29,8 @@ src/
   generation/  geração de respostas por LLM
   evaluation/  métricas e estatística
   bench/       execução dos experimentos
+  api/         API HTTP fina para a demo (opcional)
+apps/demo/   UI de demonstração (opcional, depois do benchmark)
 test/        unit/ e integration/
 scripts/     utilitários
 results/     resultados de execuções reais

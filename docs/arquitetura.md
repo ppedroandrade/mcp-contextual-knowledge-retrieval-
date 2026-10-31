@@ -42,7 +42,7 @@ flowchart LR
 | 1 | Banco vetorial | pgvector (Postgres) · Qdrant · em memória | pgvector via Docker: SQL conhecido, um serviço só |
 | 2 | Embeddings | modelo local via transformers.js · Ollama · API paga · LSA próprio | modelo local gratuito e fixado por versão |
 | 3 | LLM para respostas | Ollama local · API paga (precisa aprovação) | Ollama local, modelo e versão fixados |
-| 4 | Transporte MCP | stdio · Streamable HTTP | stdio no experimento; HTTP opcional para demonstração |
+| 4 | Transporte MCP | stdio · Streamable HTTP | stdio no experimento; HTTP opcional para a demo |
 | 5 | Fontes sintéticas | quantas e quais | ≥ 3 heterogêneas: documentação, chamados, incidentes (+ políticas) |
 | 6 | Controle "protocolo × estratégia" | incluir ou não uma config. de busca por fonte **sem** MCP | incluir: sem ela não dá para dizer se o ganho vem do MCP ou da estratégia |
 | 7 | Métricas e testes | conforme TCC 1 | confirmar no TCC 1; dados pareados por pergunta pedem teste pareado (ex.: Wilcoxon) |
@@ -50,6 +50,18 @@ flowchart LR
 A decisão 6 vem da revisão do protótipo anterior: lá, o ganho atribuído ao MCP vinha
 da busca por fonte com fusão, e não do protocolo. Vale prever isso desde o início.
 
-## 4. Fora de escopo (por enquanto)
+## 4. Demonstração (opcional, depois do benchmark)
 
-Interface web, autenticação, dados reais, deploy em nuvem.
+Uma UI de demonstração, no estilo de um caderno de perguntas sobre as fontes (fontes à
+esquerda, chat no centro, trechos citados com a fonte de origem), ajuda na banca, mas
+**não faz parte do experimento** e não entra nas métricas. Para não custar retrabalho:
+
+- `src/api/`: API HTTP fina (ex.: Fastify) com `GET /sources`, `POST /ask { question, approach }`
+  que só chama o mesmo `Retriever` + `generation` usados no benchmark;
+- `apps/demo/`: front simples que consome essa API, feito por último.
+
+Assim a demo mostra exatamente o que foi medido, sem lógica própria.
+
+## 5. Fora de escopo
+
+Autenticação, dados reais, deploy em nuvem, upload de documentos pelo usuário.

@@ -17,6 +17,7 @@ não têm rastreabilidade com este repositório.
 | Geração de respostas por LLM | planejado | sem serviço pago sem aprovação |
 | Métricas e estatística | planejado | conferir metodologia do TCC 1 |
 | Benchmark reproduzível | planejado | |
+| API + UI de demonstração | planejado (opcional) | depois do benchmark; fora das métricas |
 
 ## Próximos passos
 1. Discutir e fechar a arquitetura (`docs/arquitetura.md`).
