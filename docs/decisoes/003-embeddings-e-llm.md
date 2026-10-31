@@ -20,3 +20,9 @@ O digest de cada modelo (`ollama show --modelfile` / `ollama list`) é gravado e
 
 **Consequências.** Primeira execução baixa os modelos (~1-5 GB). Resultados dependem do
 hardware só na latência, não na qualidade, desde que o digest seja o mesmo.
+
+**Ambiente de execução (31/10/2026).** No macOS o Ollama do `docker-compose.yml` roda só
+na CPU, porque o Docker não acessa a GPU (Metal). Decisão do Pedro: manter o Ollama no
+Docker, como no compose, pela portabilidade. A imagem está fixada em `ollama/ollama:0.40.13`
+e cada execução grava a versão do Ollama e o `sizeVram` do modelo (0 = só CPU) em
+`environment.json`. As latências medidas valem para esse ambiente.
