@@ -1,0 +1,353 @@
+[
+  {
+    "id": "p001",
+    "text": "Em quanto tempo os acessos de quem sai da empresa são revogados?",
+    "type": "single-source",
+    "set": "policies",
+    "sources": [
+      "policies"
+    ],
+    "relevantDocIds": [
+      "POL-06"
+    ],
+    "evidence": [
+      [
+        "POL-06#desligamentos"
+      ]
+    ],
+    "factIds": [
+      "pol.POL-06.revogacao"
+    ],
+    "referenceAnswer": "4 horas."
+  },
+  {
+    "id": "p002",
+    "text": "Qual foi a severidade do incidente em que houve erro 500 em todas as tentativas de login, e em quanto tempo o plantão deveria dar a primeira resposta?",
+    "type": "multi-source",
+    "set": "policies",
+    "sources": [
+      "incidents",
+      "policies"
+    ],
+    "relevantDocIds": [
+      "INC-2026-012",
+      "POL-01"
+    ],
+    "evidence": [
+      [
+        "INC-2026-012#resumo"
+      ],
+      [
+        "POL-01#prazos-de-resposta"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-012.severidade",
+      "pol.POL-01.resposta-sev1"
+    ],
+    "referenceAnswer": "SEV1; a primeira resposta deveria ocorrer em até 15 minutos."
+  },
+  {
+    "id": "p003",
+    "text": "Qual é o prazo para responder a um pedido de exclusão de dados pessoais?",
+    "type": "single-source",
+    "set": "policies",
+    "sources": [
+      "policies"
+    ],
+    "relevantDocIds": [
+      "POL-04"
+    ],
+    "evidence": [
+      [
+        "POL-04#prazo"
+      ]
+    ],
+    "factIds": [
+      "pol.POL-04.prazo-titular"
+    ],
+    "referenceAnswer": "15 dias corridos."
+  },
+  {
+    "id": "p004",
+    "text": "Por quanto tempo vale o acesso temporário de um fornecedor?",
+    "type": "single-source",
+    "set": "policies",
+    "sources": [
+      "policies"
+    ],
+    "relevantDocIds": [
+      "POL-14"
+    ],
+    "evidence": [
+      [
+        "POL-14#acesso-temporario"
+      ]
+    ],
+    "factIds": [
+      "pol.POL-14.duracao"
+    ],
+    "referenceAnswer": "30 dias."
+  },
+  {
+    "id": "p005",
+    "text": "Em que horário clientes Enterprise têm suporte?",
+    "type": "single-source",
+    "set": "policies",
+    "sources": [
+      "policies"
+    ],
+    "relevantDocIds": [
+      "POL-15"
+    ],
+    "evidence": [
+      [
+        "POL-15#horario"
+      ]
+    ],
+    "factIds": [
+      "pol.POL-15.enterprise"
+    ],
+    "referenceAnswer": "24x7."
+  },
+  {
+    "id": "p006",
+    "text": "Qual é o prazo para publicar o postmortem de um incidente SEV2?",
+    "type": "single-source",
+    "set": "policies",
+    "sources": [
+      "policies"
+    ],
+    "relevantDocIds": [
+      "POL-01"
+    ],
+    "evidence": [
+      [
+        "POL-01#postmortem"
+      ]
+    ],
+    "factIds": [
+      "pol.POL-01.prazo-postmortem"
+    ],
+    "referenceAnswer": "5 dias úteis."
+  },
+  {
+    "id": "p007",
+    "text": "Por quanto tempo os logs de aplicação são mantidos?",
+    "type": "single-source",
+    "set": "policies",
+    "sources": [
+      "policies"
+    ],
+    "relevantDocIds": [
+      "POL-03"
+    ],
+    "evidence": [
+      [
+        "POL-03#dados-de-log"
+      ]
+    ],
+    "factIds": [
+      "pol.POL-03.logs"
+    ],
+    "referenceAnswer": "1 ano."
+  },
+  {
+    "id": "p008",
+    "text": "Quando acontece a troca de plantão?",
+    "type": "single-source",
+    "set": "policies",
+    "sources": [
+      "policies"
+    ],
+    "relevantDocIds": [
+      "POL-05"
+    ],
+    "evidence": [
+      [
+        "POL-05#escala"
+      ]
+    ],
+    "factIds": [
+      "pol.POL-05.troca"
+    ],
+    "referenceAnswer": "segundas-feiras às 10h."
+  },
+  {
+    "id": "p009",
+    "text": "Qual foi a severidade do incidente em que houve cobranças com cartão recusadas com erro técnico, e em quanto tempo o plantão deveria dar a primeira resposta?",
+    "type": "multi-source",
+    "set": "policies",
+    "sources": [
+      "incidents",
+      "policies"
+    ],
+    "relevantDocIds": [
+      "INC-2026-001",
+      "POL-01"
+    ],
+    "evidence": [
+      [
+        "INC-2026-001#resumo"
+      ],
+      [
+        "POL-01#prazos-de-resposta"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-001.severidade",
+      "pol.POL-01.resposta-sev1"
+    ],
+    "referenceAnswer": "SEV1; a primeira resposta deveria ocorrer em até 15 minutos."
+  },
+  {
+    "id": "p010",
+    "text": "Os clientes afetados pelo incidente em que houve API respondendo 503 para todas as chamadas tinham direito a crédito automático? De quanto?",
+    "type": "multi-source",
+    "set": "policies",
+    "sources": [
+      "incidents",
+      "policies"
+    ],
+    "relevantDocIds": [
+      "INC-2026-005",
+      "POL-08"
+    ],
+    "evidence": [
+      [
+        "INC-2026-005#resumo"
+      ],
+      [
+        "POL-08#elegibilidade"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-005.severidade",
+      "inc.INC-2026-005.duracao",
+      "pol.POL-08.elegibilidade"
+    ],
+    "referenceAnswer": "Não. Foi um SEV1 de 38 minutos, abaixo dos 60 minutos exigidos pela política."
+  },
+  {
+    "id": "p011",
+    "text": "Por qual e-mail chegam os pedidos de titulares de dados?",
+    "type": "single-source",
+    "set": "policies",
+    "sources": [
+      "policies"
+    ],
+    "relevantDocIds": [
+      "POL-04"
+    ],
+    "evidence": [
+      [
+        "POL-04#canal"
+      ]
+    ],
+    "factIds": [
+      "pol.POL-04.canal"
+    ],
+    "referenceAnswer": "privacidade@orbital.example."
+  },
+  {
+    "id": "p012",
+    "text": "Qual foi a severidade do incidente em que houve todas as cobranças falhando por timeout, e em quanto tempo o plantão deveria dar a primeira resposta?",
+    "type": "multi-source",
+    "set": "policies",
+    "sources": [
+      "incidents",
+      "policies"
+    ],
+    "relevantDocIds": [
+      "INC-2026-020",
+      "POL-01"
+    ],
+    "evidence": [
+      [
+        "INC-2026-020#resumo"
+      ],
+      [
+        "POL-01#prazos-de-resposta"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-020.severidade",
+      "pol.POL-01.resposta-sev1"
+    ],
+    "referenceAnswer": "SEV1; a primeira resposta deveria ocorrer em até 15 minutos."
+  },
+  {
+    "id": "p013",
+    "text": "Os clientes afetados pelo incidente em que houve todas as cobranças falhando por timeout tinham direito a crédito automático? De quanto?",
+    "type": "multi-source",
+    "set": "policies",
+    "sources": [
+      "incidents",
+      "policies"
+    ],
+    "relevantDocIds": [
+      "INC-2026-020",
+      "POL-08"
+    ],
+    "evidence": [
+      [
+        "INC-2026-020#resumo"
+      ],
+      [
+        "POL-08#elegibilidade"
+      ],
+      [
+        "POL-08#valor"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-020.severidade",
+      "inc.INC-2026-020.duracao",
+      "pol.POL-08.elegibilidade",
+      "pol.POL-08.valor"
+    ],
+    "referenceAnswer": "Sim. Foi um SEV1 de 112 minutos (mais de 60 minutos), então o crédito é de 10% da mensalidade."
+  },
+  {
+    "id": "p014",
+    "text": "Por quanto tempo os dados de faturas são guardados?",
+    "type": "single-source",
+    "set": "policies",
+    "sources": [
+      "policies"
+    ],
+    "relevantDocIds": [
+      "POL-03"
+    ],
+    "evidence": [
+      [
+        "POL-03#dados-de-cobranca"
+      ]
+    ],
+    "factIds": [
+      "pol.POL-03.faturas"
+    ],
+    "referenceAnswer": "5 anos."
+  },
+  {
+    "id": "p015",
+    "text": "Com quanto tempo de antecedência uma versão da API é descontinuada?",
+    "type": "single-source",
+    "set": "policies",
+    "sources": [
+      "policies"
+    ],
+    "relevantDocIds": [
+      "POL-13"
+    ],
+    "evidence": [
+      [
+        "POL-13#aviso-previo"
+      ]
+    ],
+    "factIds": [
+      "pol.POL-13.aviso"
+    ],
+    "referenceAnswer": "12 meses."
+  }
+]

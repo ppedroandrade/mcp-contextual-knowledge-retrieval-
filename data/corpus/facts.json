@@ -1,0 +1,2445 @@
+[
+  {
+    "id": "svc.billing-api.time",
+    "value": "Time Faturamento",
+    "unitId": "DOC-001#visao-geral",
+    "docId": "DOC-001",
+    "source": "docs"
+  },
+  {
+    "id": "svc.billing-api.stack",
+    "value": "Node.js 22 com Fastify",
+    "unitId": "DOC-001#visao-geral",
+    "docId": "DOC-001",
+    "source": "docs"
+  },
+  {
+    "id": "svc.billing-api.dados",
+    "value": "PostgreSQL 16 (banco billing, réplica de leitura em us-east)",
+    "unitId": "DOC-001#dados-e-dependencias",
+    "docId": "DOC-001",
+    "source": "docs"
+  },
+  {
+    "id": "svc.billing-api.slo",
+    "value": "99,9% de disponibilidade mensal",
+    "unitId": "DOC-001#confiabilidade",
+    "docId": "DOC-001",
+    "source": "docs"
+  },
+  {
+    "id": "svc.billing-api.retry",
+    "value": "até 3 tentativas com backoff exponencial começando em 200 ms",
+    "unitId": "DOC-001#confiabilidade",
+    "docId": "DOC-001",
+    "source": "docs"
+  },
+  {
+    "id": "svc.invoice-worker.time",
+    "value": "Time Faturamento",
+    "unitId": "DOC-002#visao-geral",
+    "docId": "DOC-002",
+    "source": "docs"
+  },
+  {
+    "id": "svc.invoice-worker.stack",
+    "value": "Go 1.23",
+    "unitId": "DOC-002#visao-geral",
+    "docId": "DOC-002",
+    "source": "docs"
+  },
+  {
+    "id": "svc.invoice-worker.dados",
+    "value": "fila RabbitMQ invoices.generate e bucket de objetos orbital-invoices",
+    "unitId": "DOC-002#dados-e-dependencias",
+    "docId": "DOC-002",
+    "source": "docs"
+  },
+  {
+    "id": "svc.invoice-worker.slo",
+    "value": "99,5% das faturas geradas em até 10 minutos",
+    "unitId": "DOC-002#confiabilidade",
+    "docId": "DOC-002",
+    "source": "docs"
+  },
+  {
+    "id": "svc.invoice-worker.retry",
+    "value": "até 5 tentativas; depois a mensagem vai para a fila invoices.dlq",
+    "unitId": "DOC-002#confiabilidade",
+    "docId": "DOC-002",
+    "source": "docs"
+  },
+  {
+    "id": "svc.payments-adapter.time",
+    "value": "Time Pagamentos",
+    "unitId": "DOC-003#visao-geral",
+    "docId": "DOC-003",
+    "source": "docs"
+  },
+  {
+    "id": "svc.payments-adapter.stack",
+    "value": "Kotlin com Spring Boot 3",
+    "unitId": "DOC-003#visao-geral",
+    "docId": "DOC-003",
+    "source": "docs"
+  },
+  {
+    "id": "svc.payments-adapter.dados",
+    "value": "PostgreSQL 16 (banco payments) e cache Redis para idempotência",
+    "unitId": "DOC-003#dados-e-dependencias",
+    "docId": "DOC-003",
+    "source": "docs"
+  },
+  {
+    "id": "svc.payments-adapter.slo",
+    "value": "99,95% de disponibilidade mensal",
+    "unitId": "DOC-003#confiabilidade",
+    "docId": "DOC-003",
+    "source": "docs"
+  },
+  {
+    "id": "svc.payments-adapter.retry",
+    "value": "nenhuma nova tentativa automática em cobranças; timeout de 10 segundos por chamada ao gateway",
+    "unitId": "DOC-003#confiabilidade",
+    "docId": "DOC-003",
+    "source": "docs"
+  },
+  {
+    "id": "svc.webhook-dispatcher.time",
+    "value": "Time Integrações",
+    "unitId": "DOC-004#visao-geral",
+    "docId": "DOC-004",
+    "source": "docs"
+  },
+  {
+    "id": "svc.webhook-dispatcher.stack",
+    "value": "Node.js 22",
+    "unitId": "DOC-004#visao-geral",
+    "docId": "DOC-004",
+    "source": "docs"
+  },
+  {
+    "id": "svc.webhook-dispatcher.dados",
+    "value": "Redis 7 (fila de entregas pendentes)",
+    "unitId": "DOC-004#dados-e-dependencias",
+    "docId": "DOC-004",
+    "source": "docs"
+  },
+  {
+    "id": "svc.webhook-dispatcher.slo",
+    "value": "99% dos eventos entregues em até 1 minuto",
+    "unitId": "DOC-004#confiabilidade",
+    "docId": "DOC-004",
+    "source": "docs"
+  },
+  {
+    "id": "svc.webhook-dispatcher.retry",
+    "value": "até 8 tentativas distribuídas em 24 horas",
+    "unitId": "DOC-004#confiabilidade",
+    "docId": "DOC-004",
+    "source": "docs"
+  },
+  {
+    "id": "svc.auth-service.time",
+    "value": "Time Plataforma",
+    "unitId": "DOC-005#visao-geral",
+    "docId": "DOC-005",
+    "source": "docs"
+  },
+  {
+    "id": "svc.auth-service.stack",
+    "value": "Go 1.23",
+    "unitId": "DOC-005#visao-geral",
+    "docId": "DOC-005",
+    "source": "docs"
+  },
+  {
+    "id": "svc.auth-service.dados",
+    "value": "PostgreSQL 16 (banco identity)",
+    "unitId": "DOC-005#dados-e-dependencias",
+    "docId": "DOC-005",
+    "source": "docs"
+  },
+  {
+    "id": "svc.auth-service.slo",
+    "value": "99,99% de disponibilidade mensal",
+    "unitId": "DOC-005#confiabilidade",
+    "docId": "DOC-005",
+    "source": "docs"
+  },
+  {
+    "id": "svc.auth-service.retry",
+    "value": "sem novas tentativas; tokens de acesso expiram em 15 minutos",
+    "unitId": "DOC-005#confiabilidade",
+    "docId": "DOC-005",
+    "source": "docs"
+  },
+  {
+    "id": "svc.reporting-service.time",
+    "value": "Time Dados",
+    "unitId": "DOC-006#visao-geral",
+    "docId": "DOC-006",
+    "source": "docs"
+  },
+  {
+    "id": "svc.reporting-service.stack",
+    "value": "Python 3.12 com FastAPI",
+    "unitId": "DOC-006#visao-geral",
+    "docId": "DOC-006",
+    "source": "docs"
+  },
+  {
+    "id": "svc.reporting-service.dados",
+    "value": "ClickHouse (cluster analytics)",
+    "unitId": "DOC-006#dados-e-dependencias",
+    "docId": "DOC-006",
+    "source": "docs"
+  },
+  {
+    "id": "svc.reporting-service.slo",
+    "value": "99% dos relatórios entregues em até 30 minutos",
+    "unitId": "DOC-006#confiabilidade",
+    "docId": "DOC-006",
+    "source": "docs"
+  },
+  {
+    "id": "svc.reporting-service.retry",
+    "value": "até 2 tentativas por relatório, com intervalo de 5 minutos",
+    "unitId": "DOC-006#confiabilidade",
+    "docId": "DOC-006",
+    "source": "docs"
+  },
+  {
+    "id": "svc.notification-service.time",
+    "value": "Time Integrações",
+    "unitId": "DOC-007#visao-geral",
+    "docId": "DOC-007",
+    "source": "docs"
+  },
+  {
+    "id": "svc.notification-service.stack",
+    "value": "Node.js 22",
+    "unitId": "DOC-007#visao-geral",
+    "docId": "DOC-007",
+    "source": "docs"
+  },
+  {
+    "id": "svc.notification-service.dados",
+    "value": "PostgreSQL 16 (banco notifications) e provedor de e-mail MailRelay",
+    "unitId": "DOC-007#dados-e-dependencias",
+    "docId": "DOC-007",
+    "source": "docs"
+  },
+  {
+    "id": "svc.notification-service.slo",
+    "value": "99,5% dos e-mails aceitos pelo provedor em até 5 minutos",
+    "unitId": "DOC-007#confiabilidade",
+    "docId": "DOC-007",
+    "source": "docs"
+  },
+  {
+    "id": "svc.notification-service.retry",
+    "value": "até 4 tentativas com intervalo fixo de 2 minutos",
+    "unitId": "DOC-007#confiabilidade",
+    "docId": "DOC-007",
+    "source": "docs"
+  },
+  {
+    "id": "svc.customer-portal.time",
+    "value": "Time Web",
+    "unitId": "DOC-008#visao-geral",
+    "docId": "DOC-008",
+    "source": "docs"
+  },
+  {
+    "id": "svc.customer-portal.stack",
+    "value": "Next.js 15 com React 19",
+    "unitId": "DOC-008#visao-geral",
+    "docId": "DOC-008",
+    "source": "docs"
+  },
+  {
+    "id": "svc.customer-portal.dados",
+    "value": "sem banco próprio; consome a billing-api e o auth-service",
+    "unitId": "DOC-008#dados-e-dependencias",
+    "docId": "DOC-008",
+    "source": "docs"
+  },
+  {
+    "id": "svc.customer-portal.slo",
+    "value": "99,9% de disponibilidade mensal",
+    "unitId": "DOC-008#confiabilidade",
+    "docId": "DOC-008",
+    "source": "docs"
+  },
+  {
+    "id": "svc.customer-portal.retry",
+    "value": "até 2 tentativas no cliente HTTP para chamadas idempotentes",
+    "unitId": "DOC-008#confiabilidade",
+    "docId": "DOC-008",
+    "source": "docs"
+  },
+  {
+    "id": "svc.billing-api.healthcheck",
+    "value": "/health/billing",
+    "unitId": "DOC-009#verificacao-de-saude",
+    "docId": "DOC-009",
+    "source": "docs"
+  },
+  {
+    "id": "svc.billing-api.alerta",
+    "value": "latência p95 acima de 800 ms por 5 minutos",
+    "unitId": "DOC-009#verificacao-de-saude",
+    "docId": "DOC-009",
+    "source": "docs"
+  },
+  {
+    "id": "svc.billing-api.rollback",
+    "value": "orbctl rollback billing-api --to previous",
+    "unitId": "DOC-009#rollback",
+    "docId": "DOC-009",
+    "source": "docs"
+  },
+  {
+    "id": "svc.billing-api.plantao",
+    "value": "#oncall-faturamento",
+    "unitId": "DOC-009#escalonamento",
+    "docId": "DOC-009",
+    "source": "docs"
+  },
+  {
+    "id": "svc.invoice-worker.healthcheck",
+    "value": "/health/invoice-worker",
+    "unitId": "DOC-010#verificacao-de-saude",
+    "docId": "DOC-010",
+    "source": "docs"
+  },
+  {
+    "id": "svc.invoice-worker.alerta",
+    "value": "mais de 500 mensagens na fila invoices.dlq",
+    "unitId": "DOC-010#verificacao-de-saude",
+    "docId": "DOC-010",
+    "source": "docs"
+  },
+  {
+    "id": "svc.invoice-worker.rollback",
+    "value": "orbctl rollback invoice-worker --to previous --drain-queue",
+    "unitId": "DOC-010#rollback",
+    "docId": "DOC-010",
+    "source": "docs"
+  },
+  {
+    "id": "svc.invoice-worker.plantao",
+    "value": "#oncall-faturamento",
+    "unitId": "DOC-010#escalonamento",
+    "docId": "DOC-010",
+    "source": "docs"
+  },
+  {
+    "id": "svc.payments-adapter.healthcheck",
+    "value": "/actuator/health/payments",
+    "unitId": "DOC-011#verificacao-de-saude",
+    "docId": "DOC-011",
+    "source": "docs"
+  },
+  {
+    "id": "svc.payments-adapter.alerta",
+    "value": "taxa de recusa técnica acima de 2% em 10 minutos",
+    "unitId": "DOC-011#verificacao-de-saude",
+    "docId": "DOC-011",
+    "source": "docs"
+  },
+  {
+    "id": "svc.payments-adapter.rollback",
+    "value": "orbctl rollback payments-adapter --to previous --require-approval",
+    "unitId": "DOC-011#rollback",
+    "docId": "DOC-011",
+    "source": "docs"
+  },
+  {
+    "id": "svc.payments-adapter.plantao",
+    "value": "#oncall-pagamentos",
+    "unitId": "DOC-011#escalonamento",
+    "docId": "DOC-011",
+    "source": "docs"
+  },
+  {
+    "id": "svc.webhook-dispatcher.healthcheck",
+    "value": "/health/webhooks",
+    "unitId": "DOC-012#verificacao-de-saude",
+    "docId": "DOC-012",
+    "source": "docs"
+  },
+  {
+    "id": "svc.webhook-dispatcher.alerta",
+    "value": "mais de 2.000 entregas pendentes por 15 minutos",
+    "unitId": "DOC-012#verificacao-de-saude",
+    "docId": "DOC-012",
+    "source": "docs"
+  },
+  {
+    "id": "svc.webhook-dispatcher.rollback",
+    "value": "orbctl rollback webhook-dispatcher --to previous",
+    "unitId": "DOC-012#rollback",
+    "docId": "DOC-012",
+    "source": "docs"
+  },
+  {
+    "id": "svc.webhook-dispatcher.plantao",
+    "value": "#oncall-integracoes",
+    "unitId": "DOC-012#escalonamento",
+    "docId": "DOC-012",
+    "source": "docs"
+  },
+  {
+    "id": "svc.auth-service.healthcheck",
+    "value": "/health/auth",
+    "unitId": "DOC-013#verificacao-de-saude",
+    "docId": "DOC-013",
+    "source": "docs"
+  },
+  {
+    "id": "svc.auth-service.alerta",
+    "value": "taxa de erro 5xx acima de 0,5% em 5 minutos",
+    "unitId": "DOC-013#verificacao-de-saude",
+    "docId": "DOC-013",
+    "source": "docs"
+  },
+  {
+    "id": "svc.auth-service.rollback",
+    "value": "orbctl rollback auth-service --to previous --keep-sessions",
+    "unitId": "DOC-013#rollback",
+    "docId": "DOC-013",
+    "source": "docs"
+  },
+  {
+    "id": "svc.auth-service.plantao",
+    "value": "#oncall-plataforma",
+    "unitId": "DOC-013#escalonamento",
+    "docId": "DOC-013",
+    "source": "docs"
+  },
+  {
+    "id": "svc.reporting-service.healthcheck",
+    "value": "/health/reports",
+    "unitId": "DOC-014#verificacao-de-saude",
+    "docId": "DOC-014",
+    "source": "docs"
+  },
+  {
+    "id": "svc.reporting-service.alerta",
+    "value": "mais de 50 relatórios na fila por 20 minutos",
+    "unitId": "DOC-014#verificacao-de-saude",
+    "docId": "DOC-014",
+    "source": "docs"
+  },
+  {
+    "id": "svc.reporting-service.rollback",
+    "value": "orbctl rollback reporting-service --to previous",
+    "unitId": "DOC-014#rollback",
+    "docId": "DOC-014",
+    "source": "docs"
+  },
+  {
+    "id": "svc.reporting-service.plantao",
+    "value": "#oncall-dados",
+    "unitId": "DOC-014#escalonamento",
+    "docId": "DOC-014",
+    "source": "docs"
+  },
+  {
+    "id": "svc.notification-service.healthcheck",
+    "value": "/health/notifications",
+    "unitId": "DOC-015#verificacao-de-saude",
+    "docId": "DOC-015",
+    "source": "docs"
+  },
+  {
+    "id": "svc.notification-service.alerta",
+    "value": "taxa de rejeição do provedor acima de 3% em 15 minutos",
+    "unitId": "DOC-015#verificacao-de-saude",
+    "docId": "DOC-015",
+    "source": "docs"
+  },
+  {
+    "id": "svc.notification-service.rollback",
+    "value": "orbctl rollback notification-service --to previous",
+    "unitId": "DOC-015#rollback",
+    "docId": "DOC-015",
+    "source": "docs"
+  },
+  {
+    "id": "svc.notification-service.plantao",
+    "value": "#oncall-integracoes",
+    "unitId": "DOC-015#escalonamento",
+    "docId": "DOC-015",
+    "source": "docs"
+  },
+  {
+    "id": "svc.customer-portal.healthcheck",
+    "value": "/api/health",
+    "unitId": "DOC-016#verificacao-de-saude",
+    "docId": "DOC-016",
+    "source": "docs"
+  },
+  {
+    "id": "svc.customer-portal.alerta",
+    "value": "taxa de erro de página acima de 1% em 10 minutos",
+    "unitId": "DOC-016#verificacao-de-saude",
+    "docId": "DOC-016",
+    "source": "docs"
+  },
+  {
+    "id": "svc.customer-portal.rollback",
+    "value": "orbctl rollback customer-portal --to previous --purge-cdn",
+    "unitId": "DOC-016#rollback",
+    "docId": "DOC-016",
+    "source": "docs"
+  },
+  {
+    "id": "svc.customer-portal.plantao",
+    "value": "#oncall-web",
+    "unitId": "DOC-016#escalonamento",
+    "docId": "DOC-016",
+    "source": "docs"
+  },
+  {
+    "id": "howto.rotacionar-chave.menu",
+    "value": "Configurações > Chaves de API",
+    "unitId": "DOC-017#passo-a-passo",
+    "docId": "DOC-017",
+    "source": "docs"
+  },
+  {
+    "id": "howto.rotacionar-chave.validade",
+    "value": "90 dias",
+    "unitId": "DOC-017#limites-e-observacoes",
+    "docId": "DOC-017",
+    "source": "docs"
+  },
+  {
+    "id": "howto.configurar-webhook.cabecalho",
+    "value": "X-Orbital-Signature",
+    "unitId": "DOC-018#passo-a-passo",
+    "docId": "DOC-018",
+    "source": "docs"
+  },
+  {
+    "id": "howto.configurar-webhook.timeout",
+    "value": "5 segundos",
+    "unitId": "DOC-018#limites-e-observacoes",
+    "docId": "DOC-018",
+    "source": "docs"
+  },
+  {
+    "id": "howto.limites-requisicao.cabecalho",
+    "value": "Retry-After",
+    "unitId": "DOC-019#passo-a-passo",
+    "docId": "DOC-019",
+    "source": "docs"
+  },
+  {
+    "id": "howto.limites-requisicao.limite",
+    "value": "600 requisições por minuto",
+    "unitId": "DOC-019#limites-e-observacoes",
+    "docId": "DOC-019",
+    "source": "docs"
+  },
+  {
+    "id": "howto.ambiente-sandbox.url",
+    "value": "https://sandbox.api.orbital.example",
+    "unitId": "DOC-020#passo-a-passo",
+    "docId": "DOC-020",
+    "source": "docs"
+  },
+  {
+    "id": "howto.ambiente-sandbox.cartao-recusa",
+    "value": "4000 0000 0000 0002",
+    "unitId": "DOC-020#limites-e-observacoes",
+    "docId": "DOC-020",
+    "source": "docs"
+  },
+  {
+    "id": "howto.reprocessar-fatura.endpoint",
+    "value": "POST /v2/invoices/{id}/reprocess",
+    "unitId": "DOC-021#passo-a-passo",
+    "docId": "DOC-021",
+    "source": "docs"
+  },
+  {
+    "id": "howto.reprocessar-fatura.maximo",
+    "value": "3 reprocessamentos",
+    "unitId": "DOC-021#limites-e-observacoes",
+    "docId": "DOC-021",
+    "source": "docs"
+  },
+  {
+    "id": "howto.exportar-relatorios.formato",
+    "value": "Exportar CSV",
+    "unitId": "DOC-022#passo-a-passo",
+    "docId": "DOC-022",
+    "source": "docs"
+  },
+  {
+    "id": "howto.exportar-relatorios.limite-linhas",
+    "value": "100 mil linhas",
+    "unitId": "DOC-022#limites-e-observacoes",
+    "docId": "DOC-022",
+    "source": "docs"
+  },
+  {
+    "id": "howto.configurar-sso.acs",
+    "value": "https://auth.orbital.example/saml/acs",
+    "unitId": "DOC-023#passo-a-passo",
+    "docId": "DOC-023",
+    "source": "docs"
+  },
+  {
+    "id": "howto.configurar-sso.plano",
+    "value": "plano Enterprise",
+    "unitId": "DOC-023#limites-e-observacoes",
+    "docId": "DOC-023",
+    "source": "docs"
+  },
+  {
+    "id": "howto.mudar-plano.endpoint",
+    "value": "PATCH /v2/subscriptions/{id}",
+    "unitId": "DOC-024#passo-a-passo",
+    "docId": "DOC-024",
+    "source": "docs"
+  },
+  {
+    "id": "howto.mudar-plano.downgrade",
+    "value": "próximo ciclo de cobrança",
+    "unitId": "DOC-024#limites-e-observacoes",
+    "docId": "DOC-024",
+    "source": "docs"
+  },
+  {
+    "id": "howto.atualizar-sdk.troca",
+    "value": "client.invoices.search",
+    "unitId": "DOC-025#passo-a-passo",
+    "docId": "DOC-025",
+    "source": "docs"
+  },
+  {
+    "id": "howto.atualizar-sdk.versao-minima",
+    "value": "4.2.0",
+    "unitId": "DOC-025#limites-e-observacoes",
+    "docId": "DOC-025",
+    "source": "docs"
+  },
+  {
+    "id": "howto.consultar-logs.filtro",
+    "value": "request_id",
+    "unitId": "DOC-026#passo-a-passo",
+    "docId": "DOC-026",
+    "source": "docs"
+  },
+  {
+    "id": "howto.consultar-logs.retencao",
+    "value": "30 dias",
+    "unitId": "DOC-026#limites-e-observacoes",
+    "docId": "DOC-026",
+    "source": "docs"
+  },
+  {
+    "id": "ticket.T-1001.incidente",
+    "value": "INC-2026-001",
+    "unitId": "T-1001#resolucao",
+    "docId": "T-1001",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1002.artigo",
+    "value": "Como reprocessar uma fatura com falha",
+    "unitId": "T-1002#resolucao",
+    "docId": "T-1002",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1003.resolucao",
+    "value": "NF-80910",
+    "unitId": "T-1003#resolucao",
+    "docId": "T-1003",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1004.resolucao",
+    "value": "de USD para BRL",
+    "unitId": "T-1004#resolucao",
+    "docId": "T-1004",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1005.artigo",
+    "value": "Como mudar o plano de uma assinatura",
+    "unitId": "T-1005#resolucao",
+    "docId": "T-1005",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1006.artigo",
+    "value": "Como mudar o plano de uma assinatura",
+    "unitId": "T-1006#resolucao",
+    "docId": "T-1006",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1007.resolucao",
+    "value": "R$ 260,00",
+    "unitId": "T-1007#resolucao",
+    "docId": "T-1007",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1008.incidente",
+    "value": "INC-2026-002",
+    "unitId": "T-1008#resolucao",
+    "docId": "T-1008",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1009.artigo",
+    "value": "Limites de requisição da API",
+    "unitId": "T-1009#resolucao",
+    "docId": "T-1009",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1010.artigo",
+    "value": "Como consultar os logs de requisições",
+    "unitId": "T-1010#resolucao",
+    "docId": "T-1010",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1011.artigo",
+    "value": "Como exportar relatórios financeiros",
+    "unitId": "T-1011#resolucao",
+    "docId": "T-1011",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1012.incidente",
+    "value": "INC-2026-003",
+    "unitId": "T-1012#resolucao",
+    "docId": "T-1012",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1013.artigo",
+    "value": "Como configurar e validar webhooks",
+    "unitId": "T-1013#resolucao",
+    "docId": "T-1013",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1014.resolucao",
+    "value": "NF-93929",
+    "unitId": "T-1014#resolucao",
+    "docId": "T-1014",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1015.resolucao",
+    "value": "dia 15",
+    "unitId": "T-1015#resolucao",
+    "docId": "T-1015",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1016.incidente",
+    "value": "INC-2026-004",
+    "unitId": "T-1016#resolucao",
+    "docId": "T-1016",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1017.resolucao",
+    "value": "financeiro@mercadoserraazul.example",
+    "unitId": "T-1017#resolucao",
+    "docId": "T-1017",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1018.artigo",
+    "value": "Limites de requisição da API",
+    "unitId": "T-1018#resolucao",
+    "docId": "T-1018",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1019.incidente",
+    "value": "INC-2026-005",
+    "unitId": "T-1019#resolucao",
+    "docId": "T-1019",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1020.artigo",
+    "value": "Como atualizar o SDK oficial para Node.js",
+    "unitId": "T-1020#resolucao",
+    "docId": "T-1020",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1021.artigo",
+    "value": "Limites de requisição da API",
+    "unitId": "T-1021#resolucao",
+    "docId": "T-1021",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1022.incidente",
+    "value": "INC-2026-006",
+    "unitId": "T-1022#resolucao",
+    "docId": "T-1022",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1023.resolucao",
+    "value": "LGPD-2026-664",
+    "unitId": "T-1023#resolucao",
+    "docId": "T-1023",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1024.incidente",
+    "value": "INC-2026-007",
+    "unitId": "T-1024#resolucao",
+    "docId": "T-1024",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1025.artigo",
+    "value": "Como mudar o plano de uma assinatura",
+    "unitId": "T-1025#resolucao",
+    "docId": "T-1025",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1026.incidente",
+    "value": "INC-2026-008",
+    "unitId": "T-1026#resolucao",
+    "docId": "T-1026",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1027.artigo",
+    "value": "Como usar o ambiente sandbox",
+    "unitId": "T-1027#resolucao",
+    "docId": "T-1027",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1028.resolucao",
+    "value": "João Pires",
+    "unitId": "T-1028#resolucao",
+    "docId": "T-1028",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1029.artigo",
+    "value": "Como exportar relatórios financeiros",
+    "unitId": "T-1029#resolucao",
+    "docId": "T-1029",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1030.resolucao",
+    "value": "financeiro@lumeenergia.example",
+    "unitId": "T-1030#resolucao",
+    "docId": "T-1030",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1031.incidente",
+    "value": "INC-2026-009",
+    "unitId": "T-1031#resolucao",
+    "docId": "T-1031",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1032.artigo",
+    "value": "Como configurar e validar webhooks",
+    "unitId": "T-1032#resolucao",
+    "docId": "T-1032",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1033.artigo",
+    "value": "Como rotacionar uma chave de API",
+    "unitId": "T-1033#resolucao",
+    "docId": "T-1033",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1034.incidente",
+    "value": "INC-2026-010",
+    "unitId": "T-1034#resolucao",
+    "docId": "T-1034",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1035.resolucao",
+    "value": "financeiro@acmelogistica.example",
+    "unitId": "T-1035#resolucao",
+    "docId": "T-1035",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1036.incidente",
+    "value": "INC-2026-011",
+    "unitId": "T-1036#resolucao",
+    "docId": "T-1036",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1037.artigo",
+    "value": "Como rotacionar uma chave de API",
+    "unitId": "T-1037#resolucao",
+    "docId": "T-1037",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1038.artigo",
+    "value": "Como exportar relatórios financeiros",
+    "unitId": "T-1038#resolucao",
+    "docId": "T-1038",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1039.artigo",
+    "value": "Como usar o ambiente sandbox",
+    "unitId": "T-1039#resolucao",
+    "docId": "T-1039",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1040.incidente",
+    "value": "INC-2026-012",
+    "unitId": "T-1040#resolucao",
+    "docId": "T-1040",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1041.artigo",
+    "value": "Como habilitar login único (SSO)",
+    "unitId": "T-1041#resolucao",
+    "docId": "T-1041",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1042.artigo",
+    "value": "Como configurar e validar webhooks",
+    "unitId": "T-1042#resolucao",
+    "docId": "T-1042",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1043.incidente",
+    "value": "INC-2026-013",
+    "unitId": "T-1043#resolucao",
+    "docId": "T-1043",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1044.resolucao",
+    "value": "R$ 530,00",
+    "unitId": "T-1044#resolucao",
+    "docId": "T-1044",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1045.resolucao",
+    "value": "dia 20",
+    "unitId": "T-1045#resolucao",
+    "docId": "T-1045",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1046.incidente",
+    "value": "INC-2026-014",
+    "unitId": "T-1046#resolucao",
+    "docId": "T-1046",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1047.incidente",
+    "value": "INC-2026-015",
+    "unitId": "T-1047#resolucao",
+    "docId": "T-1047",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1048.artigo",
+    "value": "Como reprocessar uma fatura com falha",
+    "unitId": "T-1048#resolucao",
+    "docId": "T-1048",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1049.resolucao",
+    "value": "João Pires",
+    "unitId": "T-1049#resolucao",
+    "docId": "T-1049",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1050.artigo",
+    "value": "Como atualizar o SDK oficial para Node.js",
+    "unitId": "T-1050#resolucao",
+    "docId": "T-1050",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1051.artigo",
+    "value": "Como consultar os logs de requisições",
+    "unitId": "T-1051#resolucao",
+    "docId": "T-1051",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1052.resolucao",
+    "value": "https://homolog.hotelmarealta.example/webhooks",
+    "unitId": "T-1052#resolucao",
+    "docId": "T-1052",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1053.incidente",
+    "value": "INC-2026-016",
+    "unitId": "T-1053#resolucao",
+    "docId": "T-1053",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1054.artigo",
+    "value": "Como usar o ambiente sandbox",
+    "unitId": "T-1054#resolucao",
+    "docId": "T-1054",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1055.artigo",
+    "value": "Como habilitar login único (SSO)",
+    "unitId": "T-1055#resolucao",
+    "docId": "T-1055",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1056.resolucao",
+    "value": "Paulo Teixeira",
+    "unitId": "T-1056#resolucao",
+    "docId": "T-1056",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1057.incidente",
+    "value": "INC-2026-017",
+    "unitId": "T-1057#resolucao",
+    "docId": "T-1057",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1058.artigo",
+    "value": "Como reprocessar uma fatura com falha",
+    "unitId": "T-1058#resolucao",
+    "docId": "T-1058",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1059.incidente",
+    "value": "INC-2026-018",
+    "unitId": "T-1059#resolucao",
+    "docId": "T-1059",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1060.artigo",
+    "value": "Como atualizar o SDK oficial para Node.js",
+    "unitId": "T-1060#resolucao",
+    "docId": "T-1060",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1061.resolucao",
+    "value": "de 5 para 15 usuários",
+    "unitId": "T-1061#resolucao",
+    "docId": "T-1061",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1062.resolucao",
+    "value": "limpar o filtro de datas",
+    "unitId": "T-1062#resolucao",
+    "docId": "T-1062",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1063.incidente",
+    "value": "INC-2026-019",
+    "unitId": "T-1063#resolucao",
+    "docId": "T-1063",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1064.artigo",
+    "value": "Como rotacionar uma chave de API",
+    "unitId": "T-1064#resolucao",
+    "docId": "T-1064",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1065.resolucao",
+    "value": "conector Pórtico ERP",
+    "unitId": "T-1065#resolucao",
+    "docId": "T-1065",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1066.incidente",
+    "value": "INC-2026-020",
+    "unitId": "T-1066#resolucao",
+    "docId": "T-1066",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1067.resolucao",
+    "value": "https://homolog.clinicavitalis.example/webhooks",
+    "unitId": "T-1067#resolucao",
+    "docId": "T-1067",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1068.incidente",
+    "value": "INC-2026-021",
+    "unitId": "T-1068#resolucao",
+    "docId": "T-1068",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1069.resolucao",
+    "value": "LGPD-2026-744",
+    "unitId": "T-1069#resolucao",
+    "docId": "T-1069",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1070.artigo",
+    "value": "Como consultar os logs de requisições",
+    "unitId": "T-1070#resolucao",
+    "docId": "T-1070",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1071.incidente",
+    "value": "INC-2026-022",
+    "unitId": "T-1071#resolucao",
+    "docId": "T-1071",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1072.resolucao",
+    "value": "Renata Lobo",
+    "unitId": "T-1072#resolucao",
+    "docId": "T-1072",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1073.resolucao",
+    "value": "de USD para BRL",
+    "unitId": "T-1073#resolucao",
+    "docId": "T-1073",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1074.resolucao",
+    "value": "de 10 para 25 usuários",
+    "unitId": "T-1074#resolucao",
+    "docId": "T-1074",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1075.resolucao",
+    "value": "limpar o filtro de datas",
+    "unitId": "T-1075#resolucao",
+    "docId": "T-1075",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1076.incidente",
+    "value": "INC-2026-023",
+    "unitId": "T-1076#resolucao",
+    "docId": "T-1076",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1077.incidente",
+    "value": "INC-2026-024",
+    "unitId": "T-1077#resolucao",
+    "docId": "T-1077",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1078.artigo",
+    "value": "Como habilitar login único (SSO)",
+    "unitId": "T-1078#resolucao",
+    "docId": "T-1078",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1079.incidente",
+    "value": "INC-2026-025",
+    "unitId": "T-1079#resolucao",
+    "docId": "T-1079",
+    "source": "tickets"
+  },
+  {
+    "id": "ticket.T-1080.resolucao",
+    "value": "conector Pórtico ERP",
+    "unitId": "T-1080#resolucao",
+    "docId": "T-1080",
+    "source": "tickets"
+  },
+  {
+    "id": "inc.INC-2026-001.servico",
+    "value": "Serviço afetado: payments-adapter",
+    "unitId": "INC-2026-001#resumo",
+    "docId": "INC-2026-001",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-001.severidade",
+    "value": "Severidade: SEV1",
+    "unitId": "INC-2026-001#resumo",
+    "docId": "INC-2026-001",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-001.duracao",
+    "value": "94 minutos",
+    "unitId": "INC-2026-001#resumo",
+    "docId": "INC-2026-001",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-001.clientes",
+    "value": "Clientes afetados: 312",
+    "unitId": "INC-2026-001#resumo",
+    "docId": "INC-2026-001",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-001.causa",
+    "value": "certificado TLS do gateway PagaFácil expirado no truststore do payments-adapter",
+    "unitId": "INC-2026-001#causa-raiz",
+    "docId": "INC-2026-001",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-001.acao",
+    "value": "monitoramento de validade de certificados com alerta 30 dias antes do vencimento",
+    "unitId": "INC-2026-001#acoes",
+    "docId": "INC-2026-001",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-002.servico",
+    "value": "Serviço afetado: invoice-worker",
+    "unitId": "INC-2026-002#resumo",
+    "docId": "INC-2026-002",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-002.severidade",
+    "value": "Severidade: SEV2",
+    "unitId": "INC-2026-002#resumo",
+    "docId": "INC-2026-002",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-002.duracao",
+    "value": "165 minutos",
+    "unitId": "INC-2026-002#resumo",
+    "docId": "INC-2026-002",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-002.clientes",
+    "value": "Clientes afetados: 88",
+    "unitId": "INC-2026-002#resumo",
+    "docId": "INC-2026-002",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-002.causa",
+    "value": "migração de banco criou a tabela invoice_items sem índice em invoice_id",
+    "unitId": "INC-2026-002#causa-raiz",
+    "docId": "INC-2026-002",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-002.acao",
+    "value": "revisão obrigatória de planos de execução em migrações e criação do índice",
+    "unitId": "INC-2026-002#acoes",
+    "docId": "INC-2026-002",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-003.servico",
+    "value": "Serviço afetado: webhook-dispatcher",
+    "unitId": "INC-2026-003#resumo",
+    "docId": "INC-2026-003",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-003.severidade",
+    "value": "Severidade: SEV2",
+    "unitId": "INC-2026-003#resumo",
+    "docId": "INC-2026-003",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-003.duracao",
+    "value": "47 minutos",
+    "unitId": "INC-2026-003#resumo",
+    "docId": "INC-2026-003",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-003.clientes",
+    "value": "Clientes afetados: 140",
+    "unitId": "INC-2026-003#resumo",
+    "docId": "INC-2026-003",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-003.causa",
+    "value": "deploy sem a variável de ambiente WEBHOOK_SIGNING_SECRET, que gerou assinaturas com segredo vazio",
+    "unitId": "INC-2026-003#causa-raiz",
+    "docId": "INC-2026-003",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-003.acao",
+    "value": "validação de variáveis obrigatórias no início do processo e bloqueio do deploy",
+    "unitId": "INC-2026-003#acoes",
+    "docId": "INC-2026-003",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-004.servico",
+    "value": "Serviço afetado: reporting-service",
+    "unitId": "INC-2026-004#resumo",
+    "docId": "INC-2026-004",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-004.severidade",
+    "value": "Severidade: SEV3",
+    "unitId": "INC-2026-004#resumo",
+    "docId": "INC-2026-004",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-004.duracao",
+    "value": "300 minutos",
+    "unitId": "INC-2026-004#resumo",
+    "docId": "INC-2026-004",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-004.clientes",
+    "value": "Clientes afetados: 25",
+    "unitId": "INC-2026-004#resumo",
+    "docId": "INC-2026-004",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-004.causa",
+    "value": "filtro de fuso horário convertendo datas para UTC e excluindo o primeiro dia do mês",
+    "unitId": "INC-2026-004#causa-raiz",
+    "docId": "INC-2026-004",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-004.acao",
+    "value": "testes de fronteira de fuso horário no pipeline de relatórios",
+    "unitId": "INC-2026-004#acoes",
+    "docId": "INC-2026-004",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-005.servico",
+    "value": "Serviço afetado: billing-api",
+    "unitId": "INC-2026-005#resumo",
+    "docId": "INC-2026-005",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-005.severidade",
+    "value": "Severidade: SEV1",
+    "unitId": "INC-2026-005#resumo",
+    "docId": "INC-2026-005",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-005.duracao",
+    "value": "38 minutos",
+    "unitId": "INC-2026-005#resumo",
+    "docId": "INC-2026-005",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-005.clientes",
+    "value": "Clientes afetados: 1040",
+    "unitId": "INC-2026-005#resumo",
+    "docId": "INC-2026-005",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-005.causa",
+    "value": "limite de conexões do PostgreSQL atingido (max_connections = 200) após aumento de réplicas da billing-api",
+    "unitId": "INC-2026-005#causa-raiz",
+    "docId": "INC-2026-005",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-005.acao",
+    "value": "adoção de pool de conexões com PgBouncer e limite por réplica",
+    "unitId": "INC-2026-005#acoes",
+    "docId": "INC-2026-005",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-006.servico",
+    "value": "Serviço afetado: notification-service",
+    "unitId": "INC-2026-006#resumo",
+    "docId": "INC-2026-006",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-006.severidade",
+    "value": "Severidade: SEV2",
+    "unitId": "INC-2026-006#resumo",
+    "docId": "INC-2026-006",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-006.duracao",
+    "value": "126 minutos",
+    "unitId": "INC-2026-006#resumo",
+    "docId": "INC-2026-006",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-006.clientes",
+    "value": "Clientes afetados: 410",
+    "unitId": "INC-2026-006#resumo",
+    "docId": "INC-2026-006",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-006.causa",
+    "value": "regra de firewall nova bloqueou a saída para os servidores do provedor MailRelay",
+    "unitId": "INC-2026-006#causa-raiz",
+    "docId": "INC-2026-006",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-006.acao",
+    "value": "teste automático de conectividade com o provedor após mudanças de rede",
+    "unitId": "INC-2026-006#acoes",
+    "docId": "INC-2026-006",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-007.servico",
+    "value": "Serviço afetado: webhook-dispatcher",
+    "unitId": "INC-2026-007#resumo",
+    "docId": "INC-2026-007",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-007.severidade",
+    "value": "Severidade: SEV1",
+    "unitId": "INC-2026-007#resumo",
+    "docId": "INC-2026-007",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-007.duracao",
+    "value": "71 minutos",
+    "unitId": "INC-2026-007#resumo",
+    "docId": "INC-2026-007",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-007.clientes",
+    "value": "Clientes afetados: 655",
+    "unitId": "INC-2026-007#resumo",
+    "docId": "INC-2026-007",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-007.causa",
+    "value": "memória do Redis esgotada porque chaves de entrega foram gravadas sem TTL",
+    "unitId": "INC-2026-007#causa-raiz",
+    "docId": "INC-2026-007",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-007.acao",
+    "value": "TTL obrigatório de 48 horas nas chaves de entrega e alerta de memória em 75%",
+    "unitId": "INC-2026-007#acoes",
+    "docId": "INC-2026-007",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-008.servico",
+    "value": "Serviço afetado: customer-portal",
+    "unitId": "INC-2026-008#resumo",
+    "docId": "INC-2026-008",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-008.severidade",
+    "value": "Severidade: SEV3",
+    "unitId": "INC-2026-008#resumo",
+    "docId": "INC-2026-008",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-008.duracao",
+    "value": "55 minutos",
+    "unitId": "INC-2026-008#resumo",
+    "docId": "INC-2026-008",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-008.clientes",
+    "value": "Clientes afetados: 60",
+    "unitId": "INC-2026-008#resumo",
+    "docId": "INC-2026-008",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-008.causa",
+    "value": "cache da CDN servindo uma versão antiga do bundle JavaScript após o deploy",
+    "unitId": "INC-2026-008#causa-raiz",
+    "docId": "INC-2026-008",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-008.acao",
+    "value": "invalidação da CDN incluída no procedimento de deploy (--purge-cdn)",
+    "unitId": "INC-2026-008#acoes",
+    "docId": "INC-2026-008",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-009.servico",
+    "value": "Serviço afetado: auth-service",
+    "unitId": "INC-2026-009#resumo",
+    "docId": "INC-2026-009",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-009.severidade",
+    "value": "Severidade: SEV2",
+    "unitId": "INC-2026-009#resumo",
+    "docId": "INC-2026-009",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-009.duracao",
+    "value": "83 minutos",
+    "unitId": "INC-2026-009#resumo",
+    "docId": "INC-2026-009",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-009.clientes",
+    "value": "Clientes afetados: 37",
+    "unitId": "INC-2026-009#resumo",
+    "docId": "INC-2026-009",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-009.causa",
+    "value": "relógio de um nó do auth-service adiantado em 6 minutos, invalidando as asserções SAML",
+    "unitId": "INC-2026-009#causa-raiz",
+    "docId": "INC-2026-009",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-009.acao",
+    "value": "sincronização de horário via NTP monitorada em todos os nós",
+    "unitId": "INC-2026-009#acoes",
+    "docId": "INC-2026-009",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-010.servico",
+    "value": "Serviço afetado: invoice-worker",
+    "unitId": "INC-2026-010#resumo",
+    "docId": "INC-2026-010",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-010.severidade",
+    "value": "Severidade: SEV2",
+    "unitId": "INC-2026-010#resumo",
+    "docId": "INC-2026-010",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-010.duracao",
+    "value": "210 minutos",
+    "unitId": "INC-2026-010#resumo",
+    "docId": "INC-2026-010",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-010.clientes",
+    "value": "Clientes afetados: 96",
+    "unitId": "INC-2026-010#resumo",
+    "docId": "INC-2026-010",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-010.causa",
+    "value": "feature flag new-tax-engine ativada para todos os clientes em vez de 5% do tráfego",
+    "unitId": "INC-2026-010#causa-raiz",
+    "docId": "INC-2026-010",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-010.acao",
+    "value": "exigência de aprovação em dupla para mudar flags de cálculo fiscal",
+    "unitId": "INC-2026-010#acoes",
+    "docId": "INC-2026-010",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-011.servico",
+    "value": "Serviço afetado: reporting-service",
+    "unitId": "INC-2026-011#resumo",
+    "docId": "INC-2026-011",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-011.severidade",
+    "value": "Severidade: SEV3",
+    "unitId": "INC-2026-011#resumo",
+    "docId": "INC-2026-011",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-011.duracao",
+    "value": "240 minutos",
+    "unitId": "INC-2026-011#resumo",
+    "docId": "INC-2026-011",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-011.clientes",
+    "value": "Clientes afetados: 19",
+    "unitId": "INC-2026-011#resumo",
+    "docId": "INC-2026-011",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-011.causa",
+    "value": "token de serviço do reporting-service para o notification-service expirado",
+    "unitId": "INC-2026-011#causa-raiz",
+    "docId": "INC-2026-011",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-011.acao",
+    "value": "rotação automática de tokens de serviço com 7 dias de antecedência",
+    "unitId": "INC-2026-011#acoes",
+    "docId": "INC-2026-011",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-012.servico",
+    "value": "Serviço afetado: auth-service",
+    "unitId": "INC-2026-012#resumo",
+    "docId": "INC-2026-012",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-012.severidade",
+    "value": "Severidade: SEV1",
+    "unitId": "INC-2026-012#resumo",
+    "docId": "INC-2026-012",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-012.duracao",
+    "value": "29 minutos",
+    "unitId": "INC-2026-012#resumo",
+    "docId": "INC-2026-012",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-012.clientes",
+    "value": "Clientes afetados: 1180",
+    "unitId": "INC-2026-012#resumo",
+    "docId": "INC-2026-012",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-012.causa",
+    "value": "migração do banco identity travou a tabela sessions por causa de um ALTER TABLE sem LOCK TIMEOUT",
+    "unitId": "INC-2026-012#causa-raiz",
+    "docId": "INC-2026-012",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-012.acao",
+    "value": "uso obrigatório de lock_timeout e migrações em duas fases",
+    "unitId": "INC-2026-012#acoes",
+    "docId": "INC-2026-012",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-013.servico",
+    "value": "Serviço afetado: payments-adapter",
+    "unitId": "INC-2026-013#resumo",
+    "docId": "INC-2026-013",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-013.severidade",
+    "value": "Severidade: SEV2",
+    "unitId": "INC-2026-013#resumo",
+    "docId": "INC-2026-013",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-013.duracao",
+    "value": "160 minutos",
+    "unitId": "INC-2026-013#resumo",
+    "docId": "INC-2026-013",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-013.clientes",
+    "value": "Clientes afetados: 74",
+    "unitId": "INC-2026-013#resumo",
+    "docId": "INC-2026-013",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-013.causa",
+    "value": "chave de idempotência descartada quando o PagaFácil respondeu após o timeout de 10 segundos",
+    "unitId": "INC-2026-013#causa-raiz",
+    "docId": "INC-2026-013",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-013.acao",
+    "value": "idempotência mantida por 24 horas e conciliação diária com o gateway",
+    "unitId": "INC-2026-013#acoes",
+    "docId": "INC-2026-013",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-014.servico",
+    "value": "Serviço afetado: customer-portal",
+    "unitId": "INC-2026-014#resumo",
+    "docId": "INC-2026-014",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-014.severidade",
+    "value": "Severidade: SEV3",
+    "unitId": "INC-2026-014#resumo",
+    "docId": "INC-2026-014",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-014.duracao",
+    "value": "600 minutos",
+    "unitId": "INC-2026-014#resumo",
+    "docId": "INC-2026-014",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-014.clientes",
+    "value": "Clientes afetados: 33",
+    "unitId": "INC-2026-014#resumo",
+    "docId": "INC-2026-014",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-014.causa",
+    "value": "uso de API de download não suportada pelo Safari 17",
+    "unitId": "INC-2026-014#causa-raiz",
+    "docId": "INC-2026-014",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-014.acao",
+    "value": "testes automatizados de navegador incluindo Safari",
+    "unitId": "INC-2026-014#acoes",
+    "docId": "INC-2026-014",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-015.servico",
+    "value": "Serviço afetado: billing-api",
+    "unitId": "INC-2026-015#resumo",
+    "docId": "INC-2026-015",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-015.severidade",
+    "value": "Severidade: SEV2",
+    "unitId": "INC-2026-015#resumo",
+    "docId": "INC-2026-015",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-015.duracao",
+    "value": "95 minutos",
+    "unitId": "INC-2026-015#resumo",
+    "docId": "INC-2026-015",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-015.clientes",
+    "value": "Clientes afetados: 12",
+    "unitId": "INC-2026-015#resumo",
+    "docId": "INC-2026-015",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-015.causa",
+    "value": "configuração de limite de requisições aplicada por IP em vez de por chave de API",
+    "unitId": "INC-2026-015#causa-raiz",
+    "docId": "INC-2026-015",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-015.acao",
+    "value": "teste de contrato dos limites por plano antes de cada deploy",
+    "unitId": "INC-2026-015#acoes",
+    "docId": "INC-2026-015",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-016.servico",
+    "value": "Serviço afetado: invoice-worker",
+    "unitId": "INC-2026-016#resumo",
+    "docId": "INC-2026-016",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-016.severidade",
+    "value": "Severidade: SEV1",
+    "unitId": "INC-2026-016#resumo",
+    "docId": "INC-2026-016",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-016.duracao",
+    "value": "66 minutos",
+    "unitId": "INC-2026-016#resumo",
+    "docId": "INC-2026-016",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-016.clientes",
+    "value": "Clientes afetados: 870",
+    "unitId": "INC-2026-016#resumo",
+    "docId": "INC-2026-016",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-016.causa",
+    "value": "atualização do RabbitMQ removeu a fila invoices.generate, que não era declarada como durável",
+    "unitId": "INC-2026-016#causa-raiz",
+    "docId": "INC-2026-016",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-016.acao",
+    "value": "declaração das filas como duráveis e verificação pós-atualização",
+    "unitId": "INC-2026-016#acoes",
+    "docId": "INC-2026-016",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-017.servico",
+    "value": "Serviço afetado: notification-service",
+    "unitId": "INC-2026-017#resumo",
+    "docId": "INC-2026-017",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-017.severidade",
+    "value": "Severidade: SEV3",
+    "unitId": "INC-2026-017#resumo",
+    "docId": "INC-2026-017",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-017.duracao",
+    "value": "180 minutos",
+    "unitId": "INC-2026-017#resumo",
+    "docId": "INC-2026-017",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-017.clientes",
+    "value": "Clientes afetados: 205",
+    "unitId": "INC-2026-017#resumo",
+    "docId": "INC-2026-017",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-017.causa",
+    "value": "cabeçalho Subject enviado sem codificação MIME UTF-8",
+    "unitId": "INC-2026-017#causa-raiz",
+    "docId": "INC-2026-017",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-017.acao",
+    "value": "biblioteca de e-mail atualizada e teste com caracteres acentuados",
+    "unitId": "INC-2026-017#acoes",
+    "docId": "INC-2026-017",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-018.servico",
+    "value": "Serviço afetado: webhook-dispatcher",
+    "unitId": "INC-2026-018#resumo",
+    "docId": "INC-2026-018",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-018.severidade",
+    "value": "Severidade: SEV2",
+    "unitId": "INC-2026-018#resumo",
+    "docId": "INC-2026-018",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-018.duracao",
+    "value": "140 minutos",
+    "unitId": "INC-2026-018#resumo",
+    "docId": "INC-2026-018",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-018.clientes",
+    "value": "Clientes afetados: 98",
+    "unitId": "INC-2026-018#resumo",
+    "docId": "INC-2026-018",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-018.causa",
+    "value": "novas tentativas disparadas antes do timeout de 5 segundos do cliente terminar",
+    "unitId": "INC-2026-018#causa-raiz",
+    "docId": "INC-2026-018",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-018.acao",
+    "value": "espera do timeout completo antes de nova tentativa e id de evento estável para deduplicação",
+    "unitId": "INC-2026-018#acoes",
+    "docId": "INC-2026-018",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-019.servico",
+    "value": "Serviço afetado: reporting-service",
+    "unitId": "INC-2026-019#resumo",
+    "docId": "INC-2026-019",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-019.severidade",
+    "value": "Severidade: SEV2",
+    "unitId": "INC-2026-019#resumo",
+    "docId": "INC-2026-019",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-019.duracao",
+    "value": "330 minutos",
+    "unitId": "INC-2026-019#resumo",
+    "docId": "INC-2026-019",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-019.clientes",
+    "value": "Clientes afetados: 54",
+    "unitId": "INC-2026-019#resumo",
+    "docId": "INC-2026-019",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-019.causa",
+    "value": "consulta sem partição por mês varrendo toda a tabela de cobranças no ClickHouse",
+    "unitId": "INC-2026-019#causa-raiz",
+    "docId": "INC-2026-019",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-019.acao",
+    "value": "particionamento mensal da tabela de cobranças",
+    "unitId": "INC-2026-019#acoes",
+    "docId": "INC-2026-019",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-020.servico",
+    "value": "Serviço afetado: payments-adapter",
+    "unitId": "INC-2026-020#resumo",
+    "docId": "INC-2026-020",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-020.severidade",
+    "value": "Severidade: SEV1",
+    "unitId": "INC-2026-020#resumo",
+    "docId": "INC-2026-020",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-020.duracao",
+    "value": "112 minutos",
+    "unitId": "INC-2026-020#resumo",
+    "docId": "INC-2026-020",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-020.clientes",
+    "value": "Clientes afetados: 960",
+    "unitId": "INC-2026-020#resumo",
+    "docId": "INC-2026-020",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-020.causa",
+    "value": "indisponibilidade regional do PagaFácil, sem rota alternativa configurada",
+    "unitId": "INC-2026-020#causa-raiz",
+    "docId": "INC-2026-020",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-020.acao",
+    "value": "segunda região do gateway configurada como contingência",
+    "unitId": "INC-2026-020#acoes",
+    "docId": "INC-2026-020",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-021.servico",
+    "value": "Serviço afetado: auth-service",
+    "unitId": "INC-2026-021#resumo",
+    "docId": "INC-2026-021",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-021.severidade",
+    "value": "Severidade: SEV3",
+    "unitId": "INC-2026-021#resumo",
+    "docId": "INC-2026-021",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-021.duracao",
+    "value": "20 minutos",
+    "unitId": "INC-2026-021#resumo",
+    "docId": "INC-2026-021",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-021.clientes",
+    "value": "Clientes afetados: 300",
+    "unitId": "INC-2026-021#resumo",
+    "docId": "INC-2026-021",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-021.causa",
+    "value": "chave de assinatura de sessão gerada no início de cada processo em vez de lida do cofre",
+    "unitId": "INC-2026-021#causa-raiz",
+    "docId": "INC-2026-021",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-021.acao",
+    "value": "chave de sessão persistida no cofre e rollback com --keep-sessions",
+    "unitId": "INC-2026-021#acoes",
+    "docId": "INC-2026-021",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-022.servico",
+    "value": "Serviço afetado: customer-portal",
+    "unitId": "INC-2026-022#resumo",
+    "docId": "INC-2026-022",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-022.severidade",
+    "value": "Severidade: SEV2",
+    "unitId": "INC-2026-022#resumo",
+    "docId": "INC-2026-022",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-022.duracao",
+    "value": "75 minutos",
+    "unitId": "INC-2026-022#resumo",
+    "docId": "INC-2026-022",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-022.clientes",
+    "value": "Clientes afetados: 230",
+    "unitId": "INC-2026-022#resumo",
+    "docId": "INC-2026-022",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-022.causa",
+    "value": "chamada sem paginação à billing-api trazendo todas as faturas do cliente",
+    "unitId": "INC-2026-022#causa-raiz",
+    "docId": "INC-2026-022",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-022.acao",
+    "value": "paginação obrigatória com limite de 100 itens por página",
+    "unitId": "INC-2026-022#acoes",
+    "docId": "INC-2026-022",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-023.servico",
+    "value": "Serviço afetado: notification-service",
+    "unitId": "INC-2026-023#resumo",
+    "docId": "INC-2026-023",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-023.severidade",
+    "value": "Severidade: SEV1",
+    "unitId": "INC-2026-023#resumo",
+    "docId": "INC-2026-023",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-023.duracao",
+    "value": "44 minutos",
+    "unitId": "INC-2026-023#resumo",
+    "docId": "INC-2026-023",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-023.clientes",
+    "value": "Clientes afetados: 520",
+    "unitId": "INC-2026-023#resumo",
+    "docId": "INC-2026-023",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-023.causa",
+    "value": "laço de novas tentativas sem limite após mudança na biblioteca de fila",
+    "unitId": "INC-2026-023#causa-raiz",
+    "docId": "INC-2026-023",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-023.acao",
+    "value": "limite de 4 tentativas aplicado na camada de envio e alerta por volume anômalo",
+    "unitId": "INC-2026-023#acoes",
+    "docId": "INC-2026-023",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-024.servico",
+    "value": "Serviço afetado: billing-api",
+    "unitId": "INC-2026-024#resumo",
+    "docId": "INC-2026-024",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-024.severidade",
+    "value": "Severidade: SEV3",
+    "unitId": "INC-2026-024#resumo",
+    "docId": "INC-2026-024",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-024.duracao",
+    "value": "400 minutos",
+    "unitId": "INC-2026-024#resumo",
+    "docId": "INC-2026-024",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-024.clientes",
+    "value": "Clientes afetados: 15",
+    "unitId": "INC-2026-024#resumo",
+    "docId": "INC-2026-024",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-024.causa",
+    "value": "rotas v1 removidas antes da data anunciada de descontinuação",
+    "unitId": "INC-2026-024#causa-raiz",
+    "docId": "INC-2026-024",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-024.acao",
+    "value": "checagem automática de rotas descontinuadas contra o calendário publicado",
+    "unitId": "INC-2026-024#acoes",
+    "docId": "INC-2026-024",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-025.servico",
+    "value": "Serviço afetado: invoice-worker",
+    "unitId": "INC-2026-025#resumo",
+    "docId": "INC-2026-025",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-025.severidade",
+    "value": "Severidade: SEV2",
+    "unitId": "INC-2026-025#resumo",
+    "docId": "INC-2026-025",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-025.duracao",
+    "value": "90 minutos",
+    "unitId": "INC-2026-025#resumo",
+    "docId": "INC-2026-025",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-025.clientes",
+    "value": "Clientes afetados: 143",
+    "unitId": "INC-2026-025#resumo",
+    "docId": "INC-2026-025",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-025.causa",
+    "value": "fonte tipográfica ausente na nova imagem de contêiner do invoice-worker",
+    "unitId": "INC-2026-025#causa-raiz",
+    "docId": "INC-2026-025",
+    "source": "incidents"
+  },
+  {
+    "id": "inc.INC-2026-025.acao",
+    "value": "teste de renderização de PDF no pipeline de imagens",
+    "unitId": "INC-2026-025#acoes",
+    "docId": "INC-2026-025",
+    "source": "incidents"
+  },
+  {
+    "id": "pol.POL-01.resposta-sev1",
+    "value": "15 minutos",
+    "unitId": "POL-01#prazos-de-resposta",
+    "docId": "POL-01",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-01.prazo-postmortem",
+    "value": "5 dias úteis",
+    "unitId": "POL-01#postmortem",
+    "docId": "POL-01",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-02.tamanho-minimo",
+    "value": "14 caracteres",
+    "unitId": "POL-02#requisitos-de-senha",
+    "docId": "POL-02",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-02.mfa-producao",
+    "value": "chave física",
+    "unitId": "POL-02#segundo-fator",
+    "docId": "POL-02",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-03.faturas",
+    "value": "5 anos",
+    "unitId": "POL-03#dados-de-cobranca",
+    "docId": "POL-03",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-03.logs",
+    "value": "1 ano",
+    "unitId": "POL-03#dados-de-log",
+    "docId": "POL-03",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-04.prazo-titular",
+    "value": "15 dias corridos",
+    "unitId": "POL-04#prazo",
+    "docId": "POL-04",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-04.canal",
+    "value": "privacidade@orbital.example",
+    "unitId": "POL-04#canal",
+    "docId": "POL-04",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-05.troca",
+    "value": "segundas-feiras às 10h",
+    "unitId": "POL-05#escala",
+    "docId": "POL-05",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-05.folga",
+    "value": "um dia de folga compensatória",
+    "unitId": "POL-05#compensacao",
+    "docId": "POL-05",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-06.periodicidade",
+    "value": "a cada trimestre",
+    "unitId": "POL-06#periodicidade",
+    "docId": "POL-06",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-06.revogacao",
+    "value": "4 horas",
+    "unitId": "POL-06#desligamentos",
+    "docId": "POL-06",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-07.congelamento",
+    "value": "entre 20 de dezembro e 5 de janeiro",
+    "unitId": "POL-07#janela-de-congelamento",
+    "docId": "POL-07",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-07.aprovacao-pagamentos",
+    "value": "aprovação de duas pessoas",
+    "unitId": "POL-07#aprovacao",
+    "docId": "POL-07",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-08.elegibilidade",
+    "value": "mais de 60 minutos",
+    "unitId": "POL-08#elegibilidade",
+    "docId": "POL-08",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-08.valor",
+    "value": "10% da mensalidade",
+    "unitId": "POL-08#valor",
+    "docId": "POL-08",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-09.cartao",
+    "value": "restritos",
+    "unitId": "POL-09#niveis",
+    "docId": "POL-09",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-10.regra",
+    "value": "proibido usar dados reais de clientes",
+    "unitId": "POL-10#regra-geral",
+    "docId": "POL-10",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-10.excecao",
+    "value": "encarregado de dados (DPO)",
+    "unitId": "POL-10#excecoes",
+    "docId": "POL-10",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-11.retencao-backup",
+    "value": "35 dias",
+    "unitId": "POL-11#frequencia",
+    "docId": "POL-11",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-11.rto",
+    "value": "4 horas",
+    "unitId": "POL-11#testes-de-restauracao",
+    "docId": "POL-11",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-12.canal",
+    "value": "status.orbital.example",
+    "unitId": "POL-12#canal-oficial",
+    "docId": "POL-12",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-13.aviso",
+    "value": "12 meses",
+    "unitId": "POL-13#aviso-previo",
+    "docId": "POL-13",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-13.v1",
+    "value": "31/12/2026",
+    "unitId": "POL-13#versao-v1",
+    "docId": "POL-13",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-14.duracao",
+    "value": "30 dias",
+    "unitId": "POL-14#acesso-temporario",
+    "docId": "POL-14",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-15.urgente",
+    "value": "1 hora",
+    "unitId": "POL-15#prazos-por-prioridade",
+    "docId": "POL-15",
+    "source": "policies"
+  },
+  {
+    "id": "pol.POL-15.enterprise",
+    "value": "24x7",
+    "unitId": "POL-15#horario",
+    "docId": "POL-15",
+    "source": "policies"
+  }
+]

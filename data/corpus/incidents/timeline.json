@@ -1,0 +1,452 @@
+{
+  "INC-2026-001": [
+    {
+      "hora": "19:58",
+      "evento": "Início do impacto: cobranças com cartão recusadas com erro técnico."
+    },
+    {
+      "hora": "20:09",
+      "evento": "Alerta recebido; plantão do Time Pagamentos assumiu o incidente."
+    },
+    {
+      "hora": "21:04",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "21:32",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-002": [
+    {
+      "hora": "03:54",
+      "evento": "Início do impacto: faturas demorando mais de 2 horas para serem geradas."
+    },
+    {
+      "hora": "04:07",
+      "evento": "Alerta recebido; plantão do Time Faturamento assumiu o incidente."
+    },
+    {
+      "hora": "05:49",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "06:39",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-003": [
+    {
+      "hora": "05:32",
+      "evento": "Início do impacto: clientes rejeitando webhooks por assinatura inválida."
+    },
+    {
+      "hora": "05:34",
+      "evento": "Alerta recebido; plantão do Time Integrações assumiu o incidente."
+    },
+    {
+      "hora": "06:05",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "06:19",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-004": [
+    {
+      "hora": "07:01",
+      "evento": "Início do impacto: relatórios de fevereiro exportados sem linhas."
+    },
+    {
+      "hora": "07:13",
+      "evento": "Alerta recebido; plantão do Time Dados assumiu o incidente."
+    },
+    {
+      "hora": "10:31",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "12:01",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-005": [
+    {
+      "hora": "05:59",
+      "evento": "Início do impacto: API respondendo 503 para todas as chamadas."
+    },
+    {
+      "hora": "06:14",
+      "evento": "Alerta recebido; plantão do Time Faturamento assumiu o incidente."
+    },
+    {
+      "hora": "06:26",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "06:37",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-006": [
+    {
+      "hora": "20:05",
+      "evento": "Início do impacto: e-mails de fatura não chegando aos clientes."
+    },
+    {
+      "hora": "20:09",
+      "evento": "Alerta recebido; plantão do Time Integrações assumiu o incidente."
+    },
+    {
+      "hora": "21:33",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "22:11",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-007": [
+    {
+      "hora": "07:40",
+      "evento": "Início do impacto: eventos invoice.paid parados por mais de uma hora."
+    },
+    {
+      "hora": "07:52",
+      "evento": "Alerta recebido; plantão do Time Integrações assumiu o incidente."
+    },
+    {
+      "hora": "08:30",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "08:51",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-008": [
+    {
+      "hora": "00:26",
+      "evento": "Início do impacto: gráficos de receita do portal aparecendo vazios."
+    },
+    {
+      "hora": "00:34",
+      "evento": "Alerta recebido; plantão do Time Web assumiu o incidente."
+    },
+    {
+      "hora": "01:05",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "01:21",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-009": [
+    {
+      "hora": "14:57",
+      "evento": "Início do impacto: usuários com SSO sem conseguir entrar no portal."
+    },
+    {
+      "hora": "15:12",
+      "evento": "Alerta recebido; plantão do Time Plataforma assumiu o incidente."
+    },
+    {
+      "hora": "15:55",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "16:20",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-010": [
+    {
+      "hora": "03:11",
+      "evento": "Início do impacto: faturas emitidas com ISS de 5% em municípios com alíquota de 2%."
+    },
+    {
+      "hora": "03:22",
+      "evento": "Alerta recebido; plantão do Time Faturamento assumiu o incidente."
+    },
+    {
+      "hora": "05:38",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "06:41",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-011": [
+    {
+      "hora": "21:22",
+      "evento": "Início do impacto: links de exportação não enviados por e-mail."
+    },
+    {
+      "hora": "21:33",
+      "evento": "Alerta recebido; plantão do Time Dados assumiu o incidente."
+    },
+    {
+      "hora": "00:10",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "01:22",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-012": [
+    {
+      "hora": "12:40",
+      "evento": "Início do impacto: erro 500 em todas as tentativas de login."
+    },
+    {
+      "hora": "12:50",
+      "evento": "Alerta recebido; plantão do Time Plataforma assumiu o incidente."
+    },
+    {
+      "hora": "13:00",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "13:09",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-013": [
+    {
+      "hora": "08:15",
+      "evento": "Início do impacto: clientes cobrados duas vezes pela mesma fatura."
+    },
+    {
+      "hora": "08:23",
+      "evento": "Alerta recebido; plantão do Time Pagamentos assumiu o incidente."
+    },
+    {
+      "hora": "10:07",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "10:55",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-014": [
+    {
+      "hora": "15:45",
+      "evento": "Início do impacto: botão Exportar CSV sem efeito no Safari."
+    },
+    {
+      "hora": "15:56",
+      "evento": "Alerta recebido; plantão do Time Web assumiu o incidente."
+    },
+    {
+      "hora": "22:45",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "01:45",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-015": [
+    {
+      "hora": "11:43",
+      "evento": "Início do impacto: clientes Enterprise recebendo 429 abaixo do limite contratado."
+    },
+    {
+      "hora": "11:48",
+      "evento": "Alerta recebido; plantão do Time Faturamento assumiu o incidente."
+    },
+    {
+      "hora": "12:50",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "13:18",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-016": [
+    {
+      "hora": "07:54",
+      "evento": "Início do impacto: nenhuma fatura gerada por mais de uma hora."
+    },
+    {
+      "hora": "08:02",
+      "evento": "Alerta recebido; plantão do Time Faturamento assumiu o incidente."
+    },
+    {
+      "hora": "08:40",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "09:00",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-017": [
+    {
+      "hora": "18:37",
+      "evento": "Início do impacto: assunto dos e-mails com caracteres estranhos no lugar de acentos."
+    },
+    {
+      "hora": "18:42",
+      "evento": "Alerta recebido; plantão do Time Integrações assumiu o incidente."
+    },
+    {
+      "hora": "20:43",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "21:37",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-018": [
+    {
+      "hora": "08:32",
+      "evento": "Início do impacto: clientes recebendo o mesmo evento várias vezes."
+    },
+    {
+      "hora": "08:39",
+      "evento": "Alerta recebido; plantão do Time Integrações assumiu o incidente."
+    },
+    {
+      "hora": "10:10",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "10:52",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-019": [
+    {
+      "hora": "13:31",
+      "evento": "Início do impacto: relatórios demorando mais de 2 horas."
+    },
+    {
+      "hora": "13:37",
+      "evento": "Alerta recebido; plantão do Time Dados assumiu o incidente."
+    },
+    {
+      "hora": "17:22",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "19:01",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-020": [
+    {
+      "hora": "00:05",
+      "evento": "Início do impacto: todas as cobranças falhando por timeout."
+    },
+    {
+      "hora": "00:15",
+      "evento": "Alerta recebido; plantão do Time Pagamentos assumiu o incidente."
+    },
+    {
+      "hora": "01:23",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "01:57",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-021": [
+    {
+      "hora": "15:50",
+      "evento": "Início do impacto: usuários deslogados após cada deploy."
+    },
+    {
+      "hora": "16:00",
+      "evento": "Alerta recebido; plantão do Time Plataforma assumiu o incidente."
+    },
+    {
+      "hora": "16:05",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "16:10",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-022": [
+    {
+      "hora": "14:59",
+      "evento": "Início do impacto: páginas do portal levando mais de 10 segundos."
+    },
+    {
+      "hora": "15:02",
+      "evento": "Alerta recebido; plantão do Time Web assumiu o incidente."
+    },
+    {
+      "hora": "15:52",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "16:14",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-023": [
+    {
+      "hora": "11:49",
+      "evento": "Início do impacto: clientes finais recebendo o mesmo aviso de cobrança dezenas de vezes."
+    },
+    {
+      "hora": "11:59",
+      "evento": "Alerta recebido; plantão do Time Integrações assumiu o incidente."
+    },
+    {
+      "hora": "12:20",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "12:33",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-024": [
+    {
+      "hora": "15:42",
+      "evento": "Início do impacto: exemplos da documentação retornando 404."
+    },
+    {
+      "hora": "15:47",
+      "evento": "Alerta recebido; plantão do Time Faturamento assumiu o incidente."
+    },
+    {
+      "hora": "20:22",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "22:22",
+      "evento": "Incidente encerrado."
+    }
+  ],
+  "INC-2026-025": [
+    {
+      "hora": "22:12",
+      "evento": "Início do impacto: faturas em PDF geradas sem conteúdo."
+    },
+    {
+      "hora": "22:16",
+      "evento": "Alerta recebido; plantão do Time Faturamento assumiu o incidente."
+    },
+    {
+      "hora": "23:15",
+      "evento": "Mitigação aplicada; métricas voltando ao normal."
+    },
+    {
+      "hora": "23:42",
+      "evento": "Incidente encerrado."
+    }
+  ]
+}

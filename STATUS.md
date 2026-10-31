@@ -13,7 +13,10 @@ não têm rastreabilidade com este repositório.
 | Tipos compartilhados e interface `Retriever` | implementado | `src/core/types.ts` |
 | Escolha de stack | decidido | ADRs 001 a 005 em `docs/decisoes/`; modelo do LLM a fixar |
 | Mapeamento TCC 1 → métricas | documentado | `docs/metodologia.md`; divergências listadas |
-| Corpus sintético e perguntas | planejado | proposta em `docs/corpus.md` |
+| Corpus sintético (4 fontes, 146 documentos, 349 fatos) | implementado, testado | `npm run corpus`; `docs/corpus.md` |
+| Leitores das fontes (Markdown, JSON, CSV, HTML) | implementado, testado | `src/sources/` |
+| Perguntas dev (60) e de políticas (15) com gabarito derivado dos fatos | implementado, testado | `data/questions/` |
+| Perguntas heldout (40) | planejado | criar só depois do congelamento da arquitetura |
 | Busca textual convencional | planejado | |
 | RAG tradicional | planejado | |
 | Configuração C (busca por fonte sem MCP) | planejado | controle do protocolo, ADR 005 |
@@ -25,4 +28,4 @@ não têm rastreabilidade com este repositório.
 
 ## Próximos passos
 1. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
-2. Implementar o gerador do corpus (`src/corpus`) e a leitura das fontes (`src/sources`).
+2. Implementar a busca textual (A) e as métricas de recuperação.
