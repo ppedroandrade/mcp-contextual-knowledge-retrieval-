@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-10-31T17:25:04.030Z",
+  "node": "v26.13.0",
+  "platform": "darwin 27.0.0",
+  "cpu": "Apple M4 Pro",
+  "cpuCount": 12,
+  "memoryGb": 24,
+  "gitCommit": "1cac7167d28a7b9760b9b28c30e7fbd67e080dd1",
+  "gitDirty": false,
+  "embedder": {
+    "embedder": "hash",
+    "dim": 256,
+    "warning": "não semântico; só para testes"
+  },
+  "store": "memory",
+  "approaches": [
+    "C",
+    "D"
+  ],
+  "set": "dev",
+  "rounds": 5,
+  "k": 5,
+  "depth": 50,
+  "sources": [
+    "docs",
+    "tickets",
+    "incidents"
+  ],
+  "units": 346
+}
