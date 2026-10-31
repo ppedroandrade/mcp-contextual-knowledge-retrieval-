@@ -1,6 +1,6 @@
 # Arquitetura — proposta inicial (para discussão)
 
-Status: **planejado** (só a estrutura, os tipos em `src/core` e o ferramental existem).
+Status: **implementado** da ingestão à geração (A–D, servidor MCP, `src/generation`); avaliação das respostas e estatística **planejadas**. Ver `STATUS.md`.
 
 ## 1. Princípio
 
@@ -42,13 +42,13 @@ flowchart LR
 | --- | --- | --- | --- |
 | 1 | Linguagem e ferramentas | Node.js 22, TypeScript 5.9, Vitest, GitHub Actions | [001](decisoes/001-linguagem-e-ferramentas.md) |
 | 2 | Banco vetorial | PostgreSQL 16 + pgvector (Docker), busca exata | [002](decisoes/002-banco-vetorial.md) |
-| 3 | Embeddings e LLM | Ollama local: `bge-m3` para embeddings; LLM aberto a fixar | [003](decisoes/003-embeddings-e-llm.md) |
+| 3 | Embeddings e LLM | Ollama local: `bge-m3` para embeddings e `qwen3:4b-instruct-2507` para a geração | [003](decisoes/003-embeddings-e-llm.md) |
 | 4 | MCP | SDK oficial, stdio no experimento | [004](decisoes/004-mcp.md) |
 | 5 | Configurações | A (BM25), B (RAG), C (controle sem MCP), D (MCP + RAG) | [005](decisoes/005-configuracoes-comparadas.md) |
 | 6 | Medida da H1 | latência computacional, recuperação e recuperação + geração separadas | [006](decisoes/006-medida-da-h1.md) |
 
 Metodologia e métricas: [metodologia.md](metodologia.md). Corpus: [corpus.md](corpus.md).
-**Ainda em aberto:** o modelo exato do LLM.
+O LLM foi fixado em 31/10/2026, depois de um piloto com três modelos (ADR 003).
 
 ## 4. Demonstração (opcional, depois do benchmark)
 

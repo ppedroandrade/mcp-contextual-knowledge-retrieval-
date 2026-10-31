@@ -1,0 +1,15 @@
+{
+  "B-rag": {
+    "perguntas": 60,
+    "abstencaoCorreta": 1,
+    "abstencaoIndevida": 0.24074074074074073,
+    "citamTrecho": 0.9512195121951219,
+    "citacaoInvalida": 0.03333333333333333,
+    "truncadas": 0,
+    "respostasQueVariaram": 0,
+    "tokensRespostaMedio": 41.45,
+    "latenciaRecuperacaoMs": 51.544145816673215,
+    "latenciaTotalMs": 6175.034347950031,
+    "cargaMaximaMs": 1.688334
+  }
+}

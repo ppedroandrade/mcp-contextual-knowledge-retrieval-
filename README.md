@@ -13,8 +13,9 @@ C existe para separar o efeito do protocolo (C × D) do efeito da estratégia de
 Stack: Node.js 22 + TypeScript. Status atual em [STATUS.md](STATUS.md);
 arquitetura em [docs/arquitetura.md](docs/arquitetura.md).
 
-> Em construção. Só o ferramental e os tipos básicos existem; as abordagens ainda
-> não foram implementadas.
+> Em construção: as quatro abordagens, o servidor MCP e a geração de respostas existem;
+> avaliação das respostas e estatística ainda não. O que está pronto e testado está no
+> [STATUS.md](STATUS.md).
 
 ## Requisitos
 
@@ -30,16 +31,19 @@ npm run check            # typecheck + testes unitários (o mesmo que o CI roda)
 npm run corpus           # regenera data/corpus e data/questions (já versionados)
 npm run bench:retrieval  # só a busca textual (A), sem serviços externos
 
-# com Docker: banco vetorial e modelo de embeddings
+# com Docker: banco vetorial, modelo de embeddings e LLM
 docker compose up -d
 docker compose exec ollama ollama pull bge-m3
+docker compose exec ollama ollama pull qwen3:4b-instruct-2507-q4_K_M
 npm run test:integration                       # pgvector contra a busca exata em memória
 npm run ingest                                 # indexa docs, chamados e incidentes no pgvector
 npm run bench:retrieval -- --approaches A,B,C,D  # métricas e latência no conjunto dev
+npm run bench:generation -- --approaches B,C,D   # recuperação + geração (A não gera resposta)
 npm run mcp:server                             # servidor MCP via stdio (para Inspector ou outro host)
 
-# sem Docker (só para conferir o pipeline; embedding NÃO semântico):
+# sem Docker (só para conferir o pipeline; embedding NÃO semântico, LLM simulado):
 npm run bench:retrieval -- --approaches A,B,C,D --embedder hash --store memory
+npm run bench:generation -- --embedder hash --store memory --llm simulated
 docker compose up -d     # banco vetorial e Ollama, necessários a partir da indexação
 ```
 
@@ -56,7 +60,7 @@ src/
   sources/     leitura e segmentação das fontes
   indexing/    índices lexical e vetorial
   retrieval/   busca semântica e fusão
-  approaches/  as três abordagens (mesma interface)
+  approaches/  as quatro abordagens (mesma interface)
   mcp/         servidor e cliente MCP
   generation/  geração de respostas por LLM
   evaluation/  métricas e estatística
@@ -67,3 +71,8 @@ test/        unit/ e integration/
 scripts/     utilitários
 results/     resultados de execuções reais
 ```
+
+Medições de latência: computador na tomada e com a tampa aberta (o `environment.json` de
+cada execução grava a fonte de energia). Ao trocar de LLM no Ollama, descarregue o anterior
+com `docker compose exec ollama ollama stop <modelo>`: a VM do Docker tem pouca memória
+(ADR 003).

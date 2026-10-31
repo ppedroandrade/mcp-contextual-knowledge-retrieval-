@@ -1,0 +1,47 @@
+{
+  "timestamp": "2026-10-31T22:46:18.130Z",
+  "node": "v26.13.0",
+  "platform": "darwin 27.0.0",
+  "cpu": "Apple M4 Pro",
+  "cpuCount": 12,
+  "memoryGb": 24,
+  "gitCommit": "5cc13b24784fc9bec4d16c1e58f5d98003067307",
+  "gitDirty": false,
+  "embedder": {
+    "embedder": "ollama",
+    "model": "bge-m3",
+    "digest": "7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab",
+    "ollamaVersion": "0.40.13",
+    "sizeVram": 0
+  },
+  "llm": {
+    "llm": "ollama",
+    "model": "qwen3.5:4b",
+    "digest": "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04",
+    "ollamaVersion": "0.40.13",
+    "sizeVram": 0,
+    "options": {
+      "temperature": 0,
+      "numCtx": 5120,
+      "numPredict": 512,
+      "seed": 42
+    },
+    "thinkingDisabled": true
+  },
+  "prompt": {
+    "sha256": "0b3770f3f86a975713e156319d570d77470cfc276769319413dced7e263d76db",
+    "contextUnits": 5
+  },
+  "store": "pg",
+  "approaches": [
+    "B"
+  ],
+  "set": "dev",
+  "rounds": 1,
+  "sources": [
+    "docs",
+    "tickets",
+    "incidents"
+  ],
+  "units": 346
+}
