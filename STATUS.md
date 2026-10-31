@@ -17,7 +17,8 @@ não têm rastreabilidade com este repositório.
 | Leitores das fontes (Markdown, JSON, CSV, HTML) | implementado, testado | `src/sources/` |
 | Perguntas dev (60) e de políticas (15) com gabarito derivado dos fatos | implementado, testado | `data/questions/` |
 | Perguntas heldout (40) | planejado | criar só depois do congelamento da arquitetura |
-| Busca textual convencional | planejado | |
+| Busca textual convencional (A, BM25) | implementado, testado | `src/approaches/a-bm25.ts`; rodada de verificação no dev, não é resultado do experimento |
+| Métricas de recuperação (P, R, MRR, nDCG, ER@k) e medição de latência | implementado, testado | `src/evaluation/metrics.ts`, `npm run bench:retrieval` |
 | RAG tradicional | planejado | |
 | Configuração C (busca por fonte sem MCP) | planejado | controle do protocolo, ADR 005 |
 | Servidor MCP + abordagem MCP + RAG | planejado | |
@@ -28,4 +29,5 @@ não têm rastreabilidade com este repositório.
 
 ## Próximos passos
 1. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
-2. Implementar a busca textual (A) e as métricas de recuperação.
+2. Embeddings via Ollama e RAG tradicional (B).
+3. Avaliar se as perguntas repetem demais as palavras do corpus (ver risco em `docs/metodologia.md`).

@@ -28,6 +28,7 @@ npm install
 cp .env.example .env
 npm run check            # typecheck + testes unitários (o mesmo que o CI roda)
 npm run corpus           # regenera data/corpus e data/questions (já versionados)
+npm run bench:retrieval  # métricas de recuperação e latência no conjunto dev
 docker compose up -d     # banco vetorial e Ollama, necessários a partir da indexação
 ```
 
