@@ -35,10 +35,11 @@ docker compose up -d
 docker compose exec ollama ollama pull bge-m3
 npm run test:integration                       # pgvector contra a busca exata em memória
 npm run ingest                                 # indexa docs, chamados e incidentes no pgvector
-npm run bench:retrieval -- --approaches A,B,C  # métricas e latência no conjunto dev
+npm run bench:retrieval -- --approaches A,B,C,D  # métricas e latência no conjunto dev
+npm run mcp:server                             # servidor MCP via stdio (para Inspector ou outro host)
 
 # sem Docker (só para conferir o pipeline; embedding NÃO semântico):
-npm run bench:retrieval -- --approaches A,B,C --embedder hash --store memory
+npm run bench:retrieval -- --approaches A,B,C,D --embedder hash --store memory
 docker compose up -d     # banco vetorial e Ollama, necessários a partir da indexação
 ```
 

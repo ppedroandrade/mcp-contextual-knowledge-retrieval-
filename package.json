@@ -15,7 +15,8 @@
     "check": "npm run typecheck && npm run test:unit",
     "corpus": "tsx src/corpus/generate.ts",
     "bench:retrieval": "tsx src/bench/retrieval.ts",
-    "ingest": "tsx src/indexing/ingest-cli.ts"
+    "ingest": "tsx src/indexing/ingest-cli.ts",
+    "mcp:server": "tsx src/mcp/stdio.ts"
   },
   "license": "MIT",
   "devDependencies": {
@@ -26,6 +27,8 @@
     "vitest": "^5.0.5"
   },
   "dependencies": {
-    "pg": "^8.23.1"
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "pg": "^8.23.1",
+    "zod": "^4.6.7"
   }
 }
