@@ -28,7 +28,17 @@ npm install
 cp .env.example .env
 npm run check            # typecheck + testes unitários (o mesmo que o CI roda)
 npm run corpus           # regenera data/corpus e data/questions (já versionados)
-npm run bench:retrieval  # métricas de recuperação e latência no conjunto dev
+npm run bench:retrieval  # só a busca textual (A), sem serviços externos
+
+# com Docker: banco vetorial e modelo de embeddings
+docker compose up -d
+docker compose exec ollama ollama pull bge-m3
+npm run test:integration                       # pgvector contra a busca exata em memória
+npm run ingest                                 # indexa docs, chamados e incidentes no pgvector
+npm run bench:retrieval -- --approaches A,B,C  # métricas e latência no conjunto dev
+
+# sem Docker (só para conferir o pipeline; embedding NÃO semântico):
+npm run bench:retrieval -- --approaches A,B,C --embedder hash --store memory
 docker compose up -d     # banco vetorial e Ollama, necessários a partir da indexação
 ```
 
