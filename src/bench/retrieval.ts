@@ -2,12 +2,12 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parseArgs } from 'node:util';
 import type { Question, Retriever, SourceName } from '../core/types.js';
-import { createBm25Retriever } from '../approaches/a-bm25.js';
 import { DATA_DIR, SEED } from '../corpus/generate.js';
 import { Rng } from '../corpus/random.js';
 import { mean, scoreRetrieval, type RetrievalScores } from '../evaluation/metrics.js';
 import { loadSource } from '../sources/index.js';
 import { environment } from './environment.js';
+import { makeEmbedder, makeRetrievers, openStore, type EmbedderKind, type StoreKind } from './setup.js';
 
 /** Unidades buscadas por pergunta: profundidade suficiente para deduplicar por documento. */
 export const SEARCH_DEPTH = 50;
@@ -76,12 +76,24 @@ export function summarize(results: QuestionResult[]) {
 }
 
 async function main() {
-  const { values } = parseArgs({ options: { set: { type: 'string', default: 'dev' }, rounds: { type: 'string', default: '5' }, out: { type: 'string' } } });
+  const { values } = parseArgs({ options: {
+    set: { type: 'string', default: 'dev' },
+    rounds: { type: 'string', default: '5' },
+    out: { type: 'string' },
+    approaches: { type: 'string', default: 'A' },
+    embedder: { type: 'string', default: 'ollama' },
+    store: { type: 'string', default: 'pg' },
+  } });
+  const names = values.approaches.split(',');
   const questions = JSON.parse(readFileSync(join(DATA_DIR, 'questions', `${values.set}.json`), 'utf8')) as Question[];
   const sources: SourceName[] = values.set === 'policies' ? ['docs', 'tickets', 'incidents', 'policies'] : ['docs', 'tickets', 'incidents'];
   const units = sources.flatMap((s) => loadSource(s));
-  const retrievers = [createBm25Retriever(units)];
+  const vectorial = names.some((n) => n !== 'A');
+  const embedder = vectorial ? makeEmbedder(values.embedder as EmbedderKind) : null;
+  const store = embedder ? await openStore(values.store as StoreKind, embedder, units, sources) : null;
+  const retrievers = makeRetrievers(names, units, embedder, store, sources);
   const results = await runRetrieval(retrievers, questions, Number(values.rounds));
+  await store?.close();
   const summary = summarize(results);
   console.table(summary);
   if (values.out) {
@@ -89,7 +101,7 @@ async function main() {
     mkdirSync(dir, { recursive: true });
     writeFileSync(join(dir, 'per-question.json'), JSON.stringify(results, null, 2) + '\n');
     writeFileSync(join(dir, 'summary.json'), JSON.stringify(summary, null, 2) + '\n');
-    writeFileSync(join(dir, 'environment.json'), JSON.stringify(environment({ set: values.set, rounds: Number(values.rounds), k: K, depth: SEARCH_DEPTH, sources, units: units.length }), null, 2) + '\n');
+    writeFileSync(join(dir, 'environment.json'), JSON.stringify(environment({ embedder: embedder ? await embedder.describe() : null, store: store ? values.store : null, approaches: names, set: values.set, rounds: Number(values.rounds), k: K, depth: SEARCH_DEPTH, sources, units: units.length }), null, 2) + '\n');
     console.log(`resultados em ${dir}`);
   }
 }

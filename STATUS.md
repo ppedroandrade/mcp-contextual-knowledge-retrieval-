@@ -19,8 +19,9 @@ não têm rastreabilidade com este repositório.
 | Perguntas heldout (40) | planejado | criar só depois do congelamento da arquitetura |
 | Busca textual convencional (A, BM25) | implementado, testado | `src/approaches/a-bm25.ts`; rodada de verificação no dev, não é resultado do experimento |
 | Métricas de recuperação (P, R, MRR, nDCG, ER@k) e medição de latência | implementado, testado | `src/evaluation/metrics.ts`, `npm run bench:retrieval` |
-| RAG tradicional | planejado | |
-| Configuração C (busca por fonte sem MCP) | planejado | controle do protocolo, ADR 005 |
+| Embeddings (Ollama `bge-m3`) e armazenamento vetorial (pgvector e memória) | implementado, testado em parte | testes unitários com Ollama simulado; teste de integração do pgvector escrito, **ainda não executado** (sem pgvector neste ambiente) |
+| RAG tradicional (B), só recuperação | implementado, testado | `src/approaches/b-rag.ts`; geração de resposta ainda não |
+| Configuração C (busca por fonte + RRF, sem MCP) | implementado, testado | `src/approaches/c-per-source.ts` |
 | Servidor MCP + abordagem MCP + RAG | planejado | |
 | Geração de respostas por LLM | planejado | sem serviço pago sem aprovação |
 | Métricas e estatística | planejado | conferir metodologia do TCC 1 |
@@ -29,5 +30,6 @@ não têm rastreabilidade com este repositório.
 
 ## Próximos passos
 1. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
-2. Embeddings via Ollama e RAG tradicional (B).
-3. Avaliar se as perguntas repetem demais as palavras do corpus (ver risco em `docs/metodologia.md`).
+2. Rodar `npm run test:integration` e a ingestão com Ollama numa máquina com Docker.
+3. Servidor MCP e configuração D.
+4. Avaliar se as perguntas repetem demais as palavras do corpus (ver risco em `docs/metodologia.md`).

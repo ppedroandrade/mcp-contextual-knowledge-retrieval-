@@ -14,13 +14,18 @@
     "test:integration": "vitest run test/integration",
     "check": "npm run typecheck && npm run test:unit",
     "corpus": "tsx src/corpus/generate.ts",
-    "bench:retrieval": "tsx src/bench/retrieval.ts"
+    "bench:retrieval": "tsx src/bench/retrieval.ts",
+    "ingest": "tsx src/indexing/ingest-cli.ts"
   },
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^22.20.5",
+    "@types/pg": "^8.23.1",
     "tsx": "^4.23.15",
     "typescript": "5.9",
     "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "pg": "^8.23.1"
   }
 }
