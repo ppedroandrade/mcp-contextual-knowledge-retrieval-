@@ -74,6 +74,8 @@ export function summarize(results: QuestionResult[]) {
 }
 
 async function main() {
+  // Lido na partida: o código que roda é o carregado agora, mesmo que a branch mude depois.
+  const env = environment();
   const { values } = parseArgs({ options: {
     set: { type: 'string', default: 'dev' },
     rounds: { type: 'string', default: '5' },
@@ -101,7 +103,7 @@ async function main() {
     const dir = saveRun(values.out, {
       'per-question.json': results,
       'summary.json': summary,
-      'environment.json': environment({ embedder: embedder ? await embedder.describe() : null, store: store ? values.store : null, approaches: names, set: values.set, rounds: Number(values.rounds), k: K, depth: SEARCH_DEPTH, sources, units: units.length }),
+      'environment.json': { ...env, embedder: embedder ? await embedder.describe() : null, store: store ? values.store : null, approaches: names, set: values.set, rounds: Number(values.rounds), k: K, depth: SEARCH_DEPTH, sources, units: units.length },
     });
     console.log(`resultados em ${dir}`);
   }
