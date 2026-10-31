@@ -24,6 +24,5 @@ não têm rastreabilidade com este repositório.
 | API + UI de demonstração | planejado (opcional) | depois do benchmark; fora das métricas |
 
 ## Próximos passos
-1. Decidir como medir o "tempo de recuperação" da H1 (`docs/metodologia.md`, seção 4).
-2. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
-3. Implementar o gerador do corpus (`src/corpus`) e a leitura das fontes (`src/sources`).
+1. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
+2. Implementar o gerador do corpus (`src/corpus`) e a leitura das fontes (`src/sources`).

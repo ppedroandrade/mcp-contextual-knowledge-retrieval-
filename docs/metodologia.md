@@ -50,12 +50,10 @@ Registrar no artigo, de preferência com o aval do orientador.
 
 ## 4. Riscos que precisam de decisão
 
-- **H1 e o significado de "tempo de recuperação".** Se for latência computacional, a busca
-  textual (BM25 em memória) tende a ser muito mais rápida que qualquer abordagem com
-  embeddings, e mais ainda que MCP + RAG, que soma consultas por fonte e comunicação
-  entre processos. Nesse caso, H1 provavelmente será **refutada**, o que é um resultado
-  válido se reportado com honestidade. Se for o **tempo de uma pessoa** até encontrar a
-  resposta, é preciso um estudo com participantes.
+- **H1 e o significado de "tempo de recuperação".** Decidido: latência computacional do
+  sistema ([ADR 006](decisoes/006-medida-da-h1.md)). A busca textual tende a ser mais
+  rápida, então a H1 provavelmente será **refutada**, e isso será reportado como
+  resultado. O tempo de uma pessoa fica como limitação.
 - **H2 humana** exige ao menos 2 avaliadores além do autor.
 - **Autor constrói corpus, gabarito e solução.** Mitigação: corpus gerado por código com
   semente fixa, arquitetura congelada antes de criar um conjunto reservado de perguntas,

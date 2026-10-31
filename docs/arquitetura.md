@@ -45,9 +45,10 @@ flowchart LR
 | 3 | Embeddings e LLM | Ollama local: `bge-m3` para embeddings; LLM aberto a fixar | [003](decisoes/003-embeddings-e-llm.md) |
 | 4 | MCP | SDK oficial, stdio no experimento | [004](decisoes/004-mcp.md) |
 | 5 | Configurações | A (BM25), B (RAG), C (controle sem MCP), D (MCP + RAG) | [005](decisoes/005-configuracoes-comparadas.md) |
+| 6 | Medida da H1 | latência computacional, recuperação e recuperação + geração separadas | [006](decisoes/006-medida-da-h1.md) |
 
 Metodologia e métricas: [metodologia.md](metodologia.md). Corpus: [corpus.md](corpus.md).
-**Ainda em aberto:** o modelo exato do LLM e a forma de medir o tempo da H1.
+**Ainda em aberto:** o modelo exato do LLM.
 
 ## 4. Demonstração (opcional, depois do benchmark)
 
