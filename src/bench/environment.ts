@@ -19,8 +19,19 @@ export function environment(extra: Record<string, unknown> = {}) {
     gitCommit: git('rev-parse HEAD'),
     // results/ só guarda saídas de execuções (inclusive a atual); não é código alterado.
     gitDirty: (git("status --porcelain -- . ':(exclude)results'") ?? '') !== '',
+    powerSource: powerSource(),
     ...extra,
   };
+}
+
+/** No macOS, "AC Power" ou "Battery Power": na bateria o sistema pode reduzir o desempenho. */
+function powerSource(): string | null {
+  if (platform() !== 'darwin') return null;
+  try {
+    return execSync('pmset -g batt', { stdio: ['ignore', 'pipe', 'ignore'] }).toString().match(/'([^']+)'/)?.[1] ?? null;
+  } catch {
+    return null;
+  }
 }
 
 /** Grava os arquivos JSON de uma execução em `results/runs/<id>/` e devolve o diretório. */

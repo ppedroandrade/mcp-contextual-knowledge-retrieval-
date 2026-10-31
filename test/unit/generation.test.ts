@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { createGlobalVectorRetriever } from '../../src/approaches/b-rag.js';
 import { createPerSourceRetriever } from '../../src/approaches/c-per-source.js';
-import { runGeneration, summarizeGeneration } from '../../src/bench/generation.js';
+import { runGeneration, summarizeGeneration, type GenerationResult } from '../../src/bench/generation.js';
 import type { Hit, Question, SourceName } from '../../src/core/types.js';
 import { buildCorpus } from '../../src/corpus/generate.js';
 import { generateAnswer, parseAnswer } from '../../src/generation/answer.js';
@@ -172,8 +172,31 @@ describe('runGeneration', () => {
     });
     const pick = (type: Question['type'], n: number) => questions.filter((q) => q.type === type).slice(0, n);
     const results = await runGeneration(await retrievers(), [...pick('unanswerable', 2), ...pick('single-source', 2)], llm, 0);
-    const s = summarizeGeneration(results)['B-rag']!;
-    expect(s).toMatchObject({ perguntas: 4, abstencaoCorreta: 1, abstencaoIndevida: 0, citamTrecho: 1, citacaoInvalida: 0, truncadas: 0 });
+    const s = summarizeGeneration(results, questions)['B-rag']!;
+    expect(s).toMatchObject({ perguntas: 4, abstencaoCorreta: 1, citamTrecho: 1, citacaoInvalida: 0, truncadas: 0 });
     expect(s.latenciaTotalMs).toBeNaN();
+  });
+
+  it('separa a abstenção com e sem toda a evidência nos trechos entregues', () => {
+    const q = (id: string, type: Question['type'], evidence: string[][]) => ({ id, type, evidence }) as Question;
+    const r = (questionId: string, type: Question['type'], contextUnitIds: string[], abstained: boolean): GenerationResult => ({
+      questionId, type, retriever: 'X', changedAnswers: 0, retrievalMs: [], totalMs: [], loadMs: [],
+      answer: { text: '', contextUnitIds, abstained, citedUnitIds: [], invalidCitations: [], promptTokens: null, outputTokens: null, loadMs: null, truncated: false },
+    });
+    const qs = [
+      q('q1', 'single-source', [['a#1']]),
+      q('q2', 'multi-source', [['a#1'], ['b#1', 'b#2']]),
+      q('q3', 'multi-source', [['a#1'], ['c#1']]),
+      q('q4', 'unanswerable', []),
+    ];
+    const results = [
+      r('q1', 'single-source', ['a#1'], true), // tinha a evidência e se absteve: erro do modelo
+      r('q2', 'multi-source', ['b#2', 'a#1'], false), // alternativa b#2 satisfaz a segunda evidência
+      r('q3', 'multi-source', ['a#1', 'x#1'], true), // faltava c#1: abster-se é o esperado
+      r('q4', 'unanswerable', ['x#1'], true),
+    ];
+    expect(summarizeGeneration(results, qs).X).toMatchObject({
+      perguntas: 4, abstencaoCorreta: 1, comEvidenciaNoContexto: 2, abstencaoComEvidencia: 0.5, abstencaoSemEvidencia: 1,
+    });
   });
 });

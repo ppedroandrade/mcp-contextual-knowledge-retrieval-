@@ -61,20 +61,28 @@ export async function runGeneration(retrievers: Retriever[], questions: Question
 }
 
 /**
- * Conformidade com o prompt e latência por abordagem. Abstenção = a resposta começa com
- * "Não sei". A correção das respostas fica para a etapa de avaliação.
+ * Conformidade com o prompt e latência por abordagem. Abstenção = a resposta diz "Não sei".
+ * Nas perguntas com resposta no corpus, separa as que tinham toda a evidência nos trechos
+ * entregues (abster-se é erro do modelo) das que não tinham (abster-se é o esperado; a falha
+ * é da recuperação). A correção das respostas fica para a etapa de avaliação.
  */
-export function summarizeGeneration(results: GenerationResult[]) {
+export function summarizeGeneration(results: GenerationResult[], questions: Question[]) {
+  const evidence = new Map(questions.map((q) => [q.id, q.evidence]));
+  const complete = (r: GenerationResult) => evidence.get(r.questionId)!.every((alts) => alts.some((u) => r.answer.contextUnitIds.includes(u)));
   const byRetriever = Map.groupBy(results, (r) => r.retriever);
   return Object.fromEntries([...byRetriever].map(([name, rs]) => {
     const frac = (xs: GenerationResult[], f: (r: GenerationResult) => boolean) => (xs.length ? xs.filter(f).length / xs.length : NaN);
+    const abstained = (r: GenerationResult) => r.answer.abstained;
     const unanswerable = rs.filter((r) => r.type === 'unanswerable');
     const answerable = rs.filter((r) => r.type !== 'unanswerable');
+    const withEvidence = answerable.filter(complete);
     const loads = rs.flatMap((r) => r.loadMs).filter((x): x is number => x !== null);
     return [name, {
       perguntas: rs.length,
-      abstencaoCorreta: frac(unanswerable, (r) => r.answer.abstained),
-      abstencaoIndevida: frac(answerable, (r) => r.answer.abstained),
+      abstencaoCorreta: frac(unanswerable, abstained),
+      comEvidenciaNoContexto: withEvidence.length,
+      abstencaoComEvidencia: frac(withEvidence, abstained),
+      abstencaoSemEvidencia: frac(answerable.filter((r) => !complete(r)), abstained),
       citamTrecho: frac(rs.filter((r) => !r.answer.abstained), (r) => r.answer.citedUnitIds.length > 0),
       citacaoInvalida: frac(rs, (r) => r.answer.invalidCitations.length > 0),
       truncadas: rs.filter((r) => r.answer.truncated).length,
@@ -114,7 +122,7 @@ async function main() {
   const results = await runGeneration(retrievers, questions, llm, Number(values.rounds), SEED, (m) => console.error(m));
   for (const r of retrievers) await r.close?.();
   await store?.close();
-  const summary = summarizeGeneration(results);
+  const summary = summarizeGeneration(results, questions);
   console.table(summary);
   if (values.out) {
     const dir = saveRun(values.out, {
