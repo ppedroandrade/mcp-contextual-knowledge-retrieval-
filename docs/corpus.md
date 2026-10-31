@@ -40,14 +40,14 @@ Formato (`data/questions/*.json`):
   "type": "multi-source",
   "set": "dev",
   "sources": ["tickets", "incidents"],
-  "relevantDocIds": ["T-1023", "INC-2026-006"],
-  "evidence": [["T-1023#resolucao"], ["INC-2026-006#causa-raiz"]],
-  "factIds": ["ticket.T-1023.incidente", "inc.INC-2026-006.causa"],
-  "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-006, cuja causa raiz foi: ..."
+  "relevantDocIds": ["T-1022", "INC-2026-006"],
+  "evidence": [["T-1022#resolucao"], ["INC-2026-006#causa-raiz"]],
+  "factIds": ["ticket.T-1022.incidente", "inc.INC-2026-006.causa"],
+  "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-006, cuja causa raiz foi: regra de firewall nova bloqueou a saída para os servidores do provedor MailRelay."
 }
 ```
 
-(Ids ilustrativos; os valores reais estão em `data/questions/dev.json`.)
+(Exemplo real, copiado de `data/questions/dev.json`.)
 
 **O gabarito não é anotado à mão.** Cada pergunta cita fatos do mundo; cada fato foi
 registrado no momento em que o texto foi gerado, com a unidade onde aparece. `evidence`,
