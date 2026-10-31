@@ -22,7 +22,7 @@ não têm rastreabilidade com este repositório.
 | Embeddings (Ollama `bge-m3`) e armazenamento vetorial (pgvector e memória) | implementado, testado em parte | testes unitários com Ollama simulado; teste de integração do pgvector escrito, **ainda não executado** (sem pgvector neste ambiente) |
 | RAG tradicional (B), só recuperação | implementado, testado | `src/approaches/b-rag.ts`; geração de resposta ainda não |
 | Configuração C (busca por fonte + RRF, sem MCP) | implementado, testado | `src/approaches/c-per-source.ts` |
-| Servidor MCP + abordagem MCP + RAG | planejado | |
+| Servidor MCP (uma tool por fonte) e configuração D (MCP + RAG), só recuperação | implementado, testado | `src/mcp/`, `src/approaches/d-mcp-rag.ts`; teste confirma C = D nas 60 perguntas e o protocolo real via stdio |
 | Geração de respostas por LLM | planejado | sem serviço pago sem aprovação |
 | Métricas e estatística | planejado | conferir metodologia do TCC 1 |
 | Benchmark reproduzível | planejado | |
@@ -31,5 +31,5 @@ não têm rastreabilidade com este repositório.
 ## Próximos passos
 1. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
 2. Rodar `npm run test:integration` e a ingestão com Ollama numa máquina com Docker.
-3. Servidor MCP e configuração D.
+3. Geração de respostas por LLM (mesmo prompt para B, C e D).
 4. Avaliar se as perguntas repetem demais as palavras do corpus (ver risco em `docs/metodologia.md`).

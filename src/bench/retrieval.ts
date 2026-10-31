@@ -88,11 +88,14 @@ async function main() {
   const questions = JSON.parse(readFileSync(join(DATA_DIR, 'questions', `${values.set}.json`), 'utf8')) as Question[];
   const sources: SourceName[] = values.set === 'policies' ? ['docs', 'tickets', 'incidents', 'policies'] : ['docs', 'tickets', 'incidents'];
   const units = sources.flatMap((s) => loadSource(s));
-  const vectorial = names.some((n) => n !== 'A');
-  const embedder = vectorial ? makeEmbedder(values.embedder as EmbedderKind) : null;
-  const store = embedder ? await openStore(values.store as StoreKind, embedder, units, sources) : null;
-  const retrievers = makeRetrievers(names, units, embedder, store, sources);
+  const embedderKind = values.embedder as EmbedderKind;
+  const storeKind = values.store as StoreKind;
+  const inProcess = names.some((n) => n === 'B' || n === 'C');
+  const embedder = inProcess || names.includes('D') ? makeEmbedder(embedderKind) : null;
+  const store = inProcess && embedder ? await openStore(storeKind, embedder, units, sources) : null;
+  const retrievers = await makeRetrievers(names, { units, sources, embedder, store, embedderKind, storeKind });
   const results = await runRetrieval(retrievers, questions, Number(values.rounds));
+  for (const r of retrievers) await r.close?.();
   await store?.close();
   const summary = summarize(results);
   console.table(summary);

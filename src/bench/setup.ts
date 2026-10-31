@@ -3,6 +3,7 @@ import { loadConfig } from '../core/config.js';
 import { createBm25Retriever } from '../approaches/a-bm25.js';
 import { createGlobalVectorRetriever } from '../approaches/b-rag.js';
 import { createPerSourceRetriever } from '../approaches/c-per-source.js';
+import { createMcpRetriever, stdioServerTransport } from '../approaches/d-mcp-rag.js';
 import { HashEmbedder, OllamaEmbedder, type Embedder } from '../indexing/embeddings.js';
 import { ingest } from '../indexing/ingest.js';
 import { PgVectorStore } from '../indexing/pgvector.js';
@@ -41,12 +42,28 @@ export async function openStore(kind: StoreKind, embedder: Embedder, units: Evid
   return store;
 }
 
-export function makeRetrievers(names: string[], units: EvidenceUnit[], embedder: Embedder | null, store: VectorStore | null, sources: SourceName[]): Retriever[] {
-  return names.map((n) => {
-    if (n === 'A') return createBm25Retriever(units);
-    if (!embedder || !store) throw new Error(`a abordagem ${n} precisa de embeddings`);
-    if (n === 'B') return createGlobalVectorRetriever(embedder, store);
-    if (n === 'C') return createPerSourceRetriever(embedder, store, sources);
-    throw new Error(`abordagem desconhecida: ${n}`);
-  });
+export interface RetrieverOptions {
+  units: EvidenceUnit[];
+  sources: SourceName[];
+  embedder: Embedder | null;
+  store: VectorStore | null;
+  /** Como o servidor MCP (D), em outro processo, cria o próprio embedder e armazenamento. */
+  embedderKind: EmbedderKind;
+  storeKind: StoreKind;
+}
+
+export async function makeRetrievers(names: string[], o: RetrieverOptions): Promise<Retriever[]> {
+  const out: Retriever[] = [];
+  for (const n of names) {
+    if (n === 'A') { out.push(createBm25Retriever(o.units)); continue; }
+    if (n === 'D') {
+      out.push(await createMcpRetriever(stdioServerTransport({ sources: o.sources, embedder: o.embedderKind, store: o.storeKind })));
+      continue;
+    }
+    if (!o.embedder || !o.store) throw new Error(`a abordagem ${n} precisa de embeddings`);
+    if (n === 'B') out.push(createGlobalVectorRetriever(o.embedder, o.store));
+    else if (n === 'C') out.push(createPerSourceRetriever(o.embedder, o.store, o.sources));
+    else throw new Error(`abordagem desconhecida: ${n}`);
+  }
+  return out;
 }
