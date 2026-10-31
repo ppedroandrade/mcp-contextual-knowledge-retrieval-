@@ -1,13 +1,11 @@
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
 import { parseArgs } from 'node:util';
-import type { Question, Retriever, SourceName } from '../core/types.js';
-import { DATA_DIR, SEED } from '../corpus/generate.js';
+import type { Question, Retriever } from '../core/types.js';
+import { SEED } from '../corpus/generate.js';
 import { Rng } from '../corpus/random.js';
-import { mean, scoreRetrieval, type RetrievalScores } from '../evaluation/metrics.js';
+import { mean, median, scoreRetrieval, type RetrievalScores } from '../evaluation/metrics.js';
 import { loadSource } from '../sources/index.js';
-import { environment } from './environment.js';
-import { makeEmbedder, makeRetrievers, openStore, type EmbedderKind, type StoreKind } from './setup.js';
+import { environment, saveRun } from './environment.js';
+import { loadQuestions, makeEmbedder, makeRetrievers, openStore, sourcesFor, type EmbedderKind, type StoreKind } from './setup.js';
 
 /** Unidades buscadas por pergunta: profundidade suficiente para deduplicar por documento. */
 export const SEARCH_DEPTH = 50;
@@ -60,7 +58,7 @@ export function summarize(results: QuestionResult[]) {
     const answerable = rs.filter((r) => r.type !== 'unanswerable');
     const m = (key: keyof RetrievalScores, filter: (r: QuestionResult) => boolean = () => true) =>
       mean(answerable.filter(filter).map((r) => r.scores[key]));
-    const medians = rs.map((r) => [...r.latencyMs].sort((a, b) => a - b)[Math.floor(r.latencyMs.length / 2)] ?? NaN);
+    const medians = rs.map((r) => median(r.latencyMs));
     return [name, {
       questions: answerable.length,
       [`P@${K}`]: m('precision'),
@@ -85,8 +83,8 @@ async function main() {
     store: { type: 'string', default: 'pg' },
   } });
   const names = values.approaches.split(',');
-  const questions = JSON.parse(readFileSync(join(DATA_DIR, 'questions', `${values.set}.json`), 'utf8')) as Question[];
-  const sources: SourceName[] = values.set === 'policies' ? ['docs', 'tickets', 'incidents', 'policies'] : ['docs', 'tickets', 'incidents'];
+  const questions = loadQuestions(values.set);
+  const sources = sourcesFor(values.set);
   const units = sources.flatMap((s) => loadSource(s));
   const embedderKind = values.embedder as EmbedderKind;
   const storeKind = values.store as StoreKind;
@@ -100,11 +98,11 @@ async function main() {
   const summary = summarize(results);
   console.table(summary);
   if (values.out) {
-    const dir = join(DATA_DIR, '..', 'results', 'runs', values.out);
-    mkdirSync(dir, { recursive: true });
-    writeFileSync(join(dir, 'per-question.json'), JSON.stringify(results, null, 2) + '\n');
-    writeFileSync(join(dir, 'summary.json'), JSON.stringify(summary, null, 2) + '\n');
-    writeFileSync(join(dir, 'environment.json'), JSON.stringify(environment({ embedder: embedder ? await embedder.describe() : null, store: store ? values.store : null, approaches: names, set: values.set, rounds: Number(values.rounds), k: K, depth: SEARCH_DEPTH, sources, units: units.length }), null, 2) + '\n');
+    const dir = saveRun(values.out, {
+      'per-question.json': results,
+      'summary.json': summary,
+      'environment.json': environment({ embedder: embedder ? await embedder.describe() : null, store: store ? values.store : null, approaches: names, set: values.set, rounds: Number(values.rounds), k: K, depth: SEARCH_DEPTH, sources, units: units.length }),
+    });
     console.log(`resultados em ${dir}`);
   }
 }

@@ -16,7 +16,8 @@
     "corpus": "tsx src/corpus/generate.ts",
     "bench:retrieval": "tsx src/bench/retrieval.ts",
     "ingest": "tsx src/indexing/ingest-cli.ts",
-    "mcp:server": "tsx src/mcp/stdio.ts"
+    "mcp:server": "tsx src/mcp/stdio.ts",
+    "bench:generation": "tsx src/bench/generation.ts"
   },
   "license": "MIT",
   "devDependencies": {

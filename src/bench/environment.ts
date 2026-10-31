@@ -1,5 +1,8 @@
 import { execSync } from 'node:child_process';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { cpus, platform, release, totalmem } from 'node:os';
+import { join } from 'node:path';
+import { DATA_DIR } from '../corpus/generate.js';
 
 /** Descrição do ambiente gravada junto com cada execução. */
 export function environment(extra: Record<string, unknown> = {}) {
@@ -18,4 +21,12 @@ export function environment(extra: Record<string, unknown> = {}) {
     gitDirty: (git("status --porcelain -- . ':(exclude)results'") ?? '') !== '',
     ...extra,
   };
+}
+
+/** Grava os arquivos JSON de uma execução em `results/runs/<id>/` e devolve o diretório. */
+export function saveRun(id: string, files: Record<string, unknown>): string {
+  const dir = join(DATA_DIR, '..', 'results', 'runs', id);
+  mkdirSync(dir, { recursive: true });
+  for (const [name, content] of Object.entries(files)) writeFileSync(join(dir, name), JSON.stringify(content, null, 2) + '\n');
+  return dir;
 }

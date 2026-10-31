@@ -68,3 +68,6 @@ export const mean = (xs: number[]) => {
   const v = xs.filter((x) => !Number.isNaN(x));
   return v.length ? v.reduce((a, b) => a + b, 0) / v.length : NaN;
 };
+
+/** Mediana das rodadas de latência (com n par, o maior dos dois valores centrais). */
+export const median = (xs: number[]) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)] ?? NaN;
