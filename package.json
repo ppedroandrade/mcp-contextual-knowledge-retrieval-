@@ -1,0 +1,24 @@
+{
+  "name": "mcp-contextual-knowledge-retrieval",
+  "version": "0.1.0",
+  "description": "TCC 2: comparação entre busca textual, RAG tradicional e MCP + RAG para conhecimento corporativo",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:unit": "vitest run test/unit",
+    "test:integration": "vitest run test/integration",
+    "check": "npm run typecheck && npm run test:unit"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "tsx": "^4.23.15",
+    "typescript": "5.9",
+    "vitest": "^5.0.5"
+  }
+}

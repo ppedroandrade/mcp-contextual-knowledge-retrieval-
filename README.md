@@ -1,17 +1,36 @@
 # MCP Contextual Knowledge Retrieval — TCC 2: MCP + RAG para recuperação de conhecimento corporativo
 
 Software do Trabalho de Conclusão de Curso 2 de Pedro Henrique de Andrade Salvaro.
-Compara três abordagens sobre o mesmo corpus sintético e as mesmas perguntas:
+Compara as abordagens sobre o mesmo corpus sintético e as mesmas perguntas:
 
-1. **Busca textual convencional** (baseline)
-2. **RAG tradicional** (recuperação semântica + geração, sem MCP)
-3. **MCP + RAG** (fontes expostas por um servidor Model Context Protocol)
+- **A. Busca textual convencional** (baseline, BM25)
+- **B. RAG tradicional** (índice vetorial único + geração, sem MCP)
+- **C. Controle**: busca vetorial por fonte + fusão, sem MCP
+- **D. MCP + RAG** (fontes expostas por um servidor Model Context Protocol)
+
+C existe para separar o efeito do protocolo (C × D) do efeito da estratégia de busca (B × C).
 
 Stack: Node.js 22 + TypeScript. Status atual em [STATUS.md](STATUS.md);
 arquitetura em [docs/arquitetura.md](docs/arquitetura.md).
 
-> Em construção: estrutura inicial. Instruções de instalação e execução serão
-> adicionadas conforme cada módulo for implementado.
+> Em construção. Só o ferramental e os tipos básicos existem; as abordagens ainda
+> não foram implementadas.
+
+## Requisitos
+
+- Node.js 22.12 ou superior
+- Docker (PostgreSQL 16 + pgvector e Ollama, pelo `docker-compose.yml`)
+
+## Como rodar
+
+```bash
+npm install
+cp .env.example .env
+npm run check            # typecheck + testes unitários (o mesmo que o CI roda)
+docker compose up -d     # banco vetorial e Ollama, necessários a partir da indexação
+```
+
+Decisões de stack em [docs/decisoes/](docs/decisoes/).
 
 ## Estrutura
 
