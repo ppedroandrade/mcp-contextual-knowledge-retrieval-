@@ -46,9 +46,8 @@ flowchart LR
 | 4 | MCP | SDK oficial, stdio no experimento | [004](decisoes/004-mcp.md) |
 | 5 | Configurações | A (BM25), B (RAG), C (controle sem MCP), D (MCP + RAG) | [005](decisoes/005-configuracoes-comparadas.md) |
 
-**Ainda em aberto:** fontes sintéticas (quantas e quais, ≥ 3), métricas e teste
-estatístico (confirmar na metodologia do TCC 1; dados pareados por pergunta pedem
-teste pareado, como Wilcoxon) e o modelo exato do LLM.
+Metodologia e métricas: [metodologia.md](metodologia.md). Corpus: [corpus.md](corpus.md).
+**Ainda em aberto:** o modelo exato do LLM e a forma de medir o tempo da H1.
 
 ## 4. Demonstração (opcional, depois do benchmark)
 
