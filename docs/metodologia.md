@@ -27,6 +27,14 @@ Situação: **planejado**.
 | H2 (humana) | Rubrica 1–5 de correção, completude e sustentação nas evidências, por ≥ 2 avaliadores cegos à configuração; concordância (kappa ponderado ou Krippendorff α) | B, C, D | `src/evaluation/human` (exporta planilha cega, importa notas) |
 | H3 | Integração de uma 4ª fonte depois do congelamento: arquivos e linhas alteradas no host, no servidor e nos testes; reuso do servidor por um segundo cliente MCP sem alteração | B/C (customizado) × D (MCP) | `docs/h3-protocolo.md` (a criar), `results/runs/<id>/h3.json` |
 
+## 2.1 Parâmetros de recuperação
+
+Cada abordagem devolve as 50 unidades mais bem pontuadas; P, R, MRR e nDCG são
+calculadas sobre os documentos dessa lista, na ordem da primeira aparição, com k = 5;
+ER@5 e "completas@5" são calculadas sobre as 5 primeiras unidades. Perguntas sem
+resposta ficam fora das métricas de recuperação. A latência é medida em várias rodadas,
+com uma rodada de aquecimento descartada e ordem das abordagens embaralhada.
+
 ## 3. Divergências entre o TCC 1 e o que será feito
 
 Registrar no artigo, de preferência com o aval do orientador.
@@ -54,6 +62,12 @@ Registrar no artigo, de preferência com o aval do orientador.
   sistema ([ADR 006](decisoes/006-medida-da-h1.md)). A busca textual tende a ser mais
   rápida, então a H1 provavelmente será **refutada**, e isso será reportado como
   resultado. O tempo de uma pessoa fica como limitação.
+- **Sobreposição lexical entre perguntas e corpus.** Muitas perguntas do `dev` repetem
+  termos literais do texto (nome do serviço, sintoma do incidente). Isso favorece a busca
+  textual (A). Na rodada de verificação do BM25 no `dev` (não é resultado do experimento),
+  R@5 por documento ficou alto e ER@5 multifonte ficou bem menor. O conjunto `heldout`
+  deve incluir perguntas parafraseadas, sem os termos literais, para medir o ganho da
+  busca semântica; a proporção será declarada.
 - **H2 humana** exige ao menos 2 avaliadores além do autor.
 - **Autor constrói corpus, gabarito e solução.** Mitigação: corpus gerado por código com
   semente fixa, arquitetura congelada antes de criar um conjunto reservado de perguntas,
