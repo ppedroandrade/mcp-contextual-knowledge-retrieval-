@@ -9,7 +9,8 @@ export interface OllamaChatOptions {
   seed: number;
 }
 
-export const OLLAMA_CHAT_DEFAULTS: OllamaChatOptions = { numCtx: 8192, numPredict: 512, seed: 42 };
+/** num_ctx comporta o pior caso do corpus (5 maiores unidades + maior pergunta: 3925 bytes). */
+export const OLLAMA_CHAT_DEFAULTS: OllamaChatOptions = { numCtx: 5120, numPredict: 512, seed: 42 };
 
 /** Tokens reservados para as marcações do modelo de chat (papéis, início e fim de turno). */
 const TEMPLATE_MARGIN = 256;

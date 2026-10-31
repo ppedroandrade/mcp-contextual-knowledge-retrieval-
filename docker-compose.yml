@@ -16,6 +16,11 @@ services:
 
   ollama:
     image: ollama/ollama:0.40.13
+    environment:
+      # Na CPU o Ollama calcula mal a memória livre e mantém vários LLMs carregados até o
+      # runner ser morto por falta de memória: no máximo bge-m3 + um LLM, um pedido por vez.
+      OLLAMA_MAX_LOADED_MODELS: "2"
+      OLLAMA_NUM_PARALLEL: "1"
     ports:
       - "11434:11434"
     volumes:
