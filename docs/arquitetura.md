@@ -1,6 +1,6 @@
 # Arquitetura — proposta inicial (para discussão)
 
-Status: **planejado**. Nada aqui foi implementado ainda.
+Status: **planejado** (só a estrutura, os tipos em `src/core` e o ferramental existem).
 
 ## 1. Princípio
 
@@ -23,11 +23,12 @@ flowchart LR
   Q[(data/questions)]
   D --> S[sources: leitura + segmentação]
   S --> IX[indexing: BM25 e vetorial]
-  IX --> A1[1. Busca textual]
-  IX --> A2[2. RAG tradicional]
+  IX --> A1[A. Busca textual]
+  IX --> A2[B. RAG tradicional]
+  IX --> A4[C. busca por fonte + fusão, sem MCP]
   IX --> MS[mcp/server: uma tool por fonte]
-  MS -- MCP --> A3[3. MCP + RAG: host descobre e chama as tools]
-  A1 & A2 & A3 --> H[Hit[]]
+  MS -- MCP --> A3[D. MCP + RAG: host descobre e chama as tools]
+  A1 & A2 & A4 & A3 --> H["Hit[]"]
   H --> EV[evaluation: métricas de recuperação]
   H --> GEN[generation: LLM, mesmo prompt]
   GEN --> EVA[evaluation: qualidade das respostas]
@@ -35,20 +36,19 @@ flowchart LR
   EV & EVA --> R[(results/runs/id)]
 ```
 
-## 3. Decisões em aberto
+## 3. Decisões
 
-| # | Decisão | Opções | Sugestão inicial |
+| # | Tema | Decisão | Registro |
 | --- | --- | --- | --- |
-| 1 | Banco vetorial | pgvector (Postgres) · Qdrant · em memória | pgvector via Docker: SQL conhecido, um serviço só |
-| 2 | Embeddings | modelo local via transformers.js · Ollama · API paga · LSA próprio | modelo local gratuito e fixado por versão |
-| 3 | LLM para respostas | Ollama local · API paga (precisa aprovação) | Ollama local, modelo e versão fixados |
-| 4 | Transporte MCP | stdio · Streamable HTTP | stdio no experimento; HTTP opcional para a demo |
-| 5 | Fontes sintéticas | quantas e quais | ≥ 3 heterogêneas: documentação, chamados, incidentes (+ políticas) |
-| 6 | Controle "protocolo × estratégia" | incluir ou não uma config. de busca por fonte **sem** MCP | incluir: sem ela não dá para dizer se o ganho vem do MCP ou da estratégia |
-| 7 | Métricas e testes | conforme TCC 1 | confirmar no TCC 1; dados pareados por pergunta pedem teste pareado (ex.: Wilcoxon) |
+| 1 | Linguagem e ferramentas | Node.js 22, TypeScript 5.9, Vitest, GitHub Actions | [001](decisoes/001-linguagem-e-ferramentas.md) |
+| 2 | Banco vetorial | PostgreSQL 16 + pgvector (Docker), busca exata | [002](decisoes/002-banco-vetorial.md) |
+| 3 | Embeddings e LLM | Ollama local: `bge-m3` para embeddings; LLM aberto a fixar | [003](decisoes/003-embeddings-e-llm.md) |
+| 4 | MCP | SDK oficial, stdio no experimento | [004](decisoes/004-mcp.md) |
+| 5 | Configurações | A (BM25), B (RAG), C (controle sem MCP), D (MCP + RAG) | [005](decisoes/005-configuracoes-comparadas.md) |
 
-A decisão 6 vem da revisão do protótipo anterior: lá, o ganho atribuído ao MCP vinha
-da busca por fonte com fusão, e não do protocolo. Vale prever isso desde o início.
+**Ainda em aberto:** fontes sintéticas (quantas e quais, ≥ 3), métricas e teste
+estatístico (confirmar na metodologia do TCC 1; dados pareados por pergunta pedem
+teste pareado, como Wilcoxon) e o modelo exato do LLM.
 
 ## 4. Demonstração (opcional, depois do benchmark)
 

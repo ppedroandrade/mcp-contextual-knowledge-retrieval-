@@ -8,11 +8,14 @@ não têm rastreabilidade com este repositório.
 
 | Item | Situação | Observação |
 | --- | --- | --- |
-| Estrutura de pastas e documentação inicial | implementado | este commit |
-| Escolha de stack (banco vetorial, embeddings, LLM, testes) | planejado | a discutir; registrar em `docs/decisoes/` |
+| Estrutura de pastas e documentação inicial | implementado | |
+| Ferramental: TypeScript, Vitest, CI, docker-compose | implementado, testado | `npm run check` passa (3 testes unitários de configuração) |
+| Tipos compartilhados e interface `Retriever` | implementado | `src/core/types.ts` |
+| Escolha de stack | decidido | ADRs 001 a 005 em `docs/decisoes/`; modelo do LLM a fixar |
 | Corpus sintético e perguntas | planejado | |
 | Busca textual convencional | planejado | |
 | RAG tradicional | planejado | |
+| Configuração C (busca por fonte sem MCP) | planejado | controle do protocolo, ADR 005 |
 | Servidor MCP + abordagem MCP + RAG | planejado | |
 | Geração de respostas por LLM | planejado | sem serviço pago sem aprovação |
 | Métricas e estatística | planejado | conferir metodologia do TCC 1 |
@@ -20,6 +23,6 @@ não têm rastreabilidade com este repositório.
 | API + UI de demonstração | planejado (opcional) | depois do benchmark; fora das métricas |
 
 ## Próximos passos
-1. Discutir e fechar a arquitetura (`docs/arquitetura.md`).
-2. Registrar decisões de stack em ADRs.
-3. `package.json`, TypeScript, Vitest e CI mínimo.
+1. Confirmar no TCC 1 as hipóteses, métricas e teste estatístico.
+2. Definir as fontes sintéticas e o formato das perguntas com gabarito.
+3. Implementar o gerador do corpus (`src/corpus`) e a leitura das fontes (`src/sources`).
