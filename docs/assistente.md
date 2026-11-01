@@ -52,8 +52,10 @@ do zero, apague essa pasta e a tabela `assistente_trechos_ollama_bge_m3` no Post
    modelo tentar responder sem buscar, a resposta é descartada e a busca acontece mesmo assim
    (ADR 014): é o que impede dados da empresa inventados.
 4. **Os 5 melhores trechos vão para o modelo,** numerados. Informação da empresa sai só deles,
-   com a citação `[n]`; se não houver resposta, ele diz que não encontrou. Pedidos gerais
-   ("escreva uma mensagem pro time") são atendidos normalmente.
+   com a citação `[n]`; se não houver resposta, ele diz que não encontrou. Em pergunta de sim
+   ou não ("R$ 2.500 passa pelo meu gestor?"), ele escreve primeiro a regra citada e depois a
+   conclusão, para não se contradizer (ADR 016). Pedidos gerais ("escreva uma mensagem pro
+   time") são atendidos normalmente.
 5. **Na tela,** a resposta mostra a consulta que o modelo usou e quantos trechos vieram de cada
    fonte. As citações abrem o trecho original ao lado, com o link para o documento no Drive ou
    no Confluence.

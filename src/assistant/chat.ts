@@ -103,9 +103,11 @@ export function toCitations(passages: RetrievedPassage[], sources: KnowledgeSour
 
 /**
  * Instruções que acompanham o resultado da busca: dado da empresa só dos trechos, com citação;
- * pedido geral (escrever um texto, explicar um conceito) é atendido normalmente.
+ * pedido geral (escrever um texto, explicar um conceito) é atendido normalmente. Em pergunta
+ * de sim ou não, a regra vem antes da conclusão: o modelo (4B, sem raciocínio) escrevia "Sim"
+ * antes de comparar o caso com a regra e se contradizia logo depois (ADR 016).
  */
-export const ANSWER_RULES = 'Use estes trechos para responder à última mensagem, em português. Se ela pedir informação da empresa, use só o que está nos trechos e cite cada informação com o número do trecho entre colchetes, logo depois dela, por exemplo [2]; se os trechos não tiverem a resposta, diga que não encontrou isso nas fontes conectadas e não invente. Se for um pedido geral (escrever um texto, explicar um conceito), atenda normalmente e cite os trechos só se usar alguma informação deles.';
+export const ANSWER_RULES = 'Use estes trechos para responder à última mensagem, em português. Se ela pedir informação da empresa, use só o que está nos trechos e cite cada informação com o número do trecho entre colchetes, logo depois dela, por exemplo [2]; se os trechos não tiverem a resposta, diga que não encontrou isso nas fontes conectadas e não invente. Se a pergunta for de sim ou não ou depender de um valor, prazo, limite ou condição, não comece por "Sim" nem por "Não": escreva primeiro a regra como está no trecho, com a citação, e só depois conclua o que ela significa para o caso perguntado, sem acrescentar condições que o trecho não tem. Se for um pedido geral (escrever um texto, explicar um conceito), atenda normalmente e cite os trechos só se usar alguma informação deles.';
 
 /** Resultado da ferramenta de busca, como o LLM o recebe. */
 export function toolResultText(citations: Citation[]): string {
