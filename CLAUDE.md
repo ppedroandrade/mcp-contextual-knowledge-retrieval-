@@ -47,15 +47,23 @@ npm run corpus             # regenera data/ a partir do gerador (determinístico
 
 docker compose up -d                           # PostgreSQL 16 + pgvector e Ollama
 docker compose exec ollama ollama pull bge-m3  # modelo de embeddings (ADR 003)
+docker compose exec ollama ollama pull qwen3:4b-instruct-2507-q4_K_M  # LLM (ADR 003)
 npm run test:integration                       # pgvector × busca exata em memória
 npm run ingest                                 # indexa docs, chamados e incidentes
 npm run bench:retrieval -- --approaches A,B,C,D --rounds 5 --out <id>
+npm run bench:generation -- --approaches B,C,D --rounds 3 --out <id>
 npm run mcp:server                             # servidor MCP via stdio
+npx tsx scripts/compare-c-d.ts <id>            # confere C = D e D − C numa execução
 ```
 
 `bench:retrieval` aceita `--set dev|policies`, `--embedder ollama|hash`,
 `--store pg|memory`. Para `--set policies`, indexe antes com
-`npm run ingest -- --sources docs,tickets,incidents,policies`.
+`npm run ingest -- --sources docs,tickets,incidents,policies`. `bench:generation` aceita
+os mesmos e `--llm ollama|simulated`, `--model`; recusa a abordagem A.
+
+Medições longas: Mac na tomada, tampa aberta, árvore do git limpa e sem trocar de branch
+durante a execução. Ao trocar de LLM, `docker compose exec ollama ollama stop <modelo>`
+antes (a VM do Docker tem 7,7 GiB).
 
 ## Convenções
 

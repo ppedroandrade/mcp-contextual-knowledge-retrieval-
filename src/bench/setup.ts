@@ -1,5 +1,11 @@
-import type { EvidenceUnit, Retriever, SourceName } from '../core/types.js';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import type { EvidenceUnit, Question, Retriever, SourceName } from '../core/types.js';
 import { loadConfig } from '../core/config.js';
+import { DATA_DIR } from '../corpus/generate.js';
+import { OllamaChatProvider } from '../generation/ollama.js';
+import type { LlmProvider } from '../generation/provider.js';
+import { SimulatedProvider } from '../generation/simulated.js';
 import { createBm25Retriever } from '../approaches/a-bm25.js';
 import { createGlobalVectorRetriever } from '../approaches/b-rag.js';
 import { createPerSourceRetriever } from '../approaches/c-per-source.js';
@@ -11,6 +17,23 @@ import { MemoryVectorStore, type VectorStore } from '../indexing/vector-store.js
 
 export type EmbedderKind = 'ollama' | 'hash';
 export type StoreKind = 'pg' | 'memory';
+export type LlmKind = 'ollama' | 'simulated';
+
+export function loadQuestions(set: string): Question[] {
+  return JSON.parse(readFileSync(join(DATA_DIR, 'questions', `${set}.json`), 'utf8')) as Question[];
+}
+
+/** Fontes indexadas para cada conjunto: `policies` só entra com a 4ª fonte (H3). */
+export function sourcesFor(set: string): SourceName[] {
+  return set === 'policies' ? ['docs', 'tickets', 'incidents', 'policies'] : ['docs', 'tickets', 'incidents'];
+}
+
+/** LLM das configurações que geram resposta. O simulado não tem valor experimental. */
+export function makeLlm(kind: LlmKind, model = loadConfig().llmModel): LlmProvider {
+  if (kind === 'simulated') return new SimulatedProvider();
+  if (!model) throw new Error('defina o modelo do LLM: LLM_MODEL no ambiente ou --model');
+  return new OllamaChatProvider(loadConfig().ollamaUrl, model);
+}
 
 export function makeEmbedder(kind: EmbedderKind): Embedder {
   const cfg = loadConfig();

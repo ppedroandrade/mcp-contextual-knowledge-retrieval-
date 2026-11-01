@@ -10,7 +10,7 @@ export const DEFAULTS: AppConfig = {
   pgUrl: 'postgres://tcc:tcc@localhost:5432/tcc',
   ollamaUrl: 'http://localhost:11434',
   embeddingModel: 'bge-m3',
-  llmModel: '',
+  llmModel: 'qwen3:4b-instruct-2507-q4_K_M',
 };
 
 export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {

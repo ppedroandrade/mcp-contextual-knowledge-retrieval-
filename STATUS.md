@@ -12,7 +12,7 @@ não têm rastreabilidade com este repositório.
 | Ambiente real: Docker, PostgreSQL + pgvector, Ollama | testado (31/10/2026) | ver "Ambiente validado" abaixo |
 | Ferramental: TypeScript, Vitest, CI, docker-compose | implementado, testado | `npm run check` passa (45 testes unitários); imagens fixadas no compose: `pgvector/pgvector:0.8.7-pg16`, `ollama/ollama:0.40.13` |
 | Tipos compartilhados e interface `Retriever` | implementado | `src/core/types.ts` |
-| Escolha de stack | decidido | ADRs 001 a 006 em `docs/decisoes/`; modelo do LLM a fixar |
+| Escolha de stack | decidido | ADRs 001 a 006 em `docs/decisoes/`; LLM fixado em 31/10/2026 (ADR 003) |
 | Mapeamento TCC 1 → métricas | documentado | `docs/metodologia.md`; divergências listadas |
 | Corpus sintético (4 fontes, 146 documentos, 349 fatos) | implementado, testado | `npm run corpus`; `docs/corpus.md` |
 | Leitores das fontes (Markdown, JSON, CSV, HTML) | implementado, testado | `src/sources/` |
@@ -21,12 +21,12 @@ não têm rastreabilidade com este repositório.
 | Busca textual convencional (A, BM25) | implementado, testado | `src/approaches/a-bm25.ts`; rodada de verificação no dev, não é resultado do experimento |
 | Métricas de recuperação (P, R, MRR, nDCG, ER@k) e medição de latência | implementado, testado | `src/evaluation/metrics.ts`, `npm run bench:retrieval` |
 | Embeddings (Ollama `bge-m3`) e armazenamento vetorial (pgvector e memória) | implementado, testado | testes unitários com Ollama simulado; `npm run test:integration` executado em 31/10/2026 (3/3: pgvector = busca exata em memória); ingestão real: 346 unidades, 1024 dimensões, 47 s |
-| RAG tradicional (B), só recuperação | implementado, testado | `src/approaches/b-rag.ts`; executado no ambiente real (rodada dev abaixo); geração de resposta ainda não |
+| RAG tradicional (B) | implementado, testado | `src/approaches/b-rag.ts`; executado no ambiente real, com e sem geração (rodadas dev abaixo) |
 | Configuração C (busca por fonte + RRF, sem MCP) | implementado, testado | `src/approaches/c-per-source.ts` |
 | Servidor MCP (uma tool por fonte) e configuração D (MCP + RAG), só recuperação | implementado, testado | `src/mcp/`, `src/approaches/d-mcp-rag.ts`; teste confirma C = D nas 60 perguntas e o protocolo real via stdio; no ambiente real, C = D nas 60 perguntas com `bge-m3` + pgvector (`scripts/compare-c-d.ts`) |
-| Geração de respostas por LLM | planejado | sem serviço pago sem aprovação |
+| Geração de respostas por LLM (B, C, D) | implementado, testado | `src/generation/`, `npm run bench:generation`; Ollama `qwen3:4b-instruct-2507` (ADR 003); prompt fixo, temperatura 0, os mesmos 5 trechos; A fica só na recuperação; executado no dev (abaixo) |
 | Métricas e estatística | planejado | conferir metodologia do TCC 1 |
-| Benchmark reproduzível | implementado em parte | `environment.json` grava commit, árvore limpa (ignora `results/`), digest e versão do Ollama e uso de GPU (`sizeVram`); falta a geração |
+| Benchmark reproduzível | implementado | `environment.json` grava commit lido na partida, árvore limpa (ignora `results/`), digests e versão do Ollama, uso de GPU (`sizeVram`), hash do prompt e fonte de energia |
 | API + UI de demonstração | planejado (opcional) | depois do benchmark; fora das métricas |
 
 ## Ambiente validado (31/10/2026)
@@ -39,6 +39,8 @@ não têm rastreabilidade com este repositório.
 | PostgreSQL / pgvector | 16.15 / 0.8.7 |
 | Ollama | 0.40.13, **no Docker, só CPU** (`sizeVram: 0`): no macOS o Docker não acessa a GPU. Decisão do Pedro em 31/10/2026: manter o Ollama no Docker, como no compose |
 | Embeddings | `bge-m3`, digest `7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab` |
+| LLM | `qwen3:4b-instruct-2507-q4_K_M`, digest `0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0`; temperatura 0, semente 42, `num_ctx` 5120, `num_predict` 512 |
+| Configuração do Ollama | `OLLAMA_MAX_LOADED_MODELS=2`, `OLLAMA_NUM_PARALLEL=1`, `LLAMA_ARG_CACHE_RAM=0` (ADR 003) |
 
 ## Rodadas registradas
 
@@ -46,6 +48,8 @@ não têm rastreabilidade com este repositório.
 | --- | --- | --- |
 | `results/runs/2026-10-31-dev-bge-m3` | A, B, C, D no `dev`, `bge-m3` + pgvector, 5 rodadas de latência | **rodada de verificação no conjunto dev; não é o resultado final do experimento** |
 | `results/runs/2026-10-31-dev-hash-memoria-c-d` | C e D com embedding `hash` e armazenamento em memória, para isolar o custo do protocolo | diagnóstico; **sem valor experimental** (embedding não semântico) |
+| `results/runs/2026-10-31-piloto-llm-*` | piloto de três LLMs: B, 60 perguntas, 1 rodada | escolha do modelo (ADR 003); tempos indicativos |
+| `results/runs/2026-10-31-dev-geracao-qwen3-4b` | B, C, D com geração no `dev`, aquecimento + 3 rodadas, na tomada | **rodada de verificação no conjunto dev; não é o resultado final do experimento** |
 
 Rodada `2026-10-31-dev-bge-m3` (commit `1cac716`, 54 perguntas com resposta; latência = média
 das medianas por pergunta, em ms):
@@ -67,11 +71,40 @@ Conferências (`npx tsx scripts/compare-c-d.ts <execução>`):
 - C e D fazem 3 chamadas de embedding por pergunta (uma por fonte, ADR 005) e B faz 1; a
   latência de C ficou cerca de 3 vezes a de B.
 
+Rodada `2026-10-31-dev-geracao-qwen3-4b` (commit `49c51b9`, 60 perguntas, 6 delas sem
+resposta; 77 min na CPU). Abstenção = a resposta diz "Não sei"; "com evidência" = os 5
+trechos entregues tinham toda a evidência do gabarito. A correção das respostas ainda não
+foi avaliada (próxima etapa). Latência = média das medianas por pergunta, em ms:
+
+| | abstenção correta (6) | com evidência no contexto | abstenção com evidência | abstenção sem evidência | citam trecho | citação inválida | respostas que mudaram | recuperação | recuperação + geração |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| B-rag | 6/6 | 27 | 0 | 0,481 | 0,951 | 0,033 | 0 | 60,0 | 6425 |
+| C-por-fonte | 6/6 | 19 | 0 | 0,600 | 1,000 | 0,000 | 0 | 143,5 | 6511 |
+| D-mcp | 6/6 | 19 | 0 | 0,600 | 1,000 | 0,000 | 0 | 141,8 | 6238 |
+
+Conferências (`scripts/compare-c-d.ts`, `scripts/summarize-generation.ts`):
+- **C = D:** mesmos trechos e mesma resposta nas 60/60 perguntas; nenhuma resposta mudou
+  entre rodadas; as respostas de B são idênticas às do piloto do mesmo modelo (60/60).
+- Os 5 trechos da geração (k = 5) são o top-5 da rodada de recuperação (k = 50) nas 60/60
+  perguntas de B, C e D. Nenhuma pergunta seguida teve o mesmo primeiro trecho, então o
+  reaproveitamento de prefixo do `llama-server` foi o mesmo para as três (ADR 006).
+- **Latência total: o protocolo some no ruído da geração.** D − C por pergunta teve mediana
+  de −327 ms (p25 −737; p75 128; D mais lento em 21/60), com as respostas idênticas: não é
+  efeito do MCP, cujo custo foi de ~0,4 ms no diagnóstico. A mesma abordagem variou até
+  ~500 ms entre rodadas (B: 6224 a 6751 ms de mediana) e o IQR por pergunta de C foi de
+  331 ms. Durante a execução o Pedro leu ~115 °C na CPU num monitor externo (leitura não
+  registrada; o macOS não acusou limitação térmica). Sem teste estatístico ainda.
+- C e D entregam ao LLM menos contextos com toda a evidência que B (19 contra 27), coerente
+  com o ER@5 menor na rodada de recuperação.
+
 ## Próximos passos
 1. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
-2. Geração de respostas por LLM (mesmo prompt para B, C e D).
+2. Etapa 3: avaliação das respostas (LLM local como juiz, sem substituir a avaliação humana)
+   e exportação da planilha cega para avaliadores humanos.
 3. Avaliar se as perguntas repetem demais as palavras do corpus (ver risco em `docs/metodologia.md`).
 4. Antes do experimento final: fixar uma única versão do Node para as medições (hoje 26.13
    local × 22 no ADR 001 e no CI); medir dentro de D o tempo gasto na tool, para separar o
-   protocolo da busca como pede o ADR 004; rodar sem outras cargas na máquina e repetir
-   execuções, porque a latência varia entre execuções iguais.
+   protocolo da busca como pede o ADR 004; fixar e registrar o modo de energia do macOS e,
+   se for o caso, o número de threads do Ollama, para reduzir a deriva térmica; mais rodadas
+   de latência com geração (o ruído entre rodadas chegou a ~500 ms); rodar na tomada, sem
+   outras cargas e sem trocar de branch durante a execução.

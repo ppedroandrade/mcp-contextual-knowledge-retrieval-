@@ -1,0 +1,2037 @@
+[
+  {
+    "questionId": "q001",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A meta de nível de serviço (SLO) do notification-service é que 99,5% dos e-mails sejam aceitos pelo provedor em até 5 minutos [DOC-007#confiabilidade].",
+      "promptTokens": 613,
+      "outputTokens": 47,
+      "loadMs": 4102.917044,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-007#confiabilidade",
+        "DOC-007#visao-geral",
+        "DOC-015#verificacao-de-saude",
+        "DOC-007#dados-e-dependencias",
+        "DOC-006#confiabilidade"
+      ],
+      "citedUnitIds": [
+        "DOC-007#confiabilidade"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      29.80816600000253
+    ],
+    "totalMs": [
+      5447.082708000031
+    ],
+    "loadMs": [
+      0.819584
+    ]
+  },
+  {
+    "questionId": "q002",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "As faturas do cliente Mercado Serra Azul passaram a ser enviadas para o e-mail financeiro@mercadoserraazul.example [T-1017#resolucao].",
+      "promptTokens": 803,
+      "outputTokens": 38,
+      "loadMs": 0.42275,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1017#descricao",
+        "T-1017#resolucao",
+        "T-1072#descricao",
+        "T-1035#descricao",
+        "T-1074#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1017#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      31.79758299997775
+    ],
+    "totalMs": [
+      6549.808707999997
+    ],
+    "loadMs": [
+      0.3355
+    ]
+  },
+  {
+    "questionId": "q003",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A usuária João Pires foi desbloqueada no painel [T-1049#resolucao][T-1028#resolucao]. O bloqueio ocorreu após 5 tentativas de senha incorretas.",
+      "promptTokens": 846,
+      "outputTokens": 51,
+      "loadMs": 0.458167,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1049#descricao",
+        "T-1028#resolucao",
+        "T-1049#resolucao",
+        "T-1001#descricao",
+        "T-1024#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1049#resolucao",
+        "T-1028#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 1,
+    "retrievalMs": [
+      36.04612499999348
+    ],
+    "totalMs": [
+      5935.401290999958
+    ],
+    "loadMs": [
+      0.329625
+    ]
+  },
+  {
+    "questionId": "q004",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Em falhas temporárias, a política de novas tentativas permite até 2 tentativas no cliente HTTP para chamadas idempotentes [DOC-008#confiabilidade]. O serviço é mantido pelo Time Web e implementado em Next.js 15 com React 19 [DOC-008#visao-geral].",
+      "promptTokens": 601,
+      "outputTokens": 74,
+      "loadMs": 0.422583,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-008#confiabilidade",
+        "DOC-016#verificacao-de-saude",
+        "DOC-016#escalonamento",
+        "DOC-008#visao-geral",
+        "DOC-016#rollback"
+      ],
+      "citedUnitIds": [
+        "DOC-008#confiabilidade",
+        "DOC-008#visao-geral"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 1,
+    "retrievalMs": [
+      43.960917000018526
+    ],
+    "totalMs": [
+      4463.391624999989
+    ],
+    "loadMs": [
+      0.374583
+    ]
+  },
+  {
+    "questionId": "q005",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O artigo enviado ao cliente Jota Telecom foi \"Como mudar o plano de uma assinatura\" da base de conhecimento [T-1025#resolucao]. Segundo os trechos fornecidos, não há informação sobre o prazo exato em que a redução de plano passa a valer.",
+      "promptTokens": 867,
+      "outputTokens": 61,
+      "loadMs": 0.4725,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1025#descricao",
+        "T-1006#descricao",
+        "T-1005#descricao",
+        "T-1057#descricao",
+        "T-1025#resolucao"
+      ],
+      "citedUnitIds": [
+        "T-1025#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 1,
+    "retrievalMs": [
+      46.538249999983236
+    ],
+    "totalMs": [
+      6598.643999999971
+    ],
+    "loadMs": [
+      0.340833
+    ]
+  },
+  {
+    "questionId": "q006",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O artigo enviado ao cliente Lume Energia foi \"Como reprocessar uma fatura com falha\" [T-1058#resolucao]. Os trechos fornecidos não informam quantas vezes a fatura pode ser reprocessada.",
+      "promptTokens": 718,
+      "outputTokens": 55,
+      "loadMs": 0.416167,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1058#descricao",
+        "T-1058#resolucao",
+        "T-1048#resolucao",
+        "T-1002#resolucao",
+        "T-1002#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1058#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      65.6765000000014
+    ],
+    "totalMs": [
+      5841.470499999996
+    ],
+    "loadMs": [
+      0.316959
+    ]
+  },
+  {
+    "questionId": "q007",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O artigo enviado foi \"Como rotacionar uma chave de API\" [T-1037#resolucao]. Segundo a documentação técnica, as chaves expiram em 90 dias [DOC-017#limites-e-observacoes]. Durante a rotação, a chave antiga e a nova funcionam juntas por até 24 horas [DOC-017#limites-e-observacoes].",
+      "promptTokens": 789,
+      "outputTokens": 90,
+      "loadMs": 0.405916,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1037#descricao",
+        "DOC-017#limites-e-observacoes",
+        "T-1033#descricao",
+        "T-1064#descricao",
+        "T-1037#resolucao"
+      ],
+      "citedUnitIds": [
+        "T-1037#resolucao",
+        "DOC-017#limites-e-observacoes"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      59.102499999979045
+    ],
+    "totalMs": [
+      9342.111791000003
+    ],
+    "loadMs": [
+      0.364458
+    ]
+  },
+  {
+    "questionId": "q008",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Para encontrar uma chamada específica, deve-se filtrar pelo campo **request_id** informado na resposta da API [DOC-026#passo-a-passo]. O procedimento é enviado ao cliente junto com o artigo de consulta de logs [T-1051#resolucao], [T-1070#resolucao], [T-1010#resolucao].",
+      "promptTokens": 546,
+      "outputTokens": 85,
+      "loadMs": 0.47275,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-026#quando-usar",
+        "T-1051#resolucao",
+        "T-1070#resolucao",
+        "T-1010#resolucao",
+        "DOC-026#passo-a-passo"
+      ],
+      "citedUnitIds": [
+        "DOC-026#passo-a-passo",
+        "T-1051#resolucao",
+        "T-1070#resolucao",
+        "T-1010#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      37.31650000001537
+    ],
+    "totalMs": [
+      5498.281291000021
+    ],
+    "loadMs": [
+      0.351125
+    ]
+  },
+  {
+    "questionId": "q009",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A documentação interna não descreve a causa técnica do problema relatado pelo cliente Lume Energia em 11/03/2026. Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 1106,
+      "outputTokens": 47,
+      "loadMs": 0.442958,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1001#descricao",
+        "T-1079#descricao",
+        "T-1024#descricao",
+        "T-1022#descricao",
+        "T-1049#descricao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      32.61116699996637
+    ],
+    "totalMs": [
+      7501.480374999985
+    ],
+    "loadMs": [
+      0.332584
+    ]
+  },
+  {
+    "questionId": "q010",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O incidente em que os clientes receberam o mesmo evento várias vezes durou 140 minutos [INC-2026-018#resumo].",
+      "promptTokens": 811,
+      "outputTokens": 35,
+      "loadMs": 1.911083,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-018#linha-do-tempo",
+        "INC-2026-018#resumo",
+        "INC-2026-023#linha-do-tempo",
+        "INC-2026-013#linha-do-tempo",
+        "INC-2026-013#resumo"
+      ],
+      "citedUnitIds": [
+        "INC-2026-018#resumo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      30.800832999986596
+    ],
+    "totalMs": [
+      6630.5330829999875
+    ],
+    "loadMs": [
+      0.412042
+    ]
+  },
+  {
+    "questionId": "q011",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A fatura NF-93929 foi cancelada e reemitida com o CNPJ correto para o cliente Farmácias Ipê [T-1014#resolucao].",
+      "promptTokens": 752,
+      "outputTokens": 44,
+      "loadMs": 0.384583,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1014#descricao",
+        "T-1003#descricao",
+        "T-1003#resolucao",
+        "T-1014#resolucao",
+        "T-1073#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1014#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      56.37233300000662
+    ],
+    "totalMs": [
+      6970.537667000026
+    ],
+    "loadMs": [
+      0.390041
+    ]
+  },
+  {
+    "questionId": "q012",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O problema foi causado por uma nova regra de firewall que bloqueou a saída para os servidores do provedor MailRelay [INC-2026-006#causa-raiz]. Isso resultou em e-mails de fatura não chegando aos clientes afetados pelo incidente INC-2026-006 [INC-2026-006#resumo]. A mitigação foi aplicada às 21:33, voltando as métricas ao normal [INC-2026-006#linha-do-tempo].",
+      "promptTokens": 787,
+      "outputTokens": 121,
+      "loadMs": 0.370708,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-006#resumo",
+        "INC-2026-006#linha-do-tempo",
+        "T-1076#resolucao",
+        "INC-2026-006#causa-raiz",
+        "T-1022#descricao"
+      ],
+      "citedUnitIds": [
+        "INC-2026-006#causa-raiz",
+        "INC-2026-006#resumo",
+        "INC-2026-006#linha-do-tempo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      67.61979199998314
+    ],
+    "totalMs": [
+      9376.836917000008
+    ],
+    "loadMs": [
+      0.366083
+    ]
+  },
+  {
+    "questionId": "q013",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O documento não especifica qual endpoint mostraria a saúde do serviço durante o incidente de cobranças duplicadas. Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 811,
+      "outputTokens": 37,
+      "loadMs": 0.435833,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-013#resumo",
+        "INC-2026-013#linha-do-tempo",
+        "DOC-015#incidentes-anteriores",
+        "DOC-011#incidentes-anteriores",
+        "INC-2026-018#resumo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      82.44583300000522
+    ],
+    "totalMs": [
+      6453.178916000004
+    ],
+    "loadMs": [
+      0.388542
+    ]
+  },
+  {
+    "questionId": "q014",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O comando para desfazer um deploy problemático é `orbctl rollback auth-service --to previous --keep-sessions` [DOC-013#rollback]. Este processo deve ser executado e confirmado no endpoint de saúde, além de registrar o rollback no canal do plantão [DOC-013#rollback].",
+      "promptTokens": 620,
+      "outputTokens": 66,
+      "loadMs": 0.354791,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-013#rollback",
+        "DOC-013#verificacao-de-saude",
+        "DOC-005#confiabilidade",
+        "DOC-013#escalonamento",
+        "INC-2026-021#resumo"
+      ],
+      "citedUnitIds": [
+        "DOC-013#rollback"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      31.084957999992184
+    ],
+    "totalMs": [
+      6241.639041999995
+    ],
+    "loadMs": [
+      0.352083
+    ]
+  },
+  {
+    "questionId": "q015",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O problema relatado pelo cliente Instituto Saber em 17/07/2026 era que os relatórios exportados estavam com problemas, mas a documentação não especifica a causa técnica desse incidente. [T-1063#descricao]",
+      "promptTokens": 812,
+      "outputTokens": 54,
+      "loadMs": 0.391,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1063#descricao",
+        "T-1012#descricao",
+        "T-1043#resolucao",
+        "T-1076#resolucao",
+        "T-1066#resolucao"
+      ],
+      "citedUnitIds": [
+        "T-1063#descricao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      33.46391599997878
+    ],
+    "totalMs": [
+      6364.265874999983
+    ],
+    "loadMs": [
+      0.366583
+    ]
+  },
+  {
+    "questionId": "q016",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O invoice-worker persiste seus dados na fila RabbitMQ invoices.generate e no bucket de objetos orbital-invoices [DOC-002#dados-e-dependencias].",
+      "promptTokens": 591,
+      "outputTokens": 34,
+      "loadMs": 1.047875,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-002#dados-e-dependencias",
+        "DOC-002#visao-geral",
+        "DOC-010#verificacao-de-saude",
+        "DOC-002#confiabilidade",
+        "DOC-010#escalonamento"
+      ],
+      "citedUnitIds": [
+        "DOC-002#dados-e-dependencias"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      32.82170899998164
+    ],
+    "totalMs": [
+      4328.807374999975
+    ],
+    "loadMs": [
+      0.388375
+    ]
+  },
+  {
+    "questionId": "q017",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A ação corretiva definida foi a invalidação da CDN incluída no procedimento de deploy (--purge-cdn) [INC-2026-008#acoes]. Isso ocorreu como parte do tratamento para o incidente INC-2026-021, que registrou usuários deslogados após cada deploy em 06/08/2026 [INC-2026-021#resumo].",
+      "promptTokens": 647,
+      "outputTokens": 96,
+      "loadMs": 0.35775,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-021#resumo",
+        "INC-2026-021#linha-do-tempo",
+        "INC-2026-008#acoes",
+        "DOC-016#rollback",
+        "INC-2026-024#acoes"
+      ],
+      "citedUnitIds": [
+        "INC-2026-008#acoes",
+        "INC-2026-021#resumo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      85.5269580000313
+    ],
+    "totalMs": [
+      8228.26900000003
+    ],
+    "loadMs": [
+      0.434917
+    ]
+  },
+  {
+    "questionId": "q018",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O endereço da API de sandbox é https://sandbox.api.orbital.example [DOC-020#passo-a-passo].",
+      "promptTokens": 563,
+      "outputTokens": 29,
+      "loadMs": 0.408625,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-020#passo-a-passo",
+        "T-1039#resolucao",
+        "T-1027#resolucao",
+        "T-1054#resolucao",
+        "DOC-020#limites-e-observacoes"
+      ],
+      "citedUnitIds": [
+        "DOC-020#passo-a-passo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      30.950249999994412
+    ],
+    "totalMs": [
+      4031.980291999993
+    ],
+    "loadMs": [
+      0.365041
+    ]
+  },
+  {
+    "questionId": "q019",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 961,
+      "outputTokens": 15,
+      "loadMs": 0.51625,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1053#descricao",
+        "T-1040#descricao",
+        "T-1009#descricao",
+        "T-1064#descricao",
+        "T-1053#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      61.34387500002049
+    ],
+    "totalMs": [
+      6339.88070899999
+    ],
+    "loadMs": [
+      0.439459
+    ]
+  },
+  {
+    "questionId": "q020",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O reporting-service é mantido pelo Time Dados [DOC-006#visao-geral].",
+      "promptTokens": 569,
+      "outputTokens": 22,
+      "loadMs": 0.312667,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-006#visao-geral",
+        "DOC-006#confiabilidade",
+        "DOC-014#escalonamento",
+        "DOC-014#verificacao-de-saude",
+        "DOC-006#dados-e-dependencias"
+      ],
+      "citedUnitIds": [
+        "DOC-006#visao-geral"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      33.85833299998194
+    ],
+    "totalMs": [
+      3684.8913750000065
+    ],
+    "loadMs": [
+      0.419791
+    ]
+  },
+  {
+    "questionId": "q021",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Para o cliente Editora Pampa, foi enviado o artigo \"Limites de requisição da API\" [T-1021#resolucao]. Os trechos fornecidos não informam qual é o limite padrão de requisições.",
+      "promptTokens": 740,
+      "outputTokens": 52,
+      "loadMs": 0.347708,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1009#resolucao",
+        "T-1021#resolucao",
+        "T-1018#resolucao",
+        "T-1021#descricao",
+        "T-1018#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1021#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      46.35741699999198
+    ],
+    "totalMs": [
+      5480.3269169999985
+    ],
+    "loadMs": [
+      0.326083
+    ]
+  },
+  {
+    "questionId": "q022",
+    "type": "unanswerable",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 615,
+      "outputTokens": 15,
+      "loadMs": 0.361333,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-006#confiabilidade",
+        "DOC-014#verificacao-de-saude",
+        "DOC-003#confiabilidade",
+        "DOC-005#confiabilidade",
+        "DOC-013#verificacao-de-saude"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      30.95704199996544
+    ],
+    "totalMs": [
+      3885.1740419999696
+    ],
+    "loadMs": [
+      0.371209
+    ]
+  },
+  {
+    "questionId": "q023",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O cliente Kappa Seguros abriu o chamado T-1013 [T-1013#descricao] com prioridade normal. Os trechos fornecidos não mencionam um artigo enviado nem o prazo de resposta exigido pelo sistema do cliente. Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 910,
+      "outputTokens": 69,
+      "loadMs": 0.407458,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1013#descricao",
+        "T-1051#descricao",
+        "T-1042#descricao",
+        "T-1032#descricao",
+        "T-1065#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1013#descricao"
+      ],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      47.415624999965075
+    ],
+    "totalMs": [
+      7267.582124999957
+    ],
+    "loadMs": [
+      0.444375
+    ]
+  },
+  {
+    "questionId": "q024",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O Time Web assumiu o incidente relacionado aos gráficos de receita do portal vazios em 30/03/2026 [INC-2026-008#linha-do-tempo]. O serviço afetado foi o customer-portal [INC-2026-008#resumo].",
+      "promptTokens": 693,
+      "outputTokens": 70,
+      "loadMs": 0.334042,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-008#resumo",
+        "INC-2026-008#linha-do-tempo",
+        "INC-2026-004#resumo",
+        "INC-2026-022#causa-raiz",
+        "INC-2026-019#causa-raiz"
+      ],
+      "citedUnitIds": [
+        "INC-2026-008#linha-do-tempo",
+        "INC-2026-008#resumo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      68.84137499995995
+    ],
+    "totalMs": [
+      7251.247792000009
+    ],
+    "loadMs": [
+      0.416958
+    ]
+  },
+  {
+    "questionId": "q025",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O comando para realizar o rollback seria `orbctl rollback auth-service --to previous --keep-sessions`. Isso é baseado na documentação do runbook do auth-service que descreve o procedimento em caso de erros no deploy. [DOC-013#rollback]",
+      "promptTokens": 610,
+      "outputTokens": 55,
+      "loadMs": 0.443,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-016#rollback",
+        "DOC-013#incidentes-anteriores",
+        "DOC-013#rollback",
+        "DOC-015#rollback",
+        "DOC-014#rollback"
+      ],
+      "citedUnitIds": [
+        "DOC-013#rollback"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      65.53108399995835
+    ],
+    "totalMs": [
+      5477.615041999961
+    ],
+    "loadMs": [
+      0.385542
+    ]
+  },
+  {
+    "questionId": "q026",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O cliente Clínica Vitalis abriu o chamado T-1054 [T-1054#descricao], mas os trechos fornecidos não mencionam nenhum artigo enviado nem qual cartão de teste simula uma recusa. Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 877,
+      "outputTokens": 63,
+      "loadMs": 0.381916,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1054#descricao",
+        "T-1027#descricao",
+        "T-1039#descricao",
+        "INC-2026-001#resumo",
+        "INC-2026-001#linha-do-tempo"
+      ],
+      "citedUnitIds": [
+        "T-1054#descricao"
+      ],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      82.24187500000698
+    ],
+    "totalMs": [
+      9179.658707999974
+    ],
+    "loadMs": [
+      0.3975
+    ]
+  },
+  {
+    "questionId": "q027",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Ao cliente Kappa Seguros foi indicado o conector Pórtico ERP, mantido por parceiro e que utiliza a API pública [T-1065#resolucao].",
+      "promptTokens": 741,
+      "outputTokens": 41,
+      "loadMs": 0.390375,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1065#descricao",
+        "T-1080#descricao",
+        "T-1065#resolucao",
+        "T-1080#resolucao",
+        "T-1051#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1065#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      56.09716700005811
+    ],
+    "totalMs": [
+      5360.774667000049
+    ],
+    "loadMs": [
+      0.389333
+    ]
+  },
+  {
+    "questionId": "q028",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O problema foi causado pelo incidente INC-2026-005 [INC-2026-005#resumo]. A equipe responsável já resolveu o problema, conforme relatado no chamado T-1019 [T-1019#resolucao].",
+      "promptTokens": 905,
+      "outputTokens": 64,
+      "loadMs": 0.356166,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-005#resumo",
+        "T-1019#resolucao",
+        "T-1019#descricao",
+        "INC-2026-024#resumo",
+        "T-1077#descricao"
+      ],
+      "citedUnitIds": [
+        "INC-2026-005#resumo",
+        "T-1019#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      58.30679099995177
+    ],
+    "totalMs": [
+      6858.435375000001
+    ],
+    "loadMs": [
+      0.382583
+    ]
+  },
+  {
+    "questionId": "q029",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O Time Faturamento assumiu o incidente de faturas em PDF em branco em setembro [INC-2026-025#linha-do-tempo].",
+      "promptTokens": 698,
+      "outputTokens": 36,
+      "loadMs": 0.33075,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-025#resumo",
+        "INC-2026-025#linha-do-tempo",
+        "T-1075#resolucao",
+        "T-1062#resolucao",
+        "INC-2026-016#resumo"
+      ],
+      "citedUnitIds": [
+        "INC-2026-025#linha-do-tempo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      33.86700000008568
+    ],
+    "totalMs": [
+      4640.686625000089
+    ],
+    "loadMs": [
+      1.331042
+    ]
+  },
+  {
+    "questionId": "q030",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A causa técnica não foi informada nos trechos fornecidos para o chamado aberto em 28/05/2026. [T-1046#descricao] Apenas é relatado que o painel de vocês está com um comportamento estranho.",
+      "promptTokens": 926,
+      "outputTokens": 57,
+      "loadMs": 1.593792,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1043#descricao",
+        "T-1046#descricao",
+        "T-1077#descricao",
+        "T-1043#resolucao",
+        "T-1076#resolucao"
+      ],
+      "citedUnitIds": [
+        "T-1046#descricao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      44.38604200002737
+    ],
+    "totalMs": [
+      7335.83029199997
+    ],
+    "loadMs": [
+      0.373375
+    ]
+  },
+  {
+    "questionId": "q031",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O plantão do Time Integrações, responsável pelo serviço afetado (webhook-dispatcher), deve ser acionado pelo canal #oncall-faturamento. [INC-2026-007#linha-do-tempo] [DOC-010#escalonamento]",
+      "promptTokens": 741,
+      "outputTokens": 62,
+      "loadMs": 0.392458,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-007#linha-do-tempo",
+        "INC-2026-007#resumo",
+        "DOC-010#escalonamento",
+        "DOC-011#escalonamento",
+        "INC-2026-005#linha-do-tempo"
+      ],
+      "citedUnitIds": [
+        "INC-2026-007#linha-do-tempo",
+        "DOC-010#escalonamento"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      66.50583299994469
+    ],
+    "totalMs": [
+      7193.15158299997
+    ],
+    "loadMs": [
+      0.476583
+    ]
+  },
+  {
+    "questionId": "q032",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Os trechos fornecidos não mencionam nenhum endpoint específico para verificar a saúde do serviço. Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 730,
+      "outputTokens": 34,
+      "loadMs": 0.356792,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-015#resumo",
+        "INC-2026-015#linha-do-tempo",
+        "INC-2026-015#acoes",
+        "INC-2026-015#causa-raiz",
+        "DOC-009#incidentes-anteriores"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      47.88262500008568
+    ],
+    "totalMs": [
+      4810.571542000049
+    ],
+    "loadMs": [
+      0.383583
+    ]
+  },
+  {
+    "questionId": "q033",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O comando para rollback seria `orbctl rollback billing-api --to previous`, conforme descrito no runbook do billing-api [DOC-009#rollback]. A confirmação da recuperação deve ser feita no endpoint de saúde e o registro feito no canal do plantão [DOC-009#rollback]. O incidente mencionado ocorreu em janeiro, mas os trechos fornecidos não especificam a data exata do evento ou detalhes sobre deploys anteriores [INC-2026-001#linha-do-tempo].",
+      "promptTokens": 614,
+      "outputTokens": 110,
+      "loadMs": 0.348666,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-011#rollback",
+        "DOC-015#rollback",
+        "DOC-009#rollback",
+        "INC-2026-001#linha-do-tempo",
+        "DOC-013#rollback"
+      ],
+      "citedUnitIds": [
+        "DOC-009#rollback",
+        "INC-2026-001#linha-do-tempo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      39.68995799997356
+    ],
+    "totalMs": [
+      6875.672957999981
+    ],
+    "loadMs": [
+      0.323792
+    ]
+  },
+  {
+    "questionId": "q034",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O contato técnico atualizado para Paulo Teixeira [T-1056#resolucao].",
+      "promptTokens": 798,
+      "outputTokens": 21,
+      "loadMs": 0.38625,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1072#descricao",
+        "T-1017#descricao",
+        "T-1074#descricao",
+        "T-1056#resolucao",
+        "T-1078#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1056#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      33.883374999975786
+    ],
+    "totalMs": [
+      5025.857790999929
+    ],
+    "loadMs": [
+      0.396291
+    ]
+  },
+  {
+    "questionId": "q035",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O protocolo para pedidos de exclusão de dados é verificar a solicitação e abrir um incidente no serviço customer-portal [T-1069#descricao]. O chamado específico do Hotel Maré Alta foi registrado como T-1069 [T-1069#descricao].",
+      "promptTokens": 1075,
+      "outputTokens": 61,
+      "loadMs": 0.410708,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1069#descricao",
+        "T-1059#descricao",
+        "T-1008#descricao",
+        "T-1023#descricao",
+        "T-1016#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1069#descricao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      34.52670799999032
+    ],
+    "totalMs": [
+      8158.035832999973
+    ],
+    "loadMs": [
+      0.3815
+    ]
+  },
+  {
+    "questionId": "q036",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O incidente com relatórios lentos durou 330 minutos [INC-2026-019#resumo]. O início do impacto foi às 13:31 e a mitigação foi aplicada às 17:22 [INC-2026-019#linha-do-tempo].",
+      "promptTokens": 821,
+      "outputTokens": 72,
+      "loadMs": 0.378083,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-019#linha-do-tempo",
+        "INC-2026-019#resumo",
+        "INC-2026-002#linha-do-tempo",
+        "INC-2026-022#linha-do-tempo",
+        "INC-2026-024#linha-do-tempo"
+      ],
+      "citedUnitIds": [
+        "INC-2026-019#resumo",
+        "INC-2026-019#linha-do-tempo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      30.88800000003539
+    ],
+    "totalMs": [
+      8159.5346660000505
+    ],
+    "loadMs": [
+      0.3735
+    ]
+  },
+  {
+    "questionId": "q037",
+    "type": "unanswerable",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 655,
+      "outputTokens": 15,
+      "loadMs": 0.369958,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-003#confiabilidade",
+        "INC-2026-020#resumo",
+        "DOC-011#incidentes-anteriores",
+        "INC-2026-001#causa-raiz",
+        "INC-2026-013#acoes"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      50.198916999972425
+    ],
+    "totalMs": [
+      4106.505833999952
+    ],
+    "loadMs": [
+      0.365542
+    ]
+  },
+  {
+    "questionId": "q038",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O plantão do Time Faturamento deve ser acionado pelo canal #oncall-faturamento. [INC-2026-010#linha-do-tempo][DOC-010#escalonamento]",
+      "promptTokens": 786,
+      "outputTokens": 49,
+      "loadMs": 0.799333,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-010#linha-do-tempo",
+        "INC-2026-010#resumo",
+        "DOC-010#escalonamento",
+        "INC-2026-013#linha-do-tempo",
+        "T-1053#resolucao"
+      ],
+      "citedUnitIds": [
+        "INC-2026-010#linha-do-tempo",
+        "DOC-010#escalonamento"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      46.93179099995177
+    ],
+    "totalMs": [
+      5765.937290999922
+    ],
+    "loadMs": [
+      0.353417
+    ]
+  },
+  {
+    "questionId": "q039",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "As faturas do cliente Lume Energia passaram a ser enviadas para o e-mail **financeiro@lumeenergia.example** [T-1030#resolucao].",
+      "promptTokens": 920,
+      "outputTokens": 39,
+      "loadMs": 0.336333,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1030#descricao",
+        "T-1022#descricao",
+        "T-1030#resolucao",
+        "T-1035#descricao",
+        "T-1079#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1030#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      35.58458299993072
+    ],
+    "totalMs": [
+      6426.081374999951
+    ],
+    "loadMs": [
+      0.367
+    ]
+  },
+  {
+    "questionId": "q040",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Para baixar um relatório financeiro, você deve clicar no botão \"Exportar CSV\" [DOC-022#passo-a-passo]. No entanto, se estiver usando o Safari 17, o botão pode não responder devido a uma API de download não suportada [INC-2026-014#causa-raiz].",
+      "promptTokens": 569,
+      "outputTokens": 73,
+      "loadMs": 0.389708,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-022#passo-a-passo",
+        "INC-2026-014#causa-raiz",
+        "INC-2026-019#causa-raiz",
+        "DOC-022#quando-usar",
+        "DOC-016#incidentes-anteriores"
+      ],
+      "citedUnitIds": [
+        "DOC-022#passo-a-passo",
+        "INC-2026-014#causa-raiz"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      26.35266699991189
+    ],
+    "totalMs": [
+      5345.081958999974
+    ],
+    "loadMs": [
+      0.374542
+    ]
+  },
+  {
+    "questionId": "q041",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O cliente Kappa Seguros abriu o chamado T-1051 [T-1051#descricao] sobre \"Investigar chamada com erro\", mas os trechos fornecidos não mencionam qual artigo foi enviado nem por quanto tempo os logs ficam no portal. Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 946,
+      "outputTokens": 72,
+      "loadMs": 1.00925,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1051#descricao",
+        "T-1010#descricao",
+        "T-1013#descricao",
+        "T-1056#descricao",
+        "T-1036#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1051#descricao"
+      ],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      46.10995899990667
+    ],
+    "totalMs": [
+      7602.347124999971
+    ],
+    "loadMs": [
+      0.41975
+    ]
+  },
+  {
+    "questionId": "q042",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O cliente recebeu o artigo \"Como atualizar o SDK oficial para Node.js\" [T-1020#resolucao]. A versão mínima suportada é a 4.2.0 [DOC-025#limites-e-observacoes].",
+      "promptTokens": 784,
+      "outputTokens": 56,
+      "loadMs": 0.359584,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1020#descricao",
+        "T-1050#descricao",
+        "T-1060#descricao",
+        "DOC-025#limites-e-observacoes",
+        "T-1020#resolucao"
+      ],
+      "citedUnitIds": [
+        "T-1020#resolucao",
+        "DOC-025#limites-e-observacoes"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      45.80462500010617
+    ],
+    "totalMs": [
+      7785.73900000006
+    ],
+    "loadMs": [
+      0.436667
+    ]
+  },
+  {
+    "questionId": "q043",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A ação corretiva definida para o incidente onde todas as cobranças falharam por timeout em 29/07/2026 foi a implementação de um TTL obrigatório de 48 horas nas chaves de entrega e alerta de memória em 75% [INC-2026-007#acoes].",
+      "promptTokens": 626,
+      "outputTokens": 72,
+      "loadMs": 0.333167,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-007#acoes",
+        "INC-2026-020#resumo",
+        "INC-2026-020#linha-do-tempo",
+        "INC-2026-019#acoes",
+        "INC-2026-012#acoes"
+      ],
+      "citedUnitIds": [
+        "INC-2026-007#acoes"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      73.51366699999198
+    ],
+    "totalMs": [
+      6338.920000000042
+    ],
+    "loadMs": [
+      0.445292
+    ]
+  },
+  {
+    "questionId": "q044",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Os trechos fornecidos não indicam um cabeçalho específico que defina o tempo de espera após um erro 429. Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 898,
+      "outputTokens": 44,
+      "loadMs": 0.464584,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-015#resumo",
+        "INC-2026-015#linha-do-tempo",
+        "T-1009#descricao",
+        "T-1018#descricao",
+        "T-1021#descricao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      34.75279199995566
+    ],
+    "totalMs": [
+      6144.805749999941
+    ],
+    "loadMs": [
+      0.401542
+    ]
+  },
+  {
+    "questionId": "q045",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A ação corretiva definida foi a execução de testes de fronteira de fuso horário no pipeline de relatórios [INC-2026-004#acoes]. O incidente ocorreu em 14/02/2026, afetando o serviço reporting-service com relatórios vazios [INC-2026-004#resumo]. A mitigação foi aplicada às 10:31 e o incidente encerrado às 12:01 [INC-2026-004#linha-do-tempo].",
+      "promptTokens": 626,
+      "outputTokens": 121,
+      "loadMs": 0.391292,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-004#linha-do-tempo",
+        "INC-2026-004#resumo",
+        "INC-2026-004#acoes",
+        "INC-2026-002#acoes",
+        "INC-2026-019#acoes"
+      ],
+      "citedUnitIds": [
+        "INC-2026-004#acoes",
+        "INC-2026-004#resumo",
+        "INC-2026-004#linha-do-tempo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      33.876875000074506
+    ],
+    "totalMs": [
+      7397.276458000066
+    ],
+    "loadMs": [
+      0.32
+    ]
+  },
+  {
+    "questionId": "q046",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A causa técnica não foi informada nos trechos fornecidos. O chamado T-1077, aberto em 15/09/2026 pelo Grupo Nébula, descreve o problema de falhas na API de cobranças, mas a seção de resolução deste chamado está ausente.",
+      "promptTokens": 926,
+      "outputTokens": 68,
+      "loadMs": 0.429,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1043#descricao",
+        "T-1046#descricao",
+        "T-1077#descricao",
+        "T-1043#resolucao",
+        "T-1076#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      50.5072499999078
+    ],
+    "totalMs": [
+      7225.4818749999395
+    ],
+    "loadMs": [
+      0.40825
+    ]
+  },
+  {
+    "questionId": "q047",
+    "type": "unanswerable",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 656,
+      "outputTokens": 15,
+      "loadMs": 0.347458,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-014#escalonamento",
+        "DOC-016#escalonamento",
+        "INC-2026-019#linha-do-tempo",
+        "DOC-010#escalonamento",
+        "INC-2026-018#linha-do-tempo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      25.0287079999689
+    ],
+    "totalMs": [
+      3809.4307499999413
+    ],
+    "loadMs": [
+      0.357333
+    ]
+  },
+  {
+    "questionId": "q048",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O problema foi causado por uma chamada sem paginação à billing-api que trouxe todas as faturas do cliente. [INC-2026-022#causa-raiz]",
+      "promptTokens": 689,
+      "outputTokens": 40,
+      "loadMs": 0.30875,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-022#resumo",
+        "INC-2026-022#linha-do-tempo",
+        "DOC-016#incidentes-anteriores",
+        "INC-2026-018#causa-raiz",
+        "INC-2026-022#causa-raiz"
+      ],
+      "citedUnitIds": [
+        "INC-2026-022#causa-raiz"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      123.03962499997579
+    ],
+    "totalMs": [
+      4854.735915999976
+    ],
+    "loadMs": [
+      0.379625
+    ]
+  },
+  {
+    "questionId": "q049",
+    "type": "unanswerable",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 582,
+      "outputTokens": 15,
+      "loadMs": 0.360958,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1012#resolucao",
+        "T-1024#resolucao",
+        "T-1026#resolucao",
+        "T-1059#resolucao",
+        "T-1071#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      50.18187500000931
+    ],
+    "totalMs": [
+      3568.359582999954
+    ],
+    "loadMs": [
+      0.387208
+    ]
+  },
+  {
+    "questionId": "q050",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O webhook-dispatcher persiste seus dados em Redis 7 [DOC-004#dados-e-dependencias].",
+      "promptTokens": 587,
+      "outputTokens": 26,
+      "loadMs": 0.374584,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-004#dados-e-dependencias",
+        "DOC-004#visao-geral",
+        "DOC-004#confiabilidade",
+        "DOC-012#verificacao-de-saude",
+        "DOC-012#rollback"
+      ],
+      "citedUnitIds": [
+        "DOC-004#dados-e-dependencias"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      55.19845799996983
+    ],
+    "totalMs": [
+      3780.8777080000145
+    ],
+    "loadMs": [
+      0.389708
+    ]
+  },
+  {
+    "questionId": "q051",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 1093,
+      "outputTokens": 15,
+      "loadMs": 0.3895,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1068#descricao",
+        "T-1034#descricao",
+        "T-1076#descricao",
+        "T-1026#descricao",
+        "T-1010#descricao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      45.870832999935374
+    ],
+    "totalMs": [
+      7292.530374999973
+    ],
+    "loadMs": [
+      0.381042
+    ]
+  },
+  {
+    "questionId": "q052",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O limite de usuários foi ampliado de 5 para 15 [T-1061#resolucao]. Posteriormente, em outro chamado, o limite foi ampliado de 10 para 25 usuários [T-1074#resolucao].",
+      "promptTokens": 784,
+      "outputTokens": 59,
+      "loadMs": 0.357625,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1061#descricao",
+        "T-1005#descricao",
+        "T-1061#resolucao",
+        "T-1074#resolucao",
+        "T-1066#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1061#resolucao",
+        "T-1074#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      52.28000000002794
+    ],
+    "totalMs": [
+      8258.488082999946
+    ],
+    "loadMs": [
+      0.373
+    ]
+  },
+  {
+    "questionId": "q053",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A causa técnica não foi informada nos trechos fornecidos, apenas que os clientes não conseguiam pagar com cartão. Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 1059,
+      "outputTokens": 40,
+      "loadMs": 0.393625,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1066#descricao",
+        "T-1019#descricao",
+        "T-1061#descricao",
+        "T-1047#descricao",
+        "T-1037#descricao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      37.497791000059806
+    ],
+    "totalMs": [
+      7686.338041000068
+    ],
+    "loadMs": [
+      0.411917
+    ]
+  },
+  {
+    "questionId": "q054",
+    "type": "unanswerable",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Os trechos fornecidos não mencionam qual time mantém o aplicativo móvel da Orbital. Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 569,
+      "outputTokens": 35,
+      "loadMs": 0.352792,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-003#visao-geral",
+        "DOC-025#quando-usar",
+        "DOC-007#visao-geral",
+        "DOC-008#visao-geral",
+        "DOC-005#visao-geral"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      25.64199999999255
+    ],
+    "totalMs": [
+      5980.21170799993
+    ],
+    "loadMs": [
+      0.383416
+    ]
+  },
+  {
+    "questionId": "q055",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O incidente em que as faturas demoraram mais de 2 horas para serem geradas durou 165 minutos [INC-2026-002#resumo].",
+      "promptTokens": 834,
+      "outputTokens": 42,
+      "loadMs": 0.390625,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-002#linha-do-tempo",
+        "INC-2026-002#resumo",
+        "INC-2026-016#resumo",
+        "INC-2026-016#linha-do-tempo",
+        "INC-2026-013#linha-do-tempo"
+      ],
+      "citedUnitIds": [
+        "INC-2026-002#resumo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      56.7229159999406
+    ],
+    "totalMs": [
+      7597.3267079999205
+    ],
+    "loadMs": [
+      0.352791
+    ]
+  },
+  {
+    "questionId": "q056",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Os logs de requisições ficam disponíveis no portal por 30 dias [DOC-026#limites-e-observacoes]. Após esse período, apenas o suporte consegue consultá-los.",
+      "promptTokens": 613,
+      "outputTokens": 43,
+      "loadMs": 0.338875,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-026#limites-e-observacoes",
+        "DOC-026#passo-a-passo",
+        "INC-2026-022#resumo",
+        "T-1070#resolucao",
+        "T-1051#resolucao"
+      ],
+      "citedUnitIds": [
+        "DOC-026#limites-e-observacoes"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      85.65116699994542
+    ],
+    "totalMs": [
+      4467.7802499999525
+    ],
+    "loadMs": [
+      0.370583
+    ]
+  },
+  {
+    "questionId": "q057",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A causa técnica do problema relatado pelo cliente Jota Telecom em 30/06/2026 foi o incidente INC-2026-006 [T-1022#resolucao].",
+      "promptTokens": 746,
+      "outputTokens": 50,
+      "loadMs": 0.372042,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1057#descricao",
+        "T-1022#resolucao",
+        "T-1076#resolucao",
+        "T-1025#descricao",
+        "T-1034#resolucao"
+      ],
+      "citedUnitIds": [
+        "T-1022#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      53.71504100004677
+    ],
+    "totalMs": [
+      6119.334708000068
+    ],
+    "loadMs": [
+      0.365875
+    ]
+  },
+  {
+    "questionId": "q058",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Para usar login único com SAML, o cliente precisa estar no plano Enterprise [DOC-023#limites-e-observacoes]. O suporte a OpenID Connect não está disponível nesta versão.",
+      "promptTokens": 598,
+      "outputTokens": 42,
+      "loadMs": 2.369708,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-023#limites-e-observacoes",
+        "DOC-023#passo-a-passo",
+        "T-1055#resolucao",
+        "T-1041#resolucao",
+        "T-1078#resolucao"
+      ],
+      "citedUnitIds": [
+        "DOC-023#limites-e-observacoes"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      30.918874999973923
+    ],
+    "totalMs": [
+      4308.888042000006
+    ],
+    "loadMs": [
+      0.376708
+    ]
+  },
+  {
+    "questionId": "q059",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A nota de crédito emitida para o cliente Banco Horizonte foi de R$ 260,00 [T-1007#resolucao]. Outro valor de R$ 530,00 também foi emitido em um chamado relacionado ao mesmo cliente [T-1044#resolucao].",
+      "promptTokens": 753,
+      "outputTokens": 70,
+      "loadMs": 0.329333,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1007#descricao",
+        "T-1007#resolucao",
+        "T-1044#resolucao",
+        "T-1038#descricao",
+        "T-1042#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1007#resolucao",
+        "T-1044#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      32.75516699999571
+    ],
+    "totalMs": [
+      8460.213666999945
+    ],
+    "loadMs": [
+      0.38975
+    ]
+  },
+  {
+    "questionId": "q060",
+    "type": "unanswerable",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O limite padrão é de 600 requisições por minuto, podendo ser negociado até 3.000 para clientes Enterprise [DOC-019#limites-e-observacoes]. A documentação fornecida refere-se à API genérica e não especifica um valor diferente para a GraphQL. Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 579,
+      "outputTokens": 80,
+      "loadMs": 0.327,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-019#limites-e-observacoes",
+        "DOC-019#quando-usar",
+        "DOC-019#passo-a-passo",
+        "T-1009#resolucao",
+        "DOC-001#confiabilidade"
+      ],
+      "citedUnitIds": [
+        "DOC-019#limites-e-observacoes"
+      ],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      56.60450000001583
+    ],
+    "totalMs": [
+      5880.217583000078
+    ],
+    "loadMs": [
+      0.486042
+    ]
+  }
+]
