@@ -1,0 +1,11 @@
+node_modules
+.git
+.env
+.assistente
+results
+test-results
+playwright-report
+coverage
+dist
+*.log
+.DS_Store

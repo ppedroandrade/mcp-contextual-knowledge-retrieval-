@@ -8,11 +8,20 @@ com um guia em três passos e visual inspirado em aplicativos nativos (ADR 013).
 ## Como rodar
 
 ```bash
-docker compose up -d                 # PostgreSQL + pgvector e Ollama (bge-m3 e qwen3 já baixados)
+docker compose up -d                 # tudo: banco, Ollama, modelos (1ª vez) e o Nexo em http://127.0.0.1:3100
+docker compose logs -f assistente    # acompanhar o Nexo
+docker compose down                  # parar tudo (os dados ficam nos volumes)
+```
+
+Fora do Docker (desenvolvimento), com o banco e o Ollama do compose:
+
+```bash
+docker compose up -d postgres ollama
 npm run assistente -- --exemplo      # http://127.0.0.1:3100, com a wiki de exemplo da Orbital
-npm run assistente                   # sem a wiki de exemplo: a empresa traz as próprias fontes
 npm run assistente -- --embedder hash --store memory --llm simulated   # sem Docker, só para ver a UI
 ```
+
+As duas formas usam o mesmo estado: o container monta a pasta `.assistente/` do projeto (ADR 015).
 
 O estado (fontes, conversas e tokens cifrados) fica em `.assistente/`, fora do git. Para começar
 do zero, apague essa pasta e a tabela `assistente_trechos_ollama_bge_m3` no Postgres.

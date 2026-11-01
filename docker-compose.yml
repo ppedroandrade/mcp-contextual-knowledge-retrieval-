@@ -1,3 +1,6 @@
+# Tudo de uma vez: `docker compose up -d` sobe o banco, o Ollama, baixa os modelos na primeira
+# vez e abre o Nexo em http://127.0.0.1:3100 (ADR 015). Para as medições do TCC, o banco e o
+# Ollama continuam expostos nas portas de sempre e os scripts rodam fora do container.
 services:
   postgres:
     image: pgvector/pgvector:0.8.7-pg16
@@ -13,6 +16,7 @@ services:
       test: ["CMD-SHELL", "pg_isready -U tcc"]
       interval: 5s
       retries: 10
+    restart: unless-stopped
 
   ollama:
     image: ollama/ollama:0.40.13
@@ -30,6 +34,54 @@ services:
       - "11434:11434"
     volumes:
       - ollama:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 5s
+      retries: 20
+    restart: unless-stopped
+
+  # Baixa os modelos do Nexo na primeira vez (~3,7 GB); depois só confere e termina.
+  # O juiz do TCC (qwen3.5:4b) não é usado aqui: `docker compose exec ollama ollama pull qwen3.5:4b`.
+  modelos:
+    image: ollama/ollama:0.40.13
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["ollama pull bge-m3 && ollama pull qwen3:4b-instruct-2507-q4_K_M"]
+    depends_on:
+      ollama:
+        condition: service_healthy
+    restart: "no"
+
+  # Nexo: interface e API do assistente da empresa (ADR 012).
+  assistente:
+    build: .
+    init: true
+    environment:
+      PG_URL: postgres://tcc:tcc@postgres:5432/tcc
+      OLLAMA_URL: http://ollama:11434
+      ASSISTENTE_URL: http://127.0.0.1:3100
+      # Opcionais, lidos do .env da raiz (docs/assistente.md).
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      ASSISTENTE_CHAVE: ${ASSISTENTE_CHAVE:-}
+    ports:
+      # Sem login (ADR 012): só para este computador.
+      - "127.0.0.1:3100:3100"
+    volumes:
+      # O mesmo estado de `npm run assistente`: fontes, conversas e tokens cifrados.
+      - ./.assistente:/app/.assistente
+    depends_on:
+      postgres:
+        condition: service_healthy
+      modelos:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3100/api/config').then((r) => process.exit(r.ok ? 0 : 1), () => process.exit(1))"]
+      interval: 10s
+      start_period: 120s
+      retries: 6
+    restart: unless-stopped
 
 volumes:
   pgdata:

@@ -47,7 +47,8 @@ npm install
 npm run check              # typecheck + testes unitários (o mesmo que o CI)
 npm run corpus             # regenera data/ a partir do gerador (determinístico)
 
-docker compose up -d                           # PostgreSQL 16 + pgvector e Ollama
+docker compose up -d                           # tudo: PostgreSQL + pgvector, Ollama, modelos e o Nexo (ADR 015)
+docker compose up -d postgres ollama           # só o que as medições do TCC usam (o Nexo não pode rodar junto)
 docker compose exec ollama ollama pull bge-m3  # modelo de embeddings (ADR 003)
 docker compose exec ollama ollama pull qwen3:4b-instruct-2507-q4_K_M  # LLM (ADR 003)
 npm run test:integration                       # pgvector × busca exata em memória

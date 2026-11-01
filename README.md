@@ -22,6 +22,19 @@ arquitetura em [docs/arquitetura.md](docs/arquitetura.md).
 - Node.js 22 (`.nvmrc`; as medições recusam outra versão principal, ADR 009)
 - Docker (PostgreSQL 16 + pgvector e Ollama, pelo `docker-compose.yml`)
 
+## Tudo de uma vez (Docker)
+
+```bash
+docker compose up -d              # banco + Ollama + modelos (1ª vez, ~3,7 GB) + Nexo
+open http://127.0.0.1:3100        # o assistente da empresa
+docker compose logs -f assistente # acompanhar o Nexo
+docker compose down               # parar tudo (dados e modelos ficam nos volumes)
+```
+
+Para as medições do TCC, suba só o banco e o Ollama (`docker compose up -d postgres ollama`)
+ou pare o Nexo (`docker compose stop assistente`): ele não pode usar o mesmo Ollama durante uma
+medição (ADR 015).
+
 ## Como rodar
 
 ```bash
