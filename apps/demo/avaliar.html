@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Avaliação das respostas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><strong>Avaliação das respostas</strong> <span class="badge">avaliação cega · dados sintéticos</span></div>
+    <div id="who" class="mode"></div>
+  </header>
+
+  <main id="start" class="eval-start panel">
+    <h2>Antes de começar</h2>
+    <div id="instructions" class="instructions"></div>
+    <form id="login" class="row">
+      <input id="rater" type="text" maxlength="40" placeholder="Seu nome (ex.: ana)" required autocomplete="off">
+      <button type="submit">Começar ou continuar</button>
+    </form>
+    <p class="muted small">As notas são salvas a cada resposta. Para continuar depois, entre de novo com o mesmo nome.</p>
+  </main>
+
+  <main id="work" class="eval-layout" hidden>
+    <aside class="panel eval-nav">
+      <h2>Respostas</h2>
+      <div id="progress" class="small muted"></div>
+      <div id="grid" class="grid"></div>
+      <h2 class="spaced">Concordância</h2>
+      <div id="agreement" class="small muted">Disponível quando houver ao menos 2 avaliadores.</div>
+    </aside>
+
+    <section class="panel eval-item">
+      <div class="meta" id="item-id"></div>
+      <h3>Pergunta</h3>
+      <p id="q" class="box"></p>
+      <h3>Resposta de referência</h3>
+      <p id="ref" class="box ref"></p>
+      <h3>Resposta do assistente</h3>
+      <p id="ans" class="box answer"></p>
+      <details id="ctx" open>
+        <summary>Trechos que o assistente recebeu (<span id="nctx"></span>)</summary>
+        <div id="passages" class="passages"></div>
+      </details>
+    </section>
+
+    <aside class="panel eval-form">
+      <form id="scores">
+        <div id="criteria"></div>
+        <label class="small" for="obs">Observações (opcional)</label>
+        <textarea id="obs" rows="3" maxlength="2000"></textarea>
+        <div class="row nav">
+          <button type="button" id="prev">← Anterior</button>
+          <button type="submit" id="next">Salvar e seguir →</button>
+        </div>
+        <p id="saved" class="small muted"></p>
+      </form>
+    </aside>
+  </main>
+
+  <script type="module" src="avaliar.js"></script>
+</body>
+</html>

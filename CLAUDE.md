@@ -54,6 +54,7 @@ npm run bench:retrieval -- --approaches A,B,C,D --rounds 5 --out <id>
 npm run bench:generation -- --approaches B,C,D --rounds 3 --out <id>
 npm run mcp:server                             # servidor MCP via stdio
 npm run demo                                   # API + UI de demonstração em http://127.0.0.1:3000 (fora das métricas)
+npm run demo -- --avaliacao <planilha>         # avaliação humana cega na UI (só Node); notas em avaliacoes-ui/
 npx tsx scripts/compare-c-d.ts <id>            # confere C = D e D − C numa execução
 npm run stats -- --run <id>                    # Wilcoxon + Holm + bootstrap (e Mann-Whitney) numa execução (ADR 008)
 npm run eval:answers -- --run <geração> --out <id>   # regra dos fatos + juiz (ADR 007)
