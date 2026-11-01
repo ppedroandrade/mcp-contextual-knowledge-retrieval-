@@ -27,7 +27,7 @@ não têm rastreabilidade com este repositório.
 | Geração de respostas por LLM (B, C, D) | implementado, testado | `src/generation/`, `npm run bench:generation`; Ollama `qwen3:4b-instruct-2507` (ADR 003); prompt fixo, temperatura 0, os mesmos 5 trechos; A fica só na recuperação; executado no dev (abaixo) |
 | Métricas e estatística | planejado | conferir metodologia do TCC 1 |
 | Benchmark reproduzível | implementado | `environment.json` grava commit lido na partida, árvore limpa (ignora `results/`), digests e versão do Ollama, uso de GPU (`sizeVram`), hash do prompt e fonte de energia |
-| API + UI de demonstração | planejado (opcional) | depois do benchmark; fora das métricas |
+| API + UI de demonstração | implementado, testado (sem modo de avaliação humana) | `npm run demo`; `src/api/`, `apps/demo/`; 7 testes em `test/unit/api.test.ts` (hash + memória + LLM simulado); conferida no navegador com `--embedder hash --store memory --llm simulated` (D pelo stdio real). Ainda não aberta com bge-m3 + qwen3. Fora das métricas. Modo de avaliação humana cega: planejado, sobre o formato de notas da Etapa 3 |
 
 ## Ambiente validado (31/10/2026)
 

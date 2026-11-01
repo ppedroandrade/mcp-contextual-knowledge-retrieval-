@@ -53,6 +53,7 @@ npm run ingest                                 # indexa docs, chamados e inciden
 npm run bench:retrieval -- --approaches A,B,C,D --rounds 5 --out <id>
 npm run bench:generation -- --approaches B,C,D --rounds 3 --out <id>
 npm run mcp:server                             # servidor MCP via stdio
+npm run demo                                   # API + UI de demonstração em http://127.0.0.1:3000 (fora das métricas)
 npx tsx scripts/compare-c-d.ts <id>            # confere C = D e D − C numa execução
 ```
 
