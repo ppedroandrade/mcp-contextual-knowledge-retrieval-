@@ -1,10 +1,11 @@
-/** CSV mínimo (RFC 4180): campos com vírgula, aspas ou quebra de linha vão entre aspas. */
-export function toCsv(rows: string[][]): string {
-  const esc = (v: string) => (/[",\n\r]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v);
-  return rows.map((r) => r.map(esc).join(',')).join('\n') + '\n';
+/** CSV mínimo (RFC 4180): campos com o separador, aspas ou quebra de linha vão entre aspas. */
+export function toCsv(rows: string[][], sep = ','): string {
+  const special = new RegExp(`["\\n\\r${sep}]`);
+  const esc = (v: string) => (special.test(v) ? `"${v.replace(/"/g, '""')}"` : v);
+  return rows.map((r) => r.map(esc).join(sep)).join('\n') + '\n';
 }
 
-export function parseCsv(text: string): string[][] {
+export function parseCsv(text: string, sep = ','): string[][] {
   const rows: string[][] = [];
   let row: string[] = [];
   let field = '';
@@ -16,7 +17,7 @@ export function parseCsv(text: string): string[][] {
       else if (c === '"') quoted = false;
       else field += c;
     } else if (c === '"') quoted = true;
-    else if (c === ',') { row.push(field); field = ''; }
+    else if (c === sep) { row.push(field); field = ''; }
     else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
     else if (c !== '\r') field += c;
   }
