@@ -4,6 +4,7 @@ import type { EvidenceUnit, SourceName } from '../core/types.js';
 import type { GeneratedFile } from '../corpus/model.js';
 import { parseMarkdownDoc } from './docs.js';
 import { parseIncidents } from './incidents.js';
+import { parsePolicyHtml } from './policies.js';
 import { parseTickets } from './tickets.js';
 
 export const CORPUS_DIR = join(import.meta.dirname, '..', '..', 'data', 'corpus');
@@ -23,9 +24,8 @@ export function parseSource(source: SourceName, files: GeneratedFile[]): Evidenc
       return parseTickets(get('tickets/tickets.json'));
     case 'incidents':
       return parseIncidents(get('incidents/incidents.csv'), get('incidents/timeline.json'));
-    default:
-      // `policies` está no corpus, mas ainda não tem leitor: entra na medida da H3 (ADR 009).
-      throw new Error(`a fonte ${source} ainda não está integrada ao sistema`);
+    case 'policies':
+      return mine.filter((f) => f.path.endsWith('.html')).flatMap((f) => parsePolicyHtml(f.content));
   }
 }
 

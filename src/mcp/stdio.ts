@@ -6,10 +6,10 @@ import { createKnowledgeServer } from './server.js';
 
 /**
  * Processo do servidor MCP via stdio. Configuração por variáveis de ambiente:
- * MCP_SOURCES (ex.: docs,tickets,incidents), MCP_EMBEDDER (ollama|hash), MCP_STORE (pg|memory).
+ * MCP_SOURCES (padrão: docs,tickets,incidents,policies), MCP_EMBEDDER (ollama|hash), MCP_STORE (pg|memory).
  * Nada pode ser escrito em stdout além do protocolo; logs vão para stderr.
  */
-const sources = (process.env.MCP_SOURCES ?? 'docs,tickets,incidents').split(',') as SourceName[];
+const sources = (process.env.MCP_SOURCES ?? 'docs,tickets,incidents,policies').split(',') as SourceName[];
 const embedder = makeEmbedder((process.env.MCP_EMBEDDER ?? 'ollama') as EmbedderKind);
 const units = sources.flatMap((s) => loadSource(s));
 const store = await openStore((process.env.MCP_STORE ?? 'pg') as StoreKind, embedder, units, sources);

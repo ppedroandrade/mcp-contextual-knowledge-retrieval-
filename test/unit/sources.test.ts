@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { parseCsv, toCsv } from '../../src/sources/csv.js';
 import { parseMarkdownDoc } from '../../src/sources/docs.js';
 import { escapeHtml } from '../../src/corpus/render/policies.js';
+import { parsePolicyHtml } from '../../src/sources/policies.js';
 import { parseSource } from '../../src/sources/index.js';
 import { buildCorpus } from '../../src/corpus/generate.js';
 import { sourcesFor } from '../../src/bench/setup.js';
@@ -13,14 +14,22 @@ describe('csv', () => {
   });
 });
 
-describe('4ª fonte (políticas, HTML) antes da H3', () => {
+describe('4ª fonte (políticas, HTML)', () => {
   it('o gerador escapa o HTML', () => {
     expect(escapeHtml('A & B < C > D "E"')).toBe('A &amp; B &lt; C &gt; D &quot;E&quot;');
   });
 
-  it('o sistema ainda não lê as políticas nem monta o conjunto policies (ADR 009)', () => {
-    expect(() => parseSource('policies', buildCorpus().files)).toThrow(/ainda não está integrada/);
-    expect(() => sourcesFor('policies')).toThrow(/ainda não integrada/);
+  it('extrai as seções de uma política', () => {
+    const html = '<meta name="doc-id" content="POL-99"><title>Teste &amp; cia</title>'
+      + '<section id="regra">\n<h2>Regra</h2>\n<p>Texto &lt;importante&gt;.</p>\n</section>';
+    expect(parsePolicyHtml(html)).toEqual([
+      { id: 'POL-99#regra', docId: 'POL-99', source: 'policies', title: 'Teste & cia', heading: 'Regra', text: 'Texto <importante>.' },
+    ]);
+  });
+
+  it('lê as 15 políticas do corpus e monta o conjunto policies com as 4 fontes', () => {
+    expect(new Set(parseSource('policies', buildCorpus().files).map((u) => u.docId)).size).toBe(15);
+    expect(sourcesFor('policies')).toEqual(['docs', 'tickets', 'incidents', 'policies']);
   });
 });
 

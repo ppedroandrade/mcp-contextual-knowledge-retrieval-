@@ -18,6 +18,10 @@ export const SOURCE_CATALOG: Partial<Record<SourceName, { title: string; descrip
     title: 'Registros de incidentes',
     description: 'Postmortems de incidentes de produção: data, severidade, serviço afetado, sintoma, causa raiz, ação corretiva e linha do tempo.',
   },
+  policies: {
+    title: 'Políticas internas',
+    description: 'Políticas da empresa: severidade e resposta a incidentes, segurança, privacidade (LGPD), plantão, créditos a clientes e suporte.',
+  },
 };
 
 /** Descrição de uma fonte integrada; falha para uma fonte que o sistema ainda não conhece. */

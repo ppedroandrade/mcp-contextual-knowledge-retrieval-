@@ -28,8 +28,7 @@ export function loadQuestions(set: string): Question[] {
  * integrada depois do congelamento, na medida da H3 (ADR 009).
  */
 export function sourcesFor(set: string): SourceName[] {
-  if (set === 'policies') throw new Error('o conjunto policies depende da 4ª fonte, ainda não integrada (ADR 009)');
-  return ['docs', 'tickets', 'incidents'];
+  return set === 'policies' ? ['docs', 'tickets', 'incidents', 'policies'] : ['docs', 'tickets', 'incidents'];
 }
 
 /** LLM das configurações que geram resposta. O simulado não tem valor experimental. */

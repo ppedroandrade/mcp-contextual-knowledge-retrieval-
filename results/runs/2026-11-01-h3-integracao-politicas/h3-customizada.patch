@@ -1,0 +1,120 @@
+diff --git a/src/bench/setup.ts b/src/bench/setup.ts
+index 026206e..a57b258 100644
+--- a/src/bench/setup.ts
++++ b/src/bench/setup.ts
+@@ -28,8 +28,7 @@ export function loadQuestions(set: string): Question[] {
+  * integrada depois do congelamento, na medida da H3 (ADR 009).
+  */
+ export function sourcesFor(set: string): SourceName[] {
+-  if (set === 'policies') throw new Error('o conjunto policies depende da 4ª fonte, ainda não integrada (ADR 009)');
+-  return ['docs', 'tickets', 'incidents'];
++  return set === 'policies' ? ['docs', 'tickets', 'incidents', 'policies'] : ['docs', 'tickets', 'incidents'];
+ }
+ 
+ /** LLM das configurações que geram resposta. O simulado não tem valor experimental. */
+diff --git a/src/sources/catalog.ts b/src/sources/catalog.ts
+index 663c5c8..66aee70 100644
+--- a/src/sources/catalog.ts
++++ b/src/sources/catalog.ts
+@@ -18,6 +18,10 @@ export const SOURCE_CATALOG: Partial<Record<SourceName, { title: string; descrip
+     title: 'Registros de incidentes',
+     description: 'Postmortems de incidentes de produção: data, severidade, serviço afetado, sintoma, causa raiz, ação corretiva e linha do tempo.',
+   },
++  policies: {
++    title: 'Políticas internas',
++    description: 'Políticas da empresa: severidade e resposta a incidentes, segurança, privacidade (LGPD), plantão, créditos a clientes e suporte.',
++  },
+ };
+ 
+ /** Descrição de uma fonte integrada; falha para uma fonte que o sistema ainda não conhece. */
+diff --git a/src/sources/index.ts b/src/sources/index.ts
+index 7267d8a..bf80cd1 100644
+--- a/src/sources/index.ts
++++ b/src/sources/index.ts
+@@ -4,6 +4,7 @@ import type { EvidenceUnit, SourceName } from '../core/types.js';
+ import type { GeneratedFile } from '../corpus/model.js';
+ import { parseMarkdownDoc } from './docs.js';
+ import { parseIncidents } from './incidents.js';
++import { parsePolicyHtml } from './policies.js';
+ import { parseTickets } from './tickets.js';
+ 
+ export const CORPUS_DIR = join(import.meta.dirname, '..', '..', 'data', 'corpus');
+@@ -23,9 +24,8 @@ export function parseSource(source: SourceName, files: GeneratedFile[]): Evidenc
+       return parseTickets(get('tickets/tickets.json'));
+     case 'incidents':
+       return parseIncidents(get('incidents/incidents.csv'), get('incidents/timeline.json'));
+-    default:
+-      // `policies` está no corpus, mas ainda não tem leitor: entra na medida da H3 (ADR 009).
+-      throw new Error(`a fonte ${source} ainda não está integrada ao sistema`);
++    case 'policies':
++      return mine.filter((f) => f.path.endsWith('.html')).flatMap((f) => parsePolicyHtml(f.content));
+   }
+ }
+ 
+diff --git a/src/sources/policies.ts b/src/sources/policies.ts
+new file mode 100644
+index 0000000..27eec98
+--- /dev/null
++++ b/src/sources/policies.ts
+@@ -0,0 +1,22 @@
++import type { EvidenceUnit } from '../core/types.js';
++
++export function unescapeHtml(s: string): string {
++  return s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&amp;/g, '&');
++}
++
++const stripTags = (s: string) => unescapeHtml(s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
++
++/** Políticas internas: um arquivo HTML por política, com uma `<section id>` por tópico. */
++export function parsePolicyHtml(html: string): EvidenceUnit[] {
++  const id = /<meta name="doc-id" content="([^"]+)"/.exec(html)?.[1];
++  const title = /<title>([\s\S]*?)<\/title>/.exec(html)?.[1];
++  if (!id || !title) throw new Error('política sem doc-id ou title');
++  const units: EvidenceUnit[] = [];
++  for (const m of html.matchAll(/<section id="([^"]+)">\s*<h2>([\s\S]*?)<\/h2>([\s\S]*?)<\/section>/g)) {
++    units.push({
++      id: `${id}#${m[1]}`, docId: id, source: 'policies', title: unescapeHtml(title),
++      heading: stripTags(m[2]!), text: stripTags(m[3]!),
++    });
++  }
++  return units;
++}
+diff --git a/test/unit/sources.test.ts b/test/unit/sources.test.ts
+index eae8730..8e9ae4a 100644
+--- a/test/unit/sources.test.ts
++++ b/test/unit/sources.test.ts
+@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
+ import { parseCsv, toCsv } from '../../src/sources/csv.js';
+ import { parseMarkdownDoc } from '../../src/sources/docs.js';
+ import { escapeHtml } from '../../src/corpus/render/policies.js';
++import { parsePolicyHtml } from '../../src/sources/policies.js';
+ import { parseSource } from '../../src/sources/index.js';
+ import { buildCorpus } from '../../src/corpus/generate.js';
+ import { sourcesFor } from '../../src/bench/setup.js';
+@@ -13,14 +14,22 @@ describe('csv', () => {
+   });
+ });
+ 
+-describe('4ª fonte (políticas, HTML) antes da H3', () => {
++describe('4ª fonte (políticas, HTML)', () => {
+   it('o gerador escapa o HTML', () => {
+     expect(escapeHtml('A & B < C > D "E"')).toBe('A &amp; B &lt; C &gt; D &quot;E&quot;');
+   });
+ 
+-  it('o sistema ainda não lê as políticas nem monta o conjunto policies (ADR 009)', () => {
+-    expect(() => parseSource('policies', buildCorpus().files)).toThrow(/ainda não está integrada/);
+-    expect(() => sourcesFor('policies')).toThrow(/ainda não integrada/);
++  it('extrai as seções de uma política', () => {
++    const html = '<meta name="doc-id" content="POL-99"><title>Teste &amp; cia</title>'
++      + '<section id="regra">\n<h2>Regra</h2>\n<p>Texto &lt;importante&gt;.</p>\n</section>';
++    expect(parsePolicyHtml(html)).toEqual([
++      { id: 'POL-99#regra', docId: 'POL-99', source: 'policies', title: 'Teste & cia', heading: 'Regra', text: 'Texto <importante>.' },
++    ]);
++  });
++
++  it('lê as 15 políticas do corpus e monta o conjunto policies com as 4 fontes', () => {
++    expect(new Set(parseSource('policies', buildCorpus().files).map((u) => u.docId)).size).toBe(15);
++    expect(sourcesFor('policies')).toEqual(['docs', 'tickets', 'incidents', 'policies']);
+   });
+ });
+ 

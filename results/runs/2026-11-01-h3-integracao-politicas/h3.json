@@ -1,0 +1,165 @@
+{
+  "congelamento": "1a1337acf736ede43740d3bb06c03c2d52f5c9f0",
+  "customizada": {
+    "ref": "h3-customizada",
+    "commit": "aee612a8c3488391120be2b5194475e070e57e0c",
+    "files": [
+      {
+        "path": "src/bench/setup.ts",
+        "layer": "configuração do experimento",
+        "added": 1,
+        "removed": 2
+      },
+      {
+        "path": "src/sources/catalog.ts",
+        "layer": "catálogo das fontes",
+        "added": 4,
+        "removed": 0
+      },
+      {
+        "path": "src/sources/index.ts",
+        "layer": "leitor da fonte",
+        "added": 3,
+        "removed": 3
+      },
+      {
+        "path": "src/sources/policies.ts",
+        "layer": "leitor da fonte",
+        "added": 22,
+        "removed": 0
+      },
+      {
+        "path": "test/unit/sources.test.ts",
+        "layer": "testes",
+        "added": 13,
+        "removed": 4
+      }
+    ],
+    "byLayer": {
+      "configuração do experimento": {
+        "files": 1,
+        "added": 1,
+        "removed": 2
+      },
+      "catálogo das fontes": {
+        "files": 1,
+        "added": 4,
+        "removed": 0
+      },
+      "leitor da fonte": {
+        "files": 2,
+        "added": 25,
+        "removed": 3
+      },
+      "testes": {
+        "files": 1,
+        "added": 13,
+        "removed": 4
+      }
+    },
+    "total": {
+      "files": 5,
+      "added": 43,
+      "removed": 9
+    },
+    "hostIntocado": true
+  },
+  "mcp": {
+    "ref": "h3-mcp",
+    "commit": "e4049dd90f96c92b924a7a364724f3df344d9368",
+    "files": [
+      {
+        "path": "src/bench/setup.ts",
+        "layer": "configuração do experimento",
+        "added": 1,
+        "removed": 2
+      },
+      {
+        "path": "src/mcp/stdio.ts",
+        "layer": "servidor MCP",
+        "added": 2,
+        "removed": 2
+      },
+      {
+        "path": "src/sources/catalog.ts",
+        "layer": "catálogo das fontes",
+        "added": 4,
+        "removed": 0
+      },
+      {
+        "path": "src/sources/index.ts",
+        "layer": "leitor da fonte",
+        "added": 3,
+        "removed": 3
+      },
+      {
+        "path": "src/sources/policies.ts",
+        "layer": "leitor da fonte",
+        "added": 22,
+        "removed": 0
+      },
+      {
+        "path": "test/unit/mcp.test.ts",
+        "layer": "testes",
+        "added": 11,
+        "removed": 0
+      },
+      {
+        "path": "test/unit/sources.test.ts",
+        "layer": "testes",
+        "added": 13,
+        "removed": 4
+      }
+    ],
+    "byLayer": {
+      "configuração do experimento": {
+        "files": 1,
+        "added": 1,
+        "removed": 2
+      },
+      "servidor MCP": {
+        "files": 1,
+        "added": 2,
+        "removed": 2
+      },
+      "catálogo das fontes": {
+        "files": 1,
+        "added": 4,
+        "removed": 0
+      },
+      "leitor da fonte": {
+        "files": 2,
+        "added": 25,
+        "removed": 3
+      },
+      "testes": {
+        "files": 2,
+        "added": 24,
+        "removed": 4
+      }
+    },
+    "total": {
+      "files": 7,
+      "added": 56,
+      "removed": 11
+    },
+    "hostIntocado": true
+  },
+  "observacoes": {
+    "commits": "Os commits das duas integrações ficaram em branches locais; os patches h3-customizada.patch e h3-mcp.patch reproduzem cada uma com `git checkout 1a1337a && git apply <patch>`.",
+    "segundoCliente": {
+      "arquivo": "segundo-cliente.json",
+      "script": "scripts/h3-segundo-cliente.ts (só o SDK oficial; nenhum import de src/)",
+      "servidor": "integração MCP (h3-mcp.patch aplicado), embedder hash e armazenamento em memória: teste funcional, sem valor de recuperação",
+      "toolsDescobertas": [
+        "buscar_docs",
+        "buscar_tickets",
+        "buscar_incidents",
+        "buscar_policies"
+      ],
+      "buscarPoliciesRespondeu": true,
+      "alteracoesNoServidorParaOSegundoCliente": 0
+    },
+    "classificacao": "camadas de scripts/h3-diff.ts (LAYERS)"
+  }
+}

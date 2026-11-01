@@ -62,6 +62,17 @@ describe('servidor MCP e configuração D (transporte em memória)', () => {
   });
 });
 
+describe('H3: integração da 4ª fonte', () => {
+  it('o host passa a usar a fonte nova sem nenhuma mudança no código do host', async () => {
+    const { clientT } = await setup(['docs', 'tickets', 'incidents', 'policies']);
+    const d = await createMcpRetriever(clientT);
+    expect(d.tools).toContain('buscar_policies');
+    const hits = await d.search('prazo de primeira resposta SEV1 plantão', 5);
+    expect(hits.some((h) => h.source === 'policies')).toBe(true);
+    await d.close?.();
+  });
+});
+
 describe('tempo da tool dentro de D (ADR 004 e 009)', () => {
   it('cada tool informa o tempo da busca e o bench o registra só para D', async () => {
     const sources: SourceName[] = ['docs', 'tickets', 'incidents'];

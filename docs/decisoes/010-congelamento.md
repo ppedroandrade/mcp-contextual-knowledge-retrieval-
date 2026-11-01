@@ -22,4 +22,9 @@ Data: 01/11/2026 · Situação: aceita
 integração da 4ª fonte nas branches da H3, scripts que executam e resumem o experimento sem
 mudar parâmetros, correções de defeitos (registradas aqui, com o motivo) e a documentação.
 
-**Correções depois do congelamento:** nenhuma até agora.
+**Mudanças depois do congelamento:**
+- 01/11/2026: integração da 4ª fonte (políticas) aplicada na `main` depois da medida da H3
+  (`results/runs/2026-11-01-h3-integracao-politicas`, patch `h3-mcp.patch`). Não muda nada para
+  os conjuntos `dev` e `heldout`, que continuam com as três fontes; o servidor MCP iniciado à
+  mão (`npm run mcp:server`) passa a expor as quatro por padrão.
+- Correções de defeitos: nenhuma até agora.

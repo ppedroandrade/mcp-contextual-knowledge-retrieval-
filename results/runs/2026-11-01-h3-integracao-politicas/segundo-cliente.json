@@ -1,0 +1,68 @@
+{
+  "cliente": "segundo-cliente-h3 (só o SDK oficial)",
+  "servidor": {
+    "name": "orbital-knowledge",
+    "version": "0.1.0"
+  },
+  "consulta": "prazo de primeira resposta a incidente SEV1",
+  "tools": [
+    {
+      "nome": "buscar_docs",
+      "titulo": "Buscar em: Wiki técnica",
+      "descricao": "Documentação técnica interna: arquitetura e runbook de cada serviço (saúde, rollback, plantão, SLO) e guias práticos da plataforma. Devolve os trechos mais parecidos com a consulta."
+    },
+    {
+      "nome": "buscar_tickets",
+      "titulo": "Buscar em: Chamados de suporte",
+      "descricao": "Chamados abertos por clientes, com descrição, comentários e resolução. Útil para saber o que aconteceu com um cliente específico. Devolve os trechos mais parecidos com a consulta."
+    },
+    {
+      "nome": "buscar_incidents",
+      "titulo": "Buscar em: Registros de incidentes",
+      "descricao": "Postmortems de incidentes de produção: data, severidade, serviço afetado, sintoma, causa raiz, ação corretiva e linha do tempo. Devolve os trechos mais parecidos com a consulta."
+    },
+    {
+      "nome": "buscar_policies",
+      "titulo": "Buscar em: Políticas internas",
+      "descricao": "Políticas da empresa: severidade e resposta a incidentes, segurança, privacidade (LGPD), plantão, créditos a clientes e suporte. Devolve os trechos mais parecidos com a consulta."
+    }
+  ],
+  "chamadas": [
+    {
+      "tool": "buscar_docs",
+      "erro": false,
+      "resultados": [
+        "DOC-011#verificacao-de-saude",
+        "DOC-003#dados-e-dependencias",
+        "DOC-011#rollback"
+      ]
+    },
+    {
+      "tool": "buscar_tickets",
+      "erro": false,
+      "resultados": [
+        "T-1052#descricao",
+        "T-1067#descricao",
+        "T-1052#resolucao"
+      ]
+    },
+    {
+      "tool": "buscar_incidents",
+      "erro": false,
+      "resultados": [
+        "INC-2026-020#resumo",
+        "INC-2026-002#linha-do-tempo",
+        "INC-2026-020#linha-do-tempo"
+      ]
+    },
+    {
+      "tool": "buscar_policies",
+      "erro": false,
+      "resultados": [
+        "POL-01#prazos-de-resposta",
+        "POL-01#classificacao",
+        "POL-15#prazos-por-prioridade"
+      ]
+    }
+  ]
+}

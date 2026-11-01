@@ -28,7 +28,8 @@ incidente, `<section>` do HTML) por um leitor próprio em `src/sources/`.
 
 `policies` só é integrada **depois do congelamento** da arquitetura, para medir o esforço
 de adicionar uma fonte com formato novo em B/C (customizado) e em D (MCP). O leitor HTML foi
-retirado do sistema antes do congelamento (ADR 009); os dados e as perguntas ficam.
+retirado do sistema antes do congelamento (ADR 009) e reintegrado na medida da H3
+(`docs/h3-protocolo.md`).
 
 ## 3. Perguntas
 
