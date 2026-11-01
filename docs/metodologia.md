@@ -2,7 +2,7 @@
 
 Fonte: TCC 1 aprovado (`ANEXO_SR_122939_...pdf`, maio/2026), seções 4, 5, 8 e 10.
 Este documento liga cada hipótese e objetivo do TCC 1 ao que será medido e onde.
-Situação: **planejado**.
+Situação: **em implementação** (geração e avaliação das respostas implementadas; estatística planejada).
 
 ## 1. O que o TCC 1 exige
 
@@ -23,8 +23,8 @@ Situação: **planejado**.
 | Hipótese | Medida | Configurações | Onde no código |
 | --- | --- | --- | --- |
 | H1 | Latência computacional por pergunta (ms): só recuperação e recuperação + geração, separadas | A × D (exigido); B × D e C × D (decomposição) | `src/bench`, `src/evaluation/stats` |
-| H2 (automática) | Recuperação: Recall@k, Precision@k, MRR, nDCG@k contra o gabarito. Resposta: fidelidade e correção contra a resposta de referência | B, C, D (geram resposta); A só recuperação | `src/evaluation/metrics`, `src/evaluation/answers` |
-| H2 (humana) | Rubrica 1–5 de correção, completude e sustentação nas evidências, por ≥ 2 avaliadores cegos à configuração; concordância (kappa ponderado ou Krippendorff α) | B, C, D | `src/evaluation/human` (exporta planilha cega, importa notas) |
+| H2 (automática) | Recuperação: Recall@k, Precision@k, MRR, nDCG@k contra o gabarito. Resposta: checagem por regra dos fatos e juiz por LLM (correção, completude, sustentação) | B, C, D (geram resposta); A só recuperação | `src/evaluation/metrics.ts`, `facts.ts`, `judge.ts`; `npm run eval:answers` (ADR 007) |
+| H2 (humana) | Rubrica 1–5 de correção, completude e sustentação nas evidências, por ≥ 2 avaliadores cegos à configuração; concordância pelo alfa de Krippendorff ordinal | B, C, D | `src/evaluation/human.ts`; `npm run eval:human` exporta a planilha cega e importa as notas (ADR 007) |
 | H3 | Integração de uma 4ª fonte depois do congelamento: arquivos e linhas alteradas no host, no servidor e nos testes; reuso do servidor por um segundo cliente MCP sem alteração | B/C (customizado) × D (MCP) | `docs/h3-protocolo.md` (a criar), `results/runs/<id>/h3.json` |
 
 ## 2.1 Parâmetros de recuperação
@@ -50,7 +50,8 @@ Registrar no artigo, de preferência com o aval do orientador.
 3. **RAGAS.** É uma biblioteca Python e depende de um LLM avaliador. Opções: (a) métricas
    equivalentes implementadas em TypeScript com o LLM local como avaliador; (b) RAGAS em
    script auxiliar Python, só na avaliação. Em qualquer caso, a avaliação automática
-   **não substitui** a humana. A decisão fica para a etapa de avaliação.
+   **não substitui** a humana. **Decidido (ADR 007):** opção (a), com o LLM local como juiz
+   e uma checagem por regra dos fatos como âncora; o RAGAS não é usado.
 4. **Configuração C** (busca por fonte sem MCP) não está no TCC 1. É acrescentada como
    controle para separar o efeito do protocolo do efeito da estratégia (ADR 005).
 5. **RSL** (Fase 1 do TCC 1) é trabalho do artigo, não do software, e não está neste

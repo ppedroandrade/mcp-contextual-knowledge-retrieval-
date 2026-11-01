@@ -1,0 +1,902 @@
+{
+  "R001": {
+    "key": "6d372a463087",
+    "questionId": "q044",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R002": {
+    "key": "e38486d7db7f",
+    "questionId": "q043",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R003": {
+    "key": "c6d5012fbd1d",
+    "questionId": "q020",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R004": {
+    "key": "f7540b8362c1",
+    "questionId": "q006",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R005": {
+    "key": "97baf855c4a5",
+    "questionId": "q048",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R006": {
+    "key": "f75b345ef3a1",
+    "questionId": "q013",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R007": {
+    "key": "aefc649f2743",
+    "questionId": "q050",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R008": {
+    "key": "a62a2219b875",
+    "questionId": "q049",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R009": {
+    "key": "353446ff4296",
+    "questionId": "q046",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R010": {
+    "key": "99233e1058fc",
+    "questionId": "q057",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R011": {
+    "key": "56818f19a646",
+    "questionId": "q033",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R012": {
+    "key": "33c51b2714d8",
+    "questionId": "q054",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R013": {
+    "key": "abdce5ae4462",
+    "questionId": "q022",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R014": {
+    "key": "d6a600221a42",
+    "questionId": "q047",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R015": {
+    "key": "db96f0b96526",
+    "questionId": "q059",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R016": {
+    "key": "3799983f6f35",
+    "questionId": "q040",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R017": {
+    "key": "0b444fd0af3d",
+    "questionId": "q024",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R018": {
+    "key": "c3270c724a22",
+    "questionId": "q044",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R019": {
+    "key": "1abf75d77e7a",
+    "questionId": "q004",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R020": {
+    "key": "30f819c9484b",
+    "questionId": "q053",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R021": {
+    "key": "a2ee76521939",
+    "questionId": "q040",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R022": {
+    "key": "5f8d4d988fc6",
+    "questionId": "q056",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R023": {
+    "key": "172c4050235d",
+    "questionId": "q055",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R024": {
+    "key": "493636051147",
+    "questionId": "q057",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R025": {
+    "key": "5608bd01c4b0",
+    "questionId": "q008",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R026": {
+    "key": "7b249310b489",
+    "questionId": "q060",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R027": {
+    "key": "1d6d5068a853",
+    "questionId": "q021",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R028": {
+    "key": "4fd5511f194d",
+    "questionId": "q052",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R029": {
+    "key": "65154383c290",
+    "questionId": "q030",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R030": {
+    "key": "7378bfab50d6",
+    "questionId": "q035",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R031": {
+    "key": "06cd5e218ba9",
+    "questionId": "q017",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R032": {
+    "key": "6d98f80fe750",
+    "questionId": "q006",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R033": {
+    "key": "ee7b62701fac",
+    "questionId": "q041",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R034": {
+    "key": "8d42a9f1755e",
+    "questionId": "q033",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R035": {
+    "key": "82b18d04bbdc",
+    "questionId": "q001",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R036": {
+    "key": "ead545dba819",
+    "questionId": "q038",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R037": {
+    "key": "2a09dfeaac7f",
+    "questionId": "q051",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R038": {
+    "key": "bb5d09c19c2d",
+    "questionId": "q010",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R039": {
+    "key": "f5c32e94bdbb",
+    "questionId": "q013",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R040": {
+    "key": "b67ef3c1354c",
+    "questionId": "q002",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R041": {
+    "key": "1b1bad4cfb7c",
+    "questionId": "q017",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R042": {
+    "key": "0f3f712dad0a",
+    "questionId": "q028",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R043": {
+    "key": "4bd7addf5d6d",
+    "questionId": "q037",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R044": {
+    "key": "d77cc93a850f",
+    "questionId": "q038",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R045": {
+    "key": "31a89a00890b",
+    "questionId": "q032",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R046": {
+    "key": "6f18069cc2b4",
+    "questionId": "q053",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R047": {
+    "key": "54db3127ae7a",
+    "questionId": "q054",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R048": {
+    "key": "25401aa7f1a8",
+    "questionId": "q060",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R049": {
+    "key": "02975e2184ac",
+    "questionId": "q015",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R050": {
+    "key": "9ba0e890f72e",
+    "questionId": "q058",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R051": {
+    "key": "383f6346dc19",
+    "questionId": "q046",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R052": {
+    "key": "934440688579",
+    "questionId": "q005",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R053": {
+    "key": "7c2ba780b01d",
+    "questionId": "q005",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R054": {
+    "key": "c02873c0831a",
+    "questionId": "q028",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R055": {
+    "key": "c7b9256dec1c",
+    "questionId": "q002",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R056": {
+    "key": "d000ba4b6142",
+    "questionId": "q058",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R057": {
+    "key": "4e8d13a32cf3",
+    "questionId": "q032",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R058": {
+    "key": "6577705177bd",
+    "questionId": "q036",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R059": {
+    "key": "e65a86194db6",
+    "questionId": "q023",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R060": {
+    "key": "e7f8b3bd4eb2",
+    "questionId": "q021",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R061": {
+    "key": "b5fadbf7a6ab",
+    "questionId": "q039",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R062": {
+    "key": "19a30e47e361",
+    "questionId": "q010",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R063": {
+    "key": "9dd7ddff913b",
+    "questionId": "q014",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R064": {
+    "key": "1cf62a503663",
+    "questionId": "q018",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R065": {
+    "key": "fbd385168088",
+    "questionId": "q055",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R066": {
+    "key": "1d506d5f451f",
+    "questionId": "q042",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R067": {
+    "key": "2ef5dbb2e42d",
+    "questionId": "q019",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R068": {
+    "key": "9deea16c3b3e",
+    "questionId": "q029",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R069": {
+    "key": "f4b134063b19",
+    "questionId": "q022",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R070": {
+    "key": "cdb1c17cff14",
+    "questionId": "q029",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R071": {
+    "key": "c344230ad82f",
+    "questionId": "q047",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R072": {
+    "key": "e93200e5a998",
+    "questionId": "q049",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R073": {
+    "key": "0121ee2a1761",
+    "questionId": "q056",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R074": {
+    "key": "852f1e7dae9c",
+    "questionId": "q031",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R075": {
+    "key": "e607aa946cf0",
+    "questionId": "q014",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R076": {
+    "key": "e652d210287d",
+    "questionId": "q027",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R077": {
+    "key": "3a6c23f1667a",
+    "questionId": "q008",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R078": {
+    "key": "d970effe51ec",
+    "questionId": "q009",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R079": {
+    "key": "d8763acc439a",
+    "questionId": "q045",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R080": {
+    "key": "fe57c2d5c4db",
+    "questionId": "q001",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R081": {
+    "key": "d396ef6f83ea",
+    "questionId": "q003",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R082": {
+    "key": "f056d9288476",
+    "questionId": "q043",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R083": {
+    "key": "1f497d90d971",
+    "questionId": "q034",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R084": {
+    "key": "a92419bd147a",
+    "questionId": "q026",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R085": {
+    "key": "98075f9bda63",
+    "questionId": "q048",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R086": {
+    "key": "1f5780c1d316",
+    "questionId": "q059",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R087": {
+    "key": "de6b34528bfa",
+    "questionId": "q052",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R088": {
+    "key": "b723c2fb3123",
+    "questionId": "q030",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R089": {
+    "key": "690d9eef0ecf",
+    "questionId": "q024",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R090": {
+    "key": "695c012a19aa",
+    "questionId": "q009",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R091": {
+    "key": "ec0226e7ce15",
+    "questionId": "q007",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R092": {
+    "key": "c33cdc1a135d",
+    "questionId": "q026",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R093": {
+    "key": "c3b76854297f",
+    "questionId": "q041",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R094": {
+    "key": "7bb9f34deff1",
+    "questionId": "q036",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R095": {
+    "key": "30da79cf2f84",
+    "questionId": "q007",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R096": {
+    "key": "3df40734e838",
+    "questionId": "q004",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R097": {
+    "key": "34d3c28bc49d",
+    "questionId": "q045",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R098": {
+    "key": "2d361c9fa486",
+    "questionId": "q042",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R099": {
+    "key": "ef934bb8b91f",
+    "questionId": "q012",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R100": {
+    "key": "7c91e103e93f",
+    "questionId": "q015",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R101": {
+    "key": "093ecc7bd7cf",
+    "questionId": "q019",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R102": {
+    "key": "05791d833001",
+    "questionId": "q011",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R103": {
+    "key": "783d73c15012",
+    "questionId": "q035",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R104": {
+    "key": "fbe788020bfa",
+    "questionId": "q023",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R105": {
+    "key": "6ef6653929ed",
+    "questionId": "q050",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R106": {
+    "key": "e70ef960b41a",
+    "questionId": "q003",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R107": {
+    "key": "b67fd6b59267",
+    "questionId": "q018",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R108": {
+    "key": "e296bfcb8b34",
+    "questionId": "q034",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R109": {
+    "key": "e3af9ae42b6c",
+    "questionId": "q016",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R110": {
+    "key": "93b308ff9648",
+    "questionId": "q011",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R111": {
+    "key": "a4c0f84a9496",
+    "questionId": "q016",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R112": {
+    "key": "3ad25caf322b",
+    "questionId": "q020",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R113": {
+    "key": "62508048a0cc",
+    "questionId": "q037",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R114": {
+    "key": "cdcbce1f21bc",
+    "questionId": "q025",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R115": {
+    "key": "fe8a16ec2eea",
+    "questionId": "q031",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R116": {
+    "key": "f8bc44dfc474",
+    "questionId": "q039",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R117": {
+    "key": "673a6ba08ed9",
+    "questionId": "q051",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R118": {
+    "key": "89afd5a890e8",
+    "questionId": "q012",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  },
+  "R119": {
+    "key": "53d9800723ea",
+    "questionId": "q025",
+    "approaches": [
+      "B-rag"
+    ]
+  },
+  "R120": {
+    "key": "9e250f6a2fdf",
+    "questionId": "q027",
+    "approaches": [
+      "C-por-fonte",
+      "D-mcp"
+    ]
+  }
+}

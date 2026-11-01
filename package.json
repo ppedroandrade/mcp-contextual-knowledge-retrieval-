@@ -18,6 +18,8 @@
     "ingest": "tsx src/indexing/ingest-cli.ts",
     "mcp:server": "tsx src/mcp/stdio.ts",
     "bench:generation": "tsx src/bench/generation.ts",
+    "eval:answers": "tsx src/bench/answers.ts",
+    "eval:human": "tsx src/bench/human.ts",
     "demo": "tsx src/api/server.ts"
   },
   "license": "MIT",

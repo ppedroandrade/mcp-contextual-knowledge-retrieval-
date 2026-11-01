@@ -5,3 +5,5 @@ Utilitários: gráficos, conferências e manutenção.
   (top-k e métricas iguais por pergunta; diferença de latência D − C).
 - `summarize-generation.ts <execução>`: recalcula com o código atual o resumo de uma
   execução de `bench:generation` (sem alterar os arquivos gravados).
+- `summarize-answers.ts <execução>`: recalcula com o código atual o resumo de uma execução
+  de `eval:answers` (sem alterar os arquivos gravados).

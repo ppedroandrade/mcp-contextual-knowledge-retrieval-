@@ -15,10 +15,15 @@ export interface Completion {
   truncated: boolean;
 }
 
+export interface CompletionOptions {
+  /** JSON Schema que a resposta deve seguir (saída estruturada, usada pelo juiz). */
+  format?: Record<string, unknown>;
+}
+
 /** Contrato dos provedores de LLM. B, C e D usam o mesmo provedor, prompt e contexto. */
 export interface LlmProvider {
   readonly name: string;
-  complete(messages: ChatMessage[]): Promise<Completion>;
+  complete(messages: ChatMessage[], options?: CompletionOptions): Promise<Completion>;
   /** Metadados para o registro do ambiente (modelo, digest, opções). */
   describe(): Promise<Record<string, unknown>>;
 }

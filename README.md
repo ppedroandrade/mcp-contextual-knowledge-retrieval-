@@ -13,8 +13,8 @@ C existe para separar o efeito do protocolo (C × D) do efeito da estratégia de
 Stack: Node.js 22 + TypeScript. Status atual em [STATUS.md](STATUS.md);
 arquitetura em [docs/arquitetura.md](docs/arquitetura.md).
 
-> Em construção: as quatro abordagens, o servidor MCP e a geração de respostas existem;
-> avaliação das respostas e estatística ainda não. O que está pronto e testado está no
+> Em construção: as quatro abordagens, o servidor MCP, a geração e a avaliação das
+> respostas existem; a estatística ainda não. O que está pronto e testado está no
 > [STATUS.md](STATUS.md).
 
 ## Requisitos
@@ -39,6 +39,10 @@ npm run test:integration                       # pgvector contra a busca exata e
 npm run ingest                                 # indexa docs, chamados e incidentes no pgvector
 npm run bench:retrieval -- --approaches A,B,C,D  # métricas e latência no conjunto dev
 npm run bench:generation -- --approaches B,C,D   # recuperação + geração (A não gera resposta)
+docker compose exec ollama ollama pull qwen3.5:4b  # juiz da avaliação (ADR 007)
+npm run eval:answers -- --run <execução da geração> --out <id>  # regra dos fatos + juiz
+npm run eval:human -- --run <execução da geração> --out <id>    # planilha cega para avaliadores
+npm run eval:human -- --import <id> --ratings a.csv,b.csv       # importa as notas humanas
 npm run mcp:server                             # servidor MCP via stdio (para Inspector ou outro host)
 
 # sem Docker (só para conferir o pipeline; embedding NÃO semântico, LLM simulado):
@@ -74,5 +78,5 @@ results/     resultados de execuções reais
 
 Medições de latência: computador na tomada e com a tampa aberta (o `environment.json` de
 cada execução grava a fonte de energia). Ao trocar de LLM no Ollama, descarregue o anterior
-com `docker compose exec ollama ollama stop <modelo>`: a VM do Docker tem pouca memória
-(ADR 003).
+com `docker compose exec ollama ollama stop <modelo>` e espere `curl localhost:11434/api/ps`
+voltar vazio: a VM do Docker tem pouca memória (ADR 003 e 007).
