@@ -60,6 +60,7 @@ npm run demo                                   # API + UI de demonstração em h
 npm run demo -- --avaliacao <planilha>         # avaliação humana cega na UI (só Node); notas em avaliacoes-ui/
 npm run assistente -- --exemplo                # assistente da empresa em http://127.0.0.1:3100 (fora das métricas, ADR 012)
 npx tsx scripts/compare-c-d.ts <id>            # confere C = D e D − C numa execução
+npx tsx scripts/recalculo-mediana.ts            # latência com a mediana usual (ADR 016), em results/recalculos/, sem regravar results/runs/
 npm run stats -- --run <id> [--style parafraseada]  # Wilcoxon + Holm + bootstrap (e Mann-Whitney) numa execução, inclusive a planilha com notas humanas (ADR 008)
 npm run eval:answers -- --run <geração> --out <id>   # regra dos fatos + juiz (ADR 007)
 npm run eval:human -- --run <geração> --out <id>     # planilha cega; --import <id> --ratings a.csv,b.csv

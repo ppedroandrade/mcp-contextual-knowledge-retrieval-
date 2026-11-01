@@ -10,7 +10,8 @@ pergunta, e o Mann-Whitney U (amostras independentes) ignora esse pareamento
 **Decisão.** `src/evaluation/stats.ts`, `src/evaluation/compare.ts` e `npm run stats -- --run <id>`:
 
 1. **Unidade:** a pergunta. Latência por pergunta = mediana das rodadas medidas (a mesma dos
-   resumos do bench); métricas de recuperação só nas perguntas com resposta; notas das
+   resumos do bench; mediana usual, com n par a média dos dois centrais — corrigido depois da
+   execução final, ADR 016); métricas de recuperação só nas perguntas com resposta; notas das
    respostas por item distinto, copiadas para todas as configurações que deram a resposta
    (C e D, ADR 007).
 2. **Teste principal:** Wilcoxon de postos sinalizados, pareado e bilateral, sobre as

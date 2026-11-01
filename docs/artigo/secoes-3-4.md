@@ -1,5 +1,12 @@
 # Artigo: seções 3 (Metodologia) e 4 (Resultados) — rascunho
 
+> **Rascunho histórico, substituído pelo artigo (v4, `TCC2_Artigo_Pedro_Salvaro_v4.docx` na
+> pasta do projeto).** Os números de latência da recuperação no `heldout` citados aqui
+> (113 ms, +112,6 ms, D × C +1,8 ms, p = 0,656 etc.) são os publicados na v3, calculados com a
+> mediana pelo central superior; os valores corrigidos, posteriores ao experimento, estão em
+> `results/recalculos/2026-11-01-mediana-usual/recalculo.md` (ADR 016). As leituras sobre a H3
+> e a avaliação humana foram moderadas no artigo v4.
+
 Situação: a seção 3 descreve o que está **implementado** e o protocolo fixado (ADR 010 e 011).
 A seção 4 (4.1 a 4.4) está **redigida** com os números da execução final de 01/11/2026 e da
 avaliação humana por consenso (`results/artigo/tabelas-2026-11-01.md`); falta a 4.5 (ameaças).
@@ -46,9 +53,11 @@ evidência é de 0,554 nas literais e 0,232 nas parafraseadas (`scripts/lexical-
 
 Node.js 22 e TypeScript; PostgreSQL 16 com pgvector; embeddings `bge-m3` e gerador
 `qwen3:4b-instruct-2507` (quantização Q4_K_M) via Ollama local, temperatura 0, semente fixa;
-SDK oficial do MCP em TypeScript, transporte stdio. Cada configuração devolve as 50 unidades
-mais bem pontuadas; as métricas usam k = 5, e o gerador recebe os mesmos 5 trechos com um
-prompt fixo que exige citação.
+SDK oficial do MCP em TypeScript, transporte stdio. No benchmark de recuperação, cada
+configuração devolve 50 unidades; P/R/MRR/nDCG@5 usam os 5 primeiros documentos distintos dessa
+lista e ER@5/completas@5, as 5 primeiras unidades. No benchmark de geração, a busca pede
+diretamente 5 unidades, que o gerador recebe com um prompt fixo que exige citação
+(`docs/metodologia.md`, seção 2.1).
 
 ### 3.4 Medidas
 

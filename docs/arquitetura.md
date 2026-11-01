@@ -55,6 +55,7 @@ flowchart LR
 | 13 | Interface Nexo | visão geral, biblioteca e consulta; HTML/CSS/JS com verificação de UI em Playwright | [013](decisoes/013-interface-nexo.md) |
 | 14 | Conversa do assistente | o LLM decide buscar (tool calling); busca garantida fora de cumprimentos e pedidos sobre a resposta anterior | [014](decisoes/014-conversa-do-assistente.md) |
 | 15 | Docker | `docker compose up -d` sobe banco, Ollama, modelos e o Nexo; medições do TCC só com banco e Ollama | [015](decisoes/015-docker-tudo-junto.md) |
+| 16 | Mediana usual | uma única mediana (média dos centrais com n par) no bench, na estatística e nos scripts; correção **posterior** à execução final, recálculo em `results/recalculos/` | [016](decisoes/016-mediana-usual.md) |
 
 Metodologia e métricas: [metodologia.md](metodologia.md). Corpus: [corpus.md](corpus.md).
 O LLM foi fixado em 31/10/2026, depois de um piloto com três modelos (ADR 003).
