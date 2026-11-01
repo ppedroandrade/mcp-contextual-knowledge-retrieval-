@@ -1,0 +1,980 @@
+{
+  "geradoEm": "2026-11-01T04:20:58.661Z",
+  "gitCommit": "2042154018d097310ff8b5e33a34bc97c9099fae",
+  "gitDirty": false,
+  "node": "v22.23.4",
+  "execucao": "2026-11-01-politicas-recuperacao",
+  "tipo": "bench:retrieval",
+  "commitDaExecucao": "2042154018d097310ff8b5e33a34bc97c9099fae",
+  "conjunto": "policies",
+  "estilo": null,
+  "metodo": {
+    "teste": "Wilcoxon pareado bilateral (exato se n ≤ 50 sem empates; normal com correção de empates, sem correção de continuidade); diferenças nulas descartadas",
+    "correcao": "Holm, dentro de cada medida, sobre as comparações feitas",
+    "ic": "bootstrap percentil das diferenças por pergunta, 10000 reamostragens, semente 20261031, 95%",
+    "complementar": "Mann-Whitney U bilateral, sem pareamento (TCC 1), com Holm na mesma família",
+    "alfa": 0.05
+  },
+  "comparacoes": [
+    {
+      "measure": "latência da recuperação (ms)",
+      "pair": "D × A",
+      "n": 15,
+      "estimator": "median",
+      "first": 109.83466699999917,
+      "second": 0.22775000000183354,
+      "difference": {
+        "estimate": 109.71983399999954,
+        "low": 106.32470900000408,
+        "high": 128.07870799999728,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 15,
+        "zeros": 0,
+        "wPlus": 120,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 0.00006103515625,
+        "method": "exato",
+        "rankBiserial": 1,
+        "pHolm": 0.000244140625
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 225,
+        "z": 4.645543592392305,
+        "p": 0.0000033918214784646616,
+        "method": "normal",
+        "cliffsDelta": 1,
+        "pHolm": 0.000013567285913858646
+      },
+      "significant": true,
+      "reading": "D pior que A (p Holm = 0.00024)"
+    },
+    {
+      "measure": "latência da recuperação (ms)",
+      "pair": "D × B",
+      "n": 15,
+      "estimator": "median",
+      "first": 109.83466699999917,
+      "second": 25.765917000000627,
+      "difference": {
+        "estimate": 83.8658749999995,
+        "low": 73.06666699999914,
+        "high": 87.28416699999798,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 15,
+        "zeros": 0,
+        "wPlus": 120,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 0.00006103515625,
+        "method": "exato",
+        "rankBiserial": 1,
+        "pHolm": 0.000244140625
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 225,
+        "z": 4.645543592392305,
+        "p": 0.0000033918214784646616,
+        "method": "normal",
+        "cliffsDelta": 1,
+        "pHolm": 0.000013567285913858646
+      },
+      "significant": true,
+      "reading": "D pior que B (p Holm = 0.00024)"
+    },
+    {
+      "measure": "latência da recuperação (ms)",
+      "pair": "C × B",
+      "n": 15,
+      "estimator": "median",
+      "first": 100.83733300000313,
+      "second": 25.765917000000627,
+      "difference": {
+        "estimate": 71.88391599999886,
+        "low": 66.8875420000004,
+        "high": 95.875,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 15,
+        "zeros": 0,
+        "wPlus": 120,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 0.00006103515625,
+        "method": "exato",
+        "rankBiserial": 1,
+        "pHolm": 0.000244140625
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 225,
+        "z": 4.645543592392305,
+        "p": 0.0000033918214784646616,
+        "method": "normal",
+        "cliffsDelta": 1,
+        "pHolm": 0.000013567285913858646
+      },
+      "significant": true,
+      "reading": "C pior que B (p Holm = 0.00024)"
+    },
+    {
+      "measure": "latência da recuperação (ms)",
+      "pair": "D × C",
+      "n": 15,
+      "estimator": "median",
+      "first": 109.83466699999917,
+      "second": 100.83733300000313,
+      "difference": {
+        "estimate": -1.3317920000008598,
+        "low": -7.259249999999156,
+        "high": 8.997333999996044,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 15,
+        "zeros": 0,
+        "wPlus": 66,
+        "wMinus": 54,
+        "statistic": 54,
+        "z": null,
+        "p": 0.76153564453125,
+        "method": "exato",
+        "rankBiserial": 0.1,
+        "pHolm": 0.76153564453125
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 122,
+        "z": 0.3733026101029531,
+        "p": 0.7089232293026962,
+        "method": "normal",
+        "cliffsDelta": 0.08444444444444454,
+        "pHolm": 0.7089232293026962
+      },
+      "significant": false,
+      "reading": "sem diferença significativa entre D e C (p Holm = 0.76)"
+    },
+    {
+      "measure": "R@5",
+      "pair": "D × A",
+      "n": 15,
+      "estimator": "mean",
+      "first": 1,
+      "second": 1,
+      "difference": {
+        "estimate": 0,
+        "low": 0,
+        "high": 0,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 0,
+        "zeros": 15,
+        "wPlus": 0,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 1,
+        "method": "sem diferenças",
+        "rankBiserial": 0,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 112.5,
+        "z": 0,
+        "p": 1,
+        "method": "normal",
+        "cliffsDelta": 0,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "D e A iguais em todas as perguntas"
+    },
+    {
+      "measure": "R@5",
+      "pair": "D × B",
+      "n": 15,
+      "estimator": "mean",
+      "first": 1,
+      "second": 1,
+      "difference": {
+        "estimate": 0,
+        "low": 0,
+        "high": 0,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 0,
+        "zeros": 15,
+        "wPlus": 0,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 1,
+        "method": "sem diferenças",
+        "rankBiserial": 0,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 112.5,
+        "z": 0,
+        "p": 1,
+        "method": "normal",
+        "cliffsDelta": 0,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "D e B iguais em todas as perguntas"
+    },
+    {
+      "measure": "R@5",
+      "pair": "C × B",
+      "n": 15,
+      "estimator": "mean",
+      "first": 1,
+      "second": 1,
+      "difference": {
+        "estimate": 0,
+        "low": 0,
+        "high": 0,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 0,
+        "zeros": 15,
+        "wPlus": 0,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 1,
+        "method": "sem diferenças",
+        "rankBiserial": 0,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 112.5,
+        "z": 0,
+        "p": 1,
+        "method": "normal",
+        "cliffsDelta": 0,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "C e B iguais em todas as perguntas"
+    },
+    {
+      "measure": "R@5",
+      "pair": "D × C",
+      "n": 15,
+      "estimator": "mean",
+      "first": 1,
+      "second": 1,
+      "difference": {
+        "estimate": 0,
+        "low": 0,
+        "high": 0,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 0,
+        "zeros": 15,
+        "wPlus": 0,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 1,
+        "method": "sem diferenças",
+        "rankBiserial": 0,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 112.5,
+        "z": 0,
+        "p": 1,
+        "method": "normal",
+        "cliffsDelta": 0,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "D e C iguais em todas as perguntas"
+    },
+    {
+      "measure": "MRR@5",
+      "pair": "D × A",
+      "n": 15,
+      "estimator": "mean",
+      "first": 1,
+      "second": 0.9666666666666667,
+      "difference": {
+        "estimate": 0.03333333333333333,
+        "low": 0,
+        "high": 0.1,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 1,
+        "zeros": 14,
+        "wPlus": 1,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 1,
+        "method": "exato",
+        "rankBiserial": 1,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 120,
+        "z": 0.9333333333333333,
+        "p": 0.35064789904922455,
+        "method": "normal",
+        "cliffsDelta": 0.06666666666666665,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "sem diferença significativa entre D e A (p Holm = 1.0)"
+    },
+    {
+      "measure": "MRR@5",
+      "pair": "D × B",
+      "n": 15,
+      "estimator": "mean",
+      "first": 1,
+      "second": 1,
+      "difference": {
+        "estimate": 0,
+        "low": 0,
+        "high": 0,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 0,
+        "zeros": 15,
+        "wPlus": 0,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 1,
+        "method": "sem diferenças",
+        "rankBiserial": 0,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 112.5,
+        "z": 0,
+        "p": 1,
+        "method": "normal",
+        "cliffsDelta": 0,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "D e B iguais em todas as perguntas"
+    },
+    {
+      "measure": "MRR@5",
+      "pair": "C × B",
+      "n": 15,
+      "estimator": "mean",
+      "first": 1,
+      "second": 1,
+      "difference": {
+        "estimate": 0,
+        "low": 0,
+        "high": 0,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 0,
+        "zeros": 15,
+        "wPlus": 0,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 1,
+        "method": "sem diferenças",
+        "rankBiserial": 0,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 112.5,
+        "z": 0,
+        "p": 1,
+        "method": "normal",
+        "cliffsDelta": 0,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "C e B iguais em todas as perguntas"
+    },
+    {
+      "measure": "MRR@5",
+      "pair": "D × C",
+      "n": 15,
+      "estimator": "mean",
+      "first": 1,
+      "second": 1,
+      "difference": {
+        "estimate": 0,
+        "low": 0,
+        "high": 0,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 0,
+        "zeros": 15,
+        "wPlus": 0,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 1,
+        "method": "sem diferenças",
+        "rankBiserial": 0,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 112.5,
+        "z": 0,
+        "p": 1,
+        "method": "normal",
+        "cliffsDelta": 0,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "D e C iguais em todas as perguntas"
+    },
+    {
+      "measure": "nDCG@5",
+      "pair": "D × A",
+      "n": 15,
+      "estimator": "mean",
+      "first": 0.9946480526098791,
+      "second": 0.9753953169047639,
+      "difference": {
+        "estimate": 0.019252735705115334,
+        "low": -0.01605584217036249,
+        "high": 0.07381404928570849,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 2,
+        "zeros": 13,
+        "wPlus": 2,
+        "wMinus": 1,
+        "statistic": 1,
+        "z": null,
+        "p": 1,
+        "method": "exato",
+        "rankBiserial": 0.3333333333333333,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 113,
+        "z": 0,
+        "p": 1,
+        "method": "normal",
+        "cliffsDelta": 0.004444444444444473,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "sem diferença significativa entre D e A (p Holm = 1.0)"
+    },
+    {
+      "measure": "nDCG@5",
+      "pair": "D × B",
+      "n": 15,
+      "estimator": "mean",
+      "first": 0.9946480526098791,
+      "second": 0.9736517024140567,
+      "difference": {
+        "estimate": 0.02099635019582229,
+        "low": 0,
+        "high": 0.047344647781765406,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 3,
+        "zeros": 12,
+        "wPlus": 6,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 0.25,
+        "method": "exato",
+        "rankBiserial": 1,
+        "pHolm": 0.75
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 129,
+        "z": 1.1232899568554402,
+        "p": 0.26131438538308693,
+        "method": "normal",
+        "cliffsDelta": 0.14666666666666672,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "sem diferença significativa entre D e B (p Holm = 0.75)"
+    },
+    {
+      "measure": "nDCG@5",
+      "pair": "C × B",
+      "n": 15,
+      "estimator": "mean",
+      "first": 0.9946480526098791,
+      "second": 0.9736517024140567,
+      "difference": {
+        "estimate": 0.02099635019582229,
+        "low": 0,
+        "high": 0.047344647781765406,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 3,
+        "zeros": 12,
+        "wPlus": 6,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 0.25,
+        "method": "exato",
+        "rankBiserial": 1,
+        "pHolm": 0.75
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 129,
+        "z": 1.1232899568554402,
+        "p": 0.26131438538308693,
+        "method": "normal",
+        "cliffsDelta": 0.14666666666666672,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "sem diferença significativa entre C e B (p Holm = 0.75)"
+    },
+    {
+      "measure": "nDCG@5",
+      "pair": "D × C",
+      "n": 15,
+      "estimator": "mean",
+      "first": 0.9946480526098791,
+      "second": 0.9946480526098791,
+      "difference": {
+        "estimate": 0,
+        "low": 0,
+        "high": 0,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 0,
+        "zeros": 15,
+        "wPlus": 0,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 1,
+        "method": "sem diferenças",
+        "rankBiserial": 0,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 112.5,
+        "z": -0.0479748611419283,
+        "p": 1,
+        "method": "normal",
+        "cliffsDelta": 0,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "D e C iguais em todas as perguntas"
+    },
+    {
+      "measure": "ER@5",
+      "pair": "D × A",
+      "n": 15,
+      "estimator": "mean",
+      "first": 0.9222222222222223,
+      "second": 0.9111111111111111,
+      "difference": {
+        "estimate": 0.011111111111111117,
+        "low": -0.12222222222222222,
+        "high": 0.17777777777777778,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 3,
+        "zeros": 12,
+        "wPlus": 3,
+        "wMinus": 3,
+        "statistic": 3,
+        "z": null,
+        "p": 1,
+        "method": "exato",
+        "rankBiserial": 0,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 112.5,
+        "z": -0.03509163013181143,
+        "p": 1,
+        "method": "normal",
+        "cliffsDelta": 0,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "sem diferença significativa entre D e A (p Holm = 1.0)"
+    },
+    {
+      "measure": "ER@5",
+      "pair": "D × B",
+      "n": 15,
+      "estimator": "mean",
+      "first": 0.9222222222222223,
+      "second": 0.888888888888889,
+      "difference": {
+        "estimate": 0.03333333333333333,
+        "low": 0,
+        "high": 0.1,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 1,
+        "zeros": 14,
+        "wPlus": 1,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 1,
+        "method": "exato",
+        "rankBiserial": 1,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 119.5,
+        "z": 0.41578212989671187,
+        "p": 0.6775694147691373,
+        "method": "normal",
+        "cliffsDelta": 0.06222222222222218,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "sem diferença significativa entre D e B (p Holm = 1.0)"
+    },
+    {
+      "measure": "ER@5",
+      "pair": "C × B",
+      "n": 15,
+      "estimator": "mean",
+      "first": 0.9222222222222223,
+      "second": 0.888888888888889,
+      "difference": {
+        "estimate": 0.03333333333333333,
+        "low": 0,
+        "high": 0.1,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 1,
+        "zeros": 14,
+        "wPlus": 1,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 1,
+        "method": "exato",
+        "rankBiserial": 1,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 119.5,
+        "z": 0.41578212989671187,
+        "p": 0.6775694147691373,
+        "method": "normal",
+        "cliffsDelta": 0.06222222222222218,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "sem diferença significativa entre C e B (p Holm = 1.0)"
+    },
+    {
+      "measure": "ER@5",
+      "pair": "D × C",
+      "n": 15,
+      "estimator": "mean",
+      "first": 0.9222222222222223,
+      "second": 0.9222222222222223,
+      "difference": {
+        "estimate": 0,
+        "low": 0,
+        "high": 0,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 0,
+        "zeros": 15,
+        "wPlus": 0,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 1,
+        "method": "sem diferenças",
+        "rankBiserial": 0,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 112.5,
+        "z": -0.03511400286607768,
+        "p": 1,
+        "method": "normal",
+        "cliffsDelta": 0,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "D e C iguais em todas as perguntas"
+    },
+    {
+      "measure": "completas@5",
+      "pair": "D × A",
+      "n": 15,
+      "estimator": "mean",
+      "first": 0.8666666666666667,
+      "second": 0.8666666666666667,
+      "difference": {
+        "estimate": 0,
+        "low": -0.2,
+        "high": 0.2,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 2,
+        "zeros": 13,
+        "wPlus": 1.5,
+        "wMinus": 1.5,
+        "statistic": 1.5,
+        "z": 0,
+        "p": 1,
+        "method": "normal",
+        "rankBiserial": 0,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 112.5,
+        "z": -0.035203923635246104,
+        "p": 1,
+        "method": "normal",
+        "cliffsDelta": 0,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "sem diferença significativa entre D e A (p Holm = 1.0)"
+    },
+    {
+      "measure": "completas@5",
+      "pair": "D × B",
+      "n": 15,
+      "estimator": "mean",
+      "first": 0.8666666666666667,
+      "second": 0.8,
+      "difference": {
+        "estimate": 0.06666666666666667,
+        "low": 0,
+        "high": 0.2,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 1,
+        "zeros": 14,
+        "wPlus": 1,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 1,
+        "method": "exato",
+        "rankBiserial": 1,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 120,
+        "z": 0.4495528642749124,
+        "p": 0.6530328493429918,
+        "method": "normal",
+        "cliffsDelta": 0.06666666666666665,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "sem diferença significativa entre D e B (p Holm = 1.0)"
+    },
+    {
+      "measure": "completas@5",
+      "pair": "C × B",
+      "n": 15,
+      "estimator": "mean",
+      "first": 0.8666666666666667,
+      "second": 0.8,
+      "difference": {
+        "estimate": 0.06666666666666667,
+        "low": 0,
+        "high": 0.2,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 1,
+        "zeros": 14,
+        "wPlus": 1,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 1,
+        "method": "exato",
+        "rankBiserial": 1,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 120,
+        "z": 0.4495528642749124,
+        "p": 0.6530328493429918,
+        "method": "normal",
+        "cliffsDelta": 0.06666666666666665,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "sem diferença significativa entre C e B (p Holm = 1.0)"
+    },
+    {
+      "measure": "completas@5",
+      "pair": "D × C",
+      "n": 15,
+      "estimator": "mean",
+      "first": 0.8666666666666667,
+      "second": 0.8666666666666667,
+      "difference": {
+        "estimate": 0,
+        "low": 0,
+        "high": 0,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 0,
+        "zeros": 15,
+        "wPlus": 0,
+        "wMinus": 0,
+        "statistic": 0,
+        "z": null,
+        "p": 1,
+        "method": "sem diferenças",
+        "rankBiserial": 0,
+        "pHolm": 1
+      },
+      "mannWhitney": {
+        "n1": 15,
+        "n2": 15,
+        "u": 112.5,
+        "z": -0.035203923635246104,
+        "p": 1,
+        "method": "normal",
+        "cliffsDelta": 0,
+        "pHolm": 1
+      },
+      "significant": false,
+      "reading": "D e C iguais em todas as perguntas"
+    }
+  ]
+}

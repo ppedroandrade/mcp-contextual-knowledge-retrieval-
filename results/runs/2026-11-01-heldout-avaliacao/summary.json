@@ -1,0 +1,60 @@
+{
+  "itens": 79,
+  "itensComJuiz": 44,
+  "porAbordagem": {
+    "B-rag": {
+      "perguntas": 40,
+      "regraFatosLiterais": 0.5,
+      "regraCoberturaTermos": 0.5266203703703703,
+      "regraAcerto": 0.475,
+      "rubricaAcerto": 0.625,
+      "correcao": 3.5,
+      "completude": 3.375,
+      "sustentacao": 4.95
+    },
+    "C-por-fonte": {
+      "perguntas": 40,
+      "regraFatosLiterais": 0.5277777777777778,
+      "regraCoberturaTermos": 0.542824074074074,
+      "regraAcerto": 0.55,
+      "rubricaAcerto": 0.575,
+      "correcao": 3.375,
+      "completude": 3.3,
+      "sustentacao": 4.85
+    },
+    "D-mcp": {
+      "perguntas": 40,
+      "regraFatosLiterais": 0.5277777777777778,
+      "regraCoberturaTermos": 0.542824074074074,
+      "regraAcerto": 0.55,
+      "rubricaAcerto": 0.575,
+      "correcao": 3.375,
+      "completude": 3.3,
+      "sustentacao": 4.85
+    }
+  },
+  "juizXRegra": {
+    "itens": 44,
+    "concordancia": 0.8409090909090909,
+    "kappa": 0.4615384615384618,
+    "regraAcertaJuizNao": [],
+    "regraErraJuizSim": [
+      "6d1070e9c715",
+      "fe7ad3d66fab",
+      "de6f66b44476",
+      "e0996ef597f1",
+      "b4bf9cf5ec0c",
+      "855ee4289225",
+      "08cb21baad93"
+    ]
+  },
+  "repetibilidade": {
+    "repeticoes": 2,
+    "itensIdenticos": 1,
+    "alfaOrdinal": {
+      "correcao": 1,
+      "completude": 1,
+      "sustentacao": 1
+    }
+  }
+}

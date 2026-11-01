@@ -1,0 +1,5716 @@
+[
+  {
+    "questionId": "h001",
+    "type": "unanswerable",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 760,
+      "outputTokens": 15,
+      "loadMs": 3583.524669,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-005#linha-do-tempo",
+        "T-1012#resolucao",
+        "DOC-013#incidentes-anteriores",
+        "INC-2026-016#linha-do-tempo",
+        "T-1031#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      88.60241600009613,
+      88.09670800017193,
+      103.99820900009945,
+      84.6875,
+      122.99254200002179
+    ],
+    "totalMs": [
+      4315.459250000073,
+      4479.294833000051,
+      4867.106209000107,
+      4296.270666999742,
+      4621.826917000115
+    ],
+    "loadMs": [
+      0.34275,
+      0.429417,
+      0.3645,
+      0.373458,
+      0.376583
+    ],
+    "toolMs": [
+      87.56858299998567,
+      86.701124999905,
+      103.12254200037569,
+      83.16512499982491,
+      121.9347909996286
+    ]
+  },
+  {
+    "questionId": "h002",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 984,
+      "outputTokens": 15,
+      "loadMs": 1.821709,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1043#descricao",
+        "INC-2026-020#resumo",
+        "DOC-016#incidentes-anteriores",
+        "T-1046#descricao",
+        "INC-2026-022#resumo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      88.35862499999348,
+      106.19845900009386,
+      146.93154200026765,
+      113.19179199961945,
+      84.87887500040233
+    ],
+    "totalMs": [
+      5436.1096670000115,
+      6049.333291999996,
+      6334.160667000338,
+      5738.83424999984,
+      6110.701458000112
+    ],
+    "loadMs": [
+      0.396,
+      1.1465,
+      0.377584,
+      0.375833,
+      0.341584
+    ],
+    "toolMs": [
+      87.6429590000771,
+      105.15470799989998,
+      146.1553750000894,
+      112.38983300002292,
+      83.88312499970198
+    ]
+  },
+  {
+    "questionId": "h003",
+    "type": "unanswerable",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 706,
+      "outputTokens": 15,
+      "loadMs": 0.401667,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-013#verificacao-de-saude",
+        "INC-2026-010#causa-raiz",
+        "T-1006#descricao",
+        "DOC-016#verificacao-de-saude",
+        "INC-2026-008#resumo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      83.33170800004154,
+      93.72858300013468,
+      71.54008299997076,
+      99.86504200007766,
+      77.11375000001863
+    ],
+    "totalMs": [
+      3808.7623750000494,
+      3813.8590000001714,
+      3817.630708000157,
+      3916.8432500003837,
+      3988.9535000002943
+    ],
+    "loadMs": [
+      0.352417,
+      0.343083,
+      0.327084,
+      0.344125,
+      0.376625
+    ],
+    "toolMs": [
+      82.66345900006127,
+      92.60129100014456,
+      70.88570800004527,
+      98.7542499997653,
+      76.34316699998453
+    ]
+  },
+  {
+    "questionId": "h004",
+    "type": "unanswerable",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 776,
+      "outputTokens": 15,
+      "loadMs": 0.407333,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1050#descricao",
+        "DOC-025#limites-e-observacoes",
+        "INC-2026-024#resumo",
+        "T-1060#descricao",
+        "DOC-006#visao-geral"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      74.22954200010281,
+      92.61791700008325,
+      172.128334000241,
+      76.54575000004843,
+      66.4228329998441
+    ],
+    "totalMs": [
+      4678.355042000068,
+      4682.734541999875,
+      4616.611792000011,
+      4231.447250000201,
+      4529.190207999665
+    ],
+    "loadMs": [
+      0.445917,
+      0.354916,
+      0.355625,
+      2.658792,
+      0.338833
+    ],
+    "toolMs": [
+      73.1345830000937,
+      91.09258299996145,
+      171.34975000005215,
+      75.9485829998739,
+      65.43754100007936
+    ]
+  },
+  {
+    "questionId": "h005",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 989,
+      "outputTokens": 15,
+      "loadMs": 0.444791,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1079#descricao",
+        "INC-2026-022#resumo",
+        "DOC-011#incidentes-anteriores",
+        "T-1024#descricao",
+        "INC-2026-020#resumo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      148.37254199991003,
+      125.45170899992809,
+      222.0125420000404,
+      110.71016700007021,
+      95.35825000004843
+    ],
+    "totalMs": [
+      6020.435375000001,
+      5912.956791999983,
+      6138.844250000082,
+      6069.327167000156,
+      6305.285416000057
+    ],
+    "loadMs": [
+      0.348625,
+      0.325792,
+      0.401208,
+      0.82425,
+      0.409375
+    ],
+    "toolMs": [
+      146.32558399997652,
+      124.06924999994226,
+      220.84054200025275,
+      109.40666700014845,
+      94.64191700005904
+    ]
+  },
+  {
+    "questionId": "h006",
+    "type": "unanswerable",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 809,
+      "outputTokens": 15,
+      "loadMs": 0.373833,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-015#resumo",
+        "DOC-024#limites-e-observacoes",
+        "T-1006#descricao",
+        "INC-2026-015#linha-do-tempo",
+        "T-1025#descricao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      114.38724999991246,
+      66.30400000000373,
+      64.90858300030231,
+      74.91179199982435,
+      67.06766599975526
+    ],
+    "totalMs": [
+      5110.581499999971,
+      5032.0630830000155,
+      4631.06799999997,
+      4456.646666999906,
+      4615.496165999677
+    ],
+    "loadMs": [
+      0.386916,
+      0.358792,
+      0.616667,
+      0.326542,
+      0.381958
+    ],
+    "toolMs": [
+      113.52079199999571,
+      65.59312499989755,
+      63.7426249999553,
+      73.67787500005215,
+      66.1769999996759
+    ]
+  },
+  {
+    "questionId": "h007",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 818,
+      "outputTokens": 15,
+      "loadMs": 0.364708,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-010#incidentes-anteriores",
+        "T-1053#resolucao",
+        "INC-2026-016#resumo",
+        "DOC-011#incidentes-anteriores",
+        "T-1008#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      143.29924999992363,
+      178.23620799998753,
+      123.4081250000745,
+      117.92637500027195,
+      93.07058300031349
+    ],
+    "totalMs": [
+      4798.534166999976,
+      4911.19779100013,
+      4769.172834000085,
+      4886.2675840002485,
+      4871.214458000381
+    ],
+    "loadMs": [
+      0.307084,
+      0.419292,
+      0.378791,
+      0.386375,
+      0.362209
+    ],
+    "toolMs": [
+      142.38749999995343,
+      177.1030000001192,
+      122.10970899974927,
+      117.20154100004584,
+      92.36770899966359
+    ]
+  },
+  {
+    "questionId": "h008",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 1019,
+      "outputTokens": 15,
+      "loadMs": 0.379625,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1076#descricao",
+        "DOC-015#incidentes-anteriores",
+        "INC-2026-024#resumo",
+        "T-1068#descricao",
+        "DOC-009#incidentes-anteriores"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      149.07954200007953,
+      131.3551659998484,
+      148.7122499998659,
+      343.08654200006276,
+      105.26587500004098
+    ],
+    "totalMs": [
+      6024.38525000005,
+      6164.680041000014,
+      6113.075790999923,
+      6711.056417000014,
+      6306.670832999982
+    ],
+    "loadMs": [
+      0.370167,
+      0.362125,
+      0.366584,
+      0.4375,
+      0.383
+    ],
+    "toolMs": [
+      148.0010000000475,
+      130.0542500000447,
+      147.72283399989828,
+      341.60845800023526,
+      104.20308300014585
+    ]
+  },
+  {
+    "questionId": "h009",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "O plantão do serviço afetado deveria ser acionado pelo canal #oncall-dados [DOC-014#escalonamento].",
+      "promptTokens": 877,
+      "outputTokens": 33,
+      "loadMs": 0.371125,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-004#linha-do-tempo",
+        "DOC-014#incidentes-anteriores",
+        "T-1016#descricao",
+        "INC-2026-004#resumo",
+        "DOC-014#escalonamento"
+      ],
+      "citedUnitIds": [
+        "DOC-014#escalonamento"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      95.27525000006426,
+      95.81095799989998,
+      99.45408300030977,
+      168.0113750002347,
+      95.3562090001069
+    ],
+    "totalMs": [
+      5860.295583000057,
+      5803.114124999847,
+      5791.202375000343,
+      5924.376000000164,
+      5499.180083999876
+    ],
+    "loadMs": [
+      0.349041,
+      1.478875,
+      0.365625,
+      0.312792,
+      1.700584
+    ],
+    "toolMs": [
+      94.57254200009629,
+      95.11104199988768,
+      98.33529100008309,
+      167.29383400036022,
+      94.25341700017452
+    ]
+  },
+  {
+    "questionId": "h010",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 743,
+      "outputTokens": 15,
+      "loadMs": 0.307542,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-011#rollback",
+        "T-1060#descricao",
+        "INC-2026-009#acoes",
+        "T-1050#descricao",
+        "DOC-012#rollback"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      105.67550000001211,
+      98.56224999995902,
+      91.62466700002551,
+      141.440834000241,
+      101.55262500001118
+    ],
+    "totalMs": [
+      4017.2638750000624,
+      4260.625999999931,
+      3990.6630420000292,
+      4103.3007920002565,
+      3886.3398749995977
+    ],
+    "loadMs": [
+      0.388,
+      0.353875,
+      1.112584,
+      0.386666,
+      0.352125
+    ],
+    "toolMs": [
+      104.20212500006892,
+      97.81054199999198,
+      90.27075000014156,
+      140.17262500012293,
+      100.82787499995902
+    ]
+  },
+  {
+    "questionId": "h011",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "As faturas do cliente Acme Logística passaram a ir para o e-mail financeiro@acmelogistica.example [T-1035#resolucao].",
+      "promptTokens": 762,
+      "outputTokens": 38,
+      "loadMs": 0.35925,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1035#descricao",
+        "INC-2026-006#resumo",
+        "DOC-007#visao-geral",
+        "T-1035#resolucao",
+        "INC-2026-006#linha-do-tempo"
+      ],
+      "citedUnitIds": [
+        "T-1035#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      96.88020799995866,
+      89.38308400008827,
+      114.3179999999702,
+      138.5944580002688,
+      102.41645800042897
+    ],
+    "totalMs": [
+      5279.547750000027,
+      4964.27970900014,
+      5487.410707999952,
+      5089.402250000276,
+      5377.151291000191
+    ],
+    "loadMs": [
+      0.365167,
+      0.318083,
+      0.396875,
+      0.383084,
+      0.34225
+    ],
+    "toolMs": [
+      96.06641700002365,
+      88.65291699999943,
+      113.33375000022352,
+      137.91520899999887,
+      101.68891600007191
+    ]
+  },
+  {
+    "questionId": "h012",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "A causa técnica do problema relatado pelo cliente Hotel Maré Alta em 08/07/2026 foi novas tentativas disparadas antes do timeout de 5 segundos do cliente terminar, o que resultou em webhooks duplicados [INC-2026-018#causa-raiz].",
+      "promptTokens": 940,
+      "outputTokens": 71,
+      "loadMs": 0.350334,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1059#descricao",
+        "INC-2026-018#causa-raiz",
+        "DOC-016#incidentes-anteriores",
+        "T-1008#descricao",
+        "INC-2026-022#resumo"
+      ],
+      "citedUnitIds": [
+        "INC-2026-018#causa-raiz"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      122.06133300007787,
+      99.89995800005272,
+      155.77570899995044,
+      119.28404199983925,
+      113.06387499999255
+    ],
+    "totalMs": [
+      7369.432041000109,
+      7464.827583000064,
+      7372.108208999969,
+      8256.719707999844,
+      7442.743625000119
+    ],
+    "loadMs": [
+      0.337833,
+      0.312167,
+      0.341667,
+      0.459792,
+      0.390334
+    ],
+    "toolMs": [
+      121.02483399992343,
+      98.90204200008884,
+      154.5030829999596,
+      118.35133300023153,
+      112.10220800014213
+    ]
+  },
+  {
+    "questionId": "h013",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "O tamanho máximo de uma exportação direta de relatório é 100 mil linhas [DOC-022#limites-e-observacoes].",
+      "promptTokens": 765,
+      "outputTokens": 35,
+      "loadMs": 0.358125,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-022#limites-e-observacoes",
+        "T-1016#descricao",
+        "INC-2026-011#resumo",
+        "DOC-022#passo-a-passo",
+        "T-1029#resolucao"
+      ],
+      "citedUnitIds": [
+        "DOC-022#limites-e-observacoes"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      94.54608300002292,
+      90.97729199985042,
+      74.27000000001863,
+      83.94891600031406,
+      111.48774999985471
+    ],
+    "totalMs": [
+      4994.669916999992,
+      5128.876791999908,
+      5083.279916000087,
+      5541.522875000257,
+      5203.032291000243
+    ],
+    "loadMs": [
+      1.205208,
+      0.381792,
+      0.376834,
+      0.433167,
+      2.393
+    ],
+    "toolMs": [
+      93.14912499999627,
+      89.96562499995343,
+      73.2100840001367,
+      83.43949999986216,
+      110.48191699991003
+    ]
+  },
+  {
+    "questionId": "h014",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 850,
+      "outputTokens": 15,
+      "loadMs": 0.304458,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1031#resolucao",
+        "INC-2026-020#resumo",
+        "DOC-009#incidentes-anteriores",
+        "T-1031#descricao",
+        "INC-2026-020#linha-do-tempo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      112.62187499995343,
+      79.8740420001559,
+      106.28037499962375,
+      103.03508299961686,
+      79.26862500002608
+    ],
+    "totalMs": [
+      5144.981499999994,
+      4621.802375000203,
+      5019.534790999722,
+      5406.945249999873,
+      4780.620041000191
+    ],
+    "loadMs": [
+      0.406708,
+      0.402584,
+      0.3415,
+      0.381875,
+      0.372292
+    ],
+    "toolMs": [
+      111.39874999993481,
+      78.52945800009184,
+      105.51349999988452,
+      102.13225000025705,
+      78.58824999956414
+    ]
+  },
+  {
+    "questionId": "h015",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 814,
+      "outputTokens": 15,
+      "loadMs": 0.383625,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-023#resumo",
+        "DOC-015#incidentes-anteriores",
+        "T-1076#resolucao",
+        "INC-2026-023#linha-do-tempo",
+        "T-1057#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      155.0908749999944,
+      211.1529590000864,
+      143.17499999981374,
+      169.19545899983495,
+      101.77325000008568
+    ],
+    "totalMs": [
+      4594.301083000028,
+      4796.007500000065,
+      4660.224291999824,
+      5064.724334000144,
+      4710.759291999973
+    ],
+    "loadMs": [
+      0.366625,
+      0.358416,
+      2.264333,
+      0.423125,
+      0.414208
+    ],
+    "toolMs": [
+      153.704458000022,
+      209.70475000003353,
+      142.38699999963865,
+      168.49779200041667,
+      100.79566700011492
+    ]
+  },
+  {
+    "questionId": "h016",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "O incidente durou 47 minutos [INC-2026-003#resumo]. Este tempo está alinhado com a linha do tempo que indica o início (05:32) e o encerramento (06:19) do incidente [INC-2026-003#linha-do-tempo].",
+      "promptTokens": 902,
+      "outputTokens": 79,
+      "loadMs": 2.114292,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-003#resumo",
+        "DOC-012#incidentes-anteriores",
+        "T-1059#descricao",
+        "INC-2026-003#linha-do-tempo",
+        "DOC-018#limites-e-observacoes"
+      ],
+      "citedUnitIds": [
+        "INC-2026-003#resumo",
+        "INC-2026-003#linha-do-tempo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      127.6521659999853,
+      103.33108399994671,
+      120.30262500001118,
+      194.2402079999447,
+      195.6400409997441
+    ],
+    "totalMs": [
+      6975.418457999942,
+      7034.851666999981,
+      7825.985000000335,
+      7706.984041000251,
+      7765.634415999986
+    ],
+    "loadMs": [
+      0.355583,
+      0.396791,
+      0.390667,
+      1.042541,
+      0.30925
+    ],
+    "toolMs": [
+      126.63354199996684,
+      102.26295799994841,
+      119.27325000008568,
+      193.53795800032094,
+      194.5349579998292
+    ]
+  },
+  {
+    "questionId": "h017",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "O que estava quebrado por trás da reclamação do cliente Clínica Vitalis em 18/06/2026 foi o serviço invoice-worker, devido à memória do Redis esgotada porque chaves de entrega foram gravadas sem TTL [T-1053#descricao][INC-2026-007#causa-raiz].",
+      "promptTokens": 905,
+      "outputTokens": 85,
+      "loadMs": 0.387584,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1053#descricao",
+        "INC-2026-007#causa-raiz",
+        "DOC-015#incidentes-anteriores",
+        "T-1040#descricao",
+        "INC-2026-001#causa-raiz"
+      ],
+      "citedUnitIds": [
+        "T-1053#descricao",
+        "INC-2026-007#causa-raiz"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      102.4692919999361,
+      103.22550000017509,
+      95.71670799981803,
+      106.79829100007191,
+      130.4627500004135
+    ],
+    "totalMs": [
+      8822.267749999999,
+      8072.901167000178,
+      7489.48987499997,
+      7880.016666000243,
+      8857.080083000008
+    ],
+    "loadMs": [
+      0.338167,
+      2.664334,
+      0.412,
+      0.351541,
+      0.368791
+    ],
+    "toolMs": [
+      101.41420800006017,
+      102.14874999993481,
+      95.01620800001547,
+      105.41966600017622,
+      129.75566599983722
+    ]
+  },
+  {
+    "questionId": "h018",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "A URL de ACS que deve ser passada ao cliente é https://auth.orbital.example/saml/acs [DOC-023#passo-a-passo].",
+      "promptTokens": 663,
+      "outputTokens": 37,
+      "loadMs": 0.43725,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-023#passo-a-passo",
+        "T-1055#resolucao",
+        "INC-2026-009#resumo",
+        "T-1041#resolucao",
+        "DOC-023#quando-usar"
+      ],
+      "citedUnitIds": [
+        "DOC-023#passo-a-passo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      226.047957999981,
+      87.64870799984783,
+      89.81962500000373,
+      153.95999999996275,
+      147.34345800010487
+    ],
+    "totalMs": [
+      4846.215207999921,
+      4355.952916999813,
+      4281.838417000137,
+      4664.6774589996785,
+      4684.134333000053
+    ],
+    "loadMs": [
+      0.392833,
+      0.371375,
+      0.4165,
+      0.368708,
+      0.438125
+    ],
+    "toolMs": [
+      224.44366599991918,
+      86.27620800002478,
+      88.47800000011921,
+      153.22270900011063,
+      146.21737500000745
+    ]
+  },
+  {
+    "questionId": "h019",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "A equipe que responde pelo componente que avisa os sistemas dos clientes sobre eventos é o Time Integrações [DOC-015#escalonamento]. Esse time é responsável pelo notification-service, que envia e-mails transacionais como faturas e avisos de cobrança [DOC-007#visao-geral].",
+      "promptTokens": 921,
+      "outputTokens": 74,
+      "loadMs": 0.466417,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-015#escalonamento",
+        "T-1059#descricao",
+        "INC-2026-015#linha-do-tempo",
+        "DOC-007#visao-geral",
+        "T-1024#descricao"
+      ],
+      "citedUnitIds": [
+        "DOC-015#escalonamento",
+        "DOC-007#visao-geral"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      89.81566700001713,
+      74.2963330000639,
+      71.31375000020489,
+      80.09950000001118,
+      78.70437500020489
+    ],
+    "totalMs": [
+      8097.845708000008,
+      8052.903542000102,
+      7194.547249999829,
+      7513.533667000011,
+      7346.361375000328
+    ],
+    "loadMs": [
+      0.324334,
+      0.359333,
+      0.393292,
+      0.324333,
+      0.378084
+    ],
+    "toolMs": [
+      89.04591600003187,
+      73.15837500011548,
+      70.64916699985042,
+      78.96391699975356,
+      77.8620410002768
+    ]
+  },
+  {
+    "questionId": "h020",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 612,
+      "outputTokens": 15,
+      "loadMs": 0.379833,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1033#resolucao",
+        "DOC-017#limites-e-observacoes",
+        "INC-2026-024#acoes",
+        "T-1037#resolucao",
+        "DOC-017#passo-a-passo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      97.91883300000336,
+      73.78087499993853,
+      68.66379099991173,
+      65.87608400033787,
+      65.58099999977276
+    ],
+    "totalMs": [
+      3332.4664999999804,
+      3358.335333999945,
+      3252.1132080000825,
+      3490.454209000338,
+      3386.5921249999665
+    ],
+    "loadMs": [
+      0.397084,
+      0.372375,
+      0.378375,
+      0.409417,
+      1.006584
+    ],
+    "toolMs": [
+      96.50916699995287,
+      72.76525000017136,
+      67.92941699968651,
+      64.66133300028741,
+      64.71250000037253
+    ]
+  },
+  {
+    "questionId": "h021",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "O compromisso de disponibilidade do payments-adapter é de 99,95% de disponibilidade mensal [DOC-003#confiabilidade]. Não há informação sobre prazos específicos de resposta ou mitigação para a integração com o gateway de cartão.",
+      "promptTokens": 839,
+      "outputTokens": 63,
+      "loadMs": 0.412542,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-003#confiabilidade",
+        "INC-2026-020#resumo",
+        "T-1043#descricao",
+        "INC-2026-020#linha-do-tempo",
+        "DOC-003#visao-geral"
+      ],
+      "citedUnitIds": [
+        "DOC-003#confiabilidade"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      103.81654199992772,
+      148.51979200006463,
+      125.88845800003037,
+      112.13154199998826,
+      256.62645799992606
+    ],
+    "totalMs": [
+      6448.982667000033,
+      6499.479083999991,
+      6449.675624999683,
+      6951.6647079996765,
+      6897.5125409998
+    ],
+    "loadMs": [
+      0.395917,
+      0.349709,
+      0.343209,
+      0.338666,
+      0.405125
+    ],
+    "toolMs": [
+      102.22670900006779,
+      147.06595900002867,
+      125.127208000049,
+      110.71925000008196,
+      255.98945799982175
+    ]
+  },
+  {
+    "questionId": "h022",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "No painel, você acessa Configurações > Chaves de API para criar uma nova credencial para integrar com a API [DOC-017#passo-a-passo].",
+      "promptTokens": 808,
+      "outputTokens": 41,
+      "loadMs": 0.397959,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-017#passo-a-passo",
+        "T-1041#descricao",
+        "INC-2026-015#causa-raiz",
+        "DOC-023#passo-a-passo",
+        "T-1033#descricao"
+      ],
+      "citedUnitIds": [
+        "DOC-017#passo-a-passo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      92.47858300001826,
+      95.15654199989513,
+      98.41649999981746,
+      152.42229100037366,
+      174.02687499998137
+    ],
+    "totalMs": [
+      5875.434041999979,
+      5460.066624999978,
+      5393.345207999926,
+      5398.743999999948,
+      6248.856167000253
+    ],
+    "loadMs": [
+      0.324792,
+      0.353208,
+      0.357208,
+      0.406208,
+      0.383416
+    ],
+    "toolMs": [
+      91.30775000003632,
+      94.27391700004227,
+      97.66516700014472,
+      151.21791600016877,
+      172.97633299976587
+    ]
+  },
+  {
+    "questionId": "h023",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "O artigo enviado foi \"Como exportar relatórios financeiros\" [T-1038#resolucao]. A exportação direta vai até 100 mil linhas [DOC-022#limites-e-observacoes].",
+      "promptTokens": 798,
+      "outputTokens": 56,
+      "loadMs": 0.384125,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1038#descricao",
+        "DOC-022#limites-e-observacoes",
+        "INC-2026-011#resumo",
+        "T-1038#resolucao",
+        "INC-2026-011#linha-do-tempo"
+      ],
+      "citedUnitIds": [
+        "T-1038#resolucao",
+        "DOC-022#limites-e-observacoes"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      124.38054199994076,
+      157.53616699995473,
+      153.2734169997275,
+      150.87825000006706,
+      174.31270800018683
+    ],
+    "totalMs": [
+      6213.004624999943,
+      5922.10158300004,
+      6461.645624999888,
+      6008.007207999937,
+      5970.2561250003055
+    ],
+    "loadMs": [
+      0.343708,
+      0.407208,
+      0.390292,
+      0.386917,
+      0.348791
+    ],
+    "toolMs": [
+      123.01895800000057,
+      156.0465410000179,
+      152.36695800023153,
+      149.9130409997888,
+      173.43495899997652
+    ]
+  },
+  {
+    "questionId": "h024",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 918,
+      "outputTokens": 15,
+      "loadMs": 1.168375,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-011#resumo",
+        "DOC-014#incidentes-anteriores",
+        "T-1016#descricao",
+        "INC-2026-011#linha-do-tempo",
+        "DOC-016#incidentes-anteriores"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      150.37283299991395,
+      111.50845899991691,
+      115.52887499984354,
+      121.73737500002608,
+      249.66829200042412
+    ],
+    "totalMs": [
+      5730.942832999979,
+      5362.394499999937,
+      5644.710709000006,
+      5294.585624999832,
+      5585.4768330003135
+    ],
+    "loadMs": [
+      0.379917,
+      0.359625,
+      0.335166,
+      0.367959,
+      0.380708
+    ],
+    "toolMs": [
+      148.91870799998287,
+      110.49699999997392,
+      114.55041699996218,
+      120.92316700005904,
+      248.67079200036824
+    ]
+  },
+  {
+    "questionId": "h025",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 733,
+      "outputTokens": 15,
+      "loadMs": 0.351875,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-011#rollback",
+        "T-1060#descricao",
+        "INC-2026-024#resumo",
+        "DOC-012#rollback",
+        "T-1060#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      223.3962499999907,
+      94.77224999992177,
+      116.48920799978077,
+      93.83208400011063,
+      104.35025000013411
+    ],
+    "totalMs": [
+      4307.819000000018,
+      3841.5677910000086,
+      4154.84833299974,
+      4109.403833999764,
+      4104.743999999948
+    ],
+    "loadMs": [
+      0.35225,
+      0.38125,
+      2.080166,
+      0.406334,
+      1.807
+    ],
+    "toolMs": [
+      222.37041599990334,
+      94.11195799987763,
+      115.1888330001384,
+      93.22004200005904,
+      103.35579099971801
+    ]
+  },
+  {
+    "questionId": "h026",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "A meta de nível de serviço do reporting-service é 99% dos relatórios entregues em até 30 minutos [DOC-006#confiabilidade].",
+      "promptTokens": 756,
+      "outputTokens": 38,
+      "loadMs": 0.361209,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-006#confiabilidade",
+        "INC-2026-019#resumo",
+        "T-1016#descricao",
+        "DOC-006#visao-geral",
+        "INC-2026-011#causa-raiz"
+      ],
+      "citedUnitIds": [
+        "DOC-006#confiabilidade"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      72.48687500006054,
+      86.71108300006017,
+      132.98754199966788,
+      93.83116699988022,
+      94.81074999971315
+    ],
+    "totalMs": [
+      5052.19854100002,
+      5076.5184160000645,
+      5175.824166999664,
+      5416.674792000093,
+      5106.338417000137
+    ],
+    "loadMs": [
+      0.394,
+      2.098541,
+      0.367,
+      0.371708,
+      0.396333
+    ],
+    "toolMs": [
+      71.41899999999441,
+      85.81408299994655,
+      131.8643750003539,
+      92.79941699979827,
+      93.74754100013524
+    ]
+  },
+  {
+    "questionId": "h027",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Você aciona o plantão responsável pelo customer-portal pelo canal #oncall-web [DOC-016#escalonamento].",
+      "promptTokens": 782,
+      "outputTokens": 29,
+      "loadMs": 0.300792,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-016#escalonamento",
+        "T-1040#descricao",
+        "INC-2026-022#causa-raiz",
+        "DOC-008#visao-geral",
+        "T-1041#descricao"
+      ],
+      "citedUnitIds": [
+        "DOC-016#escalonamento"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      92.74837500008289,
+      91.63337499997579,
+      83.77908400027081,
+      86.2402500002645,
+      113.06954200007021
+    ],
+    "totalMs": [
+      5024.6407500000205,
+      4659.12729199999,
+      4655.6933750002645,
+      4992.242167000193,
+      5039.497374999803
+    ],
+    "loadMs": [
+      0.382542,
+      1.003958,
+      0.383375,
+      0.364958,
+      0.392458
+    ],
+    "toolMs": [
+      92.10270799999125,
+      90.65345799992792,
+      82.71220800001174,
+      84.98174999980256,
+      112.04083399986848
+    ]
+  },
+  {
+    "questionId": "h028",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "A meta de nível de serviço do auth-service é 99,99% de disponibilidade mensal [DOC-005#confiabilidade].",
+      "promptTokens": 759,
+      "outputTokens": 34,
+      "loadMs": 0.332583,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-005#confiabilidade",
+        "INC-2026-009#resumo",
+        "T-1061#descricao",
+        "DOC-005#visao-geral",
+        "INC-2026-021#resumo"
+      ],
+      "citedUnitIds": [
+        "DOC-005#confiabilidade"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      113.60954199999105,
+      73.66412499989383,
+      73.77233299985528,
+      129.91333300014958,
+      101.00258399965242
+    ],
+    "totalMs": [
+      5014.228375000064,
+      4787.35566599993,
+      4930.597957999911,
+      4890.888166000135,
+      5063.51774999965
+    ],
+    "loadMs": [
+      0.371833,
+      0.332583,
+      0.381208,
+      0.39275,
+      0.354625
+    ],
+    "toolMs": [
+      112.36770800000522,
+      72.6984999999404,
+      73.05904100043699,
+      128.6595419999212,
+      99.98129199957475
+    ]
+  },
+  {
+    "questionId": "h029",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "O que estava quebrado por trás da reclamação do cliente Lume Energia em 08/01/2026 foi o sistema de cobranças, especificamente devido ao certificado TLS do gateway PagaFácil expirado no truststore do payments-adapter [INC-2026-001#causa-raiz]. Este problema está associado ao incidente INC-2026-001, que ocorreu em 08/01/2026 [DOC-011#incidentes-anteriores].",
+      "promptTokens": 902,
+      "outputTokens": 128,
+      "loadMs": 0.35225,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1022#descricao",
+        "INC-2026-001#causa-raiz",
+        "DOC-011#incidentes-anteriores",
+        "T-1079#descricao",
+        "INC-2026-016#causa-raiz"
+      ],
+      "citedUnitIds": [
+        "INC-2026-001#causa-raiz",
+        "DOC-011#incidentes-anteriores"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      97.23670799995307,
+      91.6301659999881,
+      95.47804199997336,
+      127.09120799973607,
+      97.34845799999312
+    ],
+    "totalMs": [
+      9137.189999999944,
+      9362.670875000069,
+      8999.016374999657,
+      8879.233167000115,
+      9261.856792000122
+    ],
+    "loadMs": [
+      0.370292,
+      0.367375,
+      0.381042,
+      0.370583,
+      0.351834
+    ],
+    "toolMs": [
+      96.16937499993946,
+      90.78974999999627,
+      94.53537499997765,
+      125.9237500000745,
+      95.41924999980256
+    ]
+  },
+  {
+    "questionId": "h030",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "O artigo enviado foi \"Limites de requisição da API\" [T-1009#resolucao]. Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 800,
+      "outputTokens": 42,
+      "loadMs": 0.369083,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1018#descricao",
+        "INC-2026-015#linha-do-tempo",
+        "DOC-019#quando-usar",
+        "T-1009#resolucao",
+        "INC-2026-015#resumo"
+      ],
+      "citedUnitIds": [
+        "T-1009#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      178.54395900003146,
+      163.00391700002365,
+      156.34262500004843,
+      143.48387499991804,
+      122.611167000141
+    ],
+    "totalMs": [
+      6267.876833999995,
+      5184.873249999946,
+      5270.527375000063,
+      5629.136458999943,
+      5618.967667000368
+    ],
+    "loadMs": [
+      0.358458,
+      0.392375,
+      0.44225,
+      0.34625,
+      0.378875
+    ],
+    "toolMs": [
+      177.40145800006576,
+      161.73754100012593,
+      155.37891700025648,
+      142.5895830001682,
+      121.70524999964982
+    ]
+  },
+  {
+    "questionId": "h031",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "O alerta principal do notification-service dispara quando há taxa de rejeição do provedor acima de 3% em 15 minutos [DOC-015#verificacao-de-saude].",
+      "promptTokens": 718,
+      "outputTokens": 46,
+      "loadMs": 0.323375,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-015#verificacao-de-saude",
+        "INC-2026-023#resumo",
+        "T-1007#descricao",
+        "DOC-014#verificacao-de-saude",
+        "INC-2026-011#causa-raiz"
+      ],
+      "citedUnitIds": [
+        "DOC-015#verificacao-de-saude"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      110.86670900008176,
+      103.73008300014772,
+      97.35987500008196,
+      72.15495799994096,
+      83.47816699976102
+    ],
+    "totalMs": [
+      5358.209750000038,
+      5110.542666000081,
+      5013.044541999698,
+      5031.857624999713,
+      5136.495292000007
+    ],
+    "loadMs": [
+      0.34575,
+      0.378875,
+      0.342709,
+      0.426417,
+      0.386459
+    ],
+    "toolMs": [
+      109.46649999998044,
+      102.50279200007208,
+      96.21791699994355,
+      71.45200000004843,
+      82.47037500003353
+    ]
+  },
+  {
+    "questionId": "h032",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "O endpoint que mostraria a saúde do serviço afetado é GET /health/auth [DOC-013#verificacao-de-saude]. Este endpoint é usado para verificar se o auth-service está saudável [DOC-013#verificacao-de-saude]. O incidente com erro 500 em todas as tentativas de login ocorreu em 06/05/2026 [INC-2026-012#resumo].",
+      "promptTokens": 798,
+      "outputTokens": 107,
+      "loadMs": 0.387,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-012#resumo",
+        "DOC-013#verificacao-de-saude",
+        "T-1024#resolucao",
+        "INC-2026-012#linha-do-tempo",
+        "DOC-013#incidentes-anteriores"
+      ],
+      "citedUnitIds": [
+        "DOC-013#verificacao-de-saude",
+        "INC-2026-012#resumo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      97.70487500005402,
+      147.43574999994598,
+      130.3213749998249,
+      135.6792500000447,
+      108.34216700028628
+    ],
+    "totalMs": [
+      7623.514541000011,
+      7716.748666999862,
+      7618.837999999989,
+      7690.030999999959,
+      8182.60720800003
+    ],
+    "loadMs": [
+      0.407584,
+      0.343625,
+      0.303958,
+      0.3865,
+      0.352125
+    ],
+    "toolMs": [
+      96.32866700005252,
+      146.2489999998361,
+      129.28695800015703,
+      134.99291600007564,
+      107.46316700009629
+    ]
+  },
+  {
+    "questionId": "h033",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "A URL de homologação cadastrada para os webhooks do cliente Clínica Vitalis foi https://homolog.clinicavitalis.example/webhooks [T-1067#resolucao].",
+      "promptTokens": 751,
+      "outputTokens": 46,
+      "loadMs": 1.488583,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1067#descricao",
+        "INC-2026-003#resumo",
+        "DOC-018#passo-a-passo",
+        "T-1067#resolucao",
+        "INC-2026-003#acoes"
+      ],
+      "citedUnitIds": [
+        "T-1067#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      170.7876249999972,
+      129.88904200005345,
+      98.94483399996534,
+      111.34458300005645,
+      194.57370799966156
+    ],
+    "totalMs": [
+      5365.651667000027,
+      4903.854042000137,
+      5261.411667000037,
+      5610.163792000152,
+      5199.950541999657
+    ],
+    "loadMs": [
+      0.354083,
+      1.120083,
+      0.368875,
+      0.35175,
+      0.339041
+    ],
+    "toolMs": [
+      169.765625,
+      128.88229199987836,
+      97.51200000010431,
+      110.30595899978653,
+      193.87195899989456
+    ]
+  },
+  {
+    "questionId": "h034",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 786,
+      "outputTokens": 15,
+      "loadMs": 0.363042,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1061#descricao",
+        "INC-2026-023#acoes",
+        "DOC-011#incidentes-anteriores",
+        "T-1005#descricao",
+        "INC-2026-023#causa-raiz"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      161.00666700000875,
+      245.50954100000672,
+      110.4036669996567,
+      106.8144589997828,
+      146.27783400006592
+    ],
+    "totalMs": [
+      4514.041791999945,
+      4713.35566599993,
+      4760.773041999899,
+      5172.399083999917,
+      4431.985667000059
+    ],
+    "loadMs": [
+      0.388,
+      0.388333,
+      0.361792,
+      0.39075,
+      0.407209
+    ],
+    "toolMs": [
+      160.10841700003948,
+      244.51479199994355,
+      109.26129100006074,
+      105.97095799958333,
+      145.32491700025275
+    ]
+  },
+  {
+    "questionId": "h035",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Você pode pedir ajuda à equipe de suporte através dos chamados de suporte, como no caso do Chamado T-1077 e T-1019, onde os clientes relatam problemas com as chamadas à API de cobranças [T-1077#descricao][T-1019#descricao]. A API pública de assinaturas, planos e cobranças é exposta pelo billing-api [DOC-001#visao-geral].",
+      "promptTokens": 967,
+      "outputTokens": 108,
+      "loadMs": 0.371417,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-001#visao-geral",
+        "T-1077#descricao",
+        "INC-2026-024#resumo",
+        "T-1019#descricao",
+        "DOC-009#incidentes-anteriores"
+      ],
+      "citedUnitIds": [
+        "T-1077#descricao",
+        "T-1019#descricao",
+        "DOC-001#visao-geral"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      133.16525000007823,
+      142.511458999943,
+      132.10625000018626,
+      144.39020799985155,
+      166.9309999998659
+    ],
+    "totalMs": [
+      10084.510165999993,
+      9372.336958999978,
+      9702.96200000029,
+      9112.829874999821,
+      9357.711583999917
+    ],
+    "loadMs": [
+      0.3335,
+      0.299792,
+      0.362166,
+      0.408041,
+      0.368792
+    ],
+    "toolMs": [
+      132.28712499991525,
+      141.74583299993537,
+      131.57425000006333,
+      142.9626250001602,
+      166.2420830000192
+    ]
+  },
+  {
+    "questionId": "h036",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 855,
+      "outputTokens": 15,
+      "loadMs": 0.366375,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1042#descricao",
+        "INC-2026-006#linha-do-tempo",
+        "DOC-018#limites-e-observacoes",
+        "T-1007#descricao",
+        "INC-2026-022#linha-do-tempo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      172.00429200008512,
+      140.6225829999894,
+      352.3517499999143,
+      111.94583399966359,
+      129.86020800005645
+    ],
+    "totalMs": [
+      5028.806875000009,
+      4914.082249999978,
+      5281.943208999932,
+      5204.813416999765,
+      5240.217375000007
+    ],
+    "loadMs": [
+      0.3805,
+      0.427,
+      0.40025,
+      0.384083,
+      0.383625
+    ],
+    "toolMs": [
+      170.60337500006426,
+      139.6492089999374,
+      351.5945419999771,
+      111.11304099997506,
+      128.83608300006017
+    ]
+  },
+  {
+    "questionId": "h037",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 797,
+      "outputTokens": 15,
+      "loadMs": 0.347875,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1080#descricao",
+        "DOC-003#visao-geral",
+        "INC-2026-006#linha-do-tempo",
+        "T-1037#descricao",
+        "DOC-015#escalonamento"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      82.37854100007098,
+      80.52912499988452,
+      113.11874999990687,
+      93.87104199966416,
+      81.58395799994469
+    ],
+    "totalMs": [
+      4592.896791000036,
+      4436.180332999909,
+      4651.487999999896,
+      4632.874541999772,
+      4759.856457999907
+    ],
+    "loadMs": [
+      0.352958,
+      1.925791,
+      0.418667,
+      0.436791,
+      0.42975
+    ],
+    "toolMs": [
+      80.84779199992772,
+      79.65858300006948,
+      112.37545900000259,
+      87.58370900014415,
+      80.56149999983609
+    ]
+  },
+  {
+    "questionId": "h038",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "O método que substitui client.invoices.list no SDK atual é client.invoices.search [DOC-025#passo-a-passo].",
+      "promptTokens": 787,
+      "outputTokens": 31,
+      "loadMs": 0.374792,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-025#passo-a-passo",
+        "T-1020#descricao",
+        "INC-2026-016#causa-raiz",
+        "T-1050#descricao",
+        "DOC-011#incidentes-anteriores"
+      ],
+      "citedUnitIds": [
+        "DOC-025#passo-a-passo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      81.57820899994113,
+      89.80262500001118,
+      75.35829199990258,
+      105.34375,
+      71.79987500002608
+    ],
+    "totalMs": [
+      5256.93524999998,
+      5105.612208999926,
+      5259.058083999902,
+      5497.067249999847,
+      5307.663250000216
+    ],
+    "loadMs": [
+      0.3155,
+      0.368917,
+      0.469584,
+      0.350917,
+      0.3415
+    ],
+    "toolMs": [
+      80.9427920000162,
+      88.64599999994971,
+      74.61541600013152,
+      104.62279099971056,
+      70.94020799966529
+    ]
+  },
+  {
+    "questionId": "h039",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "O que estava quebrado por trás da reclamação do cliente Acme Logística em 27/02/2026 foi a API de cobranças, pois o chamado T-1019 relata que \"nossas chamadas à API de cobranças estão falhando\" [T-1019#descricao].",
+      "promptTokens": 955,
+      "outputTokens": 80,
+      "loadMs": 0.9105,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1066#descricao",
+        "DOC-011#incidentes-anteriores",
+        "INC-2026-001#causa-raiz",
+        "T-1019#descricao",
+        "DOC-015#incidentes-anteriores"
+      ],
+      "citedUnitIds": [
+        "T-1019#descricao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      159.11262499995064,
+      104.37891700002365,
+      130.64662500005215,
+      175.25366699974984,
+      123.15574999991804
+    ],
+    "totalMs": [
+      8578.608416000032,
+      8124.884042000165,
+      8354.742208000273,
+      8727.60933399992,
+      8296.809125000145
+    ],
+    "loadMs": [
+      0.341,
+      0.374125,
+      0.428291,
+      0.358125,
+      0.378917
+    ],
+    "toolMs": [
+      158.3033750000177,
+      103.69204199989326,
+      129.4215420000255,
+      173.80437500029802,
+      122.22545799985528
+    ]
+  },
+  {
+    "questionId": "h040",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "answer": {
+      "text": "O artigo enviado foi \"Como habilitar login único (SSO)\" [T-1078#resolucao]. O recurso está disponível no plano Enterprise [DOC-023#limites-e-observacoes].",
+      "promptTokens": 703,
+      "outputTokens": 51,
+      "loadMs": 0.304917,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1055#descricao",
+        "INC-2026-015#linha-do-tempo",
+        "DOC-023#limites-e-observacoes",
+        "T-1078#resolucao",
+        "DOC-024#quando-usar"
+      ],
+      "citedUnitIds": [
+        "T-1078#resolucao",
+        "DOC-023#limites-e-observacoes"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      187.85679099999834,
+      134.199374999851,
+      112.10845800023526,
+      156.41641699988395,
+      103.77979200007394
+    ],
+    "totalMs": [
+      5082.037541000056,
+      4788.264332999941,
+      5082.403041000012,
+      5571.145459000021,
+      4732.681458000094
+    ],
+    "loadMs": [
+      0.387166,
+      0.364125,
+      1.903125,
+      0.35,
+      0.345459
+    ],
+    "toolMs": [
+      186.45958299993072,
+      133.47129100002348,
+      110.99695799965411,
+      155.4275839999318,
+      103.10633300011978
+    ]
+  },
+  {
+    "questionId": "h001",
+    "type": "unanswerable",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 872,
+      "outputTokens": 15,
+      "loadMs": 0.373208,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-005#linha-do-tempo",
+        "INC-2026-016#linha-do-tempo",
+        "INC-2026-006#linha-do-tempo",
+        "INC-2026-009#linha-do-tempo",
+        "INC-2026-008#linha-do-tempo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      24.296291999984533,
+      34.94037500000559,
+      58.95212500006892,
+      31.964665999636054,
+      51.64108299976215
+    ],
+    "totalMs": [
+      5208.453082999913,
+      5287.5157500000205,
+      5003.01254200004,
+      5150.455874999985,
+      4917.140916999895
+    ],
+    "loadMs": [
+      0.383917,
+      0.411167,
+      0.383834,
+      0.354459,
+      0.399125
+    ]
+  },
+  {
+    "questionId": "h002",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A causa técnica do problema relatado pelo cliente Grupo Nébula em 15/05/2026 foi o incidente INC-2026-013 [T-1043#resolucao].",
+      "promptTokens": 991,
+      "outputTokens": 53,
+      "loadMs": 0.376208,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1043#descricao",
+        "T-1046#descricao",
+        "T-1077#descricao",
+        "T-1043#resolucao",
+        "T-1076#resolucao"
+      ],
+      "citedUnitIds": [
+        "T-1043#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      45.06795799988322,
+      34.76754099992104,
+      34.542665999848396,
+      31.833957999944687,
+      36.67537500010803
+    ],
+    "totalMs": [
+      7339.140875000041,
+      6841.983915999997,
+      7456.701832999941,
+      7368.173291999847,
+      6922.395332999993
+    ],
+    "loadMs": [
+      0.37125,
+      0.378375,
+      0.443958,
+      0.385584,
+      0.404958
+    ]
+  },
+  {
+    "questionId": "h003",
+    "type": "unanswerable",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 638,
+      "outputTokens": 15,
+      "loadMs": 0.423209,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-013#verificacao-de-saude",
+        "DOC-016#verificacao-de-saude",
+        "DOC-005#confiabilidade",
+        "DOC-014#verificacao-de-saude",
+        "DOC-003#confiabilidade"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      27.120208999840543,
+      25.10275000007823,
+      24.201416000025347,
+      37.3308749999851,
+      27.481332999654114
+    ],
+    "totalMs": [
+      3791.881374999881,
+      3659.432042000117,
+      3680.717166000046,
+      3645.679917000234,
+      3994.6546249999665
+    ],
+    "loadMs": [
+      0.788084,
+      0.372708,
+      0.35475,
+      2.013625,
+      0.332625
+    ]
+  },
+  {
+    "questionId": "h004",
+    "type": "unanswerable",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 801,
+      "outputTokens": 15,
+      "loadMs": 0.415291,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1050#descricao",
+        "DOC-025#limites-e-observacoes",
+        "T-1060#descricao",
+        "T-1020#descricao",
+        "DOC-006#visao-geral"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      109.9267080000136,
+      37.331166999880224,
+      58.24525000015274,
+      45.22575000021607,
+      30.154625000432134
+    ],
+    "totalMs": [
+      5010.400457999902,
+      4876.554917000001,
+      4376.851665999973,
+      4702.2538330000825,
+      4405.741708000191
+    ],
+    "loadMs": [
+      0.423375,
+      0.38325,
+      0.360333,
+      0.372625,
+      0.397708
+    ]
+  },
+  {
+    "questionId": "h005",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 1179,
+      "outputTokens": 15,
+      "loadMs": 0.387458,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1079#descricao",
+        "T-1024#descricao",
+        "T-1001#descricao",
+        "T-1022#descricao",
+        "T-1049#descricao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      32.91537500009872,
+      41.41674999985844,
+      33.45191699988209,
+      33.533249999862164,
+      68.8847090001218
+    ],
+    "totalMs": [
+      7088.840000000084,
+      7506.976707999827,
+      7417.905583999818,
+      7454.223874999676,
+      7407.387583999895
+    ],
+    "loadMs": [
+      0.353291,
+      0.328708,
+      0.3865,
+      0.404042,
+      0.434375
+    ]
+  },
+  {
+    "questionId": "h006",
+    "type": "unanswerable",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 740,
+      "outputTokens": 15,
+      "loadMs": 0.332375,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-015#resumo",
+        "INC-2026-015#linha-do-tempo",
+        "INC-2026-015#acoes",
+        "DOC-024#limites-e-observacoes",
+        "T-1006#descricao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      25.744916999945417,
+      25.77416600007564,
+      51.402792000211775,
+      58.47341600013897,
+      22.160416999831796
+    ],
+    "totalMs": [
+      4040.1737919999287,
+      4146.644749999978,
+      4033.5070830001496,
+      4325.466916000005,
+      4000.091833999846
+    ],
+    "loadMs": [
+      0.382625,
+      0.3815,
+      0.351458,
+      0.336041,
+      0.3675
+    ]
+  },
+  {
+    "questionId": "h007",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 818,
+      "outputTokens": 15,
+      "loadMs": 0.344833,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-010#incidentes-anteriores",
+        "T-1053#resolucao",
+        "INC-2026-016#resumo",
+        "DOC-011#incidentes-anteriores",
+        "T-1008#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      44.70929199992679,
+      35.15158299985342,
+      35.207832999993116,
+      33.85495900036767,
+      34.433916999958456
+    ],
+    "totalMs": [
+      4752.549499999965,
+      4553.882250000024,
+      4771.014708000002,
+      4429.5800840002485,
+      5051.3027500002645
+    ],
+    "loadMs": [
+      0.365208,
+      0.401958,
+      0.444125,
+      0.407791,
+      0.376875
+    ]
+  },
+  {
+    "questionId": "h008",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 1192,
+      "outputTokens": 15,
+      "loadMs": 0.375125,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1076#descricao",
+        "T-1068#descricao",
+        "T-1050#descricao",
+        "T-1034#descricao",
+        "T-1026#descricao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      74.07499999995343,
+      44.84595899982378,
+      40.470750000094995,
+      38.50362499989569,
+      40.02237500017509
+    ],
+    "totalMs": [
+      7712.901792000048,
+      7642.237499999814,
+      7261.7535830000415,
+      7364.068791999947,
+      7525.327750000171
+    ],
+    "loadMs": [
+      1.2175,
+      0.359875,
+      0.369916,
+      0.395,
+      0.400959
+    ]
+  },
+  {
+    "questionId": "h009",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O plantão do serviço afetado deveria ser acionado pelo canal #oncall-dados [DOC-014#escalonamento].",
+      "promptTokens": 755,
+      "outputTokens": 33,
+      "loadMs": 1.721958,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-004#linha-do-tempo",
+        "INC-2026-004#resumo",
+        "DOC-014#incidentes-anteriores",
+        "DOC-014#escalonamento",
+        "INC-2026-011#causa-raiz"
+      ],
+      "citedUnitIds": [
+        "DOC-014#escalonamento"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      51.69912500004284,
+      34.30970799992792,
+      47.06554099987261,
+      38.03154099965468,
+      66.60625000018626
+    ],
+    "totalMs": [
+      4671.033250000095,
+      4686.448957999935,
+      5072.403374999994,
+      4813.210207999684,
+      4932.003333999775
+    ],
+    "loadMs": [
+      0.355959,
+      0.408042,
+      2.595,
+      0.393917,
+      0.971041
+    ]
+  },
+  {
+    "questionId": "h010",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 747,
+      "outputTokens": 15,
+      "loadMs": 0.375667,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-011#rollback",
+        "T-1060#descricao",
+        "T-1050#descricao",
+        "DOC-012#rollback",
+        "DOC-015#rollback"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      31.164290999993682,
+      42.01962500018999,
+      35.89529199991375,
+      62.908167000394315,
+      56.48474999982864
+    ],
+    "totalMs": [
+      4087.558541000122,
+      3982.856709000189,
+      3974.4021669998765,
+      4221.643500000238,
+      4342.47666599974
+    ],
+    "loadMs": [
+      0.352791,
+      1.216125,
+      0.369167,
+      0.367,
+      0.368291
+    ]
+  },
+  {
+    "questionId": "h011",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "As faturas do cliente Acme Logística passaram a ir para o e-mail financeiro@acmelogistica.example [T-1035#resolucao].",
+      "promptTokens": 913,
+      "outputTokens": 38,
+      "loadMs": 0.338583,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1035#descricao",
+        "T-1035#resolucao",
+        "T-1030#descricao",
+        "T-1061#descricao",
+        "T-1022#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1035#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      58.664832999929786,
+      40.98062499985099,
+      36.969708000076935,
+      39.12391600012779,
+      31.786584000103176
+    ],
+    "totalMs": [
+      5922.36808299995,
+      6628.466124999803,
+      5951.012707999907,
+      5890.227208000142,
+      5981.310833999887
+    ],
+    "loadMs": [
+      0.4105,
+      0.369083,
+      0.351667,
+      0.423,
+      0.342
+    ]
+  },
+  {
+    "questionId": "h012",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 1116,
+      "outputTokens": 15,
+      "loadMs": 0.375667,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1059#descricao",
+        "T-1008#descricao",
+        "T-1016#descricao",
+        "T-1069#descricao",
+        "T-1075#descricao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      41.19104199996218,
+      51.47729100007564,
+      67.26083400007337,
+      34.62399999983609,
+      180.01070800004527
+    ],
+    "totalMs": [
+      6894.3079589998815,
+      6757.443666000152,
+      6779.414458999876,
+      6747.429374999832,
+      6974.430625000037
+    ],
+    "loadMs": [
+      0.314166,
+      0.43875,
+      0.373792,
+      0.36825,
+      0.420209
+    ]
+  },
+  {
+    "questionId": "h013",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O tamanho máximo de uma exportação direta de relatório é 100 mil linhas [DOC-022#limites-e-observacoes].",
+      "promptTokens": 831,
+      "outputTokens": 35,
+      "loadMs": 0.3895,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-022#limites-e-observacoes",
+        "DOC-022#passo-a-passo",
+        "T-1016#descricao",
+        "T-1029#resolucao",
+        "T-1036#descricao"
+      ],
+      "citedUnitIds": [
+        "DOC-022#limites-e-observacoes"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      38.129166999831796,
+      27.659832999808714,
+      29.206749999895692,
+      29.399457999970764,
+      36.58191700000316
+    ],
+    "totalMs": [
+      5740.933541999897,
+      6302.954582999926,
+      5282.308792000171,
+      5364.175165999681,
+      5415.473999999929
+    ],
+    "loadMs": [
+      0.400833,
+      0.360042,
+      0.399083,
+      0.381833,
+      0.393333
+    ]
+  },
+  {
+    "questionId": "h014",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 771,
+      "outputTokens": 15,
+      "loadMs": 0.368,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1031#resolucao",
+        "T-1031#descricao",
+        "T-1068#resolucao",
+        "INC-2026-020#resumo",
+        "T-1024#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      37.88204099982977,
+      39.81783299986273,
+      45.94795800000429,
+      27.836957999970764,
+      28.386291000060737
+    ],
+    "totalMs": [
+      4598.815665999893,
+      4534.084207999986,
+      4554.055832999758,
+      4121.594749999698,
+      4587.273333000019
+    ],
+    "loadMs": [
+      0.333208,
+      0.393708,
+      0.341167,
+      0.377833,
+      1.744917
+    ]
+  },
+  {
+    "questionId": "h015",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O serviço afetado foi o notification-service [INC-2026-023#resumo]. No entanto, os trechos não especificam qual endpoint mostraria a saúde desse serviço. Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 889,
+      "outputTokens": 59,
+      "loadMs": 0.366583,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-023#resumo",
+        "INC-2026-023#linha-do-tempo",
+        "DOC-015#incidentes-anteriores",
+        "INC-2026-013#resumo",
+        "INC-2026-018#resumo"
+      ],
+      "citedUnitIds": [
+        "INC-2026-023#resumo"
+      ],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      59.98683299985714,
+      60.992792000062764,
+      35.41391699993983,
+      37.2908330000937,
+      43.82308299979195
+    ],
+    "totalMs": [
+      7148.449458000017,
+      7281.892583000008,
+      7732.216333999764,
+      6614.552041999996,
+      8013.176165999845
+    ],
+    "loadMs": [
+      0.322209,
+      0.402959,
+      0.422,
+      0.326708,
+      0.424083
+    ]
+  },
+  {
+    "questionId": "h016",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O incidente em que houve clientes rejeitando webhooks por assinatura inválida durou 47 minutos [INC-2026-003#resumo].",
+      "promptTokens": 865,
+      "outputTokens": 43,
+      "loadMs": 0.36,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-003#resumo",
+        "INC-2026-003#linha-do-tempo",
+        "DOC-012#incidentes-anteriores",
+        "INC-2026-007#resumo",
+        "INC-2026-018#resumo"
+      ],
+      "citedUnitIds": [
+        "INC-2026-003#resumo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      39.126791999908164,
+      36.33191700000316,
+      59.039875000249594,
+      37.207041000016034,
+      59.98050000006333
+    ],
+    "totalMs": [
+      5624.324874999933,
+      6214.3400829997845,
+      6589.335917000193,
+      5817.710125000216,
+      7615.775832999963
+    ],
+    "loadMs": [
+      0.410875,
+      0.378667,
+      0.413208,
+      0.36875,
+      0.360375
+    ]
+  },
+  {
+    "questionId": "h017",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O que estava quebrado por trás da reclamação do cliente Clínica Vitalis em 18/06/2026 foi o serviço invoice-worker, que não estava gerando as faturas corretamente [T-1053#descricao]. Não há informação nos trechos sobre a causa raiz desse problema no serviço invoice-worker [T-1053#descricao].",
+      "promptTokens": 1001,
+      "outputTokens": 88,
+      "loadMs": 0.38425,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1053#descricao",
+        "T-1040#descricao",
+        "T-1064#descricao",
+        "T-1032#descricao",
+        "INC-2026-007#causa-raiz"
+      ],
+      "citedUnitIds": [
+        "T-1053#descricao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      52.191917000105605,
+      102.74604200012982,
+      47.707832999993116,
+      36.10595800029114,
+      82.82966700010002
+    ],
+    "totalMs": [
+      8027.304042000091,
+      8913.035000000149,
+      9715.348333000205,
+      8209.898083000444,
+      9238.53916699998
+    ],
+    "loadMs": [
+      0.339125,
+      0.363208,
+      0.370667,
+      0.381167,
+      2.724166
+    ]
+  },
+  {
+    "questionId": "h018",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A URL de ACS que deve ser passada ao cliente é https://auth.orbital.example/saml/acs [DOC-023#passo-a-passo].",
+      "promptTokens": 620,
+      "outputTokens": 37,
+      "loadMs": 0.362375,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-023#passo-a-passo",
+        "T-1055#resolucao",
+        "T-1041#resolucao",
+        "T-1078#resolucao",
+        "DOC-023#quando-usar"
+      ],
+      "citedUnitIds": [
+        "DOC-023#passo-a-passo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      51.10962499980815,
+      44.70608399994671,
+      62.17549999989569,
+      33.53716700011864,
+      29.847165999934077
+    ],
+    "totalMs": [
+      4140.998708999949,
+      4210.344584000064,
+      4059.2107500000857,
+      3963.9577500000596,
+      4191.539458000101
+    ],
+    "loadMs": [
+      0.369959,
+      0.340667,
+      0.341667,
+      0.339167,
+      0.342375
+    ]
+  },
+  {
+    "questionId": "h019",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A equipe que responde pelo componente que avisa os sistemas dos clientes sobre eventos é o Time Integrações, pois o notification-service, que envia e-mails transacionais e é mantido por esse time, faz parte da plataforma Orbital Billing [DOC-007#visao-geral].",
+      "promptTokens": 864,
+      "outputTokens": 65,
+      "loadMs": 0.31125,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-015#escalonamento",
+        "DOC-007#visao-geral",
+        "DOC-007#dados-e-dependencias",
+        "T-1059#descricao",
+        "T-1024#descricao"
+      ],
+      "citedUnitIds": [
+        "DOC-007#visao-geral"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      27.5353330001235,
+      26.477707999991253,
+      42.58570900000632,
+      31.695416999980807,
+      36.212541999761015
+    ],
+    "totalMs": [
+      6531.293333000038,
+      6199.028791000135,
+      8094.816334000323,
+      6601.167542000301,
+      6608.233541999944
+    ],
+    "loadMs": [
+      0.46575,
+      0.373792,
+      0.389458,
+      0.389,
+      0.321042
+    ]
+  },
+  {
+    "questionId": "h020",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 623,
+      "outputTokens": 15,
+      "loadMs": 0.394417,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1033#resolucao",
+        "T-1037#resolucao",
+        "T-1064#resolucao",
+        "DOC-017#limites-e-observacoes",
+        "DOC-017#passo-a-passo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      24.732374999905005,
+      22.727833000011742,
+      32.37316600000486,
+      27.88216600008309,
+      26.18479199986905
+    ],
+    "totalMs": [
+      3315.299124999903,
+      3271.9043749999255,
+      3567.0552500002086,
+      3445.392082999926,
+      3485.6271669999696
+    ],
+    "loadMs": [
+      0.377541,
+      0.355708,
+      0.335333,
+      0.371042,
+      0.37225
+    ]
+  },
+  {
+    "questionId": "h021",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O compromisso de disponibilidade do payments-adapter é de 99,95% de disponibilidade mensal [DOC-003#confiabilidade]. Não há informação sobre prazos específicos de integração com o gateway de cartão.",
+      "promptTokens": 708,
+      "outputTokens": 57,
+      "loadMs": 0.360625,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-003#confiabilidade",
+        "INC-2026-020#resumo",
+        "INC-2026-020#linha-do-tempo",
+        "INC-2026-013#acoes",
+        "DOC-003#visao-geral"
+      ],
+      "citedUnitIds": [
+        "DOC-003#confiabilidade"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      44.87566699995659,
+      67.95262500015087,
+      59.41341699985787,
+      96.07949999999255,
+      71.35774999996647
+    ],
+    "totalMs": [
+      5368.786458000075,
+      5325.8178750001825,
+      6197.8381249997765,
+      5351.864541999996,
+      5018.437249999959
+    ],
+    "loadMs": [
+      0.401833,
+      0.390667,
+      0.417542,
+      0.378208,
+      0.444958
+    ]
+  },
+  {
+    "questionId": "h022",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "No painel, você acessa Configurações > Chaves de API para criar uma credencial nova para integrar com a API [DOC-017#passo-a-passo].",
+      "promptTokens": 791,
+      "outputTokens": 41,
+      "loadMs": 0.374375,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-017#passo-a-passo",
+        "T-1041#descricao",
+        "DOC-023#passo-a-passo",
+        "DOC-023#quando-usar",
+        "T-1033#descricao"
+      ],
+      "citedUnitIds": [
+        "DOC-017#passo-a-passo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      32.77304200013168,
+      57.33599999989383,
+      47.74679100001231,
+      59.53354199975729,
+      35.32675000000745
+    ],
+    "totalMs": [
+      5212.364416999975,
+      5339.9024590000045,
+      5701.652040999848,
+      5149.235082999803,
+      5592.946541000158
+    ],
+    "loadMs": [
+      0.369042,
+      0.36775,
+      1.917334,
+      0.351334,
+      0.365542
+    ]
+  },
+  {
+    "questionId": "h023",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O artigo enviado foi \"Como exportar relatórios financeiros\". A exportação direta vai até 100 mil linhas [DOC-022#limites-e-observacoes].",
+      "promptTokens": 696,
+      "outputTokens": 44,
+      "loadMs": 0.323083,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1038#descricao",
+        "DOC-022#limites-e-observacoes",
+        "T-1038#resolucao",
+        "T-1011#resolucao",
+        "T-1029#resolucao"
+      ],
+      "citedUnitIds": [
+        "DOC-022#limites-e-observacoes"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      81.78499999991618,
+      39.766708000097424,
+      38.35033400030807,
+      51.46650000009686,
+      39.987749999854714
+    ],
+    "totalMs": [
+      4521.057041999884,
+      4495.452583000064,
+      4491.658292000182,
+      4891.418416999746,
+      4819.151209000032
+    ],
+    "loadMs": [
+      0.821834,
+      0.321792,
+      0.371583,
+      0.3915,
+      2.119416
+    ]
+  },
+  {
+    "questionId": "h024",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O problema de links de exportação não enviados por e-mail em abril de 2026 foi causado pelo token de serviço do reporting-service para o notification-service expirado [INC-2026-011#causa-raiz].",
+      "promptTokens": 734,
+      "outputTokens": 56,
+      "loadMs": 0.405791,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-011#resumo",
+        "INC-2026-011#linha-do-tempo",
+        "INC-2026-014#causa-raiz",
+        "INC-2026-011#causa-raiz",
+        "INC-2026-014#resumo"
+      ],
+      "citedUnitIds": [
+        "INC-2026-011#causa-raiz"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      52.265583999920636,
+      36.50729199987836,
+      49.83904099976644,
+      59.80554199963808,
+      32.391500000376254
+    ],
+    "totalMs": [
+      6266.944124999922,
+      6533.8121670000255,
+      5273.190374999773,
+      5608.2953329999,
+      5631.866625000257
+    ],
+    "loadMs": [
+      0.382583,
+      0.382083,
+      0.375,
+      2.358167,
+      0.355959
+    ]
+  },
+  {
+    "questionId": "h025",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 688,
+      "outputTokens": 15,
+      "loadMs": 0.367833,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-011#rollback",
+        "DOC-012#rollback",
+        "T-1060#descricao",
+        "T-1060#resolucao",
+        "T-1020#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      44.795541000086814,
+      43.75620900001377,
+      36.17520899977535,
+      57.526957999914885,
+      51.79850000003353
+    ],
+    "totalMs": [
+      3735.9398330000695,
+      4287.838874999899,
+      3659.0812089997344,
+      3711.05237499997,
+      3968.868957999628
+    ],
+    "loadMs": [
+      0.3675,
+      0.381875,
+      0.386375,
+      0.328375,
+      0.367084
+    ]
+  },
+  {
+    "questionId": "h026",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A meta de nível de serviço do reporting-service é 99% dos relatórios entregues em até 30 minutos [DOC-006#confiabilidade].",
+      "promptTokens": 655,
+      "outputTokens": 38,
+      "loadMs": 0.383,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-006#confiabilidade",
+        "DOC-006#visao-geral",
+        "DOC-007#confiabilidade",
+        "DOC-008#confiabilidade",
+        "DOC-001#confiabilidade"
+      ],
+      "citedUnitIds": [
+        "DOC-006#confiabilidade"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      33.84199999994598,
+      34.7727920000907,
+      85.38870799960569,
+      26.663416999857873,
+      24.883833999745548
+    ],
+    "totalMs": [
+      4164.86870799982,
+      5105.874417000217,
+      4266.913207999896,
+      4481.051374999806,
+      4316.330333999824
+    ],
+    "loadMs": [
+      0.387583,
+      0.345875,
+      0.36275,
+      0.398667,
+      0.399958
+    ]
+  },
+  {
+    "questionId": "h027",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Você aciona o plantão responsável pelo customer-portal pelo canal #oncall-web [DOC-016#escalonamento].",
+      "promptTokens": 611,
+      "outputTokens": 29,
+      "loadMs": 0.357208,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-016#escalonamento",
+        "DOC-008#visao-geral",
+        "DOC-016#rollback",
+        "DOC-013#escalonamento",
+        "DOC-008#dados-e-dependencias"
+      ],
+      "citedUnitIds": [
+        "DOC-016#escalonamento"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      43.44591600005515,
+      38.68375000008382,
+      30.126333999913186,
+      36.33499999996275,
+      28.305333000142127
+    ],
+    "totalMs": [
+      3824.2615410001017,
+      3645.82337499992,
+      3548.0985419997014,
+      3866.152167000342,
+      3825.573582999874
+    ],
+    "loadMs": [
+      0.343542,
+      0.386541,
+      0.333958,
+      0.382083,
+      0.358166
+    ]
+  },
+  {
+    "questionId": "h028",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A meta de nível de serviço (SLO) do auth-service é 99,99% de disponibilidade mensal [DOC-005#confiabilidade].",
+      "promptTokens": 641,
+      "outputTokens": 38,
+      "loadMs": 0.390125,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-005#confiabilidade",
+        "DOC-005#visao-geral",
+        "DOC-008#confiabilidade",
+        "DOC-013#verificacao-de-saude",
+        "DOC-001#confiabilidade"
+      ],
+      "citedUnitIds": [
+        "DOC-005#confiabilidade"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      33.8632500001695,
+      26.957790999906138,
+      86.55358400009573,
+      32.42399999964982,
+      38.408249999862164
+    ],
+    "totalMs": [
+      4226.64537500008,
+      4386.298207999906,
+      4252.717292000074,
+      4044.0348330000415,
+      4470.788083000109
+    ],
+    "loadMs": [
+      0.350791,
+      0.343208,
+      0.385042,
+      0.381291,
+      0.404417
+    ]
+  },
+  {
+    "questionId": "h029",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O que estava quebrado por trás da reclamação do cliente Lume Energia em 08/01/2026 foi o serviço de pagamento com cartão, conforme descrito no chamado T-1001 [T-1001#descricao].",
+      "promptTokens": 1182,
+      "outputTokens": 63,
+      "loadMs": 0.359541,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1022#descricao",
+        "T-1079#descricao",
+        "T-1001#descricao",
+        "T-1024#descricao",
+        "T-1070#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1001#descricao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      56.51058300002478,
+      36.861665999982506,
+      58.204874999821186,
+      31.226167000364512,
+      39.028541000094265
+    ],
+    "totalMs": [
+      8734.60850000009,
+      10187.752999999793,
+      9139.400457999669,
+      9127.868959000334,
+      9833.810207999777
+    ],
+    "loadMs": [
+      0.376792,
+      0.389666,
+      0.337917,
+      0.372083,
+      0.428459
+    ]
+  },
+  {
+    "questionId": "h030",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O artigo enviado foi \"Limites de requisição da API\" da base de conhecimento. Os trechos não contêm informação sobre o limite padrão de requisições.",
+      "promptTokens": 794,
+      "outputTokens": 39,
+      "loadMs": 0.348416,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1018#descricao",
+        "T-1009#resolucao",
+        "T-1021#resolucao",
+        "T-1018#resolucao",
+        "T-1074#descricao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      42.31545899994671,
+      67.69670800003223,
+      50.56687500001863,
+      41.211292000021785,
+      147.67587500019
+    ],
+    "totalMs": [
+      6144.6402499999385,
+      5207.152833000058,
+      5877.460500000045,
+      5561.393500000238,
+      5262.818166000303
+    ],
+    "loadMs": [
+      0.3485,
+      0.361125,
+      0.36275,
+      0.396708,
+      0.399083
+    ]
+  },
+  {
+    "questionId": "h031",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O alerta principal do notification-service dispara quando há taxa de rejeição do provedor acima de 3% em 15 minutos [DOC-015#verificacao-de-saude].",
+      "promptTokens": 628,
+      "outputTokens": 46,
+      "loadMs": 0.357292,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-015#verificacao-de-saude",
+        "DOC-014#verificacao-de-saude",
+        "DOC-007#visao-geral",
+        "DOC-007#dados-e-dependencias",
+        "DOC-007#confiabilidade"
+      ],
+      "citedUnitIds": [
+        "DOC-015#verificacao-de-saude"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      40.998333000112325,
+      59.36920899990946,
+      33.06916700024158,
+      27.720459000207484,
+      27.32179099973291
+    ],
+    "totalMs": [
+      4460.445208000019,
+      5389.361416999949,
+      4401.276959000155,
+      4268.8811250003055,
+      4127.633915999904
+    ],
+    "loadMs": [
+      0.361541,
+      0.341667,
+      0.404875,
+      0.367416,
+      0.322208
+    ]
+  },
+  {
+    "questionId": "h032",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O endpoint que mostraria a saúde do serviço afetado durante o incidente é GET /health/auth [DOC-013#verificacao-de-saude].",
+      "promptTokens": 784,
+      "outputTokens": 37,
+      "loadMs": 0.417209,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-012#resumo",
+        "INC-2026-012#linha-do-tempo",
+        "DOC-013#verificacao-de-saude",
+        "DOC-013#incidentes-anteriores",
+        "DOC-016#verificacao-de-saude"
+      ],
+      "citedUnitIds": [
+        "DOC-013#verificacao-de-saude"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      45.63700000010431,
+      51.716874999925494,
+      38.510458999779075,
+      37.63375000003725,
+      57.804332999978215
+    ],
+    "totalMs": [
+      5166.7462090000045,
+      5717.993041000096,
+      5511.017083999701,
+      5377.99383299984,
+      5199.306749999989
+    ],
+    "loadMs": [
+      0.385458,
+      0.323583,
+      0.374708,
+      0.360041,
+      2.035958
+    ]
+  },
+  {
+    "questionId": "h033",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "A URL de homologação cadastrada para os webhooks do cliente Clínica Vitalis é https://homolog.clinicavitalis.example/webhooks [T-1067#resolucao].",
+      "promptTokens": 724,
+      "outputTokens": 46,
+      "loadMs": 0.404792,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1067#descricao",
+        "T-1067#resolucao",
+        "T-1052#resolucao",
+        "T-1032#descricao",
+        "T-1013#resolucao"
+      ],
+      "citedUnitIds": [
+        "T-1067#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      92.91258300002664,
+      34.02770800003782,
+      36.430042000021785,
+      67.67475000023842,
+      58.88925000000745
+    ],
+    "totalMs": [
+      5146.509957999922,
+      4896.4527499999385,
+      4828.504832999781,
+      5763.274542000145,
+      4882.929124999791
+    ],
+    "loadMs": [
+      0.401042,
+      0.35175,
+      0.348708,
+      0.39525,
+      0.331917
+    ]
+  },
+  {
+    "questionId": "h034",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 934,
+      "outputTokens": 15,
+      "loadMs": 0.368167,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1061#descricao",
+        "T-1005#descricao",
+        "T-1066#descricao",
+        "INC-2026-023#acoes",
+        "T-1035#descricao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      38.634209000039846,
+      47.25795800006017,
+      50.751040999777615,
+      36.35075000021607,
+      43.82549999980256
+    ],
+    "totalMs": [
+      5301.6109170001,
+      5363.117541000014,
+      5275.658915999811,
+      5381.8632080000825,
+      5369.81158299977
+    ],
+    "loadMs": [
+      0.3705,
+      0.361333,
+      0.384125,
+      0.320958,
+      0.401958
+    ]
+  },
+  {
+    "questionId": "h035",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 1005,
+      "outputTokens": 15,
+      "loadMs": 0.3615,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-001#visao-geral",
+        "T-1077#descricao",
+        "T-1019#descricao",
+        "T-1047#descricao",
+        "T-1009#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      41.573291999986395,
+      57.817665999988094,
+      35.993874999694526,
+      57.651833000127226,
+      34.421167000196874
+    ],
+    "totalMs": [
+      6202.645416999934,
+      6052.40625,
+      5889.661582999863,
+      6246.822040999774,
+      6447.479500000365
+    ],
+    "loadMs": [
+      1.55125,
+      1.689708,
+      0.393584,
+      0.440875,
+      0.399042
+    ]
+  },
+  {
+    "questionId": "h036",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 952,
+      "outputTokens": 15,
+      "loadMs": 0.378417,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1042#descricao",
+        "T-1007#descricao",
+        "T-1028#descricao",
+        "T-1038#descricao",
+        "INC-2026-006#linha-do-tempo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      41.47833299986087,
+      53.997208000160754,
+      71.77862500026822,
+      37.241084000095725,
+      48.21987499995157
+    ],
+    "totalMs": [
+      5643.651582999853,
+      5575.657708000159,
+      6003.509250000119,
+      5705.786541999783,
+      5669.490625000093
+    ],
+    "loadMs": [
+      0.353084,
+      0.359458,
+      0.35275,
+      0.420375,
+      0.398875
+    ]
+  },
+  {
+    "questionId": "h037",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 934,
+      "outputTokens": 15,
+      "loadMs": 0.37225,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1080#descricao",
+        "T-1037#descricao",
+        "T-1061#descricao",
+        "T-1041#descricao",
+        "T-1035#descricao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      26.632499999832362,
+      30.118459000019357,
+      79.86608300032094,
+      26.4968340001069,
+      26.392500000074506
+    ],
+    "totalMs": [
+      5547.655207999982,
+      5182.890124999918,
+      5918.09775000019,
+      5518.948708999902,
+      5470.184291999787
+    ],
+    "loadMs": [
+      0.363875,
+      0.402667,
+      0.381041,
+      0.36025,
+      0.365583
+    ]
+  },
+  {
+    "questionId": "h038",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O método que substitui client.invoices.list no SDK atual é client.invoices.search [DOC-025#passo-a-passo].",
+      "promptTokens": 859,
+      "outputTokens": 31,
+      "loadMs": 0.35125,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-025#passo-a-passo",
+        "T-1020#descricao",
+        "T-1050#descricao",
+        "T-1060#descricao",
+        "DOC-011#incidentes-anteriores"
+      ],
+      "citedUnitIds": [
+        "DOC-025#passo-a-passo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      24.44012499996461,
+      35.82629200001247,
+      26.737749999854714,
+      36.47254200000316,
+      29.164416000247
+    ],
+    "totalMs": [
+      5211.544375000056,
+      5695.717542000115,
+      5330.7788749998435,
+      6430.301791999955,
+      5694.39491600031
+    ],
+    "loadMs": [
+      0.392833,
+      0.353208,
+      0.380917,
+      0.346709,
+      0.353583
+    ]
+  },
+  {
+    "questionId": "h039",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O que estava quebrado por trás da reclamação do cliente Acme Logística em 27/02/2026 era a API de cobranças [T-1019#descricao].",
+      "promptTokens": 1116,
+      "outputTokens": 49,
+      "loadMs": 2.229833,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1066#descricao",
+        "T-1019#descricao",
+        "T-1047#descricao",
+        "T-1061#descricao",
+        "T-1035#descricao"
+      ],
+      "citedUnitIds": [
+        "T-1019#descricao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      42.492874999996275,
+      98.58283299999312,
+      39.452500000130385,
+      53.66624999977648,
+      44.18966699996963
+    ],
+    "totalMs": [
+      8085.445958000142,
+      8896.473957999842,
+      8058.504499999806,
+      8316.190665999893,
+      8767.17737499997
+    ],
+    "loadMs": [
+      0.347291,
+      0.35725,
+      0.397959,
+      0.386291,
+      0.390875
+    ]
+  },
+  {
+    "questionId": "h040",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "answer": {
+      "text": "O artigo \"Como habilitar login único (SSO)\" foi enviado para o cliente Hotel Maré Alta. Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 755,
+      "outputTokens": 39,
+      "loadMs": 0.379083,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1055#descricao",
+        "T-1078#resolucao",
+        "T-1041#resolucao",
+        "T-1041#descricao",
+        "T-1055#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      39.85450000013225,
+      66.00262500019744,
+      57.87066699983552,
+      67.92070799972862,
+      70.78812500042841
+    ],
+    "totalMs": [
+      4769.339666000102,
+      5081.875875000143,
+      5554.0155420000665,
+      4914.590832999907,
+      5100.525040999986
+    ],
+    "loadMs": [
+      0.384667,
+      0.3665,
+      0.378667,
+      0.314209,
+      2.39475
+    ]
+  },
+  {
+    "questionId": "h001",
+    "type": "unanswerable",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 760,
+      "outputTokens": 15,
+      "loadMs": 0.3535,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-005#linha-do-tempo",
+        "T-1012#resolucao",
+        "DOC-013#incidentes-anteriores",
+        "INC-2026-016#linha-do-tempo",
+        "T-1031#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      78.15883400000166,
+      92.46087500010617,
+      83.74783300003037,
+      96.7890409999527,
+      70.31279200036079
+    ],
+    "totalMs": [
+      4460.30691699998,
+      4480.22120800009,
+      4414.0678750001825,
+      4356.979000000283,
+      4553.169000000227
+    ],
+    "loadMs": [
+      0.391791,
+      0.354833,
+      0.5025,
+      0.341291,
+      0.335459
+    ]
+  },
+  {
+    "questionId": "h002",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 984,
+      "outputTokens": 15,
+      "loadMs": 0.314542,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1043#descricao",
+        "INC-2026-020#resumo",
+        "DOC-016#incidentes-anteriores",
+        "T-1046#descricao",
+        "INC-2026-022#resumo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      153.49862500000745,
+      146.92775000003166,
+      117.038708999753,
+      111.05379100004211,
+      137.7294169999659
+    ],
+    "totalMs": [
+      6346.194041999988,
+      6080.817167000147,
+      5828.442666999996,
+      6153.287999999709,
+      6262.3554579997435
+    ],
+    "loadMs": [
+      0.320375,
+      0.3775,
+      0.415166,
+      0.379625,
+      0.321958
+    ]
+  },
+  {
+    "questionId": "h003",
+    "type": "unanswerable",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 706,
+      "outputTokens": 15,
+      "loadMs": 0.365875,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-013#verificacao-de-saude",
+        "INC-2026-010#causa-raiz",
+        "T-1006#descricao",
+        "DOC-016#verificacao-de-saude",
+        "INC-2026-008#resumo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      327.5834999999497,
+      98.7965410000179,
+      77.20499999960884,
+      261.82820900017396,
+      185.54812499973923
+    ],
+    "totalMs": [
+      4250.350166999968,
+      4132.936207999941,
+      4205.851290999912,
+      4510.701791999862,
+      4309.107625000179
+    ],
+    "loadMs": [
+      0.383917,
+      0.389083,
+      0.651458,
+      0.324041,
+      0.396459
+    ]
+  },
+  {
+    "questionId": "h004",
+    "type": "unanswerable",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 776,
+      "outputTokens": 15,
+      "loadMs": 1.885417,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1050#descricao",
+        "DOC-025#limites-e-observacoes",
+        "INC-2026-024#resumo",
+        "T-1060#descricao",
+        "DOC-006#visao-geral"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      70.68299999996088,
+      98.05087499995716,
+      68.19866700004786,
+      98.37033299962059,
+      95.27724999981001
+    ],
+    "totalMs": [
+      4419.3918330000015,
+      5558.894166000187,
+      4596.467542000115,
+      4700.049374999944,
+      4761.440124999732
+    ],
+    "loadMs": [
+      0.37,
+      0.326792,
+      0.4325,
+      0.350084,
+      0.424459
+    ]
+  },
+  {
+    "questionId": "h005",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 989,
+      "outputTokens": 15,
+      "loadMs": 0.3825,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1079#descricao",
+        "INC-2026-022#resumo",
+        "DOC-011#incidentes-anteriores",
+        "T-1024#descricao",
+        "INC-2026-020#resumo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      115.51704100007191,
+      158.92225000006147,
+      93.9600840001367,
+      127.60874999966472,
+      112.78274999978021
+    ],
+    "totalMs": [
+      6086.741500000004,
+      6315.907582999906,
+      6075.512959000189,
+      5983.798624999821,
+      6561.17370800022
+    ],
+    "loadMs": [
+      1.297792,
+      0.387542,
+      0.40025,
+      0.394416,
+      0.350125
+    ]
+  },
+  {
+    "questionId": "h006",
+    "type": "unanswerable",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 809,
+      "outputTokens": 15,
+      "loadMs": 0.328875,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-015#resumo",
+        "DOC-024#limites-e-observacoes",
+        "T-1006#descricao",
+        "INC-2026-015#linha-do-tempo",
+        "T-1025#descricao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      64.4629160000477,
+      77.66433399985544,
+      97.57541699986905,
+      70.66283300006762,
+      111.94533299980685
+    ],
+    "totalMs": [
+      4931.194499999983,
+      4973.211958999978,
+      4652.929374999832,
+      4715.196417000145,
+      5247.847832999658
+    ],
+    "loadMs": [
+      0.335958,
+      0.427,
+      0.385291,
+      0.35025,
+      0.364084
+    ]
+  },
+  {
+    "questionId": "h007",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 818,
+      "outputTokens": 15,
+      "loadMs": 0.311042,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-010#incidentes-anteriores",
+        "T-1053#resolucao",
+        "INC-2026-016#resumo",
+        "DOC-011#incidentes-anteriores",
+        "T-1008#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      140.28191599994898,
+      181.88262500008568,
+      114.4728330001235,
+      130.61070799967274,
+      176.41800000006333
+    ],
+    "totalMs": [
+      5155.5806660000235,
+      5270.68854100001,
+      4854.439332999755,
+      4880.027916999999,
+      5015.96937499987
+    ],
+    "loadMs": [
+      0.377,
+      0.363041,
+      0.468084,
+      0.366917,
+      0.363792
+    ]
+  },
+  {
+    "questionId": "h008",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 1019,
+      "outputTokens": 15,
+      "loadMs": 0.368041,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1076#descricao",
+        "DOC-015#incidentes-anteriores",
+        "INC-2026-024#resumo",
+        "T-1068#descricao",
+        "DOC-009#incidentes-anteriores"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      186.01058299990837,
+      120.30387499998324,
+      111.20666700042784,
+      105.1921250000596,
+      160.85437500011176
+    ],
+    "totalMs": [
+      6360.584374999977,
+      6943.825416000094,
+      6463.84283400001,
+      6721.773124999832,
+      6381.299792000093
+    ],
+    "loadMs": [
+      0.36075,
+      0.35275,
+      0.426041,
+      1.592417,
+      0.416334
+    ]
+  },
+  {
+    "questionId": "h009",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "O plantão do serviço afetado deveria ser acionado pelo canal #oncall-dados [DOC-014#escalonamento].",
+      "promptTokens": 877,
+      "outputTokens": 33,
+      "loadMs": 0.385459,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-004#linha-do-tempo",
+        "DOC-014#incidentes-anteriores",
+        "T-1016#descricao",
+        "INC-2026-004#resumo",
+        "DOC-014#escalonamento"
+      ],
+      "citedUnitIds": [
+        "DOC-014#escalonamento"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      111.29324999998789,
+      124.09525000001304,
+      102.28024999983609,
+      145.85520799970254,
+      164.14370900020003
+    ],
+    "totalMs": [
+      5813.380000000005,
+      6042.824750000145,
+      5943.694291000254,
+      6031.854832999874,
+      5651.548667000141
+    ],
+    "loadMs": [
+      0.3905,
+      0.418041,
+      0.454541,
+      0.3705,
+      0.391792
+    ]
+  },
+  {
+    "questionId": "h010",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 743,
+      "outputTokens": 15,
+      "loadMs": 0.397875,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-011#rollback",
+        "T-1060#descricao",
+        "INC-2026-009#acoes",
+        "T-1050#descricao",
+        "DOC-012#rollback"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      121.16787500004284,
+      106.34525000001304,
+      112.11804200010374,
+      86.67475000023842,
+      101.37979099992663
+    ],
+    "totalMs": [
+      4135.7965829999885,
+      4147.552083000075,
+      4412.677292000037,
+      4312.068083000369,
+      4244.058958000038
+    ],
+    "loadMs": [
+      0.334208,
+      0.376708,
+      0.535042,
+      0.373792,
+      0.391666
+    ]
+  },
+  {
+    "questionId": "h011",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "As faturas do cliente Acme Logística passaram a ir para o e-mail financeiro@acmelogistica.example [T-1035#resolucao].",
+      "promptTokens": 762,
+      "outputTokens": 38,
+      "loadMs": 0.33875,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1035#descricao",
+        "INC-2026-006#resumo",
+        "DOC-007#visao-geral",
+        "T-1035#resolucao",
+        "INC-2026-006#linha-do-tempo"
+      ],
+      "citedUnitIds": [
+        "T-1035#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      106.7003750000149,
+      119.04754200018942,
+      114.13441700022668,
+      102.22883299971,
+      100.83458300027996
+    ],
+    "totalMs": [
+      5022.9213329999475,
+      5103.270000000019,
+      5350.4250420001335,
+      5224.712915999815,
+      4972.989583000075
+    ],
+    "loadMs": [
+      0.345458,
+      0.381958,
+      0.516625,
+      0.431083,
+      0.348791
+    ]
+  },
+  {
+    "questionId": "h012",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "A causa técnica do problema relatado pelo cliente Hotel Maré Alta em 08/07/2026 foi novas tentativas disparadas antes do timeout de 5 segundos do cliente terminar, o que resultou em webhooks duplicados [INC-2026-018#causa-raiz].",
+      "promptTokens": 940,
+      "outputTokens": 71,
+      "loadMs": 0.317292,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1059#descricao",
+        "INC-2026-018#causa-raiz",
+        "DOC-016#incidentes-anteriores",
+        "T-1008#descricao",
+        "INC-2026-022#resumo"
+      ],
+      "citedUnitIds": [
+        "INC-2026-018#causa-raiz"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      116.45845800009556,
+      92.49045899999328,
+      156.52229200024158,
+      166.29220800008625,
+      145.27004200033844
+    ],
+    "totalMs": [
+      7576.520166000002,
+      6801.32504200004,
+      8034.151250000112,
+      8005.2074580001645,
+      7823.885834000073
+    ],
+    "loadMs": [
+      0.761333,
+      0.343041,
+      0.376041,
+      0.431833,
+      0.379542
+    ]
+  },
+  {
+    "questionId": "h013",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "O tamanho máximo de uma exportação direta de relatório é 100 mil linhas [DOC-022#limites-e-observacoes].",
+      "promptTokens": 765,
+      "outputTokens": 35,
+      "loadMs": 0.377291,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-022#limites-e-observacoes",
+        "T-1016#descricao",
+        "INC-2026-011#resumo",
+        "DOC-022#passo-a-passo",
+        "T-1029#resolucao"
+      ],
+      "citedUnitIds": [
+        "DOC-022#limites-e-observacoes"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      74.74141599994618,
+      90.752000000095,
+      118.35037499992177,
+      106.32079199980944,
+      91.5037079998292
+    ],
+    "totalMs": [
+      4951.797332999995,
+      4793.54224999994,
+      5157.038707999978,
+      4933.572459000163,
+      5058.034458000213
+    ],
+    "loadMs": [
+      0.370791,
+      0.36775,
+      0.419125,
+      0.391334,
+      0.369334
+    ]
+  },
+  {
+    "questionId": "h014",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 850,
+      "outputTokens": 15,
+      "loadMs": 0.355375,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1031#resolucao",
+        "INC-2026-020#resumo",
+        "DOC-009#incidentes-anteriores",
+        "T-1031#descricao",
+        "INC-2026-020#linha-do-tempo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      84.99008300004061,
+      93.02195800002664,
+      70.58616599999368,
+      92.96920800022781,
+      77.79745800001547
+    ],
+    "totalMs": [
+      5204.287458000006,
+      4735.4515829999,
+      5549.241041000001,
+      4895.154208000284,
+      4959.713041999843
+    ],
+    "loadMs": [
+      0.362042,
+      0.375833,
+      0.389667,
+      0.322125,
+      0.380625
+    ]
+  },
+  {
+    "questionId": "h015",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 814,
+      "outputTokens": 15,
+      "loadMs": 0.337459,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-023#resumo",
+        "DOC-015#incidentes-anteriores",
+        "T-1076#resolucao",
+        "INC-2026-023#linha-do-tempo",
+        "T-1057#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      142.13725000002887,
+      111.58470900007524,
+      194.7220419999212,
+      107.88950000004843,
+      190.1065420000814
+    ],
+    "totalMs": [
+      4794.120209000073,
+      4488.393125000177,
+      4975.832875000313,
+      4659.947999999858,
+      5371.479708000086
+    ],
+    "loadMs": [
+      0.369625,
+      0.434416,
+      1.527208,
+      0.350459,
+      0.347
+    ]
+  },
+  {
+    "questionId": "h016",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "O incidente durou 47 minutos [INC-2026-003#resumo]. Este tempo está alinhado com a linha do tempo que indica o início (05:32) e o encerramento (06:19) do incidente [INC-2026-003#linha-do-tempo].",
+      "promptTokens": 902,
+      "outputTokens": 79,
+      "loadMs": 0.401042,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-003#resumo",
+        "DOC-012#incidentes-anteriores",
+        "T-1059#descricao",
+        "INC-2026-003#linha-do-tempo",
+        "DOC-018#limites-e-observacoes"
+      ],
+      "citedUnitIds": [
+        "INC-2026-003#resumo",
+        "INC-2026-003#linha-do-tempo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      182.7231669999892,
+      155.38883300009184,
+      116.56087499996647,
+      108.85162500012666,
+      129.59583299979568
+    ],
+    "totalMs": [
+      8060.368084000074,
+      7499.617958000163,
+      7674.504416999873,
+      7400.082667000126,
+      8079.182250000071
+    ],
+    "loadMs": [
+      0.386334,
+      0.346792,
+      3.76575,
+      0.37425,
+      0.394875
+    ]
+  },
+  {
+    "questionId": "h017",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "O que estava quebrado por trás da reclamação do cliente Clínica Vitalis em 18/06/2026 foi o serviço invoice-worker, devido à memória do Redis esgotada porque chaves de entrega foram gravadas sem TTL [T-1053#descricao][INC-2026-007#causa-raiz].",
+      "promptTokens": 905,
+      "outputTokens": 85,
+      "loadMs": 0.380625,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1053#descricao",
+        "INC-2026-007#causa-raiz",
+        "DOC-015#incidentes-anteriores",
+        "T-1040#descricao",
+        "INC-2026-001#causa-raiz"
+      ],
+      "citedUnitIds": [
+        "T-1053#descricao",
+        "INC-2026-007#causa-raiz"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      146.88000000000466,
+      109.11650000000373,
+      89.8896670001559,
+      103.132750000339,
+      134.45612500002608
+    ],
+    "totalMs": [
+      8800.637041999958,
+      7344.765374999959,
+      8150.870041999966,
+      7907.118458000012,
+      9184.384957999922
+    ],
+    "loadMs": [
+      0.408041,
+      0.375916,
+      0.436625,
+      0.558917,
+      0.411375
+    ]
+  },
+  {
+    "questionId": "h018",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "A URL de ACS que deve ser passada ao cliente é https://auth.orbital.example/saml/acs [DOC-023#passo-a-passo].",
+      "promptTokens": 663,
+      "outputTokens": 37,
+      "loadMs": 0.36625,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-023#passo-a-passo",
+        "T-1055#resolucao",
+        "INC-2026-009#resumo",
+        "T-1041#resolucao",
+        "DOC-023#quando-usar"
+      ],
+      "citedUnitIds": [
+        "DOC-023#passo-a-passo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      94.99395799997728,
+      80.86262500006706,
+      75.67629200033844,
+      82.94645799975842,
+      148.47225000010803
+    ],
+    "totalMs": [
+      4472.916791999945,
+      4489.368125000037,
+      4409.746792000253,
+      4268.956541999709,
+      5493.11241699988
+    ],
+    "loadMs": [
+      0.451667,
+      0.344583,
+      0.392208,
+      0.384625,
+      0.42625
+    ]
+  },
+  {
+    "questionId": "h019",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "A equipe que responde pelo componente que avisa os sistemas dos clientes sobre eventos é o Time Integrações [DOC-015#escalonamento]. Esse time é responsável pelo notification-service, que envia e-mails transacionais como faturas e avisos de cobrança [DOC-007#visao-geral].",
+      "promptTokens": 921,
+      "outputTokens": 74,
+      "loadMs": 0.347625,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-015#escalonamento",
+        "T-1059#descricao",
+        "INC-2026-015#linha-do-tempo",
+        "DOC-007#visao-geral",
+        "T-1024#descricao"
+      ],
+      "citedUnitIds": [
+        "DOC-015#escalonamento",
+        "DOC-007#visao-geral"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      78.99520899995696,
+      75.33179100020789,
+      113.45424999995157,
+      115.24783300003037,
+      118.81787500018254
+    ],
+    "totalMs": [
+      7364.791624999954,
+      7756.810250000097,
+      7352.739959000144,
+      7410.934040999971,
+      7609.279208000284
+    ],
+    "loadMs": [
+      0.381459,
+      0.335708,
+      0.451916,
+      0.377917,
+      0.374166
+    ]
+  },
+  {
+    "questionId": "h020",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 612,
+      "outputTokens": 15,
+      "loadMs": 0.323958,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1033#resolucao",
+        "DOC-017#limites-e-observacoes",
+        "INC-2026-024#acoes",
+        "T-1037#resolucao",
+        "DOC-017#passo-a-passo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      77.97737500001676,
+      76.2687089999672,
+      79.50491599971429,
+      66.10204100003466,
+      76.75633399980143
+    ],
+    "totalMs": [
+      3276.0284170000814,
+      3178.518708999967,
+      3251.4622080000117,
+      3382.43229100015,
+      3397.4621250000782
+    ],
+    "loadMs": [
+      0.3345,
+      0.324917,
+      0.471959,
+      0.329083,
+      0.374542
+    ]
+  },
+  {
+    "questionId": "h021",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "O compromisso de disponibilidade do payments-adapter é de 99,95% de disponibilidade mensal [DOC-003#confiabilidade]. Não há informação sobre prazos específicos de resposta ou mitigação para a integração com o gateway de cartão.",
+      "promptTokens": 839,
+      "outputTokens": 63,
+      "loadMs": 0.283709,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-003#confiabilidade",
+        "INC-2026-020#resumo",
+        "T-1043#descricao",
+        "INC-2026-020#linha-do-tempo",
+        "DOC-003#visao-geral"
+      ],
+      "citedUnitIds": [
+        "DOC-003#confiabilidade"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      84.28716700000223,
+      96.27499999990687,
+      162.80004200013354,
+      139.00812500016764,
+      92.422290999908
+    ],
+    "totalMs": [
+      6498.13195900002,
+      6442.979166999925,
+      7134.530582999811,
+      6812.686333000194,
+      6371.83424999984
+    ],
+    "loadMs": [
+      0.3975,
+      0.3595,
+      0.382833,
+      0.406375,
+      0.411125
+    ]
+  },
+  {
+    "questionId": "h022",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "No painel, você acessa Configurações > Chaves de API para criar uma nova credencial para integrar com a API [DOC-017#passo-a-passo].",
+      "promptTokens": 808,
+      "outputTokens": 41,
+      "loadMs": 1.944875,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-017#passo-a-passo",
+        "T-1041#descricao",
+        "INC-2026-015#causa-raiz",
+        "DOC-023#passo-a-passo",
+        "T-1033#descricao"
+      ],
+      "citedUnitIds": [
+        "DOC-017#passo-a-passo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      132.3133749999106,
+      84.2299579998944,
+      108.13133399980143,
+      137.93049999978393,
+      89.98154199961573
+    ],
+    "totalMs": [
+      6085.942166999914,
+      5727.747665999923,
+      5529.449374999851,
+      5621.476040999871,
+      5485.93566699978
+    ],
+    "loadMs": [
+      0.369833,
+      0.353416,
+      0.388708,
+      0.312334,
+      0.40575
+    ]
+  },
+  {
+    "questionId": "h023",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "O artigo enviado foi \"Como exportar relatórios financeiros\" [T-1038#resolucao]. A exportação direta vai até 100 mil linhas [DOC-022#limites-e-observacoes].",
+      "promptTokens": 798,
+      "outputTokens": 56,
+      "loadMs": 1.460083,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1038#descricao",
+        "DOC-022#limites-e-observacoes",
+        "INC-2026-011#resumo",
+        "T-1038#resolucao",
+        "INC-2026-011#linha-do-tempo"
+      ],
+      "citedUnitIds": [
+        "T-1038#resolucao",
+        "DOC-022#limites-e-observacoes"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      115.57145799999125,
+      129.75400000019,
+      172.3914999999106,
+      139.57133399974555,
+      227.2445420003496
+    ],
+    "totalMs": [
+      6812.848875000025,
+      5947.199083000189,
+      5912.319666999858,
+      6107.784709000029,
+      6430.930916999932
+    ],
+    "loadMs": [
+      0.370208,
+      0.355,
+      0.353125,
+      0.353334,
+      0.369875
+    ]
+  },
+  {
+    "questionId": "h024",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 918,
+      "outputTokens": 15,
+      "loadMs": 0.39,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-011#resumo",
+        "DOC-014#incidentes-anteriores",
+        "T-1016#descricao",
+        "INC-2026-011#linha-do-tempo",
+        "DOC-016#incidentes-anteriores"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      140.3277920000255,
+      87.00704099982977,
+      118.1604169998318,
+      101.59283300023526,
+      131.58445800002664
+    ],
+    "totalMs": [
+      5633.964374999981,
+      5381.698124999879,
+      5488.372457999736,
+      5629.199208000209,
+      5992.002208000049
+    ],
+    "loadMs": [
+      0.369834,
+      0.35525,
+      0.414958,
+      0.319833,
+      1.373209
+    ]
+  },
+  {
+    "questionId": "h025",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 733,
+      "outputTokens": 15,
+      "loadMs": 0.382416,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-011#rollback",
+        "T-1060#descricao",
+        "INC-2026-024#resumo",
+        "DOC-012#rollback",
+        "T-1060#resolucao"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      93.4412500000326,
+      88.9481669999659,
+      100.90883399965242,
+      152.55758300004527,
+      154.4714170000516
+    ],
+    "totalMs": [
+      4073.8937919999007,
+      4023.6110419998877,
+      4113.469291999936,
+      4171.64462500019,
+      4404.6851249998435
+    ],
+    "loadMs": [
+      0.37725,
+      0.293875,
+      0.381542,
+      0.321083,
+      0.387209
+    ]
+  },
+  {
+    "questionId": "h026",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "A meta de nível de serviço do reporting-service é 99% dos relatórios entregues em até 30 minutos [DOC-006#confiabilidade].",
+      "promptTokens": 756,
+      "outputTokens": 38,
+      "loadMs": 0.362541,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-006#confiabilidade",
+        "INC-2026-019#resumo",
+        "T-1016#descricao",
+        "DOC-006#visao-geral",
+        "INC-2026-011#causa-raiz"
+      ],
+      "citedUnitIds": [
+        "DOC-006#confiabilidade"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      68.0662079998292,
+      133.53974999999627,
+      109.53204200044274,
+      77.25258299987763,
+      98.98120799986646
+    ],
+    "totalMs": [
+      4828.00154099986,
+      4648.13124999986,
+      5101.389958000276,
+      4776.954415999819,
+      5606.307291999925
+    ],
+    "loadMs": [
+      0.3455,
+      0.403333,
+      0.41825,
+      0.429375,
+      0.3845
+    ]
+  },
+  {
+    "questionId": "h027",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Você aciona o plantão responsável pelo customer-portal pelo canal #oncall-web [DOC-016#escalonamento].",
+      "promptTokens": 782,
+      "outputTokens": 29,
+      "loadMs": 0.34875,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-016#escalonamento",
+        "T-1040#descricao",
+        "INC-2026-022#causa-raiz",
+        "DOC-008#visao-geral",
+        "T-1041#descricao"
+      ],
+      "citedUnitIds": [
+        "DOC-016#escalonamento"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      96.77108300011605,
+      83.03329099994153,
+      215.64275000011548,
+      75.43170899990946,
+      158.10733299981803
+    ],
+    "totalMs": [
+      4768.524708000012,
+      5147.826957999961,
+      5617.851500000339,
+      5012.828541999683,
+      5439.41174999997
+    ],
+    "loadMs": [
+      2.027833,
+      0.351541,
+      0.374708,
+      0.345083,
+      0.415375
+    ]
+  },
+  {
+    "questionId": "h028",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "A meta de nível de serviço do auth-service é 99,99% de disponibilidade mensal [DOC-005#confiabilidade].",
+      "promptTokens": 759,
+      "outputTokens": 34,
+      "loadMs": 0.364458,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-005#confiabilidade",
+        "INC-2026-009#resumo",
+        "T-1061#descricao",
+        "DOC-005#visao-geral",
+        "INC-2026-021#resumo"
+      ],
+      "citedUnitIds": [
+        "DOC-005#confiabilidade"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      77.49566700006835,
+      78.90395800000988,
+      141.77887499984354,
+      69.69662499986589,
+      77.66399999987334
+    ],
+    "totalMs": [
+      4647.663457999937,
+      4763.786332999822,
+      5503.917832999956,
+      4866.176833000034,
+      4983.7327499999665
+    ],
+    "loadMs": [
+      0.356333,
+      0.370208,
+      0.407291,
+      0.396875,
+      0.400083
+    ]
+  },
+  {
+    "questionId": "h029",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "O que estava quebrado por trás da reclamação do cliente Lume Energia em 08/01/2026 foi o sistema de cobranças, especificamente devido ao certificado TLS do gateway PagaFácil expirado no truststore do payments-adapter [INC-2026-001#causa-raiz]. Este problema está associado ao incidente INC-2026-001, que ocorreu em 08/01/2026 [DOC-011#incidentes-anteriores].",
+      "promptTokens": 902,
+      "outputTokens": 128,
+      "loadMs": 0.325291,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1022#descricao",
+        "INC-2026-001#causa-raiz",
+        "DOC-011#incidentes-anteriores",
+        "T-1079#descricao",
+        "INC-2026-016#causa-raiz"
+      ],
+      "citedUnitIds": [
+        "INC-2026-001#causa-raiz",
+        "DOC-011#incidentes-anteriores"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      112.92287500016391,
+      89.9043749999255,
+      117.9499590001069,
+      95.78066699998453,
+      205.02420799992979
+    ],
+    "totalMs": [
+      9308.832291000057,
+      9227.928542000009,
+      9990.261292000301,
+      9032.03491699975,
+      8924.983082999941
+    ],
+    "loadMs": [
+      0.361083,
+      0.397625,
+      0.394875,
+      0.433833,
+      1.387417
+    ]
+  },
+  {
+    "questionId": "h030",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "O artigo enviado foi \"Limites de requisição da API\" [T-1009#resolucao]. Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 800,
+      "outputTokens": 42,
+      "loadMs": 0.416375,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1018#descricao",
+        "INC-2026-015#linha-do-tempo",
+        "DOC-019#quando-usar",
+        "T-1009#resolucao",
+        "INC-2026-015#resumo"
+      ],
+      "citedUnitIds": [
+        "T-1009#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      152.89341699983925,
+      182.4661250000354,
+      196.0082499999553,
+      139.0978330001235,
+      117.3097500000149
+    ],
+    "totalMs": [
+      5265.022957999958,
+      6528.918416999979,
+      5899.585500000045,
+      5363.908542000223,
+      6346.847500000149
+    ],
+    "loadMs": [
+      0.391208,
+      0.394125,
+      0.440459,
+      0.363333,
+      0.338625
+    ]
+  },
+  {
+    "questionId": "h031",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "O alerta principal do notification-service dispara quando há taxa de rejeição do provedor acima de 3% em 15 minutos [DOC-015#verificacao-de-saude].",
+      "promptTokens": 718,
+      "outputTokens": 46,
+      "loadMs": 0.316167,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-015#verificacao-de-saude",
+        "INC-2026-023#resumo",
+        "T-1007#descricao",
+        "DOC-014#verificacao-de-saude",
+        "INC-2026-011#causa-raiz"
+      ],
+      "citedUnitIds": [
+        "DOC-015#verificacao-de-saude"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      113.53337500011548,
+      99.76491699996404,
+      101.40441600000486,
+      66.02291700011119,
+      111.40237500006333
+    ],
+    "totalMs": [
+      5140.857042000163,
+      5274.313500000164,
+      5976.131208000239,
+      4840.00216699997,
+      5828.6896250001155
+    ],
+    "loadMs": [
+      0.346417,
+      1.638792,
+      0.799834,
+      0.342125,
+      0.390208
+    ]
+  },
+  {
+    "questionId": "h032",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "O endpoint que mostraria a saúde do serviço afetado é GET /health/auth [DOC-013#verificacao-de-saude]. Este endpoint é usado para verificar se o auth-service está saudável [DOC-013#verificacao-de-saude]. O incidente com erro 500 em todas as tentativas de login ocorreu em 06/05/2026 [INC-2026-012#resumo].",
+      "promptTokens": 798,
+      "outputTokens": 107,
+      "loadMs": 0.371541,
+      "truncated": false,
+      "contextUnitIds": [
+        "INC-2026-012#resumo",
+        "DOC-013#verificacao-de-saude",
+        "T-1024#resolucao",
+        "INC-2026-012#linha-do-tempo",
+        "DOC-013#incidentes-anteriores"
+      ],
+      "citedUnitIds": [
+        "DOC-013#verificacao-de-saude",
+        "INC-2026-012#resumo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      129.4987080001738,
+      106.48987500020303,
+      98.98883400019258,
+      114.1571249999106,
+      142.99204199993983
+    ],
+    "totalMs": [
+      8195.717707999982,
+      7608.140834000194,
+      8784.434542000294,
+      8254.122041999828,
+      7685.610958000179
+    ],
+    "loadMs": [
+      0.354334,
+      0.381125,
+      0.466791,
+      0.344125,
+      0.382
+    ]
+  },
+  {
+    "questionId": "h033",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "A URL de homologação cadastrada para os webhooks do cliente Clínica Vitalis foi https://homolog.clinicavitalis.example/webhooks [T-1067#resolucao].",
+      "promptTokens": 751,
+      "outputTokens": 46,
+      "loadMs": 0.324,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1067#descricao",
+        "INC-2026-003#resumo",
+        "DOC-018#passo-a-passo",
+        "T-1067#resolucao",
+        "INC-2026-003#acoes"
+      ],
+      "citedUnitIds": [
+        "T-1067#resolucao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      143.40662500006147,
+      99.76408300013281,
+      90.19145900011063,
+      177.22695899987593,
+      105.142417000141
+    ],
+    "totalMs": [
+      5091.61629200005,
+      5096.255916000111,
+      5146.453625000082,
+      5320.426374999806,
+      5107.261167000048
+    ],
+    "loadMs": [
+      0.36,
+      0.35425,
+      0.431542,
+      0.39625,
+      0.358042
+    ]
+  },
+  {
+    "questionId": "h034",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 786,
+      "outputTokens": 15,
+      "loadMs": 0.357709,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1061#descricao",
+        "INC-2026-023#acoes",
+        "DOC-011#incidentes-anteriores",
+        "T-1005#descricao",
+        "INC-2026-023#causa-raiz"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      110.122999999905,
+      185.94333300017752,
+      166.96554200025275,
+      162.908458000049,
+      147.6402499997057
+    ],
+    "totalMs": [
+      5029.331791999983,
+      4643.319291000022,
+      4787.272458999883,
+      4480.523166000377,
+      4770.946250000037
+    ],
+    "loadMs": [
+      0.346125,
+      0.383291,
+      0.338416,
+      0.420875,
+      1.057875
+    ]
+  },
+  {
+    "questionId": "h035",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Você pode pedir ajuda à equipe de suporte através dos chamados de suporte, como no caso do Chamado T-1077 e T-1019, onde os clientes relatam problemas com as chamadas à API de cobranças [T-1077#descricao][T-1019#descricao]. A API pública de assinaturas, planos e cobranças é exposta pelo billing-api [DOC-001#visao-geral].",
+      "promptTokens": 967,
+      "outputTokens": 108,
+      "loadMs": 0.327125,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-001#visao-geral",
+        "T-1077#descricao",
+        "INC-2026-024#resumo",
+        "T-1019#descricao",
+        "DOC-009#incidentes-anteriores"
+      ],
+      "citedUnitIds": [
+        "T-1077#descricao",
+        "T-1019#descricao",
+        "DOC-001#visao-geral"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      171.37275000009686,
+      105.56058400007896,
+      131.57966700010002,
+      88.8662919998169,
+      103.09316699998453
+    ],
+    "totalMs": [
+      9177.112500000047,
+      9176.41149999993,
+      9411.887250000145,
+      9425.42983300006,
+      9272.490874999668
+    ],
+    "loadMs": [
+      0.432542,
+      0.362542,
+      0.35375,
+      0.441125,
+      1.860166
+    ]
+  },
+  {
+    "questionId": "h036",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 855,
+      "outputTokens": 15,
+      "loadMs": 0.362167,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1042#descricao",
+        "INC-2026-006#linha-do-tempo",
+        "DOC-018#limites-e-observacoes",
+        "T-1007#descricao",
+        "INC-2026-022#linha-do-tempo"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      132.6948750000447,
+      117.92433400009759,
+      201.23325000004843,
+      111.2872919999063,
+      150.36029199976474
+    ],
+    "totalMs": [
+      4955.849167000037,
+      5097.163208999904,
+      5268.765833000187,
+      5480.637500000186,
+      5171.767916999757
+    ],
+    "loadMs": [
+      0.410792,
+      0.378709,
+      0.390333,
+      0.386833,
+      0.354375
+    ]
+  },
+  {
+    "questionId": "h037",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "Não sei: os trechos recuperados não contêm essa informação.",
+      "promptTokens": 797,
+      "outputTokens": 15,
+      "loadMs": 0.368416,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1080#descricao",
+        "DOC-003#visao-geral",
+        "INC-2026-006#linha-do-tempo",
+        "T-1037#descricao",
+        "DOC-015#escalonamento"
+      ],
+      "citedUnitIds": [],
+      "invalidCitations": [],
+      "abstained": true
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      79.27200000011362,
+      73.73824999993667,
+      226.3676670002751,
+      75.41800000006333,
+      89.7609999999404
+    ],
+    "totalMs": [
+      4643.637584000127,
+      4384.50074999989,
+      4685.01779199997,
+      4626.491874999832,
+      4613.166791999713
+    ],
+    "loadMs": [
+      0.501916,
+      0.3695,
+      0.342666,
+      0.364708,
+      0.367291
+    ]
+  },
+  {
+    "questionId": "h038",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "O método que substitui client.invoices.list no SDK atual é client.invoices.search [DOC-025#passo-a-passo].",
+      "promptTokens": 787,
+      "outputTokens": 31,
+      "loadMs": 0.340792,
+      "truncated": false,
+      "contextUnitIds": [
+        "DOC-025#passo-a-passo",
+        "T-1020#descricao",
+        "INC-2026-016#causa-raiz",
+        "T-1050#descricao",
+        "DOC-011#incidentes-anteriores"
+      ],
+      "citedUnitIds": [
+        "DOC-025#passo-a-passo"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      105.26575000002049,
+      74.9267080000136,
+      254.0349170002155,
+      68.81649999972433,
+      89.18062500003725
+    ],
+    "totalMs": [
+      5262.36241699988,
+      5313.916958000045,
+      5171.45066699991,
+      5507.1132080000825,
+      5318.743792000227
+    ],
+    "loadMs": [
+      0.362083,
+      0.412,
+      0.416125,
+      0.328958,
+      0.349333
+    ]
+  },
+  {
+    "questionId": "h039",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "O que estava quebrado por trás da reclamação do cliente Acme Logística em 27/02/2026 foi a API de cobranças, pois o chamado T-1019 relata que \"nossas chamadas à API de cobranças estão falhando\" [T-1019#descricao].",
+      "promptTokens": 955,
+      "outputTokens": 80,
+      "loadMs": 0.362167,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1066#descricao",
+        "DOC-011#incidentes-anteriores",
+        "INC-2026-001#causa-raiz",
+        "T-1019#descricao",
+        "DOC-015#incidentes-anteriores"
+      ],
+      "citedUnitIds": [
+        "T-1019#descricao"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      155.01645799982361,
+      149.98750000004657,
+      102.27987500000745,
+      149.1690420000814,
+      138.32833299972117
+    ],
+    "totalMs": [
+      7977.46258299984,
+      8427.788249999983,
+      7772.495041999966,
+      8460.545042000245,
+      8282.424749999773
+    ],
+    "loadMs": [
+      0.374542,
+      0.459625,
+      0.344542,
+      0.410375,
+      0.4275
+    ]
+  },
+  {
+    "questionId": "h040",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "answer": {
+      "text": "O artigo enviado foi \"Como habilitar login único (SSO)\" [T-1078#resolucao]. O recurso está disponível no plano Enterprise [DOC-023#limites-e-observacoes].",
+      "promptTokens": 703,
+      "outputTokens": 51,
+      "loadMs": 0.371583,
+      "truncated": false,
+      "contextUnitIds": [
+        "T-1055#descricao",
+        "INC-2026-015#linha-do-tempo",
+        "DOC-023#limites-e-observacoes",
+        "T-1078#resolucao",
+        "DOC-024#quando-usar"
+      ],
+      "citedUnitIds": [
+        "T-1078#resolucao",
+        "DOC-023#limites-e-observacoes"
+      ],
+      "invalidCitations": [],
+      "abstained": false
+    },
+    "changedAnswers": 0,
+    "retrievalMs": [
+      121.16733300010674,
+      128.0192499998957,
+      151.20441700005904,
+      162.56150000030175,
+      135.38670899998397
+    ],
+    "totalMs": [
+      5306.780207999982,
+      5109.51779199997,
+      5467.296124999877,
+      5149.38362500025,
+      5993.511500000022
+    ],
+    "loadMs": [
+      0.471084,
+      0.363167,
+      2.117167,
+      0.3575,
+      0.401
+    ]
+  }
+]

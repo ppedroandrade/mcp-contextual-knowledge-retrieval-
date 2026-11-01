@@ -18,26 +18,51 @@ não têm rastreabilidade com este repositório.
 | Leitores das fontes (Markdown, JSON, CSV, HTML) | implementado, testado | `src/sources/`; o leitor HTML foi retirado antes do congelamento (ADR 009) e reintegrado na medida da H3 |
 | Perguntas dev (60) e de políticas (15) com gabarito derivado dos fatos | implementado, testado | `data/questions/` |
 | Congelamento da arquitetura | registrado | commit `1a1337acf736ede43740d3bb06c03c2d52f5c9f0` (ADR 010) |
-| Perguntas heldout (40) | implementado, testado | criado depois do congelamento (ADR 010): `data/questions/heldout.json`, `src/corpus/heldout.ts`; 18 fonte única, 18 multifonte, 4 sem resposta; 20 literais e 16 parafraseadas (sobreposição lexical 0,554 × 0,232; `docs/corpus.md`); **ainda não executado** |
-| Busca textual convencional (A, BM25) | implementado, testado | `src/approaches/a-bm25.ts`; rodada de verificação no dev, não é resultado do experimento |
-| Métricas de recuperação (P, R, MRR, nDCG, ER@k) e medição de latência | implementado, testado | `src/evaluation/metrics.ts`, `npm run bench:retrieval` |
-| Embeddings (Ollama `bge-m3`) e armazenamento vetorial (pgvector e memória) | implementado, testado | testes unitários com Ollama simulado; `npm run test:integration` executado em 31/10/2026 (3/3: pgvector = busca exata em memória); ingestão real: 346 unidades, 1024 dimensões, 47 s |
-| RAG tradicional (B) | implementado, testado | `src/approaches/b-rag.ts`; executado no ambiente real, com e sem geração (rodadas dev abaixo) |
-| Configuração C (busca por fonte + RRF, sem MCP) | implementado, testado | `src/approaches/c-per-source.ts` |
-| Servidor MCP (uma tool por fonte) e configuração D (MCP + RAG), só recuperação | implementado, testado | `src/mcp/`, `src/approaches/d-mcp-rag.ts`; teste confirma C = D nas 60 perguntas e o protocolo real via stdio; no ambiente real, C = D nas 60 perguntas com `bge-m3` + pgvector (`scripts/compare-c-d.ts`) |
-| Geração de respostas por LLM (B, C, D) | implementado, testado | `src/generation/`, `npm run bench:generation`; Ollama `qwen3:4b-instruct-2507` (ADR 003); prompt fixo, temperatura 0, os mesmos 5 trechos; A fica só na recuperação; executado no dev (abaixo) |
-| Avaliação das respostas: regra dos fatos, juiz por LLM, planilha cega e importação das notas humanas | implementado, testado | `src/evaluation/`, `npm run eval:answers`, `npm run eval:human` (ADR 007); executado no dev (abaixo); avaliação humana **ainda não feita** (faltam os avaliadores) |
-| Estatística (Wilcoxon, Holm, bootstrap, Mann-Whitney) | implementado, testado | `src/evaluation/stats.ts`, `src/evaluation/compare.ts`, `npm run stats -- --run <id>` (ADR 008); testes conferidos contra o SciPy 1.18.1 e o statsmodels; aplicada às rodadas dev (abaixo), que **não são o resultado final** |
-| H3: integração da 4ª fonte em duas variantes e segundo cliente MCP | executado (passos 1–5) | `results/runs/2026-11-01-h3-integracao-politicas`; customizada 5 arquivos +43 −9, MCP 7 arquivos +56 −11, host intocado nas duas; segundo cliente (só o SDK) usou `buscar_policies` sem alteração no servidor (embedder hash). Leitura e limitações em `docs/h3-protocolo.md`. Integração aplicada na `main` depois da medida (ADR 010). Passo 6 (bench `policies` com `bge-m3`) pendente no Mac |
-| Protocolo da execução final e plano de análise | registrado | ADR 011 (antes de qualquer execução no `heldout`): 10 rodadas de recuperação, 5 de geração, juiz com 2 repetições, ≥ 2 avaliadores, conjunto `policies` com 5 rodadas |
-| Script do experimento final e tabelas do artigo | implementado, testado | `scripts/experimento-final.sh` (roteiro em `docs/experimento-final.md`) e `scripts/tabelas-artigo.ts` (tabelas só a partir de `results/runs/`, com alerta para execuções sem valor experimental); ensaiados de ponta a ponta com `MODO=teste` (hash, memória, LLM simulado, notas humanas fictícias), sem gravar nada; **experimento final ainda não executado** |
+| Perguntas heldout (40) | implementado, testado, validado | criado depois do congelamento (ADR 010): `data/questions/heldout.json`, `src/corpus/heldout.ts`; 18 fonte única, 18 multifonte, 4 sem resposta; 20 literais e 16 parafraseadas (sobreposição lexical 0,554 × 0,232; `docs/corpus.md`); **executado em 01/11/2026** (execução final, abaixo) |
+| Busca textual convencional (A, BM25) | implementado, testado, validado | `src/approaches/a-bm25.ts`; execução final no `heldout` (01/11/2026) |
+| Métricas de recuperação (P, R, MRR, nDCG, ER@k) e medição de latência | implementado, testado, validado | `src/evaluation/metrics.ts`, `npm run bench:retrieval` |
+| Embeddings (Ollama `bge-m3`) e armazenamento vetorial (pgvector e memória) | implementado, testado, validado | testes unitários com Ollama simulado; `npm run test:integration` executado em 31/10/2026 (3/3: pgvector = busca exata em memória); ingestão real: 346 unidades, 1024 dimensões, 47 s |
+| RAG tradicional (B) | implementado, testado, validado | `src/approaches/b-rag.ts`; execução final no `heldout`, com e sem geração (01/11/2026) |
+| Configuração C (busca por fonte + RRF, sem MCP) | implementado, testado, validado | `src/approaches/c-per-source.ts` |
+| Servidor MCP (uma tool por fonte) e configuração D (MCP + RAG) | implementado, testado, validado | `src/mcp/`, `src/approaches/d-mcp-rag.ts`; teste confirma C = D nas 60 perguntas e o protocolo real via stdio; no ambiente real, C = D nas 60 perguntas com `bge-m3` + pgvector (`scripts/compare-c-d.ts`) |
+| Geração de respostas por LLM (B, C, D) | implementado, testado, validado | `src/generation/`, `npm run bench:generation`; Ollama `qwen3:4b-instruct-2507` (ADR 003); prompt fixo, temperatura 0, os mesmos 5 trechos; A fica só na recuperação; executado no dev (abaixo) |
+| Avaliação das respostas: regra dos fatos, juiz por LLM, planilha cega e importação das notas humanas | implementado, testado; automática validada | `src/evaluation/`, `npm run eval:answers`, `npm run eval:human` (ADR 007); executado no dev e na execução final (01/11/2026); avaliação humana **ainda não feita** (planilha `2026-11-01-heldout-planilha-cega` gerada, sem notas) |
+| Estatística (Wilcoxon, Holm, bootstrap, Mann-Whitney) | implementado, testado, validado | `src/evaluation/stats.ts`, `src/evaluation/compare.ts`, `npm run stats -- --run <id>` (ADR 008); testes conferidos contra o SciPy 1.18.1 e o statsmodels; aplicada às rodadas dev (abaixo) e à execução final (01/11/2026) |
+| H3: integração da 4ª fonte em duas variantes e segundo cliente MCP | executado (passos 1–6) | `results/runs/2026-11-01-h3-integracao-politicas`; customizada 5 arquivos +43 −9, MCP 7 arquivos +56 −11, host intocado nas duas; segundo cliente (só o SDK) usou `buscar_policies` sem alteração no servidor (embedder hash). Leitura e limitações em `docs/h3-protocolo.md`. Integração aplicada na `main` depois da medida (ADR 010). Passo 6 executado em 01/11/2026: `2026-11-01-politicas-recuperacao` |
+| Protocolo da execução final e plano de análise | registrado, executado sem desvios (01/11/2026) | ADR 011 (antes de qualquer execução no `heldout`): 10 rodadas de recuperação, 5 de geração, juiz com 2 repetições, ≥ 2 avaliadores, conjunto `policies` com 5 rodadas |
+| Script do experimento final e tabelas do artigo | implementado, testado, validado | `scripts/experimento-final.sh` (roteiro em `docs/experimento-final.md`) e `scripts/tabelas-artigo.ts` (tabelas só a partir de `results/runs/`, com alerta para execuções sem valor experimental); ensaiados com `MODO=teste`; **experimento final executado em 01/11/2026** (abaixo); tabelas em `results/artigo/tabelas-2026-11-01.md` |
 | Estatística das notas humanas (H2) | implementado, testado | `npm run stats -- --run <planilha>` depois do `eval:human --import`: média dos avaliadores por item, mesmos pares e testes do ADR 008 |
 | Rascunho das seções 3 e 4 do artigo | rascunho | `docs/artigo/secoes-3-4.md`: seção 3 descreve o implementado; seção 4 só estrutura, sem números |
-| Tempo da tool dentro de D | implementado, testado | `tempoMs` em cada tool; `toolMs` no bench só para D; `scripts/compare-c-d.ts` imprime D − tool (ADR 009); ainda sem execução real |
+| Tempo da tool dentro de D | implementado, testado, validado | `tempoMs` em cada tool; `toolMs` no bench só para D; `scripts/compare-c-d.ts` imprime D − tool (ADR 009); medido na execução final (01/11/2026) |
 | Node fixado nas medições | implementado | `.nvmrc` 22, `engines` `^22.12.0`, CI pelo `.nvmrc`; `bench:*` recusa outra versão (ADR 009) |
 | Benchmark reproduzível | implementado | `environment.json` grava commit lido na partida, árvore limpa (ignora `results/`), digests e versão do Ollama, uso de GPU (`sizeVram`), hash do prompt e fonte de energia |
 | API + UI de demonstração | implementado, testado | `npm run demo`; `src/api/`, `apps/demo/`; testes em `test/unit/api.test.ts` (hash + memória + LLM simulado); conferida no navegador com `--embedder hash --store memory --llm simulated` (D pelo stdio real). Ainda não aberta com bge-m3 + qwen3. Fora das métricas |
 | Modo de avaliação humana cega na UI | implementado, testado | `npm run demo -- --avaliacao <planilha>`: só Node, sem Ollama; uma resposta distinta por vez, sem pista da abordagem; grava `avaliacoes-ui/<avaliador>.csv` no formato da planilha cega (lido por `eval:human --import`); mostra o alfa de Krippendorff com 2 ou mais avaliadores; testes em `test/unit/eval-ui.test.ts`; conferido no navegador com a planilha piloto do dev. **Nenhuma avaliação humana feita ainda** |
+
+## Execução final no `heldout` (01/11/2026)
+
+`scripts/experimento-final.sh` com todas as etapas, de 00:00 a 01:21, no commit `2042154`
+(`main`), árvore limpa, Node 22.23.4 (nvm), Mac na tomada (`powermode 0`, automático),
+container do Ollama reiniciado antes (sem `OOMKilled`). Ensaio com `MODO=teste` antes, cujos
+artefatos foram apagados. **Nenhum desvio do ADR 011**: todas as etapas passaram na primeira
+tentativa (130 testes unitários e 3 de integração na verificação).
+
+| Execução | Etapa (ADR 011) | Conteúdo |
+| --- | --- | --- |
+| `results/runs/2026-11-01-heldout-recuperacao` | recuperação | A, B, C, D; 40 perguntas; 10 rodadas + aquecimento |
+| `results/runs/2026-11-01-heldout-geracao` | recuperação + geração | B, C, D; 40 perguntas; 5 rodadas + aquecimento |
+| `results/runs/2026-11-01-heldout-avaliacao` | avaliação automática | regra dos fatos + juiz `qwen3.5:4b`, 2 repetições |
+| `results/runs/2026-11-01-heldout-planilha-cega` | planilha da avaliação humana | **sem notas ainda** |
+| `results/runs/2026-11-01-politicas-recuperacao` | H3, passo 6 | A, B, C, D; 15 perguntas, 4 fontes; 5 rodadas + aquecimento |
+
+Estatística (`estatistica*.json` nas pastas, inclusive os subgrupos `literal` e
+`parafraseada`) e tabelas do artigo em `results/artigo/tabelas-2026-11-01.md`, geradas pelo
+script só a partir dessas pastas. Conferência `scripts/compare-c-d.ts`: C e D com o mesmo top-5
+e as mesmas métricas em 40/40 (recuperação) e 15/15 (políticas) perguntas, e com os mesmos
+trechos e a mesma resposta em 40/40 (geração). Falta a avaliação humana (H2): `npm run demo --
+--avaliacao 2026-11-01-heldout-planilha-cega`, depois `eval:human --import` e
+`DATA=2026-11-01 scripts/experimento-final.sh estatistica tabelas`. A seção 4 do artigo ainda
+não foi preenchida.
 
 ## Ambiente validado (31/10/2026)
 
@@ -171,14 +196,10 @@ dependem da execução final no `heldout`.
   como esperado ao aproveitar o pareamento por pergunta (ADR 008).
 
 ## Próximos passos
-1. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
-2. Executar o experimento final no `heldout` e o passo 6 da H3, no Mac: `scripts/experimento-final.sh`
-   (`docs/experimento-final.md`).
-3. Conseguir ao menos 2 avaliadores humanos para a H2 (a planilha sai da execução final no
-   `heldout`; `results/runs/2026-10-31-planilha-cega-dev-piloto` serve para testar o
-   instrumento antes).
-5. Antes do experimento final: instalar e usar o Node 22 no Mac (`nvm install 22 && nvm use`);
-   fixar e registrar o modo de energia do macOS e, se for o caso, o número de threads do
-   Ollama, para reduzir a deriva térmica; mais rodadas de latência com geração (o ruído entre
-   rodadas chegou a ~500 ms); rodar na tomada, sem outras cargas e sem trocar de branch durante
-   a execução; esperar o Ollama descarregar (`/api/ps` vazio) ao trocar de modelo.
+1. Avaliação humana da execução final por ao menos 2 avaliadores: `npm run demo --
+   --avaliacao 2026-11-01-heldout-planilha-cega`, depois `npm run eval:human -- --import
+   2026-11-01-heldout-planilha-cega --ratings <csvs de avaliacoes-ui>` e
+   `DATA=2026-11-01 scripts/experimento-final.sh estatistica tabelas`.
+2. Preencher a seção 4 do artigo (`docs/artigo/secoes-3-4.md`) só com números de
+   `results/artigo/tabelas-2026-11-01.md`, depois da avaliação humana.
+3. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
