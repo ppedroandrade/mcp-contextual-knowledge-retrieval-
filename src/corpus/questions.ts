@@ -4,10 +4,10 @@ import type { Rng } from './random.js';
 import type { TicketMeta } from './render/tickets.js';
 import { HOWTOS, INCIDENTS, SERVICES } from './world.js';
 
-type Draft = Omit<Question, 'id' | 'set' | 'sources' | 'relevantDocIds' | 'evidence'>;
+export type Draft = Omit<Question, 'id' | 'set' | 'sources' | 'relevantDocIds' | 'evidence'>;
 
 /** Cada pergunta cita fatos; evidências, documentos e fontes saem dos fatos, não de anotação manual. */
-function finalize(drafts: Draft[], facts: Map<string, Fact>, set: QuestionSet, prefix: string): Question[] {
+export function finalize(drafts: Draft[], facts: Map<string, Fact>, set: QuestionSet, prefix: string): Question[] {
   return drafts.map((d, i) => {
     const used = d.factIds.map((id) => {
       const f = facts.get(id);
@@ -25,14 +25,15 @@ function finalize(drafts: Draft[], facts: Map<string, Fact>, set: QuestionSet, p
       evidence: units.map((u) => [u]),
       factIds: d.factIds,
       referenceAnswer: d.referenceAnswer,
+      ...(d.style ? { style: d.style } : {}),
     };
   });
 }
 
-const draft = (type: QuestionType, text: string, factIds: string[], referenceAnswer: string): Draft =>
+export const draft = (type: QuestionType, text: string, factIds: string[], referenceAnswer: string): Draft =>
   ({ type, text, factIds, referenceAnswer });
 
-const SERVICE_QUESTIONS: Record<string, (svc: string, v: string) => [string, string]> = {
+export const SERVICE_QUESTIONS: Record<string, (svc: string, v: string) => [string, string]> = {
   healthcheck: (s, v) => [`Qual endpoint devo chamar para verificar se o ${s} está saudável?`, `GET ${v}.`],
   alerta: (s, v) => [`Em que situação dispara o alerta principal do ${s}?`, `Quando há ${v}.`],
   rollback: (s, v) => [`Qual comando desfaz um deploy problemático do ${s}?`, `${v}.`],
@@ -44,7 +45,7 @@ const SERVICE_QUESTIONS: Record<string, (svc: string, v: string) => [string, str
   retry: (s, v) => [`Como o ${s} lida com novas tentativas em falhas temporárias?`, `${v}.`],
 };
 
-const HOWTO_QUESTIONS: Record<string, string> = {
+export const HOWTO_QUESTIONS: Record<string, string> = {
   'rotacionar-chave.validade': 'Depois de quanto tempo uma chave de API expira?',
   'rotacionar-chave.menu': 'Em qual menu do portal se gera uma nova chave de API?',
   'configurar-webhook.timeout': 'Qual é o tempo máximo para o sistema do cliente responder a um webhook?',
@@ -67,7 +68,7 @@ const HOWTO_QUESTIONS: Record<string, string> = {
   'consultar-logs.filtro': 'Por qual campo filtro os logs para achar uma chamada específica?',
 };
 
-const HOWTO_LIMIT_ASK: Record<string, string> = {
+export const HOWTO_LIMIT_ASK: Record<string, string> = {
   'rotacionar-chave': 'em quanto tempo as chaves expiram',
   'configurar-webhook': 'em quanto tempo o sistema do cliente precisa responder',
   'limites-requisicao': 'qual é o limite padrão de requisições',
@@ -80,7 +81,7 @@ const HOWTO_LIMIT_ASK: Record<string, string> = {
   'consultar-logs': 'por quanto tempo os logs ficam no portal',
 };
 
-const OTHER_QUESTIONS: Record<string, (c: string) => string> = {
+export const OTHER_QUESTIONS: Record<string, (c: string) => string> = {
   'email-cobranca': (c) => `Para qual e-mail passaram a ir as faturas do cliente ${c}?`,
   cnpj: (c) => `Qual fatura foi reemitida para o cliente ${c} por causa do CNPJ errado?`,
   'nota-credito': (c) => `De quanto foi a nota de crédito emitida para o cliente ${c}?`,

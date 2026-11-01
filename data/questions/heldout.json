@@ -1,0 +1,946 @@
+[
+  {
+    "id": "h001",
+    "text": "Quem estava de plantão no incidente de 03/03/2026?",
+    "type": "unanswerable",
+    "set": "heldout",
+    "sources": [],
+    "relevantDocIds": [],
+    "evidence": [],
+    "factIds": [],
+    "referenceAnswer": "Não há incidente registrado nessa data."
+  },
+  {
+    "id": "h002",
+    "text": "Qual foi a causa técnica do problema que o cliente Grupo Nébula relatou em 15/05/2026?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "tickets",
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "T-1043",
+      "INC-2026-013"
+    ],
+    "evidence": [
+      [
+        "T-1043#resolucao"
+      ],
+      [
+        "INC-2026-013#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1043.incidente",
+      "inc.INC-2026-013.causa"
+    ],
+    "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-013, cuja causa raiz foi: chave de idempotência descartada quando o PagaFácil respondeu após o timeout de 10 segundos.",
+    "style": "literal"
+  },
+  {
+    "id": "h003",
+    "text": "Qual é o endpoint de saúde do tax-service?",
+    "type": "unanswerable",
+    "set": "heldout",
+    "sources": [],
+    "relevantDocIds": [],
+    "evidence": [],
+    "factIds": [],
+    "referenceAnswer": "O corpus não descreve nenhum serviço chamado tax-service."
+  },
+  {
+    "id": "h004",
+    "text": "Qual versão do Kubernetes roda em produção?",
+    "type": "unanswerable",
+    "set": "heldout",
+    "sources": [],
+    "relevantDocIds": [],
+    "evidence": [],
+    "factIds": [],
+    "referenceAnswer": "O corpus não informa a versão do Kubernetes."
+  },
+  {
+    "id": "h005",
+    "text": "Qual foi a causa técnica do problema que o cliente Lume Energia relatou em 24/09/2026?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "tickets",
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "T-1079",
+      "INC-2026-025"
+    ],
+    "evidence": [
+      [
+        "T-1079#resolucao"
+      ],
+      [
+        "INC-2026-025#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1079.incidente",
+      "inc.INC-2026-025.causa"
+    ],
+    "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-025, cuja causa raiz foi: fonte tipográfica ausente na nova imagem de contêiner do invoice-worker.",
+    "style": "literal"
+  },
+  {
+    "id": "h006",
+    "text": "Quanto custa por mês o plano Enterprise?",
+    "type": "unanswerable",
+    "set": "heldout",
+    "sources": [],
+    "relevantDocIds": [],
+    "evidence": [],
+    "factIds": [],
+    "referenceAnswer": "O corpus não informa o preço dos planos."
+  },
+  {
+    "id": "h007",
+    "text": "O que ficou combinado para a falha do processo que monta os PDFs das faturas em 18/06/2026 não se repetir?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "INC-2026-016"
+    ],
+    "evidence": [
+      [
+        "INC-2026-016#acoes"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-016.acao"
+    ],
+    "referenceAnswer": "declaração das filas como duráveis e verificação pós-atualização.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h008",
+    "text": "Que artigo da base mandaram para o cliente Editora Pampa no atendimento de 11/06/2026, e o que ele diz sobre qual é a versão mais antiga ainda atendida?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "tickets",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "T-1050",
+      "DOC-025"
+    ],
+    "evidence": [
+      [
+        "T-1050#resolucao"
+      ],
+      [
+        "DOC-025#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1050.artigo",
+      "howto.atualizar-sdk.versao-minima"
+    ],
+    "referenceAnswer": "Foi enviado o artigo \"Como atualizar o SDK oficial para Node.js\"; 4.2.0.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h009",
+    "text": "Por qual canal deveria ser acionado o plantão do serviço afetado no incidente em que houve relatórios de fevereiro exportados sem linhas?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "incidents",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "INC-2026-004",
+      "DOC-014"
+    ],
+    "evidence": [
+      [
+        "INC-2026-004#resumo"
+      ],
+      [
+        "DOC-014#escalonamento"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-004.servico",
+      "svc.reporting-service.plantao"
+    ],
+    "referenceAnswer": "O serviço afetado foi o reporting-service; #oncall-dados.",
+    "style": "literal"
+  },
+  {
+    "id": "h010",
+    "text": "Se a falha de 11/03/2026 tivesse vindo de uma versão nova, como voltar o componente afetado para a anterior?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "incidents",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "INC-2026-006",
+      "DOC-015"
+    ],
+    "evidence": [
+      [
+        "INC-2026-006#resumo"
+      ],
+      [
+        "DOC-015#rollback"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-006.servico",
+      "svc.notification-service.rollback"
+    ],
+    "referenceAnswer": "O serviço afetado foi o notification-service; orbctl rollback notification-service --to previous.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h011",
+    "text": "Para qual e-mail passaram a ir as faturas do cliente Acme Logística?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "tickets"
+    ],
+    "relevantDocIds": [
+      "T-1035"
+    ],
+    "evidence": [
+      [
+        "T-1035#resolucao"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1035.resolucao"
+    ],
+    "referenceAnswer": "financeiro@acmelogistica.example.",
+    "style": "literal"
+  },
+  {
+    "id": "h012",
+    "text": "Qual foi a causa técnica do problema que o cliente Hotel Maré Alta relatou em 08/07/2026?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "tickets",
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "T-1059",
+      "INC-2026-018"
+    ],
+    "evidence": [
+      [
+        "T-1059#resolucao"
+      ],
+      [
+        "INC-2026-018#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1059.incidente",
+      "inc.INC-2026-018.causa"
+    ],
+    "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-018, cuja causa raiz foi: novas tentativas disparadas antes do timeout de 5 segundos do cliente terminar.",
+    "style": "literal"
+  },
+  {
+    "id": "h013",
+    "text": "Qual é o tamanho máximo de uma exportação direta de relatório?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-022"
+    ],
+    "evidence": [
+      [
+        "DOC-022#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "howto.exportar-relatorios.limite-linhas"
+    ],
+    "referenceAnswer": "100 mil linhas.",
+    "style": "literal"
+  },
+  {
+    "id": "h014",
+    "text": "Que equipe cuida do componente que falhou em 21/01/2026?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "incidents",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "INC-2026-002",
+      "DOC-002"
+    ],
+    "evidence": [
+      [
+        "INC-2026-002#resumo"
+      ],
+      [
+        "DOC-002#visao-geral"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-002.servico",
+      "svc.invoice-worker.time"
+    ],
+    "referenceAnswer": "O serviço afetado foi o invoice-worker; Time Faturamento.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h015",
+    "text": "Durante o incidente em que houve clientes finais recebendo o mesmo aviso de cobrança dezenas de vezes, em setembro, qual endpoint mostraria a saúde do serviço afetado?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "incidents",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "INC-2026-023",
+      "DOC-015"
+    ],
+    "evidence": [
+      [
+        "INC-2026-023#resumo"
+      ],
+      [
+        "DOC-015#verificacao-de-saude"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-023.servico",
+      "svc.notification-service.healthcheck"
+    ],
+    "referenceAnswer": "O serviço afetado foi o notification-service; /health/notifications.",
+    "style": "literal"
+  },
+  {
+    "id": "h016",
+    "text": "Quanto tempo durou o incidente em que houve clientes rejeitando webhooks por assinatura inválida?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "INC-2026-003"
+    ],
+    "evidence": [
+      [
+        "INC-2026-003#resumo"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-003.duracao"
+    ],
+    "referenceAnswer": "47 minutos.",
+    "style": "literal"
+  },
+  {
+    "id": "h017",
+    "text": "O que estava quebrado por trás da reclamação do cliente Clínica Vitalis em 18/06/2026?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "tickets",
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "T-1053",
+      "INC-2026-016"
+    ],
+    "evidence": [
+      [
+        "T-1053#resolucao"
+      ],
+      [
+        "INC-2026-016#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1053.incidente",
+      "inc.INC-2026-016.causa"
+    ],
+    "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-016, cuja causa raiz foi: atualização do RabbitMQ removeu a fila invoices.generate, que não era declarada como durável.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h018",
+    "text": "Qual URL de ACS devo passar ao cliente que está configurando SSO?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-023"
+    ],
+    "evidence": [
+      [
+        "DOC-023#passo-a-passo"
+      ]
+    ],
+    "factIds": [
+      "howto.configurar-sso.acs"
+    ],
+    "referenceAnswer": "https://auth.orbital.example/saml/acs.",
+    "style": "literal"
+  },
+  {
+    "id": "h019",
+    "text": "Que equipe responde pelo componente que avisa os sistemas dos clientes sobre eventos?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-004"
+    ],
+    "evidence": [
+      [
+        "DOC-004#visao-geral"
+      ]
+    ],
+    "factIds": [
+      "svc.webhook-dispatcher.time"
+    ],
+    "referenceAnswer": "Time Integrações.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h020",
+    "text": "Que rota da API troca o pacote contratado?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-024"
+    ],
+    "evidence": [
+      [
+        "DOC-024#passo-a-passo"
+      ]
+    ],
+    "factIds": [
+      "howto.mudar-plano.endpoint"
+    ],
+    "referenceAnswer": "PATCH /v2/subscriptions/{id}.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h021",
+    "text": "Que compromisso de disponibilidade ou de prazo tem a integração com o gateway de cartão?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-003"
+    ],
+    "evidence": [
+      [
+        "DOC-003#confiabilidade"
+      ]
+    ],
+    "factIds": [
+      "svc.payments-adapter.slo"
+    ],
+    "referenceAnswer": "99,95% de disponibilidade mensal.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h022",
+    "text": "Onde, no painel, eu crio uma credencial nova para integrar com a API?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-017"
+    ],
+    "evidence": [
+      [
+        "DOC-017#passo-a-passo"
+      ]
+    ],
+    "factIds": [
+      "howto.rotacionar-chave.menu"
+    ],
+    "referenceAnswer": "Configurações > Chaves de API.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h023",
+    "text": "O cliente Banco Horizonte abriu um chamado sobre \"Exportação anual incompleta\". Qual artigo foi enviado e, segundo ele, até quantas linhas vai a exportação direta?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "tickets",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "T-1038",
+      "DOC-022"
+    ],
+    "evidence": [
+      [
+        "T-1038#resolucao"
+      ],
+      [
+        "DOC-022#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1038.artigo",
+      "howto.exportar-relatorios.limite-linhas"
+    ],
+    "referenceAnswer": "Foi enviado o artigo \"Como exportar relatórios financeiros\"; 100 mil linhas.",
+    "style": "literal"
+  },
+  {
+    "id": "h024",
+    "text": "O que causou o problema de links de exportação não enviados por e-mail em abril de 2026?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "INC-2026-011"
+    ],
+    "evidence": [
+      [
+        "INC-2026-011#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-011.causa"
+    ],
+    "referenceAnswer": "token de serviço do reporting-service para o notification-service expirado.",
+    "style": "literal"
+  },
+  {
+    "id": "h025",
+    "text": "Se a falha de 17/07/2026 tivesse vindo de uma versão nova, como voltar o componente afetado para a anterior?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "incidents",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "INC-2026-019",
+      "DOC-014"
+    ],
+    "evidence": [
+      [
+        "INC-2026-019#resumo"
+      ],
+      [
+        "DOC-014#rollback"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-019.servico",
+      "svc.reporting-service.rollback"
+    ],
+    "referenceAnswer": "O serviço afetado foi o reporting-service; orbctl rollback reporting-service --to previous.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h026",
+    "text": "Qual é a meta de nível de serviço do reporting-service?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-006"
+    ],
+    "evidence": [
+      [
+        "DOC-006#confiabilidade"
+      ]
+    ],
+    "factIds": [
+      "svc.reporting-service.slo"
+    ],
+    "referenceAnswer": "99% dos relatórios entregues em até 30 minutos.",
+    "style": "literal"
+  },
+  {
+    "id": "h027",
+    "text": "Por qual canal eu aciono o plantão responsável pelo customer-portal?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-016"
+    ],
+    "evidence": [
+      [
+        "DOC-016#escalonamento"
+      ]
+    ],
+    "factIds": [
+      "svc.customer-portal.plantao"
+    ],
+    "referenceAnswer": "Pelo canal #oncall-web.",
+    "style": "literal"
+  },
+  {
+    "id": "h028",
+    "text": "Qual é a meta de nível de serviço do auth-service?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-005"
+    ],
+    "evidence": [
+      [
+        "DOC-005#confiabilidade"
+      ]
+    ],
+    "factIds": [
+      "svc.auth-service.slo"
+    ],
+    "referenceAnswer": "99,99% de disponibilidade mensal.",
+    "style": "literal"
+  },
+  {
+    "id": "h029",
+    "text": "O que estava quebrado por trás da reclamação do cliente Lume Energia em 08/01/2026?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "tickets",
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "T-1001",
+      "INC-2026-001"
+    ],
+    "evidence": [
+      [
+        "T-1001#resolucao"
+      ],
+      [
+        "INC-2026-001#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1001.incidente",
+      "inc.INC-2026-001.causa"
+    ],
+    "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-001, cuja causa raiz foi: certificado TLS do gateway PagaFácil expirado no truststore do payments-adapter.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h030",
+    "text": "O cliente Mercado Serra Azul abriu um chamado sobre \"Erro 429 na rotina noturna\". Qual artigo foi enviado e, segundo ele, qual é o limite padrão de requisições?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "tickets",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "T-1018",
+      "DOC-019"
+    ],
+    "evidence": [
+      [
+        "T-1018#resolucao"
+      ],
+      [
+        "DOC-019#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1018.artigo",
+      "howto.limites-requisicao.limite"
+    ],
+    "referenceAnswer": "Foi enviado o artigo \"Limites de requisição da API\"; 600 requisições por minuto.",
+    "style": "literal"
+  },
+  {
+    "id": "h031",
+    "text": "Em que situação dispara o alerta principal do notification-service?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-015"
+    ],
+    "evidence": [
+      [
+        "DOC-015#verificacao-de-saude"
+      ]
+    ],
+    "factIds": [
+      "svc.notification-service.alerta"
+    ],
+    "referenceAnswer": "Quando há taxa de rejeição do provedor acima de 3% em 15 minutos.",
+    "style": "literal"
+  },
+  {
+    "id": "h032",
+    "text": "Durante o incidente em que houve erro 500 em todas as tentativas de login, em maio, qual endpoint mostraria a saúde do serviço afetado?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "incidents",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "INC-2026-012",
+      "DOC-013"
+    ],
+    "evidence": [
+      [
+        "INC-2026-012#resumo"
+      ],
+      [
+        "DOC-013#verificacao-de-saude"
+      ]
+    ],
+    "factIds": [
+      "inc.INC-2026-012.servico",
+      "svc.auth-service.healthcheck"
+    ],
+    "referenceAnswer": "O serviço afetado foi o auth-service; /health/auth.",
+    "style": "literal"
+  },
+  {
+    "id": "h033",
+    "text": "Qual URL de homologação foi cadastrada para os webhooks do cliente Clínica Vitalis?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "tickets"
+    ],
+    "relevantDocIds": [
+      "T-1067"
+    ],
+    "evidence": [
+      [
+        "T-1067#resolucao"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1067.resolucao"
+    ],
+    "referenceAnswer": "https://homolog.clinicavitalis.example/webhooks.",
+    "style": "literal"
+  },
+  {
+    "id": "h034",
+    "text": "Que artigo da base mandaram para o cliente Acme Logística no atendimento de 08/01/2026, e o que ele diz sobre quantas novas tentativas são permitidas?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "tickets",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "T-1002",
+      "DOC-021"
+    ],
+    "evidence": [
+      [
+        "T-1002#resolucao"
+      ],
+      [
+        "DOC-021#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1002.artigo",
+      "howto.reprocessar-fatura.maximo"
+    ],
+    "referenceAnswer": "Foi enviado o artigo \"Como reprocessar uma fatura com falha\"; 3 reprocessamentos.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h035",
+    "text": "Onde peço ajuda à equipe de sobreaviso da API pública que os clientes usam para assinaturas e cobranças?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-009"
+    ],
+    "evidence": [
+      [
+        "DOC-009#escalonamento"
+      ]
+    ],
+    "factIds": [
+      "svc.billing-api.plantao"
+    ],
+    "referenceAnswer": "Pelo canal #oncall-faturamento.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h036",
+    "text": "Que artigo da base mandaram para o cliente Banco Horizonte no atendimento de 10/05/2026, e o que ele diz sobre quanto tempo o sistema do cliente tem para confirmar o recebimento?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "tickets",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "T-1042",
+      "DOC-018"
+    ],
+    "evidence": [
+      [
+        "T-1042#resolucao"
+      ],
+      [
+        "DOC-018#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1042.artigo",
+      "howto.configurar-webhook.timeout"
+    ],
+    "referenceAnswer": "Foi enviado o artigo \"Como configurar e validar webhooks\"; 5 segundos.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h037",
+    "text": "Que sistema de gestão foi recomendado para o cliente Acme Logística integrar?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "tickets"
+    ],
+    "relevantDocIds": [
+      "T-1080"
+    ],
+    "evidence": [
+      [
+        "T-1080#resolucao"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1080.resolucao"
+    ],
+    "referenceAnswer": "conector Pórtico ERP.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h038",
+    "text": "Qual método substitui client.invoices.list no SDK atual?",
+    "type": "single-source",
+    "set": "heldout",
+    "sources": [
+      "docs"
+    ],
+    "relevantDocIds": [
+      "DOC-025"
+    ],
+    "evidence": [
+      [
+        "DOC-025#passo-a-passo"
+      ]
+    ],
+    "factIds": [
+      "howto.atualizar-sdk.troca"
+    ],
+    "referenceAnswer": "client.invoices.search.",
+    "style": "literal"
+  },
+  {
+    "id": "h039",
+    "text": "O que estava quebrado por trás da reclamação do cliente Acme Logística em 27/02/2026?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "tickets",
+      "incidents"
+    ],
+    "relevantDocIds": [
+      "T-1019",
+      "INC-2026-005"
+    ],
+    "evidence": [
+      [
+        "T-1019#resolucao"
+      ],
+      [
+        "INC-2026-005#causa-raiz"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1019.incidente",
+      "inc.INC-2026-005.causa"
+    ],
+    "referenceAnswer": "O chamado foi ligado ao incidente INC-2026-005, cuja causa raiz foi: limite de conexões do PostgreSQL atingido (max_connections = 200) após aumento de réplicas da billing-api.",
+    "style": "parafraseada"
+  },
+  {
+    "id": "h040",
+    "text": "O cliente Hotel Maré Alta abriu um chamado sobre \"Login com a conta corporativa\". Qual artigo foi enviado e, segundo ele, em qual plano o recurso está disponível?",
+    "type": "multi-source",
+    "set": "heldout",
+    "sources": [
+      "tickets",
+      "docs"
+    ],
+    "relevantDocIds": [
+      "T-1055",
+      "DOC-023"
+    ],
+    "evidence": [
+      [
+        "T-1055#resolucao"
+      ],
+      [
+        "DOC-023#limites-e-observacoes"
+      ]
+    ],
+    "factIds": [
+      "ticket.T-1055.artigo",
+      "howto.configurar-sso.plano"
+    ],
+    "referenceAnswer": "Foi enviado o artigo \"Como habilitar login único (SSO)\"; plano Enterprise.",
+    "style": "literal"
+  }
+]

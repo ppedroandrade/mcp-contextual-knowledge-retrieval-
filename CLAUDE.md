@@ -34,6 +34,8 @@ Leia antes de mudar qualquer coisa: `STATUS.md`, `docs/arquitetura.md`,
   semântico, só para testes).
 - O conjunto de perguntas `heldout` só pode ser criado **depois** de congelar a
   arquitetura (registrar o commit do congelamento). Não ajustar parâmetros depois.
+  Congelado em `1a1337a` (ADR 010); o `heldout` já existe. Correções depois disso só com
+  registro no ADR 010.
 - Toda decisão de arquitetura nova vira um ADR curto em `docs/decisoes/`.
 - Mudanças em `src/corpus/` exigem `npm run corpus` e versionar `data/` (há um teste que
   falha se `data/` estiver desatualizado).
@@ -56,7 +58,7 @@ npm run mcp:server                             # servidor MCP via stdio
 npm run demo                                   # API + UI de demonstração em http://127.0.0.1:3000 (fora das métricas)
 npm run demo -- --avaliacao <planilha>         # avaliação humana cega na UI (só Node); notas em avaliacoes-ui/
 npx tsx scripts/compare-c-d.ts <id>            # confere C = D e D − C numa execução
-npm run stats -- --run <id>                    # Wilcoxon + Holm + bootstrap (e Mann-Whitney) numa execução (ADR 008)
+npm run stats -- --run <id> [--style parafraseada]  # Wilcoxon + Holm + bootstrap (e Mann-Whitney) numa execução (ADR 008)
 npm run eval:answers -- --run <geração> --out <id>   # regra dos fatos + juiz (ADR 007)
 npm run eval:human -- --run <geração> --out <id>     # planilha cega; --import <id> --ratings a.csv,b.csv
 ```

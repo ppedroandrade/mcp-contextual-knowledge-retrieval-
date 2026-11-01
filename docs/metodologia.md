@@ -67,8 +67,9 @@ Registrar no artigo, de preferência com o aval do orientador.
   termos literais do texto (nome do serviço, sintoma do incidente). Isso favorece a busca
   textual (A). Na rodada de verificação do BM25 no `dev` (não é resultado do experimento),
   R@5 por documento ficou alto e ER@5 multifonte ficou bem menor. O conjunto `heldout`
-  deve incluir perguntas parafraseadas, sem os termos literais, para medir o ganho da
-  busca semântica; a proporção será declarada.
+  inclui 16 perguntas parafraseadas (de 36 com resposta), sem os termos literais, para medir
+  o ganho da busca semântica; a análise por estilo foi prevista antes da execução final
+  (`docs/corpus.md`).
 - **H2 humana** exige ao menos 2 avaliadores além do autor.
 - **Autor constrói corpus, gabarito e solução.** Mitigação: corpus gerado por código com
   semente fixa, arquitetura congelada antes de criar um conjunto reservado de perguntas,

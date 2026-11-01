@@ -2,6 +2,7 @@ import { mkdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import type { Question } from '../core/types.js';
 import type { Fact, GeneratedFile } from './model.js';
+import { buildHeldoutQuestions } from './heldout.js';
 import { buildDevQuestions, buildPolicyQuestions } from './questions.js';
 import { Rng } from './random.js';
 import { renderDocs } from './render/docs.js';
@@ -19,7 +20,7 @@ export interface Corpus {
   files: GeneratedFile[];
   facts: Fact[];
   tickets: TicketMeta[];
-  questions: { dev: Question[]; policies: Question[] };
+  questions: { dev: Question[]; policies: Question[]; heldout: Question[] };
 }
 
 /**
@@ -41,10 +42,15 @@ export function buildCorpus(seed = SEED): Corpus {
     files: [...docs.files, ...tickets.files, ...incidents.files, ...policies.files],
     facts,
     tickets: tickets.tickets,
-    questions: {
-      dev: buildDevQuestions(new Rng(seed + 10), byId, tickets.tickets),
-      policies: buildPolicyQuestions(new Rng(seed + 11), byId),
-    },
+    questions: (() => {
+      const dev = buildDevQuestions(new Rng(seed + 10), byId, tickets.tickets);
+      return {
+        dev,
+        policies: buildPolicyQuestions(new Rng(seed + 11), byId),
+        // Criado depois do congelamento da arquitetura (ADR 010).
+        heldout: buildHeldoutQuestions(new Rng(seed + 12), byId, tickets.tickets, dev),
+      };
+    })(),
   };
 }
 
@@ -57,6 +63,7 @@ export function outputFiles(c: Corpus): GeneratedFile[] {
     { path: 'corpus/facts.json', content: json(c.facts) },
     { path: 'questions/dev.json', content: json(c.questions.dev) },
     { path: 'questions/policies.json', content: json(c.questions.policies) },
+    { path: 'questions/heldout.json', content: json(c.questions.heldout) },
   ];
 }
 
@@ -72,7 +79,7 @@ function main() {
   }
   const count = (p: string) => corpus.files.filter((f) => f.path.startsWith(p)).length;
   console.log(`docs: ${count('docs/')} arquivos | chamados: ${corpus.tickets.length} | fatos: ${corpus.facts.length}`);
-  console.log(`perguntas dev: ${corpus.questions.dev.length} | políticas: ${corpus.questions.policies.length}`);
+  console.log(`perguntas dev: ${corpus.questions.dev.length} | políticas: ${corpus.questions.policies.length} | heldout: ${corpus.questions.heldout.length}`);
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) main();

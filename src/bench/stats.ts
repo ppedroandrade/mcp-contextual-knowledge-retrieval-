@@ -9,6 +9,8 @@ import { CRITERIA } from '../evaluation/rubric.js';
 import type { ItemEvaluation } from './answers.js';
 import { ruleCorrect } from './answers.js';
 import { environment } from './environment.js';
+import { loadQuestions } from './setup.js';
+import type { PerQuestion } from '../evaluation/compare.js';
 import type { GenerationResult } from './generation.js';
 import type { QuestionResult } from './retrieval.js';
 
@@ -86,19 +88,37 @@ export function table(rows: Comparison[]) {
   }));
 }
 
+/** Mantém só as perguntas do subconjunto (ex.: as parafraseadas do heldout). */
+export function restrict(measures: MeasureSpec[], keep: Set<string>): MeasureSpec[] {
+  const cut = (v: PerQuestion): PerQuestion => new Map([...v].map(([a, m]) => [a, new Map([...m].filter(([q]) => keep.has(q)))]));
+  return measures.map((m) => ({ ...m, values: cut(m.values) }));
+}
+
 async function main() {
   const env = environment();
-  const { values } = parseArgs({ options: { run: { type: 'string' }, resamples: { type: 'string', default: String(RESAMPLES) } } });
+  const { values } = parseArgs({ options: {
+    run: { type: 'string' },
+    resamples: { type: 'string', default: String(RESAMPLES) },
+    // Análise por subgrupo, prevista antes da execução final: `literal` ou `parafraseada` (heldout).
+    style: { type: 'string' },
+  } });
   if (!values.run) throw new Error('informe a execução: npm run stats -- --run <id>');
   const dir = join(DATA_DIR, '..', 'results', 'runs', values.run);
   const sourceEnv = JSON.parse(readFileSync(join(dir, 'environment.json'), 'utf8')) as { gitCommit?: string; set?: string };
-  const { kind, measures } = measuresForRun(dir);
+  const { kind, measures: all } = measuresForRun(dir);
+  let measures = all;
+  if (values.style) {
+    if (!sourceEnv.set) throw new Error('a execução não registra o conjunto de perguntas');
+    const keep = new Set(loadQuestions(sourceEnv.set).filter((q) => q.style === values.style).map((q) => q.id));
+    if (keep.size === 0) throw new Error(`o conjunto ${sourceEnv.set} não tem perguntas com estilo ${values.style}`);
+    measures = restrict(all, keep);
+  }
   const opts = { resamples: Number(values.resamples), seed: SEED };
   const comparisons = measures.flatMap((m) => comparePaired(m, undefined, opts));
   console.table(table(comparisons));
   const out = {
     geradoEm: env.timestamp, gitCommit: env.gitCommit, gitDirty: env.gitDirty, node: env.node,
-    execucao: values.run, tipo: kind, commitDaExecucao: sourceEnv.gitCommit ?? null, conjunto: sourceEnv.set ?? null,
+    execucao: values.run, tipo: kind, commitDaExecucao: sourceEnv.gitCommit ?? null, conjunto: sourceEnv.set ?? null, estilo: values.style ?? null,
     metodo: {
       teste: 'Wilcoxon pareado bilateral (exato se n ≤ 50 sem empates; normal com correção de empates, sem correção de continuidade); diferenças nulas descartadas',
       correcao: 'Holm, dentro de cada medida, sobre as comparações feitas',
@@ -108,8 +128,9 @@ async function main() {
     },
     comparacoes: comparisons,
   };
-  writeFileSync(join(dir, 'estatistica.json'), JSON.stringify(out, null, 2) + '\n');
-  console.log(`estatística em ${join(dir, 'estatistica.json')}`);
+  const file = values.style ? `estatistica-${values.style}.json` : 'estatistica.json';
+  writeFileSync(join(dir, file), JSON.stringify(out, null, 2) + '\n');
+  console.log(`estatística em ${join(dir, file)}`);
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) await main();
