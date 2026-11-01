@@ -17,3 +17,5 @@ Utilitários: gráficos, conferências e manutenção.
 - `tabelas-artigo.ts --recuperacao <id> --geracao <id> --respostas <id> --humana <id> --politicas <id> --h3 <id> [--out f.md]`:
   tabelas do artigo a partir das execuções gravadas, com a procedência de cada número e alerta
   para execuções sem valor experimental.
+- `humano-x-juiz.ts <planilha> <eval:answers>`: concordância item a item entre a avaliação humana
+  importada (uma planilha) e o juiz automático; grava `humano-x-juiz.json` na pasta da planilha.

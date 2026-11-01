@@ -23,3 +23,24 @@ describe('tabelas do artigo', () => {
     expect(provenance('v', { set: 'dev' })).toContain('conjunto dev, não é o resultado final');
   });
 });
+
+describe('avaliação humana × juiz', () => {
+  it('compara item a item e separa os itens que o juiz pontuou', async () => {
+    const { compare } = await import('../../scripts/humano-x-juiz.js');
+    const key = { R1: { key: 'a', questionId: 'q1', approaches: ['B-rag'] }, R2: { key: 'b', questionId: 'q2', approaches: ['B-rag'] }, R3: { key: 'c', questionId: 'q3', approaches: ['B-rag'] } };
+    const s = (c: number) => ({ correcao: c, completude: c, sustentacao: 5 });
+    const evals = [
+      { key: 'a', judge: [s(5)], scores: s(5) },
+      { key: 'b', judge: [s(2)], scores: s(2) },
+      { key: 'c', judge: [], scores: s(1) },
+    ] as never;
+    const human = new Map([['R1', s(5)], ['R2', s(3)], ['R3', s(1)]]);
+    const all = compare(human, key, evals, false);
+    expect(all.correcao.itens).toBe(3);
+    expect(all.correcao.notasIguais).toBeCloseTo(2 / 3, 12);
+    expect(all.correcao.diferencaMedia).toBeCloseTo(1 / 3, 12);
+    const judged = compare(human, key, evals, true);
+    expect(judged.correcao.itens).toBe(2);
+    expect(judged.correcao.notasIguais).toBe(0.5);
+  });
+});

@@ -98,7 +98,17 @@ function human(id: string): string {
   const s = read(id, 'notas-humanas.json') as { avaliadores: { nome: string; itensAvaliados: number }[]; concordancia: Record<string, number | null>; porAbordagem: Record<string, Record<string, number>> };
   const rows = ordered(s.porAbordagem).map(([a, m]) => [a, m.itens!, num(m.correcao, 2), num(m.completude, 2), num(m.sustentacao, 2)]);
   const env = withGeneration(read(id, 'environment.json') as Env);
-  return `### Avaliação humana (cega)\n\n${mdTable(['Configuração', 'Itens', 'Correção (1–5)', 'Completude (1–5)', 'Sustentação (1–5)'], rows)}\n\n${s.avaliadores.length} avaliadores (${s.avaliadores.map((r) => `${r.itensAvaliados} itens`).join(', ')}); alfa de Krippendorff ordinal: ${Object.entries(s.concordancia).map(([c, v]) => `${c} ${num(v, 2)}`).join(', ')}.\n\n${provenance(id, env)}`;
+  const who = s.avaliadores.length === 1
+    ? `1 planilha de notas (\`${s.avaliadores[0]!.nome}\`, ${s.avaliadores[0]!.itensAvaliados} itens); sem concordância entre avaliadores, que exige 2 ou mais planilhas independentes.`
+    : `${s.avaliadores.length} avaliadores (${s.avaliadores.map((r) => `${r.itensAvaliados} itens`).join(', ')}); alfa de Krippendorff ordinal: ${Object.entries(s.concordancia).map(([c, v]) => `${c} ${num(v, 2)}`).join(', ')}.`;
+  let judge = '';
+  if (has(id, 'humano-x-juiz.json')) {
+    type A = Record<string, { itens: number; alfaOrdinal: number; notasIguais: number; diferencaMedia: number }>;
+    const hj = read(id, 'humano-x-juiz.json') as { avaliacaoAutomatica: string; todosOsItens: A; soItensComNotaDoJuiz: A };
+    const line = (label: string, a: A) => Object.entries(a).map(([c, v]) => [label, c, v.itens, num(v.alfaOrdinal, 2), pct(v.notasIguais), num(v.diferencaMedia, 2)]);
+    judge = `\n\n#### Avaliação humana × juiz automático\n\n${mdTable(['Itens', 'Critério', 'n', 'Alfa ordinal', 'Notas iguais', 'Humano − juiz (média)'], [...line('todos', hj.todosOsItens), ...line('só com nota do juiz', hj.soItensComNotaDoJuiz)])}\n\nJuiz: \`${hj.avaliacaoAutomatica}\`; "todos" inclui as notas que a rubrica fixa por regra (ADR 007).`;
+  }
+  return `### Avaliação humana (cega)\n\n${mdTable(['Configuração', 'Itens', 'Correção (1–5)', 'Completude (1–5)', 'Sustentação (1–5)'], rows)}\n\n${who}${judge}\n\n${provenance(id, env)}`;
 }
 
 function stats(id: string): string {

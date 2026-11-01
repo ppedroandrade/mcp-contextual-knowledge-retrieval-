@@ -42,4 +42,13 @@ escolha de execução ou de análise dependa do resultado.
 **Consequências.** Qualquer desvio deste protocolo (outra contagem de rodadas, outro juiz, uma
 etapa repetida) é registrado aqui, com o motivo, antes de entrar no artigo.
 
-**Desvios:** nenhum até agora.
+**Desvios:**
+- 01/11/2026, avaliação humana: os dois avaliadores avaliaram **em conjunto**, discutindo cada
+  item, e entregaram notas de consenso (as duas planilhas recebidas eram idênticas byte a byte).
+  O protocolo pedia ≥ 2 avaliadores independentes e o alfa de Krippendorff entre eles, que, nesse
+  caso, daria 1,00 por construção. Decisão: importar uma única planilha
+  (`consenso-2-avaliadores`), não relatar concordância entre avaliadores e, no lugar dela, medir a
+  concordância entre o consenso humano e o juiz automático (`scripts/humano-x-juiz.ts`,
+  `humano-x-juiz.json`). Refazer a avaliação de forma independente não resolveria, porque os
+  avaliadores já tinham discutido as notas. Os nomes dos avaliadores não são versionados.
+- A execução automática (recuperação, geração, juiz e políticas) não teve desvios.
