@@ -4,6 +4,7 @@ export interface AppConfig {
   ollamaUrl: string;
   embeddingModel: string;
   llmModel: string;
+  judgeModel: string;
 }
 
 export const DEFAULTS: AppConfig = {
@@ -11,6 +12,7 @@ export const DEFAULTS: AppConfig = {
   ollamaUrl: 'http://localhost:11434',
   embeddingModel: 'bge-m3',
   llmModel: 'qwen3:4b-instruct-2507-q4_K_M',
+  judgeModel: 'qwen3.5:4b',
 };
 
 export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
@@ -19,5 +21,6 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
     ollamaUrl: env.OLLAMA_URL || DEFAULTS.ollamaUrl,
     embeddingModel: env.EMBEDDING_MODEL || DEFAULTS.embeddingModel,
     llmModel: env.LLM_MODEL || DEFAULTS.llmModel,
+    judgeModel: env.JUDGE_MODEL || DEFAULTS.judgeModel,
   };
 }

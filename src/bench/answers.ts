@@ -10,7 +10,7 @@ import { checkFacts, type FactCheck } from '../evaluation/facts.js';
 import { distinctItems, type EvalItem } from '../evaluation/items.js';
 import { JUDGE_PROMPT_SHA256, judgeItem } from '../evaluation/judge.js';
 import { mean } from '../evaluation/metrics.js';
-import { CRITERIA, type Scores } from '../evaluation/rubric.js';
+import { CRITERIA, scoresByRule, type Scores } from '../evaluation/rubric.js';
 import { OllamaChatProvider, type OllamaChatOptions } from '../generation/ollama.js';
 import type { LlmProvider } from '../generation/provider.js';
 import { loadSource } from '../sources/index.js';
@@ -21,46 +21,67 @@ import { loadQuestions, sourcesFor } from './setup.js';
 export interface ItemEvaluation extends Omit<EvalItem, 'context'> {
   contextUnitIds: string[];
   rule: FactCheck;
-  /** Notas do juiz, uma por repetição (vazio sem juiz). */
+  /** Notas brutas do juiz, uma por repetição; vazio quando a rubrica fixa todas as notas. */
   judge: Scores[];
+  /** Notas finais: as que a rubrica fixa e, nos demais critérios, a 1ª repetição do juiz. */
+  scores: Scores | null;
 }
 
 /** O prompt do juiz é maior que o do gerador (rubrica e referência) e a saída é curta. */
 export const JUDGE_OPTIONS: OllamaChatOptions = { numCtx: 8192, numPredict: 128, seed: 42 };
 
+const fixedByRule = (e: { type: string; abstained: boolean }) => CRITERIA.every((c) => scoresByRule(e)[c] !== undefined);
+
+/** Nota final de um item: a que a rubrica fixa e, nos demais critérios, a 1ª repetição do juiz. */
+export function finalScores(e: { type: string; abstained: boolean; judge: Scores[] }): Scores | null {
+  const fixed = scoresByRule(e);
+  if (fixedByRule(e)) return fixed as Scores;
+  return e.judge[0] ? { ...e.judge[0], ...fixed } : null;
+}
+
 /**
- * Aplica a checagem por regra e o juiz a cada resposta distinta. As repetições do juiz
- * percorrem todos os itens em sequência, para medir se ele repete as notas (ADR 007).
+ * Aplica a checagem por regra e a rubrica a cada resposta distinta (ADR 007). O juiz só é
+ * chamado quando a rubrica não fixa todas as notas, salvo com `judgeAll` (calibração). As
+ * repetições percorrem todos os itens em sequência, para medir se o juiz repete as notas.
  */
-export async function evaluateAnswers(items: EvalItem[], questions: Question[], facts: Map<string, Fact>, judge: LlmProvider | null, repeats: number, log: (msg: string) => void = () => {}) {
+export async function evaluateAnswers(items: EvalItem[], questions: Question[], facts: Map<string, Fact>, judge: LlmProvider | null, repeats: number, { judgeAll = false, log = (_: string) => {} } = {}) {
   const factIds = new Map(questions.map((q) => [q.id, q.factIds]));
   const evals: ItemEvaluation[] = items.map(({ context, ...it }) => ({
     ...it,
     contextUnitIds: context.map((c) => c.unitId),
     rule: checkFacts(it.answer, factIds.get(it.questionId)!.map((id) => facts.get(id)!)),
     judge: [],
+    scores: null,
   }));
-  if (!judge) return evals;
-  for (let r = 0; r < repeats; r++) {
-    log(`juiz: repetição ${r + 1}/${repeats}`);
-    for (let i = 0; i < items.length; i++) evals[i]!.judge.push(await judgeItem(judge, items[i]!));
+  if (judge) {
+    for (let r = 0; r < repeats; r++) {
+      log(`juiz: repetição ${r + 1}/${repeats}`);
+      for (let i = 0; i < items.length; i++) {
+        if (judgeAll || !fixedByRule(items[i]!)) evals[i]!.judge.push(await judgeItem(judge, items[i]!));
+      }
+    }
   }
+  for (const e of evals) e.scores = finalScores(e);
   return evals;
 }
 
 /** Acerto pela regra: sem resposta no corpus, abster-se; com resposta, todos os fatos literais. */
 export const ruleCorrect = (e: ItemEvaluation) => (e.type === 'unanswerable' ? e.abstained : e.rule.literal === 1);
-/** Acerto pelo juiz: correção 4 ou 5. */
-export const judgeCorrect = (s: Scores) => s.correcao >= 4;
 
 export function summarizeAnswers(evals: ItemEvaluation[]) {
   const approaches = [...new Set(evals.flatMap((e) => e.approaches))].sort();
+  const scored = evals.every((e) => e.scores !== null);
   const judged = evals.filter((e) => e.judge.length > 0);
   const repeats = judged.length ? Math.min(...judged.map((e) => e.judge.length)) : 0;
-  const rule = judged.map(ruleCorrect);
-  const byJudge = judged.map((e) => judgeCorrect(e.judge[0]!));
+  // Onde o juiz decide a correção: respostas afirmativas a perguntas com resposta no corpus.
+  const affirmative = judged.filter((e) => e.type !== 'unanswerable' && !e.abstained);
+  const rule = affirmative.map((e) => e.rule.literal === 1);
+  const byJudge = affirmative.map((e) => e.judge[0]!.correcao >= 4);
+  // Só com --judge-all: o juiz também nos casos que a rubrica fixa, para medir se ele a segue.
+  const fixedJudged = judged.filter(fixedByRule);
   return {
     itens: evals.length,
+    itensComJuiz: judged.length,
     porAbordagem: Object.fromEntries(approaches.map((a) => {
       const mine = evals.filter((e) => e.approaches.includes(a));
       const answerable = mine.filter((e) => e.type !== 'unanswerable');
@@ -69,18 +90,25 @@ export function summarizeAnswers(evals: ItemEvaluation[]) {
         regraFatosLiterais: mean(answerable.map((e) => e.rule.literal)),
         regraCoberturaTermos: mean(answerable.map((e) => e.rule.coverage)),
         regraAcerto: mine.filter(ruleCorrect).length / mine.length,
-        ...(repeats ? {
-          juizAcerto: mine.filter((e) => judgeCorrect(e.judge[0]!)).length / mine.length,
-          ...Object.fromEntries(CRITERIA.map((c) => [`juiz_${c}`, mean(mine.map((e) => e.judge[0]![c]))])),
+        ...(scored ? {
+          rubricaAcerto: mine.filter((e) => e.scores!.correcao >= 4).length / mine.length,
+          ...Object.fromEntries(CRITERIA.map((c) => [c, mean(mine.map((e) => e.scores![c]))])),
         } : {}),
       }];
     })),
-    ...(repeats ? {
+    ...(affirmative.length ? {
       juizXRegra: {
-        concordancia: rule.filter((x, i) => x === byJudge[i]).length / judged.length,
+        itens: affirmative.length,
+        concordancia: rule.filter((x, i) => x === byJudge[i]).length / affirmative.length,
         kappa: cohenKappa(rule, byJudge),
-        regraAcertaJuizNao: judged.filter((_, i) => rule[i] && !byJudge[i]).map((e) => e.key),
-        regraErraJuizSim: judged.filter((_, i) => !rule[i] && byJudge[i]).map((e) => e.key),
+        regraAcertaJuizNao: affirmative.filter((_, i) => rule[i] && !byJudge[i]).map((e) => e.key),
+        regraErraJuizSim: affirmative.filter((_, i) => !rule[i] && byJudge[i]).map((e) => e.key),
+      },
+    } : {}),
+    ...(fixedJudged.length ? {
+      juizNosCasosFixos: {
+        itens: fixedJudged.length,
+        correcaoDivergente: fixedJudged.filter((e) => (e.judge[0]!.correcao >= 4) !== (scoresByRule(e).correcao! >= 4)).map((e) => e.key),
       },
     } : {}),
     ...(repeats > 1 ? {
@@ -99,26 +127,28 @@ async function main() {
   const env = environment();
   const { values } = parseArgs({ options: {
     run: { type: 'string' },
-    judge: { type: 'string' },
+    judge: { type: 'string', default: loadConfig().judgeModel },
     repeats: { type: 'string', default: '1' },
+    'judge-all': { type: 'boolean', default: false },
     out: { type: 'string' },
   } });
   if (!values.run) throw new Error('informe a execução de bench:generation: --run <id>');
   const runDir = join(DATA_DIR, '..', 'results', 'runs', values.run);
   const results = JSON.parse(readFileSync(join(runDir, 'per-question.json'), 'utf8')) as GenerationResult[];
-  const source = JSON.parse(readFileSync(join(runDir, 'environment.json'), 'utf8')) as { set: string; gitCommit: string; llm: unknown };
+  const source = JSON.parse(readFileSync(join(runDir, 'environment.json'), 'utf8')) as { set: string; gitCommit: string; llm: { model?: string } };
+  if (values.judge === source.llm.model) console.error(`aviso: o juiz é o próprio gerador (${values.judge})`);
   const questions = loadQuestions(source.set);
   const units = sourcesFor(source.set).flatMap((s) => loadSource(s));
   const facts = new Map((JSON.parse(readFileSync(join(DATA_DIR, 'corpus', 'facts.json'), 'utf8')) as Fact[]).map((f) => [f.id, f]));
   const items = distinctItems(results, questions, units);
-  const judge = values.judge ? new OllamaChatProvider(loadConfig().ollamaUrl, values.judge, JUDGE_OPTIONS) : null;
+  const judge = values.judge === 'none' ? null : new OllamaChatProvider(loadConfig().ollamaUrl, values.judge, JUDGE_OPTIONS);
   const repeats = Number(values.repeats);
-  const evals = await evaluateAnswers(items, questions, facts, judge, repeats, (m) => console.error(m));
+  const evals = await evaluateAnswers(items, questions, facts, judge, repeats, { judgeAll: values['judge-all'], log: (m) => console.error(m) });
   const summary = summarizeAnswers(evals);
   console.table(summary.porAbordagem);
-  const { repetibilidade, juizXRegra } = summary;
-  if (repetibilidade) console.log('repetibilidade do juiz:', JSON.stringify(repetibilidade));
-  if (juizXRegra) console.log('juiz × regra:', JSON.stringify({ ...juizXRegra, regraAcertaJuizNao: juizXRegra.regraAcertaJuizNao.length, regraErraJuizSim: juizXRegra.regraErraJuizSim.length }));
+  for (const k of ['juizXRegra', 'juizNosCasosFixos', 'repetibilidade'] as const) {
+    if (summary[k]) console.log(`${k}:`, JSON.stringify(summary[k], (_, v) => (Array.isArray(v) ? v.length : v)));
+  }
   if (values.out) {
     const dir = saveRun(values.out, {
       'items.json': evals,
@@ -127,7 +157,7 @@ async function main() {
         ...env,
         generationRun: values.run, generationCommit: source.gitCommit, generator: source.llm,
         judge: judge ? await judge.describe() : null, judgePromptSha256: JUDGE_PROMPT_SHA256,
-        repeats: judge ? repeats : 0, set: source.set, items: items.length,
+        repeats: judge ? repeats : 0, judgeAll: values['judge-all'], set: source.set, items: items.length,
       },
     });
     console.log(`resultados em ${dir}`);

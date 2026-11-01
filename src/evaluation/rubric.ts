@@ -29,3 +29,15 @@ export const RUBRIC: Record<Criterion, { title: string; text: string }> = {
 
 /** Rubrica em texto corrido, para o prompt do juiz e as instruções dos avaliadores. */
 export const RUBRIC_TEXT = CRITERIA.map((c) => `- ${c} (${RUBRIC[c].title}): ${RUBRIC[c].text}`).join('\n');
+
+/**
+ * Notas que a rubrica fixa sem julgamento. Quem só diz que não sabe não afirma nada
+ * (sustentação 5) e acerta só se o corpus não tem a resposta; quem afirma algo numa pergunta
+ * sem resposta no corpus erra (correção e completude 1). Os critérios que faltarem ficam
+ * para o juiz.
+ */
+export function scoresByRule(item: { type: string; abstained: boolean }): Partial<Scores> {
+  const unanswerable = item.type === 'unanswerable';
+  if (item.abstained) return unanswerable ? { correcao: 5, completude: 5, sustentacao: 5 } : { correcao: 1, completude: 1, sustentacao: 5 };
+  return unanswerable ? { correcao: 1, completude: 1 } : {};
+}

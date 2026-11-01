@@ -8,7 +8,7 @@ import { checkFacts, factAnswerValue } from '../../src/evaluation/facts.js';
 import { blindSheet, evaluatorInstructions, parseRatings, SHEET_COLUMNS, summarizeRatings } from '../../src/evaluation/human.js';
 import { distinctItems, type AnsweredQuestion } from '../../src/evaluation/items.js';
 import { buildJudgeMessages, JUDGE_PROMPT_SHA256, JUDGE_SCHEMA, judgeItem } from '../../src/evaluation/judge.js';
-import { CRITERIA, RUBRIC } from '../../src/evaluation/rubric.js';
+import { CRITERIA, RUBRIC, scoresByRule } from '../../src/evaluation/rubric.js';
 import type { CompletionOptions, LlmProvider } from '../../src/generation/provider.js';
 import { SimulatedProvider } from '../../src/generation/simulated.js';
 import { parseCsv } from '../../src/sources/csv.js';
@@ -149,36 +149,53 @@ describe('juiz', () => {
   });
 });
 
+describe('rubrica fixada por regra', () => {
+  it('fixa as notas de quem diz que não sabe e de quem afirma sem haver resposta no corpus', () => {
+    expect(scoresByRule({ type: 'unanswerable', abstained: true })).toEqual({ correcao: 5, completude: 5, sustentacao: 5 });
+    expect(scoresByRule({ type: 'multi-source', abstained: true })).toEqual({ correcao: 1, completude: 1, sustentacao: 5 });
+    expect(scoresByRule({ type: 'unanswerable', abstained: false })).toEqual({ correcao: 1, completude: 1 });
+    expect(scoresByRule({ type: 'single-source', abstained: false })).toEqual({});
+  });
+});
+
 describe('avaliação das respostas (regra + juiz)', () => {
-  const questions = [question('q1', 'single-source', ['f1']), question('q2', 'unanswerable')];
+  const questions = [question('q1', 'single-source', ['f1']), question('q2', 'unanswerable'), question('q3', 'single-source', ['f1'])];
   const facts = new Map([['f1', fact('f1', 'Time Faturamento')]]);
   const items = distinctItems([
     answered('q1', 'B-rag', ['A#1'], 'É o Time Faturamento [A#1].'),
     answered('q1', 'C-por-fonte', ['B#1'], 'É o Time Plataforma [B#1].'),
     answered('q1', 'D-mcp', ['B#1'], 'É o Time Plataforma [B#1].'),
-    answered('q2', 'B-rag', ['A#1'], 'Não sei.', true),
-    answered('q2', 'C-por-fonte', ['B#1'], 'Não sei.', true),
-    answered('q2', 'D-mcp', ['B#1'], 'Não sei.', true),
+    ...['B-rag', 'C-por-fonte', 'D-mcp'].flatMap((a) => [answered('q2', a, ['B#1'], 'Não sei.', true), answered('q3', a, ['B#1'], 'Não sei.', true)]),
   ], questions, [unit('A#1'), unit('B#1')]);
-  // Juiz simulado: acerta B em q1, erra C/D em q1 e aceita as abstenções de q2.
+  // Juiz simulado: acerta B em q1, erra C/D em q1 e (como os juízes reais) aceita toda abstenção.
   const judge = new SimulatedProvider((m) => (m[1]!.content.includes('Time Plataforma')
     ? '{"correcao":1,"completude":1,"sustentacao":5}'
     : '{"correcao":5,"completude":5,"sustentacao":5}'));
 
-  it('aplica a regra, repete o juiz e copia a nota de C para D', async () => {
+  it('chama o juiz só onde a rubrica não fixa a nota e copia a nota de C para D', async () => {
     const evals = await evaluateAnswers(items, questions, facts, judge, 2);
-    expect(evals.map((e) => e.judge.length)).toEqual([2, 2, 2, 2]);
+    expect(evals.map((e) => [e.questionId, e.judge.length])).toEqual([['q1', 2], ['q1', 2], ['q2', 0], ['q3', 0]]);
     const s = summarizeAnswers(evals);
-    expect(s.porAbordagem['B-rag']).toMatchObject({ perguntas: 2, regraFatosLiterais: 1, regraAcerto: 1, juizAcerto: 1, juiz_correcao: 5 });
+    expect(s.porAbordagem['B-rag']).toMatchObject({ perguntas: 3, regraFatosLiterais: 0.5, regraAcerto: 2 / 3, rubricaAcerto: 2 / 3, correcao: 11 / 3 });
     expect(s.porAbordagem['C-por-fonte']).toEqual(s.porAbordagem['D-mcp']);
-    expect(s.porAbordagem['D-mcp']).toMatchObject({ regraAcerto: 0.5, juizAcerto: 0.5, juiz_correcao: 3 });
-    expect(s.juizXRegra).toMatchObject({ concordancia: 1, kappa: 1, regraAcertaJuizNao: [], regraErraJuizSim: [] });
+    expect(s.porAbordagem['D-mcp']).toMatchObject({ regraAcerto: 1 / 3, rubricaAcerto: 1 / 3, correcao: 7 / 3, sustentacao: 5 });
+    expect(s.juizXRegra).toMatchObject({ itens: 2, concordancia: 1, kappa: 1, regraAcertaJuizNao: [], regraErraJuizSim: [] });
     expect(s.repetibilidade).toMatchObject({ repeticoes: 2, itensIdenticos: 1 });
+    expect(s).not.toHaveProperty('juizNosCasosFixos');
+  });
+
+  it('com judgeAll, mede se o juiz segue a rubrica nos casos fixos', async () => {
+    const evals = await evaluateAnswers(items, questions, facts, judge, 1, { judgeAll: true });
+    expect(evals.every((e) => e.judge.length === 1)).toBe(true);
+    const s = summarizeAnswers(evals);
+    const q3 = evals.find((e) => e.questionId === 'q3')!;
+    expect(s.juizNosCasosFixos).toEqual({ itens: 2, correcaoDivergente: [q3.key] });
+    expect(q3.scores!.correcao).toBe(1); // a nota final segue a rubrica, não o juiz
   });
 
   it('sem juiz, resume só a regra', async () => {
     const s = summarizeAnswers(await evaluateAnswers(items, questions, facts, null, 3));
-    expect(s.porAbordagem['B-rag']).not.toHaveProperty('juiz_correcao');
+    expect(s.porAbordagem['B-rag']).not.toHaveProperty('correcao');
     expect(s).not.toHaveProperty('juizXRegra');
     expect(s).not.toHaveProperty('repetibilidade');
   });
