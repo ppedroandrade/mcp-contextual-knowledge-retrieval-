@@ -1,0 +1,47 @@
+{
+  "D-mcp": {
+    "perguntas": 60,
+    "abstencaoCorreta": 1,
+    "comEvidenciaNoContexto": 19,
+    "abstencaoComEvidencia": 0,
+    "abstencaoSemEvidencia": 0.6,
+    "citamTrecho": 1,
+    "citacaoInvalida": 0,
+    "truncadas": 0,
+    "respostasQueVariaram": 0,
+    "tokensRespostaMedio": 40.733333333333334,
+    "latenciaRecuperacaoMs": 141.83107641667593,
+    "latenciaTotalMs": 6237.888852733343,
+    "cargaMaximaMs": 3.581666
+  },
+  "B-rag": {
+    "perguntas": 60,
+    "abstencaoCorreta": 1,
+    "comEvidenciaNoContexto": 27,
+    "abstencaoComEvidencia": 0,
+    "abstencaoSemEvidencia": 0.48148148148148145,
+    "citamTrecho": 0.9512195121951219,
+    "citacaoInvalida": 0.03333333333333333,
+    "truncadas": 0,
+    "respostasQueVariaram": 0,
+    "tokensRespostaMedio": 41.45,
+    "latenciaRecuperacaoMs": 60.00171174997231,
+    "latenciaTotalMs": 6425.280040316672,
+    "cargaMaximaMs": 2.677792
+  },
+  "C-por-fonte": {
+    "perguntas": 60,
+    "abstencaoCorreta": 1,
+    "comEvidenciaNoContexto": 19,
+    "abstencaoComEvidencia": 0,
+    "abstencaoSemEvidencia": 0.6,
+    "citamTrecho": 1,
+    "citacaoInvalida": 0,
+    "truncadas": 0,
+    "respostasQueVariaram": 0,
+    "tokensRespostaMedio": 40.733333333333334,
+    "latenciaRecuperacaoMs": 143.45231313327093,
+    "latenciaTotalMs": 6510.887409033308,
+    "cargaMaximaMs": 2.639042
+  }
+}
