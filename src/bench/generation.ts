@@ -7,7 +7,8 @@ import { generateAnswer, type GeneratedAnswer } from '../generation/answer.js';
 import { CONTEXT_UNITS, PROMPT_SHA256 } from '../generation/prompt.js';
 import type { LlmProvider } from '../generation/provider.js';
 import { loadSource } from '../sources/index.js';
-import { environment, saveRun } from './environment.js';
+import { assertMeasurementNode, environment, saveRun } from './environment.js';
+import { lastToolMs } from './retrieval.js';
 import { loadQuestions, makeEmbedder, makeLlm, makeRetrievers, openStore, sourcesFor, type EmbedderKind, type LlmKind, type StoreKind } from './setup.js';
 
 export interface GenerationResult {
@@ -24,6 +25,8 @@ export interface GenerationResult {
   totalMs: number[];
   /** Carga do modelo informada pelo provedor, por rodada medida (ms); alta indica recarga. */
   loadMs: (number | null)[];
+  /** Só em D: maior tempo de busca informado pelas tools, por rodada medida (ver `QuestionResult`). */
+  toolMs?: number[];
 }
 
 /**
@@ -42,6 +45,7 @@ export async function runGeneration(retrievers: Retriever[], questions: Question
         const t0 = performance.now();
         const hits = await r.search(q.text, CONTEXT_UNITS);
         const t1 = performance.now();
+        const tool = lastToolMs(r);
         const answer = await generateAnswer(llm, q.text, hits);
         const t2 = performance.now();
         const key = `${r.name}|${q.id}`;
@@ -53,6 +57,7 @@ export async function runGeneration(retrievers: Retriever[], questions: Question
         res.retrievalMs.push(t1 - t0);
         res.totalMs.push(t2 - t0);
         res.loadMs.push(answer.loadMs);
+        if (tool !== undefined) (res.toolMs ??= []).push(tool);
         if (answer.text !== res.answer.text) res.changedAnswers++;
       }
     }
@@ -96,6 +101,7 @@ export function summarizeGeneration(results: GenerationResult[], questions: Ques
 }
 
 async function main() {
+  assertMeasurementNode();
   // Lido na partida: o código que roda é o carregado agora, mesmo que a branch mude depois.
   const env = environment();
   const { values } = parseArgs({ options: {

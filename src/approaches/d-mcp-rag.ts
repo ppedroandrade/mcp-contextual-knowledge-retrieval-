@@ -5,35 +5,42 @@ import { join } from 'node:path';
 import type { Hit, Retriever, SourceName } from '../core/types.js';
 import { reciprocalRankFusion } from '../retrieval/fusion.js';
 
-interface ToolResult { resultados: { unitId: string; docId: string; source: string; text: string; score: number }[] }
+interface ToolResult { resultados: { unitId: string; docId: string; source: string; text: string; score: number }[]; tempoMs?: number }
+
+/** Retriever de D, com os tempos de busca informados pelas tools na última chamada. */
+export type McpRetriever = Retriever & { tools: string[]; lastToolMs: number[] };
 
 /**
  * Configuração D — MCP + RAG. O host não conhece as fontes: descobre as tools de busca com
  * `tools/list`, chama todas com a mesma consulta e funde os resultados por RRF.
  */
-export async function createMcpRetriever(transport: Transport): Promise<Retriever & { tools: string[] }> {
+export async function createMcpRetriever(transport: Transport): Promise<McpRetriever> {
   const client = new Client({ name: 'tcc2-host', version: '0.1.0' });
   await client.connect(transport);
   const { tools } = await client.listTools();
   const searchTools = tools.filter((t) => t.name.startsWith('buscar_')).map((t) => t.name);
   if (searchTools.length === 0) throw new Error('o servidor MCP não expôs nenhuma tool de busca');
 
-  return {
+  const retriever: McpRetriever = {
     name: 'D-mcp',
     tools: searchTools,
+    lastToolMs: [],
     async search(query, k) {
-      const lists = await Promise.all(searchTools.map(async (name) => {
+      const calls = await Promise.all(searchTools.map(async (name) => {
         const res = await client.callTool({ name, arguments: { consulta: query, k } });
         if (res.isError) throw new Error(`tool ${name} falhou: ${JSON.stringify(res.content)}`);
-        const { resultados } = res.structuredContent as unknown as ToolResult;
-        return resultados.map((r): Hit => ({ chunkId: r.unitId, unitId: r.unitId, docId: r.docId, source: r.source as SourceName, text: r.text, score: r.score }));
+        const { resultados, tempoMs } = res.structuredContent as unknown as ToolResult;
+        const hits = resultados.map((r): Hit => ({ chunkId: r.unitId, unitId: r.unitId, docId: r.docId, source: r.source as SourceName, text: r.text, score: r.score }));
+        return { hits, tempoMs: tempoMs ?? NaN };
       }));
-      return reciprocalRankFusion(lists, k);
+      retriever.lastToolMs = calls.map((c) => c.tempoMs);
+      return reciprocalRankFusion(calls.map((c) => c.hits), k);
     },
     async close() {
       await client.close();
     },
   };
+  return retriever;
 }
 
 /** Transporte stdio que inicia o servidor MCP deste repositório num processo separado. */

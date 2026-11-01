@@ -42,9 +42,19 @@ function latency(label: string, of: (r: Row) => number[]) {
   console.log(`    ruído de C entre rodadas (IQR por pergunta, mediana): ${ms(median(spread))} ms`);
 }
 
+/** Custo do protocolo dentro de D: latência − maior tempo de busca das tools, por rodada (ADR 004). */
+function protocolInsideD(of: (r: Row) => number[]) {
+  const withTool = [...d.values()].filter((r) => r.toolMs?.length);
+  if (!withTool.length) return console.log('(c) a execução não tem o tempo das tools de D (execuções anteriores ao ADR 009)');
+  const perQuestion = withTool.map((r) => median(of(r).map((x, i) => x - r.toolMs![i]!)));
+  console.log(`(c) D − tempo da tool (máx. das tools em paralelo), por pergunta (ms, mediana das rodadas): p25 ${ms(quantile(perQuestion, 0.25))} · mediana ${ms(quantile(perQuestion, 0.5))} · p75 ${ms(quantile(perQuestion, 0.75))}`);
+}
+
 if (isGeneration(c.values().next().value!)) {
   latency('recuperação', (r) => (r as GenerationResult).retrievalMs);
   latency('recuperação + geração', (r) => (r as GenerationResult).totalMs);
+  protocolInsideD((r) => (r as GenerationResult).retrievalMs);
 } else {
   latency('recuperação', (r) => (r as QuestionResult).latencyMs);
+  protocolInsideD((r) => (r as QuestionResult).latencyMs);
 }

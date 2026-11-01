@@ -5,7 +5,7 @@ import type { EvidenceUnit, Retriever, SourceName } from '../core/types.js';
 import { generateAnswer } from '../generation/answer.js';
 import { CONTEXT_UNITS } from '../generation/prompt.js';
 import type { LlmProvider } from '../generation/provider.js';
-import { SOURCE_CATALOG } from '../sources/catalog.js';
+import { sourceInfo } from '../sources/catalog.js';
 
 /**
  * API da demonstração (docs/arquitetura.md, seção 4). Não tem lógica própria: chama os
@@ -76,7 +76,7 @@ export function createDemoHandler(deps: DemoDeps) {
       const docs = [...Map.groupBy(mine, (u) => u.docId)].map(([docId, us]) => ({
         docId, title: us[0]!.title, units: us.map((u) => ({ id: u.id, heading: u.heading })),
       }));
-      return { source, ...SOURCE_CATALOG[source], documents: docs.length, unitCount: mine.length, docs };
+      return { source, ...sourceInfo(source), documents: docs.length, unitCount: mine.length, docs };
     });
   }
 
@@ -91,7 +91,7 @@ export function createDemoHandler(deps: DemoDeps) {
     const t1 = performance.now();
     const passages = hits.slice(0, CONTEXT_UNITS).map((h) => {
       const u = unitsById.get(h.unitId);
-      return { unitId: h.unitId, docId: h.docId, source: h.source, sourceTitle: SOURCE_CATALOG[h.source].title, title: u?.title ?? h.docId, heading: u?.heading ?? '', text: u?.text ?? h.text, score: h.score };
+      return { unitId: h.unitId, docId: h.docId, source: h.source, sourceTitle: sourceInfo(h.source).title, title: u?.title ?? h.docId, heading: u?.heading ?? '', text: u?.text ?? h.text, score: h.score };
     });
     let answer = null;
     if (APPROACHES[approach]!.generates && deps.llm) {
@@ -113,7 +113,7 @@ export function createDemoHandler(deps: DemoDeps) {
     if (req.method === 'GET' && path.startsWith('/api/units/')) {
       const u = unitsById.get(decodeURIComponent(path.slice('/api/units/'.length)));
       if (!u) throw new HttpError(404, 'trecho não encontrado');
-      return send(res, 200, { ...u, sourceTitle: SOURCE_CATALOG[u.source].title });
+      return send(res, 200, { ...u, sourceTitle: sourceInfo(u.source).title });
     }
     if (req.method === 'POST' && path === '/api/ask') return send(res, 200, await ask(await readJson(req)));
     if (path.startsWith('/api/')) throw new HttpError(404, 'rota não encontrada');

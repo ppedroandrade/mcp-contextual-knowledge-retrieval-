@@ -9,6 +9,8 @@ import { HashEmbedder } from '../../src/indexing/embeddings.js';
 import { ingest } from '../../src/indexing/ingest.js';
 import { MemoryVectorStore } from '../../src/indexing/vector-store.js';
 import { createKnowledgeServer } from '../../src/mcp/server.js';
+import { runRetrieval } from '../../src/bench/retrieval.js';
+import { assertMeasurementNode } from '../../src/bench/environment.js';
 import { parseSource } from '../../src/sources/index.js';
 
 const corpus = buildCorpus();
@@ -60,14 +62,30 @@ describe('servidor MCP e configuração D (transporte em memória)', () => {
   });
 });
 
-describe('H3: integração da 4ª fonte', () => {
-  it('o host passa a usar a fonte nova sem nenhuma mudança no código do host', async () => {
-    const { clientT } = await setup(['docs', 'tickets', 'incidents', 'policies']);
+describe('tempo da tool dentro de D (ADR 004 e 009)', () => {
+  it('cada tool informa o tempo da busca e o bench o registra só para D', async () => {
+    const sources: SourceName[] = ['docs', 'tickets', 'incidents'];
+    const { store, clientT } = await setup(sources);
     const d = await createMcpRetriever(clientT);
-    expect(d.tools).toContain('buscar_policies');
-    const hits = await d.search('prazo de primeira resposta SEV1 plantão', 5);
-    expect(hits.some((h) => h.source === 'policies')).toBe(true);
+    await d.search('rollback do billing-api', 5);
+    expect(d.lastToolMs).toHaveLength(3);
+    for (const t of d.lastToolMs) expect(t).toBeGreaterThanOrEqual(0);
+    const c = createPerSourceRetriever(embedder, store, sources);
+    const rows = await runRetrieval([c, d], corpus.questions.dev.slice(0, 2), 2);
+    for (const r of rows.filter((x) => x.retriever === 'D-mcp')) {
+      expect(r.toolMs).toHaveLength(2);
+      r.toolMs!.forEach((t, i) => expect(t).toBeLessThanOrEqual(r.latencyMs[i]!));
+    }
+    for (const r of rows.filter((x) => x.retriever === 'C-por-fonte')) expect(r.toolMs).toBeUndefined();
     await d.close?.();
+  });
+});
+
+describe('versão do Node das medições', () => {
+  it('só aceita Node 22, salvo com TCC_ALLOW_ANY_NODE=1', () => {
+    expect(() => assertMeasurementNode('v22.23.4', {})).not.toThrow();
+    expect(() => assertMeasurementNode('v26.13.0', {})).toThrow(/Node 22/);
+    expect(() => assertMeasurementNode('v26.13.0', { TCC_ALLOW_ANY_NODE: '1' })).not.toThrow();
   });
 });
 

@@ -1,6 +1,10 @@
-import { escapeHtml } from '../../sources/policies.js';
 import { FactSink, slugify, type SourceOutput } from '../model.js';
 import { COMPANY, POLICIES } from '../world.js';
+
+/** Escapa texto para HTML (o gerador do corpus escreve as políticas em HTML). */
+export function escapeHtml(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
 
 /** Políticas internas em HTML, uma página por política. */
 export function renderPolicies(): SourceOutput {

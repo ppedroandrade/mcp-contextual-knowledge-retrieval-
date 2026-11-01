@@ -48,6 +48,7 @@ flowchart LR
 | 6 | Medida da H1 | latência computacional, recuperação e recuperação + geração separadas | [006](decisoes/006-medida-da-h1.md) |
 | 7 | Avaliação das respostas | regra dos fatos (âncora), juiz `qwen3.5:4b` só nas respostas afirmativas, planilha cega para humanos | [007](decisoes/007-avaliacao-das-respostas.md) |
 | 8 | Estatística | Wilcoxon pareado + Holm + IC por bootstrap; Mann-Whitney U ao lado (TCC 1) | [008](decisoes/008-estatistica.md) |
+| 9 | Preparação da H3 | integração das políticas retirada antes do congelamento; tempo da tool em D; Node 22 nas medições | [009](decisoes/009-preparacao-da-h3.md) |
 
 Metodologia e métricas: [metodologia.md](metodologia.md). Corpus: [corpus.md](corpus.md).
 O LLM foi fixado em 31/10/2026, depois de um piloto com três modelos (ADR 003).

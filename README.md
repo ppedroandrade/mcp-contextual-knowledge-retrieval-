@@ -19,7 +19,7 @@ arquitetura em [docs/arquitetura.md](docs/arquitetura.md).
 
 ## Requisitos
 
-- Node.js 22.12 ou superior
+- Node.js 22 (`.nvmrc`; as medições recusam outra versão principal, ADR 009)
 - Docker (PostgreSQL 16 + pgvector e Ollama, pelo `docker-compose.yml`)
 
 ## Como rodar

@@ -1,5 +1,5 @@
 import { Rng } from '../corpus/random.js';
-import { SOURCE_CATALOG } from '../sources/catalog.js';
+import { sourceInfo } from '../sources/catalog.js';
 import { parseCsv, toCsv } from '../sources/csv.js';
 import { krippendorffAlpha } from './agreement.js';
 import type { EvalItem } from './items.js';
@@ -23,7 +23,7 @@ export function blindSheet(items: EvalItem[], seed: number): { csv: string; key:
   const rows = shuffled.map((it, i) => {
     const id = `R${String(i + 1).padStart(3, '0')}`;
     key[id] = { key: it.key, questionId: it.questionId, approaches: it.approaches };
-    const trechos = it.context.map((c) => `[${c.unitId}] (fonte: ${SOURCE_CATALOG[c.source].title})\n${c.text}`).join('\n\n');
+    const trechos = it.context.map((c) => `[${c.unitId}] (fonte: ${sourceInfo(c.source).title})\n${c.text}`).join('\n\n');
     return [id, it.question, it.referenceAnswer, trechos, it.answer, ...CRITERIA.map(() => ''), ''];
   });
   return { csv: '﻿' + toCsv([[...SHEET_COLUMNS], ...rows], ';'), key };
