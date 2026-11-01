@@ -1,8 +1,8 @@
 # Artigo: seções 3 (Metodologia) e 4 (Resultados) — rascunho
 
 Situação: a seção 3 descreve o que está **implementado** e o protocolo fixado (ADR 010 e 011).
-Na seção 4, 4.1, 4.2 (H1) e 4.4 (H3) estão **redigidas** com os números da execução final de
-01/11/2026 (`results/artigo/tabelas-2026-11-01.md`); 4.3 (H2) espera a avaliação humana.
+A seção 4 (4.1 a 4.4) está **redigida** com os números da execução final de 01/11/2026 e da
+avaliação humana por consenso (`results/artigo/tabelas-2026-11-01.md`); falta a 4.5 (ameaças).
 Cada `[[...]]` é preenchido copiando a tabela de `results/artigo/tabelas-<data>.md` (gerada por
 `scripts/tabelas-artigo.ts`) e citando a execução. Números do `dev` ou com embedder `hash` não
 entram no artigo. Numeração das seções suposta (3 = Metodologia, 4 = Resultados); ajustar ao
@@ -59,9 +59,11 @@ prompt fixo que exige citação.
 - **H2 automática:** R@5, nDCG@5, MRR@5, ER@5 (fração das evidências esperadas no top-5) e
   "completas@5"; nas respostas, uma checagem por regra dos fatos e um juiz por LLM
   (`qwen3.5:4b`, diferente do gerador) com rubrica de correção, completude e sustentação.
-- **H2 humana:** a mesma rubrica, de 1 a 5, por ≥ 2 avaliadores cegos à configuração, numa
-  planilha (ou na tela de avaliação) com uma linha por resposta distinta; concordância pelo alfa
-  de Krippendorff ordinal.
+- **H2 humana:** a mesma rubrica, de 1 a 5, na tela de avaliação cega (sem pista da
+  configuração), com uma linha por resposta distinta. O protocolo previa ≥ 2 avaliadores
+  independentes e o alfa de Krippendorff ordinal; na execução, os dois avaliadores deram notas de
+  consenso (desvio registrado no ADR 011), e a concordância foi medida entre o consenso humano e
+  o juiz automático.
 - **H3 (portabilidade):** integração de uma 4ª fonte depois do congelamento, nas variantes
   customizada (B/C) e MCP (D): arquivos e linhas alteradas por camada, e reuso do servidor por um
   segundo cliente MCP sem alteração (`docs/h3-protocolo.md`).
@@ -146,11 +148,64 @@ trabalho futuro.
 
 ### 4.3 H2: qualidade da recuperação e das respostas
 
-[[tabela: Recuperação (P@5, R@5, MRR@5, nDCG@5, ER@5, completas@5) + testes]]
-[[tabela: Qualidade das respostas (regra, rubrica, notas do juiz) + testes; juiz × regra e
-repetibilidade do juiz]]
-[[tabela: Avaliação humana + alfa de Krippendorff + testes]]
-[[subgrupos literal × parafraseada: `estatistica-literal.json` e `estatistica-parafraseada.json`]]
+Critério (ADR 011): a H2 é sustentada se D for melhor que as linhas de base nas medidas de
+qualidade, com p de Holm < 0,05. Na recuperação, a comparação com a busca textual é D × A; nas
+respostas, A não gera texto, e as comparações são D × B, C × B e D × C.
+
+**Recuperação.** [[Tabela W: copiar "Recuperação (k = 5)" e seus testes]] Nas 36 perguntas com
+resposta, as quatro configurações ficaram próximas: R@5 de 0,750 (A), 0,681 (B) e 0,736 (C = D);
+nDCG@5 de 0,729, 0,667 e 0,698; ER@5 de 0,472, 0,514 e 0,486. Nenhuma diferença foi
+significativa (D × A: R@5 −0,014, p de Holm = 0,748; nDCG@5 −0,031, p = 0,886; MRR@5 −0,119,
+IC 95% [−0,251; 0,006], p = 0,192). A busca textual, portanto, não perdeu para as configurações
+semânticas neste corpus.
+
+**Respostas, avaliação automática.** [[Tabela V: copiar "Qualidade das respostas (automática)" e
+seus testes]] O acerto pela regra dos fatos foi de 47,5% em B e 55,0% em C = D; o acerto pela
+rubrica do juiz (correção ≥ 4), de 62,5% e 57,5%; as notas médias do juiz, de 3,50 e 3,38
+(correção), 3,38 e 3,30 (completude) e 4,95 e 4,85 (sustentação). Nenhuma diferença foi
+significativa (menor p de Holm: 0,359, no acerto pela regra, D × B +0,075, IC 95% [−0,025;
+0,200]). O juiz concordou com a regra dos fatos em 84,1% dos itens (κ = 0,46) e repetiu as mesmas
+notas nas duas repetições em 100% dos itens.
+
+**Respostas, avaliação humana.** [[Tabela U: copiar "Avaliação humana (cega)", a comparação com
+o juiz e os testes]] As 79 respostas distintas foram avaliadas às cegas por dois avaliadores que
+trabalham com o autor. Eles avaliaram **em conjunto e chegaram a uma nota de consenso** para cada
+item, em vez de avaliar de forma independente, como previa o ADR 011 (desvio registrado lá). Por
+isso não há concordância entre avaliadores para relatar: a análise usa uma única planilha de
+notas. As médias foram de 3,33 (B) e 3,38 (C = D) em correção, 3,25 e 3,33 em completude e 5,00 e
+4,90 em sustentação, sem nenhuma diferença significativa (correção D × B +0,050, IC 95% [−0,300;
+0,400], p de Holm = 1,000; sustentação −0,100, IC 95% [−0,250; 0,000], p = 0,315).
+
+No lugar da concordância entre avaliadores, comparou-se o consenso humano com o juiz automático,
+item a item (`scripts/humano-x-juiz.ts`). Em todos os 79 itens, o alfa de Krippendorff ordinal
+foi de 0,91 (correção), 0,92 (completude) e 0,80 (sustentação). Esse valor inclui as notas que a
+rubrica fixa por regra (como o "não sei"), que favorecem a concordância. Nos 44 itens em que o
+juiz deu nota de fato, o alfa cai para 0,58 (correção), 0,65 (completude) e 0,79 (sustentação),
+e o juiz foi, em média, mais generoso que os humanos (humano − juiz: −0,30 na correção e −0,23 na
+completude). Pelo limiar usual de 0,667, a concordância do juiz com os humanos é aceitável só na
+sustentação; em correção e completude, o juiz não substitui a avaliação humana, o que reforça a
+decisão de não usá-lo sozinho (ADR 007).
+
+**Comentário dos avaliadores** (registrado pelo autor): as respostas "quase não inventam
+informações e se apoiam muito bem nos trechos"; o principal problema é responder "não sei"
+quando a referência tem a resposta, "provavelmente por falhas na recuperação dos documentos", e,
+em alguns casos, associar incidentes e causas incorretamente. Os registros da geração confirmam
+a primeira parte: nas perguntas com resposta, nenhuma configuração disse "não sei" quando todas as
+evidências esperadas estavam entre os 5 trechos do prompt, e todas disseram em 67% a 70% das vezes
+quando faltava alguma (`2026-11-01-heldout-geracao/summary.json`). Ou seja, a abstenção indevida
+vem da recuperação, não do gerador.
+
+**Literal × parafraseada (análise secundária).** Na avaliação humana, a diferença entre os estilos
+é muito maior que entre as configurações: correção média de 4,10 a 4,15 nas perguntas literais e
+de 1,88 a 2,06 nas parafraseadas, nas três configurações (comparação descritiva; os subgrupos têm
+perguntas diferentes e não foram testados entre si). Nenhum par de configurações foi
+significativo dentro de cada subgrupo.
+
+Leitura: **a H2 não foi sustentada.** Nem as métricas automáticas nem a avaliação humana mostraram
+diferença significativa a favor de MCP + RAG, seja contra o RAG tradicional, seja (na recuperação)
+contra a busca textual. As três configurações que geram resposta têm qualidade semelhante, e o
+fator que mais pesa é a recuperação do trecho certo, sobretudo quando a pergunta não usa os
+termos do documento.
 
 > Nota para a redação dos subgrupos (conferida em 01/11/2026). A análise por estilo estava
 > prevista no ADR 011 como **secundária**, "sem correção adicional entre os subgrupos". O único
@@ -198,5 +253,22 @@ segundo cliente é um script mínimo, não um aplicativo de terceiros; e o conju
 
 ### 4.5 Ameaças à validade
 
-[[corpus sintético; uma máquina; modelos pequenos e quantizados; o autor fez as duas integrações
-da H3; tamanho do heldout (40); concordância entre avaliadores; tempo de pessoa não medido]]
+- **Validade externa.** O corpus é sintético, de uma única empresa fictícia, com textos escritos
+  a partir de modelos; os resultados não se generalizam diretamente para bases corporativas reais,
+  maiores e mais ruidosas. Os modelos são pequenos e quantizados (4 bilhões de parâmetros) e rodaram
+  na CPU, numa única máquina.
+- **Validade de construto.** A H1 foi medida como latência do sistema, não como o tempo de uma
+  pessoa até encontrar a resposta (ADR 006). A H3 foi medida em linhas e arquivos alterados e no
+  reuso por um cliente mínimo, o que não esgota "portabilidade e organização".
+- **Validade interna.** O autor implementou as quatro configurações e fez as duas integrações da
+  H3, conhecendo o código. O gabarito é derivado automaticamente dos fatos do gerador, sem anotação
+  humana independente.
+- **Validade de conclusão.** O `heldout` tem 40 perguntas (36 com resposta), o que limita o poder
+  dos testes: diferenças pequenas de qualidade podem não ter sido detectadas. A avaliação humana
+  foi uma nota de consenso de dois avaliadores próximos ao autor, sem concordância
+  entre avaliadores independentes; os avaliadores não sabiam a configuração de cada resposta. Os
+  subgrupos literal e parafraseado são análises secundárias, com poucas perguntas cada.
+- **Mitigações.** Arquitetura congelada antes de criar o `heldout` (ADR 010); protocolo e plano de
+  análise registrados antes da execução (ADR 011), sem desvios na execução automática; controle C
+  para separar estratégia e protocolo; todos os números versionados com o ambiente
+  (`results/runs/`) e as tabelas geradas por script.

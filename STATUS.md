@@ -26,18 +26,18 @@ não têm rastreabilidade com este repositório.
 | Configuração C (busca por fonte + RRF, sem MCP) | implementado, testado, validado | `src/approaches/c-per-source.ts` |
 | Servidor MCP (uma tool por fonte) e configuração D (MCP + RAG) | implementado, testado, validado | `src/mcp/`, `src/approaches/d-mcp-rag.ts`; teste confirma C = D nas 60 perguntas e o protocolo real via stdio; no ambiente real, C = D nas 60 perguntas com `bge-m3` + pgvector (`scripts/compare-c-d.ts`) |
 | Geração de respostas por LLM (B, C, D) | implementado, testado, validado | `src/generation/`, `npm run bench:generation`; Ollama `qwen3:4b-instruct-2507` (ADR 003); prompt fixo, temperatura 0, os mesmos 5 trechos; A fica só na recuperação; executado no dev (abaixo) |
-| Avaliação das respostas: regra dos fatos, juiz por LLM, planilha cega e importação das notas humanas | implementado, testado; automática validada | `src/evaluation/`, `npm run eval:answers`, `npm run eval:human` (ADR 007); executado no dev e na execução final (01/11/2026); avaliação humana **ainda não feita** (planilha `2026-11-01-heldout-planilha-cega` gerada, sem notas) |
+| Avaliação das respostas: regra dos fatos, juiz por LLM, planilha cega e importação das notas humanas | implementado, testado; automática validada | `src/evaluation/`, `npm run eval:answers`, `npm run eval:human` (ADR 007); executado no dev e na execução final (01/11/2026); avaliação humana feita em 01/11/2026 por **consenso de 2 avaliadores** (desvio do ADR 011: sem concordância entre avaliadores independentes; medida a concordância humano × juiz, `scripts/humano-x-juiz.ts`) |
 | Estatística (Wilcoxon, Holm, bootstrap, Mann-Whitney) | implementado, testado, validado | `src/evaluation/stats.ts`, `src/evaluation/compare.ts`, `npm run stats -- --run <id>` (ADR 008); testes conferidos contra o SciPy 1.18.1 e o statsmodels; aplicada às rodadas dev (abaixo) e à execução final (01/11/2026) |
 | H3: integração da 4ª fonte em duas variantes e segundo cliente MCP | executado (passos 1–6) | `results/runs/2026-11-01-h3-integracao-politicas`; customizada 5 arquivos +43 −9, MCP 7 arquivos +56 −11, host intocado nas duas; segundo cliente (só o SDK) usou `buscar_policies` sem alteração no servidor (embedder hash). Leitura e limitações em `docs/h3-protocolo.md`. Integração aplicada na `main` depois da medida (ADR 010). Passo 6 executado em 01/11/2026: `2026-11-01-politicas-recuperacao` |
 | Protocolo da execução final e plano de análise | registrado, executado sem desvios (01/11/2026) | ADR 011 (antes de qualquer execução no `heldout`): 10 rodadas de recuperação, 5 de geração, juiz com 2 repetições, ≥ 2 avaliadores, conjunto `policies` com 5 rodadas |
 | Script do experimento final e tabelas do artigo | implementado, testado, validado | `scripts/experimento-final.sh` (roteiro em `docs/experimento-final.md`) e `scripts/tabelas-artigo.ts` (tabelas só a partir de `results/runs/`, com alerta para execuções sem valor experimental); ensaiados com `MODO=teste`; **experimento final executado em 01/11/2026** (abaixo); tabelas em `results/artigo/tabelas-2026-11-01.md` |
 | Estatística das notas humanas (H2) | implementado, testado | `npm run stats -- --run <planilha>` depois do `eval:human --import`: média dos avaliadores por item, mesmos pares e testes do ADR 008 |
-| Rascunho das seções 3 e 4 do artigo | rascunho | `docs/artigo/secoes-3-4.md`: seção 3 descreve o implementado; na seção 4, ambiente, H1 e H3 redigidos com os números da execução final; H2 espera a avaliação humana |
+| Rascunho das seções 3 e 4 do artigo | rascunho | `docs/artigo/secoes-3-4.md`: seção 3 descreve o implementado; seção 4 (4.1 a 4.5) redigida com os números da execução final e da avaliação humana por consenso |
 | Tempo da tool dentro de D | implementado, testado, validado | `tempoMs` em cada tool; `toolMs` no bench só para D; `scripts/compare-c-d.ts` imprime D − tool (ADR 009); medido na execução final (01/11/2026) |
 | Node fixado nas medições | implementado | `.nvmrc` 22, `engines` `^22.12.0`, CI pelo `.nvmrc`; `bench:*` recusa outra versão (ADR 009) |
 | Benchmark reproduzível | implementado | `environment.json` grava commit lido na partida, árvore limpa (ignora `results/`), digests e versão do Ollama, uso de GPU (`sizeVram`), hash do prompt e fonte de energia |
 | API + UI de demonstração | implementado, testado | `npm run demo`; `src/api/`, `apps/demo/`; testes em `test/unit/api.test.ts` (hash + memória + LLM simulado); conferida no navegador com `--embedder hash --store memory --llm simulated` (D pelo stdio real). Ainda não aberta com bge-m3 + qwen3. Fora das métricas |
-| Modo de avaliação humana cega na UI | implementado, testado | `npm run demo -- --avaliacao <planilha>`: só Node, sem Ollama; uma resposta distinta por vez, sem pista da abordagem; grava `avaliacoes-ui/<avaliador>.csv` no formato da planilha cega (lido por `eval:human --import`); mostra o alfa de Krippendorff com 2 ou mais avaliadores; testes em `test/unit/eval-ui.test.ts`; conferido no navegador com a planilha piloto do dev. **Nenhuma avaliação humana feita ainda** |
+| Modo de avaliação humana cega na UI | implementado, testado | `npm run demo -- --avaliacao <planilha>`: só Node, sem Ollama; uma resposta distinta por vez, sem pista da abordagem; grava `avaliacoes-ui/<avaliador>.csv` no formato da planilha cega (lido por `eval:human --import`); mostra o alfa de Krippendorff com 2 ou mais avaliadores; testes em `test/unit/eval-ui.test.ts`; conferido no navegador com a planilha piloto do dev; usado na avaliação humana da execução final (01/11/2026) |
 
 ## Execução final no `heldout` (01/11/2026)
 
@@ -52,17 +52,15 @@ tentativa (130 testes unitários e 3 de integração na verificação).
 | `results/runs/2026-11-01-heldout-recuperacao` | recuperação | A, B, C, D; 40 perguntas; 10 rodadas + aquecimento |
 | `results/runs/2026-11-01-heldout-geracao` | recuperação + geração | B, C, D; 40 perguntas; 5 rodadas + aquecimento |
 | `results/runs/2026-11-01-heldout-avaliacao` | avaliação automática | regra dos fatos + juiz `qwen3.5:4b`, 2 repetições |
-| `results/runs/2026-11-01-heldout-planilha-cega` | planilha da avaliação humana | **sem notas ainda** |
+| `results/runs/2026-11-01-heldout-planilha-cega` | planilha da avaliação humana | notas de consenso de 2 avaliadores importadas (`notas-humanas.json`, `estatistica*.json`, `humano-x-juiz.json`) |
 | `results/runs/2026-11-01-politicas-recuperacao` | H3, passo 6 | A, B, C, D; 15 perguntas, 4 fontes; 5 rodadas + aquecimento |
 
 Estatística (`estatistica*.json` nas pastas, inclusive os subgrupos `literal` e
 `parafraseada`) e tabelas do artigo em `results/artigo/tabelas-2026-11-01.md`, geradas pelo
 script só a partir dessas pastas. Conferência `scripts/compare-c-d.ts`: C e D com o mesmo top-5
 e as mesmas métricas em 40/40 (recuperação) e 15/15 (políticas) perguntas, e com os mesmos
-trechos e a mesma resposta em 40/40 (geração). Falta a avaliação humana (H2): `npm run demo --
---avaliacao 2026-11-01-heldout-planilha-cega`, depois `eval:human --import` e
-`DATA=2026-11-01 scripts/experimento-final.sh estatistica tabelas`. A seção 4 do artigo ainda
-não foi preenchida.
+trechos e a mesma resposta em 40/40 (geração). Avaliação humana (H2) feita depois, por consenso de 2 avaliadores (desvio no ADR 011); a
+seção 4 do artigo foi redigida com essas pastas.
 
 ## Ambiente validado (31/10/2026)
 
@@ -196,10 +194,6 @@ dependem da execução final no `heldout`.
   como esperado ao aproveitar o pareamento por pergunta (ADR 008).
 
 ## Próximos passos
-1. Avaliação humana da execução final por ao menos 2 avaliadores: `npm run demo --
-   --avaliacao 2026-11-01-heldout-planilha-cega`, depois `npm run eval:human -- --import
-   2026-11-01-heldout-planilha-cega --ratings <csvs de avaliacoes-ui>` e
-   `DATA=2026-11-01 scripts/experimento-final.sh estatistica tabelas`.
-2. Preencher a seção 4 do artigo (`docs/artigo/secoes-3-4.md`) só com números de
-   `results/artigo/tabelas-2026-11-01.md`, depois da avaliação humana.
-3. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
+1. Revisar a seção 4 do artigo (`docs/artigo/secoes-3-4.md`), copiar as tabelas indicadas de
+   `results/artigo/tabelas-2026-11-01.md` e integrar ao texto do artigo.
+2. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
