@@ -21,7 +21,9 @@
     "eval:answers": "tsx src/bench/answers.ts",
     "eval:human": "tsx src/bench/human.ts",
     "demo": "tsx src/api/server.ts",
-    "stats": "tsx src/bench/stats.ts"
+    "stats": "tsx src/bench/stats.ts",
+    "workspace": "tsx src/workspace/server.ts",
+    "workspace:mcp": "tsx src/workspace/stdio.ts"
   },
   "license": "MIT",
   "devDependencies": {
@@ -34,6 +36,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.2",
     "pg": "^8.23.1",
+    "unpdf": "^2.1.0",
     "zod": "^4.6.7"
   }
 }

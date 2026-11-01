@@ -53,6 +53,17 @@ docker compose up -d     # banco vetorial e Ollama, necessários a partir da ind
 
 Decisões de stack em [docs/decisoes/](docs/decisoes/).
 
+## App corporativo (fora do experimento)
+
+`npm run workspace` abre em http://127.0.0.1:3001 um chat no estilo dos assistentes comerciais
+sobre o conhecimento da empresa: upload de documentos (PDF, Word, Markdown, texto, CSV) e
+conectores com o Google Drive e o Confluence. Cada fonte conectada vira uma tool do servidor
+MCP do workspace; as respostas citam o trecho e o link da origem. Para ver sem conta Google nem
+Atlassian: `npm run workspace -- --conectores simulados`. Passo a passo, OAuth do Google,
+token da Atlassian e limitações em [docs/workspace.md](docs/workspace.md) (ADR 012).
+
+![Workspace de conhecimento](docs/img/workspace/6-chat.png)
+
 ## Estrutura
 
 ```
@@ -70,7 +81,9 @@ src/
   evaluation/  métricas e estatística
   bench/       execução dos experimentos
   api/         API HTTP fina para a demo (opcional)
+  workspace/   app corporativo: upload, conectores, índice, MCP e chat (fora do experimento)
 apps/demo/   UI de demonstração (opcional, depois do benchmark)
+apps/workspace/  UI de chat do app corporativo
 test/        unit/ e integration/
 scripts/     utilitários
 results/     resultados de execuções reais
