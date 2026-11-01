@@ -1,0 +1,259 @@
+{
+  "geradoEm": "2026-11-01T02:25:04.494Z",
+  "gitCommit": "155ebd0c0a971a470d8a3c6adf6b94d8c1b97e3c",
+  "gitDirty": false,
+  "node": "v22.23.4",
+  "execucao": "2026-10-31-dev-geracao-qwen3-4b",
+  "tipo": "bench:generation",
+  "commitDaExecucao": "49c51b9e6c63efe4e8138ed755fa136d77021954",
+  "conjunto": "dev",
+  "metodo": {
+    "teste": "Wilcoxon pareado bilateral (exato se n ≤ 50 sem empates; normal com correção de empates, sem correção de continuidade); diferenças nulas descartadas",
+    "correcao": "Holm, dentro de cada medida, sobre as comparações feitas",
+    "ic": "bootstrap percentil das diferenças por pergunta, 10000 reamostragens, semente 20261031, 95%",
+    "complementar": "Mann-Whitney U bilateral, sem pareamento (TCC 1), com Holm na mesma família",
+    "alfa": 0.05
+  },
+  "comparacoes": [
+    {
+      "measure": "latência da recuperação (ms)",
+      "pair": "D × B",
+      "n": 60,
+      "estimator": "median",
+      "first": 137.9820629998576,
+      "second": 57.236249999841675,
+      "difference": {
+        "estimate": 80.6350004998967,
+        "low": 74.02112499950454,
+        "high": 90.16039650002494,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 60,
+        "zeros": 0,
+        "wPlus": 1819,
+        "wMinus": 11,
+        "statistic": 11,
+        "z": 6.6548891134703645,
+        "p": 2.8351369146940758e-11,
+        "method": "normal",
+        "rankBiserial": 0.9879781420765027,
+        "pHolm": 8.505410744082227e-11
+      },
+      "mannWhitney": {
+        "n1": 60,
+        "n2": 60,
+        "u": 3523,
+        "z": 9.04078035162846,
+        "p": 1.5555731663581876e-19,
+        "method": "normal",
+        "cliffsDelta": 0.9572222222222222,
+        "pHolm": 4.666719499074563e-19
+      },
+      "significant": true,
+      "reading": "D pior que B (p Holm = 8.5e-11)"
+    },
+    {
+      "measure": "latência da recuperação (ms)",
+      "pair": "C × B",
+      "n": 60,
+      "estimator": "median",
+      "first": 141.36164549994282,
+      "second": 57.236249999841675,
+      "difference": {
+        "estimate": 85.36216649971902,
+        "low": 69.76170799997635,
+        "high": 97.84687411228361,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 60,
+        "zeros": 0,
+        "wPlus": 1811,
+        "wMinus": 19,
+        "statistic": 19,
+        "z": 6.595996289457353,
+        "p": 4.2240944422495064e-11,
+        "method": "normal",
+        "rankBiserial": 0.9792349726775956,
+        "pHolm": 8.505410744082227e-11
+      },
+      "mannWhitney": {
+        "n1": 60,
+        "n2": 60,
+        "u": 3517,
+        "z": 9.00928851876357,
+        "p": 2.0739758963218753e-19,
+        "method": "normal",
+        "cliffsDelta": 0.9538888888888888,
+        "pHolm": 4.666719499074563e-19
+      },
+      "significant": true,
+      "reading": "C pior que B (p Holm = 8.5e-11)"
+    },
+    {
+      "measure": "latência da recuperação (ms)",
+      "pair": "D × C",
+      "n": 60,
+      "estimator": "median",
+      "first": 137.9820629998576,
+      "second": 141.36164549994282,
+      "difference": {
+        "estimate": -4.715125500108115,
+        "low": -16.482457999605685,
+        "high": 11.842706999275833,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 60,
+        "zeros": 0,
+        "wPlus": 854,
+        "wMinus": 976,
+        "statistic": 854,
+        "z": -0.44905778309921707,
+        "p": 0.6533899412311468,
+        "method": "normal",
+        "rankBiserial": -0.06666666666666667,
+        "pHolm": 0.6533899412311468
+      },
+      "mannWhitney": {
+        "n1": 60,
+        "n2": 60,
+        "u": 1824,
+        "z": 0.12334301205414733,
+        "p": 0.9018354512628779,
+        "method": "normal",
+        "cliffsDelta": 0.01333333333333342,
+        "pHolm": 0.9018354512628779
+      },
+      "significant": false,
+      "reading": "sem diferença significativa entre D e C (p Holm = 0.65)"
+    },
+    {
+      "measure": "latência da recuperação + geração (ms)",
+      "pair": "D × B",
+      "n": 60,
+      "estimator": "median",
+      "first": 5904.709625000134,
+      "second": 6534.057291499805,
+      "difference": {
+        "estimate": -342.8303135000169,
+        "low": -611.0229170001112,
+        "high": 88.58579299994744,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 60,
+        "zeros": 0,
+        "wPlus": 746,
+        "wMinus": 1084,
+        "statistic": 746,
+        "z": -1.2441109072748802,
+        "p": 0.21345876105482603,
+        "method": "normal",
+        "rankBiserial": -0.18469945355191256,
+        "pHolm": 0.42691752210965206
+      },
+      "mannWhitney": {
+        "n1": 60,
+        "n2": 60,
+        "u": 1580,
+        "z": 1.1520762189738443,
+        "p": 0.24928977147271936,
+        "method": "normal",
+        "cliffsDelta": -0.12222222222222223,
+        "pHolm": 0.7478693144181581
+      },
+      "significant": false,
+      "reading": "sem diferença significativa entre D e B (p Holm = 0.43)"
+    },
+    {
+      "measure": "latência da recuperação + geração (ms)",
+      "pair": "C × B",
+      "n": 60,
+      "estimator": "median",
+      "first": 6258.671375000267,
+      "second": 6534.057291499805,
+      "difference": {
+        "estimate": 112.62879099987913,
+        "low": -645.7266670000972,
+        "high": 482.61683399998583,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 60,
+        "zeros": 0,
+        "wPlus": 897,
+        "wMinus": 933,
+        "statistic": 897,
+        "z": -0.13250885402927717,
+        "p": 0.89458179878551,
+        "method": "normal",
+        "rankBiserial": -0.019672131147540985,
+        "pHolm": 0.89458179878551
+      },
+      "mannWhitney": {
+        "n1": 60,
+        "n2": 60,
+        "u": 1746,
+        "z": 0.28080217637859073,
+        "p": 0.7788621646535132,
+        "method": "normal",
+        "cliffsDelta": -0.030000000000000027,
+        "pHolm": 0.7788621646535132
+      },
+      "significant": false,
+      "reading": "sem diferença significativa entre C e B (p Holm = 0.89)"
+    },
+    {
+      "measure": "latência da recuperação + geração (ms)",
+      "pair": "D × C",
+      "n": 60,
+      "estimator": "median",
+      "first": 5904.709625000134,
+      "second": 6258.671375000267,
+      "difference": {
+        "estimate": -322.4387500002049,
+        "low": -570.8021669997834,
+        "high": -72.19983199960552,
+        "level": 0.95,
+        "resamples": 10000,
+        "seed": 20261031
+      },
+      "wilcoxon": {
+        "n": 60,
+        "zeros": 0,
+        "wPlus": 526,
+        "wMinus": 1304,
+        "statistic": 526,
+        "z": -2.8636635676327122,
+        "p": 0.004187725414819513,
+        "method": "normal",
+        "rankBiserial": -0.42513661202185793,
+        "pHolm": 0.012563176244458539
+      },
+      "mannWhitney": {
+        "n1": 60,
+        "n2": 60,
+        "u": 1614,
+        "z": 0.9736224994061417,
+        "p": 0.33024402379109513,
+        "method": "normal",
+        "cliffsDelta": -0.10333333333333339,
+        "pHolm": 0.7478693144181581
+      },
+      "significant": true,
+      "reading": "D melhor que C (p Holm = 0.013)"
+    }
+  ]
+}

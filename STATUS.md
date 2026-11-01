@@ -26,7 +26,7 @@ não têm rastreabilidade com este repositório.
 | Servidor MCP (uma tool por fonte) e configuração D (MCP + RAG), só recuperação | implementado, testado | `src/mcp/`, `src/approaches/d-mcp-rag.ts`; teste confirma C = D nas 60 perguntas e o protocolo real via stdio; no ambiente real, C = D nas 60 perguntas com `bge-m3` + pgvector (`scripts/compare-c-d.ts`) |
 | Geração de respostas por LLM (B, C, D) | implementado, testado | `src/generation/`, `npm run bench:generation`; Ollama `qwen3:4b-instruct-2507` (ADR 003); prompt fixo, temperatura 0, os mesmos 5 trechos; A fica só na recuperação; executado no dev (abaixo) |
 | Avaliação das respostas: regra dos fatos, juiz por LLM, planilha cega e importação das notas humanas | implementado, testado | `src/evaluation/`, `npm run eval:answers`, `npm run eval:human` (ADR 007); executado no dev (abaixo); avaliação humana **ainda não feita** (faltam os avaliadores) |
-| Estatística (Wilcoxon, Holm, bootstrap, Mann-Whitney) | planejado | Etapa 4; `docs/metodologia.md`, seção 3 |
+| Estatística (Wilcoxon, Holm, bootstrap, Mann-Whitney) | implementado, testado | `src/evaluation/stats.ts`, `src/evaluation/compare.ts`, `npm run stats -- --run <id>` (ADR 008); testes conferidos contra o SciPy 1.18.1 e o statsmodels; aplicada às rodadas dev (abaixo), que **não são o resultado final** |
 | Benchmark reproduzível | implementado | `environment.json` grava commit lido na partida, árvore limpa (ignora `results/`), digests e versão do Ollama, uso de GPU (`sizeVram`), hash do prompt e fonte de energia |
 | API + UI de demonstração | implementado, testado (sem modo de avaliação humana) | `npm run demo`; `src/api/`, `apps/demo/`; 7 testes em `test/unit/api.test.ts` (hash + memória + LLM simulado); conferida no navegador com `--embedder hash --store memory --llm simulated` (D pelo stdio real). Ainda não aberta com bge-m3 + qwen3. Fora das métricas. Modo de avaliação humana cega: planejado, sobre o formato de notas da Etapa 3 |
 
@@ -130,9 +130,40 @@ Conferências (`scripts/summarize-answers.ts`, `scripts/compare-judge-runs.ts`):
   contextos com toda a evidência (19 contra 27, rodada de geração). Sem teste estatístico
   ainda.
 
+Estatística das rodadas dev (`npm run stats`, commit `155ebd0`; arquivos
+`estatistica.json` nas pastas das execuções). Wilcoxon pareado bilateral com Holm dentro de
+cada medida; diferença = 1º − 2º por pergunta (mediana na latência, média nas métricas), IC
+95% por bootstrap. **São rodadas de verificação no `dev`; não respondem às hipóteses**, que
+dependem da execução final no `heldout`.
+
+| Execução | Medida | Par | Diferença [IC 95%] | p Wilcoxon (Holm) | p Mann-Whitney (Holm) |
+| --- | --- | --- | --- | --- | --- |
+| `dev-bge-m3` | latência da recuperação (ms) | D × A | +238,2 [229,4; 244,7] | < 0,001 | < 0,001 |
+| `dev-bge-m3` | latência da recuperação (ms) | C × B | +158,0 [150,8; 165,6] | < 0,001 | < 0,001 |
+| `dev-bge-m3` | latência da recuperação (ms) | D × C | +2,9 [−1,9; 8,3] | 0,24 | 0,49 |
+| `dev-bge-m3` | ER@5 | D × B | −0,111 [−0,231; −0,009] | 0,087 | 0,74 |
+| `dev-bge-m3` | completas@5 | D × B | −0,148 [−0,278; −0,037] | 0,063 | 0,49 |
+| `dev-geracao-qwen3-4b` | recuperação + geração (ms) | D × B | −342,8 [−611,0; 88,6] | 0,43 | 0,75 |
+| `dev-geracao-qwen3-4b` | recuperação + geração (ms) | D × C | −322,4 [−570,8; −72,2] | 0,013 | 0,75 |
+| `dev-avaliacao-qwen3-5-r2` | acerto pela regra (0/1) | D × B | −0,150 [−0,267; −0,033] | 0,025 | 0,31 |
+| `dev-avaliacao-qwen3-5-r2` | acerto pela rubrica (0/1) | D × B | −0,083 [−0,200; 0,050] | 0,39 | 1,00 |
+| `dev-avaliacao-qwen3-5-r2` | correção (1–5) | D × B | −0,367 [−0,850; 0,117] | 0,19 | 0,82 |
+
+- No `dev`, D foi mais lento que A em 60/60 perguntas na recuperação, ou seja, no sentido
+  contrário à H1. Isso não é o resultado da H1, que sai do `heldout`.
+- R@5, MRR@5 e nDCG@5 não tiveram diferença significativa em nenhum par; C × B dá os mesmos
+  números que D × B, porque C = D.
+- **D × C na recuperação + geração (p de Holm 0,013) não é efeito do protocolo:** trechos e
+  respostas são idênticos, o custo do MCP medido no diagnóstico foi de ~0,4 ms e a mesma
+  abordagem variou até ~500 ms entre rodadas. O Mann-Whitney não acusa diferença (0,75). É a
+  deriva entre rodadas e a ordem de execução, e reforça a necessidade de mais rodadas e de
+  medir o tempo da tool dentro de D antes da execução final.
+- O Wilcoxon pareado acusa diferenças que o Mann-Whitney não acusa (ex.: acerto pela regra),
+  como esperado ao aproveitar o pareamento por pergunta (ADR 008).
+
 ## Próximos passos
 1. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
-2. Etapa 4: estatística (Wilcoxon pareado, Holm, IC 95% por bootstrap, Mann-Whitney U).
+2. Modo de avaliação humana na UI de demonstração; preparação da H3; congelamento e `heldout`.
 3. Conseguir ao menos 2 avaliadores humanos para a H2 (a planilha sai da execução final no
    `heldout`; `results/runs/2026-10-31-planilha-cega-dev-piloto` serve para testar o
    instrumento antes).
