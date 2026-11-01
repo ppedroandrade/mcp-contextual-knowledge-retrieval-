@@ -18,7 +18,7 @@ não têm rastreabilidade com este repositório.
 | Leitores das fontes (Markdown, JSON, CSV) | implementado, testado | `src/sources/`; o leitor HTML das políticas foi **retirado** antes do congelamento, para a medida da H3 (ADR 009) |
 | Perguntas dev (60) e de políticas (15) com gabarito derivado dos fatos | implementado, testado | `data/questions/` |
 | Congelamento da arquitetura | registrado | commit `1a1337acf736ede43740d3bb06c03c2d52f5c9f0` (ADR 010) |
-| Perguntas heldout (40) | planejado | criar só depois do congelamento da arquitetura |
+| Perguntas heldout (40) | implementado, testado | criado depois do congelamento (ADR 010): `data/questions/heldout.json`, `src/corpus/heldout.ts`; 18 fonte única, 18 multifonte, 4 sem resposta; 20 literais e 16 parafraseadas (sobreposição lexical 0,554 × 0,232; `docs/corpus.md`); **ainda não executado** |
 | Busca textual convencional (A, BM25) | implementado, testado | `src/approaches/a-bm25.ts`; rodada de verificação no dev, não é resultado do experimento |
 | Métricas de recuperação (P, R, MRR, nDCG, ER@k) e medição de latência | implementado, testado | `src/evaluation/metrics.ts`, `npm run bench:retrieval` |
 | Embeddings (Ollama `bge-m3`) e armazenamento vetorial (pgvector e memória) | implementado, testado | testes unitários com Ollama simulado; `npm run test:integration` executado em 31/10/2026 (3/3: pgvector = busca exata em memória); ingestão real: 346 unidades, 1024 dimensões, 47 s |
@@ -168,11 +168,10 @@ dependem da execução final no `heldout`.
 
 ## Próximos passos
 1. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
-2. Congelar a arquitetura e criar o `heldout`; depois, a H3 (`docs/h3-protocolo.md`).
+2. Executar o experimento final no `heldout` (no Mac) e a H3 (`docs/h3-protocolo.md`).
 3. Conseguir ao menos 2 avaliadores humanos para a H2 (a planilha sai da execução final no
    `heldout`; `results/runs/2026-10-31-planilha-cega-dev-piloto` serve para testar o
    instrumento antes).
-4. Avaliar se as perguntas repetem demais as palavras do corpus (ver risco em `docs/metodologia.md`).
 5. Antes do experimento final: instalar e usar o Node 22 no Mac (`nvm install 22 && nvm use`);
    fixar e registrar o modo de energia do macOS e, se for o caso, o número de threads do
    Ollama, para reduzir a deriva térmica; mais rodadas de latência com geração (o ruído entre

@@ -1,6 +1,6 @@
 # Corpus sintético e perguntas de avaliação
 
-Situação: **implementado e testado** (`npm run corpus`, `test/unit/corpus.test.ts`); conjunto `heldout` ainda **planejado**. Todos os dados são sintéticos (empresa fictícia), sem dados reais.
+Situação: **implementado e testado** (`npm run corpus`, `test/unit/corpus.test.ts`); conjunto `heldout` criado em 01/11/2026, depois do congelamento (ADR 010). Todos os dados são sintéticos (empresa fictícia), sem dados reais.
 
 ## 1. Empresa fictícia
 
@@ -63,9 +63,23 @@ de cada fato aparece literalmente na sua unidade.
 | --- | --- | --- | --- |
 | `dev` | antes de implementar as abordagens | 60 | 30 fonte única (12 wiki, 9 incidentes, 9 chamados), 24 multifonte (8 incidente+wiki, 8 chamado+incidente, 8 chamado+wiki), 6 sem resposta |
 | `policies` | junto com o corpus; usado só depois de integrar a 4ª fonte (H3) | 15 | 10 de fonte única, 5 política+incidente |
-| `heldout` | **depois** do congelamento, sem ajustes posteriores | 40 | inclui distratores e vários relevantes na mesma fonte |
+| `heldout` | **depois** do congelamento (commit `1a1337a`, ADR 010), sem ajustes posteriores | 40 | 18 fonte única (7 serviços, 5 guias, 3 incidentes, 3 chamados), 18 multifonte (6 incidente+wiki, 6 chamado+incidente, 6 chamado+wiki), 4 sem resposta; 20 `literal` e 16 `parafraseada` |
 
 Proporções são escolha de projeto e serão declaradas no artigo.
+
+**Heldout** (`src/corpus/heldout.ts`, semente `SEED + 12`): usa fatos que o `dev` não usa sempre
+que possível (nos 6 de incidente+wiki, o fato do serviço afetado é novo, mas a causa ou a ação
+podem ter sido perguntadas no `dev`), e alterna dois estilos em cada grupo:
+- `literal`: os mesmos modelos do `dev`, com o nome do serviço, o título do guia ou o sintoma;
+- `parafraseada`: descreve o serviço ("a integração com o gateway de cartão"), o guia ou o
+  incidente (pela data e pelo "componente afetado") sem os nomes e termos literais; um teste
+  confere que nenhuma parafraseada contém nome de serviço, título de guia ou sintoma.
+
+Sobreposição lexical (fração dos termos da pergunta que aparecem nas suas evidências, com a
+normalização da busca; `npx tsx scripts/lexical-overlap.ts`, sobre os arquivos versionados,
+perguntas com resposta): `dev` 0,498 (54); `heldout` 0,411 (36), sendo `literal` 0,554 (20) e
+`parafraseada` 0,232 (16). A análise por estilo (`npm run stats -- --run <id> --style
+parafraseada`) foi prevista antes da execução final.
 
 ## 4. Reprodutibilidade
 

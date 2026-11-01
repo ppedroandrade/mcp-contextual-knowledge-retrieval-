@@ -68,7 +68,14 @@ export interface Question {
   factIds: string[];
   /** Resposta de referência gerada a partir dos fatos. */
   referenceAnswer: string;
+  /**
+   * Só no `heldout`: `literal` usa os nomes e termos do corpus (como o `dev`); `parafraseada`
+   * descreve o serviço, o guia ou o incidente sem os nomes e termos literais (docs/corpus.md).
+   */
+  style?: QuestionStyle;
 }
+
+export type QuestionStyle = 'literal' | 'parafraseada';
 
 /** Contrato único das abordagens comparadas. */
 export interface Retriever {

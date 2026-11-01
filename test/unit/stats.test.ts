@@ -147,3 +147,13 @@ describe('medidas a partir das execuções', () => {
     expect(correcao!.values.get('D')!.get('q1')).toBe(5);
   });
 });
+
+describe('subgrupo por estilo', () => {
+  it('restringe as medidas às perguntas escolhidas', async () => {
+    const { restrict } = await import('../../src/bench/stats.js');
+    const values = perQuestion([{ a: 'D', q: 'h1', v: 1 }, { a: 'D', q: 'h2', v: 2 }, { a: 'B', q: 'h1', v: 3 }], (r) => r.a, (r) => r.q, (r) => r.v);
+    const [m] = restrict([{ name: 'x', estimator: 'mean', better: 'higher', values }], new Set(['h1']));
+    expect([...m!.values.get('D')!.keys()]).toEqual(['h1']);
+    expect([...m!.values.get('B')!.keys()]).toEqual(['h1']);
+  });
+});

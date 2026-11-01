@@ -1,9 +1,11 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { beforeAll, describe, expect, it } from 'vitest';
-import type { EvidenceUnit, SourceName } from '../../src/core/types.js';
+import type { EvidenceUnit, Question, SourceName } from '../../src/core/types.js';
 import { buildCorpus, DATA_DIR, outputFiles, type Corpus } from '../../src/corpus/generate.js';
 import { escapeHtml } from '../../src/corpus/render/policies.js';
+import { HELDOUT_UNANSWERABLE } from '../../src/corpus/heldout.js';
+import { HOWTOS, INCIDENTS, SERVICES } from '../../src/corpus/world.js';
 import { loadSource, parseSource } from '../../src/sources/index.js';
 
 /** Fontes que o sistema lê. As políticas estão no corpus, mas só são integradas na H3 (ADR 009). */
@@ -79,7 +81,7 @@ function policyUnit(id: string): { docId: string; source: SourceName } | undefin
 }
 
 describe('perguntas', () => {
-  const all = () => [...corpus.questions.dev, ...corpus.questions.policies];
+  const all = () => [...corpus.questions.dev, ...corpus.questions.policies, ...corpus.questions.heldout];
 
   it('dev tem 30 de fonte única, 24 multifonte e 6 sem resposta', () => {
     const count = (t: string) => corpus.questions.dev.filter((q) => q.type === t).length;
@@ -124,5 +126,38 @@ describe('perguntas', () => {
 
   it('o conjunto dev não depende da fonte de políticas (reservada para a H3)', () => {
     for (const q of corpus.questions.dev) expect(q.sources).not.toContain('policies');
+  });
+});
+
+describe('heldout (criado depois do congelamento, ADR 010)', () => {
+  const heldout = () => corpus.questions.heldout;
+
+  it('tem 18 de fonte única, 18 multifonte e 4 sem resposta; 20 literais e 16 parafraseadas', () => {
+    const count = (f: (q: Question) => boolean) => heldout().filter(f).length;
+    expect(heldout()).toHaveLength(40);
+    expect([count((q) => q.type === 'single-source'), count((q) => q.type === 'multi-source'), count((q) => q.type === 'unanswerable')]).toEqual([18, 18, 4]);
+    expect([count((q) => q.style === 'literal'), count((q) => q.style === 'parafraseada')]).toEqual([20, 16]);
+    for (const q of heldout()) expect(q.set).toBe('heldout');
+  });
+
+  it('não repete perguntas do dev nem depende das políticas', () => {
+    const dev = new Set(corpus.questions.dev.map((q) => q.text));
+    for (const q of heldout()) {
+      expect(dev.has(q.text), q.id).toBe(false);
+      expect(q.sources, q.id).not.toContain('policies');
+    }
+  });
+
+  it('as parafraseadas não citam o nome do serviço, o título do guia nem o sintoma do incidente', () => {
+    const banned = [...SERVICES.map((s) => s.name), ...HOWTOS.map((h) => h.title), ...INCIDENTS.map((i) => i.symptom)].map((t) => t.toLowerCase());
+    for (const q of heldout().filter((x) => x.style === 'parafraseada')) {
+      for (const b of banned) expect(q.text.toLowerCase(), q.id).not.toContain(b);
+    }
+  });
+
+  it('as sem resposta tratam de algo ausente do corpus', () => {
+    const text = corpus.files.map((f) => f.content).join('\n');
+    for (const [, , term] of HELDOUT_UNANSWERABLE) expect(text).not.toContain(term);
+    for (const q of heldout().filter((x) => x.type === 'unanswerable')) expect(q.evidence).toEqual([]);
   });
 });
