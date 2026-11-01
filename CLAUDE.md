@@ -13,6 +13,9 @@ e as **mesmas perguntas**:
 | C | Controle: busca vetorial por fonte + RRF, **sem** MCP | `src/approaches/c-per-source.ts` |
 | D | MCP + RAG: host descobre as tools do servidor MCP e funde por RRF | `src/approaches/d-mcp-rag.ts`, `src/mcp/` |
 
+Fora do experimento, `src/workspace/` + `apps/workspace/` é o app corporativo (ADR 012,
+`docs/workspace.md`): importa o código congelado, nunca o altera.
+
 C e D usam a mesma função de busca (`searchSource`); a única diferença é o protocolo.
 B × C mede a estratégia; C × D mede o protocolo; A é o baseline. Ver `docs/decisoes/005`.
 
@@ -57,6 +60,9 @@ npm run bench:generation -- --approaches B,C,D --rounds 3 --out <id>
 npm run mcp:server                             # servidor MCP via stdio
 npm run demo                                   # API + UI de demonstração em http://127.0.0.1:3000 (fora das métricas)
 npm run demo -- --avaliacao <planilha>         # avaliação humana cega na UI (só Node); notas em avaliacoes-ui/
+npm run workspace                              # app corporativo (chat + upload + Drive + Confluence) em http://127.0.0.1:3001; fora das métricas (ADR 012)
+npm run workspace -- --conectores simulados    # Drive e Confluence falsos (empresa fictícia); + --embedder hash --store memory --llm extrativo sem Docker
+npm run workspace:mcp                          # servidor MCP do workspace via stdio (Claude Desktop etc.)
 npx tsx scripts/compare-c-d.ts <id>            # confere C = D e D − C numa execução
 npm run stats -- --run <id> [--style parafraseada]  # Wilcoxon + Holm + bootstrap (e Mann-Whitney) numa execução, inclusive a planilha com notas humanas (ADR 008)
 npm run eval:answers -- --run <geração> --out <id>   # regra dos fatos + juiz (ADR 007)

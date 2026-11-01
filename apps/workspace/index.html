@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workspace de conhecimento</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">◆</span>
+        <span>Workspace de conhecimento</span>
+      </div>
+      <button type="button" class="new-chat" id="new-chat"><span aria-hidden="true">＋</span> Nova conversa</button>
+      <nav class="history" id="history" aria-label="Conversas"></nav>
+      <div class="sidebar-foot">
+        <button type="button" class="sources-btn" id="open-sources">
+          <span class="ico" aria-hidden="true">⛁</span>
+          <span>Fontes de conhecimento</span>
+          <span class="count" id="sources-count">0</span>
+        </button>
+        <div class="mode" id="mode"></div>
+      </div>
+    </aside>
+
+    <main class="main" id="drop-target">
+      <header class="main-head">
+        <button type="button" class="icon-btn only-mobile" id="toggle-sidebar" aria-label="Mostrar conversas">☰</button>
+        <h1 id="conv-title">Nova conversa</h1>
+        <div class="sources-strip" id="sources-strip"></div>
+      </header>
+
+      <section class="thread" id="thread" aria-live="polite"></section>
+
+      <form class="composer" id="composer">
+        <div class="composer-box">
+          <button type="button" class="icon-btn attach" id="attach" title="Enviar arquivos para a base de conhecimento" aria-label="Enviar arquivos">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M21 11.5l-8.6 8.6a5.5 5.5 0 01-7.8-7.8l8.6-8.6a3.7 3.7 0 015.2 5.2l-8.6 8.6a1.8 1.8 0 01-2.6-2.6l7.9-7.9"/></svg>
+          </button>
+          <textarea id="question" rows="1" maxlength="2000" placeholder="Pergunte sobre os documentos da empresa…" required></textarea>
+          <button type="submit" class="send" id="send" aria-label="Enviar pergunta">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 4l7 7-1.4 1.4-4.6-4.6V20h-2V7.8l-4.6 4.6L5 11z"/></svg>
+          </button>
+        </div>
+        <input type="file" id="file-input" multiple hidden>
+        <p class="hint">As respostas usam só os documentos conectados e citam a origem. Arraste arquivos para cá para adicioná-los.</p>
+      </form>
+      <div class="drop-overlay" id="drop-overlay"><div>Solte os arquivos para adicionar à base de conhecimento</div></div>
+    </main>
+
+    <aside class="viewer" id="viewer" hidden>
+      <div class="viewer-head">
+        <strong>Trecho citado</strong>
+        <button type="button" class="icon-btn" id="close-viewer" aria-label="Fechar">✕</button>
+      </div>
+      <div id="viewer-body"></div>
+    </aside>
+  </div>
+
+  <dialog class="modal" id="sources-modal">
+    <div class="modal-head">
+      <div>
+        <h2>Fontes de conhecimento</h2>
+        <p class="muted">Conecte onde estão os documentos da empresa. Cada fonte vira uma ferramenta (tool MCP) que o assistente consulta a cada pergunta.</p>
+      </div>
+      <button type="button" class="icon-btn" id="close-sources" aria-label="Fechar">✕</button>
+    </div>
+    <div class="modal-body" id="sources-body"></div>
+  </dialog>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
