@@ -1,0 +1,92 @@
+{
+  "itens": 120,
+  "porAbordagem": {
+    "B-rag": {
+      "perguntas": 60,
+      "regraFatosLiterais": 0.5648148148148148,
+      "regraCoberturaTermos": 0.6070987654320987,
+      "regraAcerto": 0.5666666666666667,
+      "juizAcerto": 0.8166666666666667,
+      "juiz_correcao": 4.266666666666667,
+      "juiz_completude": 4.183333333333334,
+      "juiz_sustentacao": 4.816666666666666
+    },
+    "C-por-fonte": {
+      "perguntas": 60,
+      "regraFatosLiterais": 0.42592592592592593,
+      "regraCoberturaTermos": 0.4550044091710759,
+      "regraAcerto": 0.4166666666666667,
+      "juizAcerto": 0.8,
+      "juiz_correcao": 4.216666666666667,
+      "juiz_completude": 4.15,
+      "juiz_sustentacao": 4.9
+    },
+    "D-mcp": {
+      "perguntas": 60,
+      "regraFatosLiterais": 0.42592592592592593,
+      "regraCoberturaTermos": 0.4550044091710759,
+      "regraAcerto": 0.4166666666666667,
+      "juizAcerto": 0.8,
+      "juiz_correcao": 4.216666666666667,
+      "juiz_completude": 4.15,
+      "juiz_sustentacao": 4.9
+    }
+  },
+  "juizXRegra": {
+    "concordancia": 0.6666666666666666,
+    "kappa": 0.3401154797910365,
+    "regraAcertaJuizNao": [
+      "25401aa7f1a8"
+    ],
+    "regraErraJuizSim": [
+      "e70ef960b41a",
+      "934440688579",
+      "f7540b8362c1",
+      "6d98f80fe750",
+      "695c012a19aa",
+      "d970effe51ec",
+      "05791d833001",
+      "f5c32e94bdbb",
+      "06cd5e218ba9",
+      "1b1bad4cfb7c",
+      "093ecc7bd7cf",
+      "e7f8b3bd4eb2",
+      "fbe788020bfa",
+      "0b444fd0af3d",
+      "cdcbce1f21bc",
+      "a92419bd147a",
+      "c33cdc1a135d",
+      "9e250f6a2fdf",
+      "c02873c0831a",
+      "0f3f712dad0a",
+      "cdb1c17cff14",
+      "b723c2fb3123",
+      "65154383c290",
+      "e296bfcb8b34",
+      "783d73c15012",
+      "7378bfab50d6",
+      "d77cc93a850f",
+      "f8bc44dfc474",
+      "2d361c9fa486",
+      "f056d9288476",
+      "c3270c724a22",
+      "6d372a463087",
+      "d8763acc439a",
+      "34d3c28bc49d",
+      "353446ff4296",
+      "97baf855c4a5",
+      "673a6ba08ed9",
+      "2a09dfeaac7f",
+      "30f819c9484b"
+    ]
+  },
+  "repetibilidade": {
+    "repeticoes": 2,
+    "itensIdenticos": 1,
+    "alfaOrdinal": {
+      "correcao": 1,
+      "completude": 1,
+      "sustentacao": 1
+    }
+  }
+}

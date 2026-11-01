@@ -1,0 +1,62 @@
+{
+  "itens": 120,
+  "itensComJuiz": 74,
+  "porAbordagem": {
+    "B-rag": {
+      "perguntas": 60,
+      "regraFatosLiterais": 0.5648148148148148,
+      "regraCoberturaTermos": 0.6070987654320987,
+      "regraAcerto": 0.5666666666666667,
+      "rubricaAcerto": 0.6833333333333333,
+      "correcao": 3.7666666666666666,
+      "completude": 3.683333333333333,
+      "sustentacao": 4.75
+    },
+    "C-por-fonte": {
+      "perguntas": 60,
+      "regraFatosLiterais": 0.42592592592592593,
+      "regraCoberturaTermos": 0.4550044091710759,
+      "regraAcerto": 0.4166666666666667,
+      "rubricaAcerto": 0.6,
+      "correcao": 3.4,
+      "completude": 3.316666666666667,
+      "sustentacao": 4.933333333333334
+    },
+    "D-mcp": {
+      "perguntas": 60,
+      "regraFatosLiterais": 0.42592592592592593,
+      "regraCoberturaTermos": 0.4550044091710759,
+      "regraAcerto": 0.4166666666666667,
+      "rubricaAcerto": 0.6,
+      "correcao": 3.4,
+      "completude": 3.316666666666667,
+      "sustentacao": 4.933333333333334
+    }
+  },
+  "juizXRegra": {
+    "itens": 74,
+    "concordancia": 0.7567567567567568,
+    "kappa": 0.388429752066116,
+    "regraAcertaJuizNao": [],
+    "regraErraJuizSim": [
+      "934440688579",
+      "f7540b8362c1",
+      "6d98f80fe750",
+      "1b1bad4cfb7c",
+      "e7f8b3bd4eb2",
+      "fbe788020bfa",
+      "0b444fd0af3d",
+      "cdcbce1f21bc",
+      "c02873c0831a",
+      "0f3f712dad0a",
+      "cdb1c17cff14",
+      "e296bfcb8b34",
+      "d77cc93a850f",
+      "2d361c9fa486",
+      "f056d9288476",
+      "d8763acc439a",
+      "34d3c28bc49d",
+      "30f819c9484b"
+    ]
+  }
+}

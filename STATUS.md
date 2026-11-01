@@ -12,7 +12,7 @@ não têm rastreabilidade com este repositório.
 | Ambiente real: Docker, PostgreSQL + pgvector, Ollama | testado (31/10/2026) | ver "Ambiente validado" abaixo |
 | Ferramental: TypeScript, Vitest, CI, docker-compose | implementado, testado | `npm run check` passa (45 testes unitários); imagens fixadas no compose: `pgvector/pgvector:0.8.7-pg16`, `ollama/ollama:0.40.13` |
 | Tipos compartilhados e interface `Retriever` | implementado | `src/core/types.ts` |
-| Escolha de stack | decidido | ADRs 001 a 006 em `docs/decisoes/`; LLM fixado em 31/10/2026 (ADR 003) |
+| Escolha de stack | decidido | ADRs 001 a 007 em `docs/decisoes/`; LLM fixado em 31/10/2026 (ADR 003); juiz e avaliação das respostas (ADR 007) |
 | Mapeamento TCC 1 → métricas | documentado | `docs/metodologia.md`; divergências listadas |
 | Corpus sintético (4 fontes, 146 documentos, 349 fatos) | implementado, testado | `npm run corpus`; `docs/corpus.md` |
 | Leitores das fontes (Markdown, JSON, CSV, HTML) | implementado, testado | `src/sources/` |
@@ -25,7 +25,8 @@ não têm rastreabilidade com este repositório.
 | Configuração C (busca por fonte + RRF, sem MCP) | implementado, testado | `src/approaches/c-per-source.ts` |
 | Servidor MCP (uma tool por fonte) e configuração D (MCP + RAG), só recuperação | implementado, testado | `src/mcp/`, `src/approaches/d-mcp-rag.ts`; teste confirma C = D nas 60 perguntas e o protocolo real via stdio; no ambiente real, C = D nas 60 perguntas com `bge-m3` + pgvector (`scripts/compare-c-d.ts`) |
 | Geração de respostas por LLM (B, C, D) | implementado, testado | `src/generation/`, `npm run bench:generation`; Ollama `qwen3:4b-instruct-2507` (ADR 003); prompt fixo, temperatura 0, os mesmos 5 trechos; A fica só na recuperação; executado no dev (abaixo) |
-| Métricas e estatística | planejado | conferir metodologia do TCC 1 |
+| Avaliação das respostas: regra dos fatos, juiz por LLM, planilha cega e importação das notas humanas | implementado, testado | `src/evaluation/`, `npm run eval:answers`, `npm run eval:human` (ADR 007); executado no dev (abaixo); avaliação humana **ainda não feita** (faltam os avaliadores) |
+| Estatística (Wilcoxon, Holm, bootstrap, Mann-Whitney) | planejado | Etapa 4; `docs/metodologia.md`, seção 3 |
 | Benchmark reproduzível | implementado | `environment.json` grava commit lido na partida, árvore limpa (ignora `results/`), digests e versão do Ollama, uso de GPU (`sizeVram`), hash do prompt e fonte de energia |
 | API + UI de demonstração | implementado, testado (sem modo de avaliação humana) | `npm run demo`; `src/api/`, `apps/demo/`; 7 testes em `test/unit/api.test.ts` (hash + memória + LLM simulado); conferida no navegador com `--embedder hash --store memory --llm simulated` (D pelo stdio real). Ainda não aberta com bge-m3 + qwen3. Fora das métricas. Modo de avaliação humana cega: planejado, sobre o formato de notas da Etapa 3 |
 
@@ -40,6 +41,7 @@ não têm rastreabilidade com este repositório.
 | Ollama | 0.40.13, **no Docker, só CPU** (`sizeVram: 0`): no macOS o Docker não acessa a GPU. Decisão do Pedro em 31/10/2026: manter o Ollama no Docker, como no compose |
 | Embeddings | `bge-m3`, digest `7907646426070047a77226ac3e684fbbe8410524f7b4a74d02837e43f2146bab` |
 | LLM | `qwen3:4b-instruct-2507-q4_K_M`, digest `0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0`; temperatura 0, semente 42, `num_ctx` 5120, `num_predict` 512 |
+| Juiz | `qwen3.5:4b`, digest `d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04`; temperatura 0, semente 42, `num_ctx` 8192, saída JSON (ADR 007) |
 | Configuração do Ollama | `OLLAMA_MAX_LOADED_MODELS=2`, `OLLAMA_NUM_PARALLEL=1`, `LLAMA_ARG_CACHE_RAM=0` (ADR 003) |
 
 ## Rodadas registradas
@@ -50,6 +52,10 @@ não têm rastreabilidade com este repositório.
 | `results/runs/2026-10-31-dev-hash-memoria-c-d` | C e D com embedding `hash` e armazenamento em memória, para isolar o custo do protocolo | diagnóstico; **sem valor experimental** (embedding não semântico) |
 | `results/runs/2026-10-31-piloto-llm-*` | piloto de três LLMs: B, 60 perguntas, 1 rodada | escolha do modelo (ADR 003); tempos indicativos |
 | `results/runs/2026-10-31-dev-geracao-qwen3-4b` | B, C, D com geração no `dev`, aquecimento + 3 rodadas, na tomada | **rodada de verificação no conjunto dev; não é o resultado final do experimento** |
+| `results/runs/2026-10-31-juiz-candidato-*` | calibração de dois juízes: os 120 itens, 2 passadas na mesma ordem | escolha do juiz (ADR 007) |
+| `results/runs/2026-10-31-dev-avaliacao-qwen3-5` | regra + juiz nas respostas da rodada de geração, 1 passada | evidência da repetibilidade entre execuções (ADR 007) |
+| `results/runs/2026-10-31-dev-avaliacao-qwen3-5-r2` | regra + juiz, 2ª passada em ordem embaralhada | **avaliação de referência da rodada dev; não é resultado final** |
+| `results/runs/2026-10-31-planilha-cega-dev-piloto` | planilha cega das 120 respostas do `dev` | **piloto do instrumento**; a planilha para os avaliadores sai da execução final no `heldout` |
 
 Rodada `2026-10-31-dev-bge-m3` (commit `1cac716`, 54 perguntas com resposta; latência = média
 das medianas por pergunta, em ms):
@@ -97,14 +103,44 @@ Conferências (`scripts/compare-c-d.ts`, `scripts/summarize-generation.ts`):
 - C e D entregam ao LLM menos contextos com toda a evidência que B (19 contra 27), coerente
   com o ER@5 menor na rodada de recuperação.
 
+Avaliação `2026-10-31-dev-avaliacao-qwen3-5-r2` (commit `dc9a741`) das 120 respostas
+distintas da rodada de geração (C e D deram as mesmas e contam juntas). Regra: fatos do
+gabarito presentes na resposta (literal = termos em sequência); acerto pela regra =
+abstenção nas 6 perguntas sem resposta e todos os fatos literais nas demais. Rubrica 1–5:
+notas fixadas por regra quando a resposta é "não sei" (46 itens) e juiz `qwen3.5:4b` nas 74
+respostas afirmativas. A avaliação humana ainda não foi feita.
+
+| | regra: fatos literais | regra: cobertura de termos | regra: acerto | rubrica: acerto (correção ≥ 4) | correção | completude | sustentação |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| B-rag | 0,565 | 0,607 | 0,567 | 0,683 | 3,77 | 3,68 | 4,75 |
+| C-por-fonte | 0,426 | 0,455 | 0,417 | 0,600 | 3,40 | 3,32 | 4,93 |
+| D-mcp | 0,426 | 0,455 | 0,417 | 0,600 | 3,40 | 3,32 | 4,93 |
+
+Conferências (`scripts/summarize-answers.ts`, `scripts/compare-judge-runs.ts`):
+- **Juiz × regra** nas 74 respostas afirmativas: 75,7% de concordância, κ = 0,39. O juiz
+  nunca reprovou o que a regra aprovou e aprovou 18 respostas em que faltavam fatos: é
+  leniente com respostas parciais.
+- **Repetibilidade do juiz:** a 1ª passada reproduziu a execução anterior (74/74); a 2ª,
+  em ordem embaralhada, repetiu 71/74 notas e 74/74 decisões de correção (alfa ordinal 0,933 /
+  0,997 / 1,000). Entre a calibração e a avaliação, com outra sequência de pedidos, 67/74
+  notas e alfa 0,617 na sustentação, a nota menos estável (ADR 007).
+- Os juízes candidatos deram nota alta a "não sei" quando o corpus tinha a resposta (21 e 32
+  dos 46 casos), contra a rubrica: esses casos passaram a ser pontuados por regra.
+- B fica à frente de C e D na regra e na rubrica, coerente com C e D entregarem menos
+  contextos com toda a evidência (19 contra 27, rodada de geração). Sem teste estatístico
+  ainda.
+
 ## Próximos passos
 1. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
-2. Etapa 3: avaliação das respostas (LLM local como juiz, sem substituir a avaliação humana)
-   e exportação da planilha cega para avaliadores humanos.
-3. Avaliar se as perguntas repetem demais as palavras do corpus (ver risco em `docs/metodologia.md`).
-4. Antes do experimento final: fixar uma única versão do Node para as medições (hoje 26.13
+2. Etapa 4: estatística (Wilcoxon pareado, Holm, IC 95% por bootstrap, Mann-Whitney U).
+3. Conseguir ao menos 2 avaliadores humanos para a H2 (a planilha sai da execução final no
+   `heldout`; `results/runs/2026-10-31-planilha-cega-dev-piloto` serve para testar o
+   instrumento antes).
+4. Avaliar se as perguntas repetem demais as palavras do corpus (ver risco em `docs/metodologia.md`).
+5. Antes do experimento final: fixar uma única versão do Node para as medições (hoje 26.13
    local × 22 no ADR 001 e no CI); medir dentro de D o tempo gasto na tool, para separar o
    protocolo da busca como pede o ADR 004; fixar e registrar o modo de energia do macOS e,
    se for o caso, o número de threads do Ollama, para reduzir a deriva térmica; mais rodadas
    de latência com geração (o ruído entre rodadas chegou a ~500 ms); rodar na tomada, sem
-   outras cargas e sem trocar de branch durante a execução.
+   outras cargas e sem trocar de branch durante a execução; esperar o Ollama descarregar
+   (`/api/ps` vazio) ao trocar de modelo.

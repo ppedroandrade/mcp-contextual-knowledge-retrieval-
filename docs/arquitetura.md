@@ -1,6 +1,6 @@
 # Arquitetura — proposta inicial (para discussão)
 
-Status: **implementado** da ingestão à geração (A–D, servidor MCP, `src/generation`); avaliação das respostas e estatística **planejadas**. Ver `STATUS.md`.
+Status: **implementado** da ingestão à avaliação das respostas (A–D, servidor MCP, `src/generation`, `src/evaluation`); estatística **planejada**. Ver `STATUS.md`.
 
 ## 1. Princípio
 
@@ -46,6 +46,7 @@ flowchart LR
 | 4 | MCP | SDK oficial, stdio no experimento | [004](decisoes/004-mcp.md) |
 | 5 | Configurações | A (BM25), B (RAG), C (controle sem MCP), D (MCP + RAG) | [005](decisoes/005-configuracoes-comparadas.md) |
 | 6 | Medida da H1 | latência computacional, recuperação e recuperação + geração separadas | [006](decisoes/006-medida-da-h1.md) |
+| 7 | Avaliação das respostas | regra dos fatos (âncora), juiz `qwen3.5:4b` só nas respostas afirmativas, planilha cega para humanos | [007](decisoes/007-avaliacao-das-respostas.md) |
 
 Metodologia e métricas: [metodologia.md](metodologia.md). Corpus: [corpus.md](corpus.md).
 O LLM foi fixado em 31/10/2026, depois de um piloto com três modelos (ADR 003).

@@ -1,0 +1,103 @@
+{
+  "itens": 120,
+  "porAbordagem": {
+    "B-rag": {
+      "perguntas": 60,
+      "regraFatosLiterais": 0.5648148148148148,
+      "regraCoberturaTermos": 0.6070987654320987,
+      "regraAcerto": 0.5666666666666667,
+      "juizAcerto": 0.9,
+      "juiz_correcao": 4.583333333333333,
+      "juiz_completude": 4.25,
+      "juiz_sustentacao": 4.7
+    },
+    "C-por-fonte": {
+      "perguntas": 60,
+      "regraFatosLiterais": 0.42592592592592593,
+      "regraCoberturaTermos": 0.4550044091710759,
+      "regraAcerto": 0.4166666666666667,
+      "juizAcerto": 0.95,
+      "juiz_correcao": 4.8,
+      "juiz_completude": 4.6,
+      "juiz_sustentacao": 4.766666666666667
+    },
+    "D-mcp": {
+      "perguntas": 60,
+      "regraFatosLiterais": 0.42592592592592593,
+      "regraCoberturaTermos": 0.4550044091710759,
+      "regraAcerto": 0.4166666666666667,
+      "juizAcerto": 0.95,
+      "juiz_correcao": 4.8,
+      "juiz_completude": 4.6,
+      "juiz_sustentacao": 4.766666666666667
+    }
+  },
+  "juizXRegra": {
+    "concordancia": 0.5666666666666667,
+    "kappa": 0.14543960558751035,
+    "regraAcertaJuizNao": [],
+    "regraErraJuizSim": [
+      "e70ef960b41a",
+      "934440688579",
+      "7c2ba780b01d",
+      "f7540b8362c1",
+      "6d98f80fe750",
+      "ec0226e7ce15",
+      "d970effe51ec",
+      "05791d833001",
+      "f5c32e94bdbb",
+      "f75b345ef3a1",
+      "7c91e103e93f",
+      "02975e2184ac",
+      "06cd5e218ba9",
+      "1b1bad4cfb7c",
+      "093ecc7bd7cf",
+      "2ef5dbb2e42d",
+      "e7f8b3bd4eb2",
+      "e65a86194db6",
+      "fbe788020bfa",
+      "690d9eef0ecf",
+      "0b444fd0af3d",
+      "cdcbce1f21bc",
+      "a92419bd147a",
+      "c33cdc1a135d",
+      "9e250f6a2fdf",
+      "c02873c0831a",
+      "0f3f712dad0a",
+      "cdb1c17cff14",
+      "b723c2fb3123",
+      "65154383c290",
+      "fe8a16ec2eea",
+      "852f1e7dae9c",
+      "31a89a00890b",
+      "4e8d13a32cf3",
+      "1f497d90d971",
+      "783d73c15012",
+      "7378bfab50d6",
+      "d77cc93a850f",
+      "f8bc44dfc474",
+      "c3b76854297f",
+      "ee7b62701fac",
+      "2d361c9fa486",
+      "c3270c724a22",
+      "6d372a463087",
+      "d8763acc439a",
+      "353446ff4296",
+      "97baf855c4a5",
+      "2a09dfeaac7f",
+      "4fd5511f194d",
+      "6f18069cc2b4",
+      "30f819c9484b",
+      "99233e1058fc"
+    ]
+  },
+  "repetibilidade": {
+    "repeticoes": 2,
+    "itensIdenticos": 0.9666666666666667,
+    "alfaOrdinal": {
+      "correcao": 0.9751710452427568,
+      "completude": 0.9831723325021968,
+      "sustentacao": 0.9616305110355621
+    }
+  }
+}

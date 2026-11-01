@@ -1,5 +1,5 @@
 import { describeOllamaModel } from '../core/ollama.js';
-import type { ChatMessage, Completion, LlmProvider } from './provider.js';
+import type { ChatMessage, Completion, CompletionOptions, LlmProvider } from './provider.js';
 
 export interface OllamaChatOptions {
   /** Janela de contexto. A chamada falha antes de enviar se o prompt puder não caber. */
@@ -55,7 +55,7 @@ export class OllamaChatProvider implements LlmProvider {
     return (await this.capabilities).includes('thinking');
   }
 
-  async complete(messages: ChatMessage[]): Promise<Completion> {
+  async complete(messages: ChatMessage[], { format }: CompletionOptions = {}): Promise<Completion> {
     const { numCtx, numPredict, seed } = this.options;
     // Cada token tem ao menos 1 byte: bytes do texto + margem limitam o prompt por cima, e o
     // Ollama truncaria em silêncio um prompt maior que num_ctx.
@@ -68,6 +68,7 @@ export class OllamaChatProvider implements LlmProvider {
       messages,
       stream: false,
       ...((await this.hasThinking()) ? { think: false } : {}),
+      ...(format ? { format } : {}),
       options: { temperature: 0, seed, num_ctx: numCtx, num_predict: numPredict },
     });
     return {
