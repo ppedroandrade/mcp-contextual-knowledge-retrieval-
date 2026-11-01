@@ -15,7 +15,7 @@ não têm rastreabilidade com este repositório.
 | Escolha de stack | decidido | ADRs 001 a 007 em `docs/decisoes/`; LLM fixado em 31/10/2026 (ADR 003); juiz e avaliação das respostas (ADR 007) |
 | Mapeamento TCC 1 → métricas | documentado | `docs/metodologia.md`; divergências listadas |
 | Corpus sintético (4 fontes, 146 documentos, 349 fatos) | implementado, testado | `npm run corpus`; `docs/corpus.md` |
-| Leitores das fontes (Markdown, JSON, CSV, HTML) | implementado, testado | `src/sources/` |
+| Leitores das fontes (Markdown, JSON, CSV) | implementado, testado | `src/sources/`; o leitor HTML das políticas foi **retirado** antes do congelamento, para a medida da H3 (ADR 009) |
 | Perguntas dev (60) e de políticas (15) com gabarito derivado dos fatos | implementado, testado | `data/questions/` |
 | Perguntas heldout (40) | planejado | criar só depois do congelamento da arquitetura |
 | Busca textual convencional (A, BM25) | implementado, testado | `src/approaches/a-bm25.ts`; rodada de verificação no dev, não é resultado do experimento |
@@ -27,6 +27,9 @@ não têm rastreabilidade com este repositório.
 | Geração de respostas por LLM (B, C, D) | implementado, testado | `src/generation/`, `npm run bench:generation`; Ollama `qwen3:4b-instruct-2507` (ADR 003); prompt fixo, temperatura 0, os mesmos 5 trechos; A fica só na recuperação; executado no dev (abaixo) |
 | Avaliação das respostas: regra dos fatos, juiz por LLM, planilha cega e importação das notas humanas | implementado, testado | `src/evaluation/`, `npm run eval:answers`, `npm run eval:human` (ADR 007); executado no dev (abaixo); avaliação humana **ainda não feita** (faltam os avaliadores) |
 | Estatística (Wilcoxon, Holm, bootstrap, Mann-Whitney) | implementado, testado | `src/evaluation/stats.ts`, `src/evaluation/compare.ts`, `npm run stats -- --run <id>` (ADR 008); testes conferidos contra o SciPy 1.18.1 e o statsmodels; aplicada às rodadas dev (abaixo), que **não são o resultado final** |
+| Preparação da H3: integração das políticas retirada, protocolo escrito | implementado, testado | ADR 009, `docs/h3-protocolo.md`; a medida da H3 em si é **planejada** (depois do congelamento) |
+| Tempo da tool dentro de D | implementado, testado | `tempoMs` em cada tool; `toolMs` no bench só para D; `scripts/compare-c-d.ts` imprime D − tool (ADR 009); ainda sem execução real |
+| Node fixado nas medições | implementado | `.nvmrc` 22, `engines` `^22.12.0`, CI pelo `.nvmrc`; `bench:*` recusa outra versão (ADR 009) |
 | Benchmark reproduzível | implementado | `environment.json` grava commit lido na partida, árvore limpa (ignora `results/`), digests e versão do Ollama, uso de GPU (`sizeVram`), hash do prompt e fonte de energia |
 | API + UI de demonstração | implementado, testado | `npm run demo`; `src/api/`, `apps/demo/`; testes em `test/unit/api.test.ts` (hash + memória + LLM simulado); conferida no navegador com `--embedder hash --store memory --llm simulated` (D pelo stdio real). Ainda não aberta com bge-m3 + qwen3. Fora das métricas |
 | Modo de avaliação humana cega na UI | implementado, testado | `npm run demo -- --avaliacao <planilha>`: só Node, sem Ollama; uma resposta distinta por vez, sem pista da abordagem; grava `avaliacoes-ui/<avaliador>.csv` no formato da planilha cega (lido por `eval:human --import`); mostra o alfa de Krippendorff com 2 ou mais avaliadores; testes em `test/unit/eval-ui.test.ts`; conferido no navegador com a planilha piloto do dev. **Nenhuma avaliação humana feita ainda** |
@@ -36,7 +39,7 @@ não têm rastreabilidade com este repositório.
 | Item | Valor |
 | --- | --- |
 | Máquina | Apple M4 Pro, 12 núcleos (8 de desempenho + 4 de eficiência), 24 GB, GPU integrada de 16 núcleos (Metal) |
-| Sistema e Node | macOS 27.0, Node.js 26.13.0 (o ADR 001 e o CI usam 22; `engines` aceita ≥ 22.12) |
+| Sistema e Node | macOS 27.0, Node.js 26.13.0 nas rodadas dev; a partir do ADR 009 as medições exigem Node 22 (`.nvmrc`) |
 | Docker | Docker Desktop 4.48.0 (engine 28.5.1); VM com 12 CPUs e 7,7 GiB |
 | PostgreSQL / pgvector | 16.15 / 0.8.7 |
 | Ollama | 0.40.13, **no Docker, só CPU** (`sizeVram: 0`): no macOS o Docker não acessa a GPU. Decisão do Pedro em 31/10/2026: manter o Ollama no Docker, como no compose |
@@ -164,15 +167,13 @@ dependem da execução final no `heldout`.
 
 ## Próximos passos
 1. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
-2. Preparação da H3; congelamento e `heldout`.
+2. Congelar a arquitetura e criar o `heldout`; depois, a H3 (`docs/h3-protocolo.md`).
 3. Conseguir ao menos 2 avaliadores humanos para a H2 (a planilha sai da execução final no
    `heldout`; `results/runs/2026-10-31-planilha-cega-dev-piloto` serve para testar o
    instrumento antes).
 4. Avaliar se as perguntas repetem demais as palavras do corpus (ver risco em `docs/metodologia.md`).
-5. Antes do experimento final: fixar uma única versão do Node para as medições (hoje 26.13
-   local × 22 no ADR 001 e no CI); medir dentro de D o tempo gasto na tool, para separar o
-   protocolo da busca como pede o ADR 004; fixar e registrar o modo de energia do macOS e,
-   se for o caso, o número de threads do Ollama, para reduzir a deriva térmica; mais rodadas
-   de latência com geração (o ruído entre rodadas chegou a ~500 ms); rodar na tomada, sem
-   outras cargas e sem trocar de branch durante a execução; esperar o Ollama descarregar
-   (`/api/ps` vazio) ao trocar de modelo.
+5. Antes do experimento final: instalar e usar o Node 22 no Mac (`nvm install 22 && nvm use`);
+   fixar e registrar o modo de energia do macOS e, se for o caso, o número de threads do
+   Ollama, para reduzir a deriva térmica; mais rodadas de latência com geração (o ruído entre
+   rodadas chegou a ~500 ms); rodar na tomada, sem outras cargas e sem trocar de branch durante
+   a execução; esperar o Ollama descarregar (`/api/ps` vazio) ao trocar de modelo.

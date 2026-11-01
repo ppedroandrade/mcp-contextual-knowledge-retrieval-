@@ -4,7 +4,7 @@ import { SEED } from '../corpus/generate.js';
 import { Rng } from '../corpus/random.js';
 import { mean, median, scoreRetrieval, type RetrievalScores } from '../evaluation/metrics.js';
 import { loadSource } from '../sources/index.js';
-import { environment, saveRun } from './environment.js';
+import { assertMeasurementNode, environment, saveRun } from './environment.js';
 import { loadQuestions, makeEmbedder, makeRetrievers, openStore, sourcesFor, type EmbedderKind, type StoreKind } from './setup.js';
 
 /** Unidades buscadas por pergunta: profundidade suficiente para deduplicar por documento. */
@@ -18,6 +18,17 @@ export interface QuestionResult {
   topUnits: string[];
   scores: RetrievalScores;
   latencyMs: number[];
+  /**
+   * Só em D: maior tempo de busca informado pelas tools (chamadas em paralelo) em cada rodada
+   * medida. latência − toolMs aproxima o custo do protocolo dentro de D (ADR 004).
+   */
+  toolMs?: number[];
+}
+
+/** Maior tempo de busca informado pelas tools de D na última chamada (undefined nas outras). */
+export function lastToolMs(r: Retriever): number | undefined {
+  const xs = (r as { lastToolMs?: number[] }).lastToolMs;
+  return xs && xs.length ? Math.max(...xs) : undefined;
 }
 
 /**
@@ -45,7 +56,12 @@ export async function runRetrieval(retrievers: Retriever[], questions: Question[
         const t0 = performance.now();
         await r.search(q.text, SEARCH_DEPTH);
         const dt = performance.now() - t0;
-        if (round > 0) results.get(`${r.name}|${q.id}`)!.latencyMs.push(dt);
+        if (round > 0) {
+          const res = results.get(`${r.name}|${q.id}`)!;
+          res.latencyMs.push(dt);
+          const tool = lastToolMs(r);
+          if (tool !== undefined) (res.toolMs ??= []).push(tool);
+        }
       }
     }
   }
@@ -74,6 +90,7 @@ export function summarize(results: QuestionResult[]) {
 }
 
 async function main() {
+  assertMeasurementNode();
   // Lido na partida: o código que roda é o carregado agora, mesmo que a branch mude depois.
   const env = environment();
   const { values } = parseArgs({ options: {

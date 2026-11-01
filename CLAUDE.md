@@ -61,9 +61,9 @@ npm run eval:answers -- --run <geração> --out <id>   # regra dos fatos + juiz 
 npm run eval:human -- --run <geração> --out <id>     # planilha cega; --import <id> --ratings a.csv,b.csv
 ```
 
-`bench:retrieval` aceita `--set dev|policies`, `--embedder ollama|hash`,
-`--store pg|memory`. Para `--set policies`, indexe antes com
-`npm run ingest -- --sources docs,tickets,incidents,policies`. `bench:generation` aceita
+`bench:retrieval` aceita `--set dev`, `--embedder ollama|hash`, `--store pg|memory`
+(`--set policies` só depois da integração da 4ª fonte na H3, ADR 009 e
+`docs/h3-protocolo.md`). As medições exigem Node 22 (`.nvmrc`; `nvm use`). `bench:generation` aceita
 os mesmos e `--llm ollama|simulated`, `--model`; recusa a abordagem A.
 
 Medições longas: Mac na tomada, tampa aberta, árvore do git limpa e sem trocar de branch

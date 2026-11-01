@@ -23,9 +23,13 @@ export function loadQuestions(set: string): Question[] {
   return JSON.parse(readFileSync(join(DATA_DIR, 'questions', `${set}.json`), 'utf8')) as Question[];
 }
 
-/** Fontes indexadas para cada conjunto: `policies` só entra com a 4ª fonte (H3). */
+/**
+ * Fontes indexadas para cada conjunto. O conjunto `policies` depende da 4ª fonte, que só é
+ * integrada depois do congelamento, na medida da H3 (ADR 009).
+ */
 export function sourcesFor(set: string): SourceName[] {
-  return set === 'policies' ? ['docs', 'tickets', 'incidents', 'policies'] : ['docs', 'tickets', 'incidents'];
+  if (set === 'policies') throw new Error('o conjunto policies depende da 4ª fonte, ainda não integrada (ADR 009)');
+  return ['docs', 'tickets', 'incidents'];
 }
 
 /** LLM das configurações que geram resposta. O simulado não tem valor experimental. */

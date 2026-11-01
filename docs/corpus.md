@@ -27,7 +27,8 @@ Cada fonte vira **unidades de evidência** (seção do Markdown, campo do chamad
 incidente, `<section>` do HTML) por um leitor próprio em `src/sources/`.
 
 `policies` só é integrada **depois do congelamento** da arquitetura, para medir o esforço
-de adicionar uma fonte com formato novo em B/C (customizado) e em D (MCP).
+de adicionar uma fonte com formato novo em B/C (customizado) e em D (MCP). O leitor HTML foi
+retirado do sistema antes do congelamento (ADR 009); os dados e as perguntas ficam.
 
 ## 3. Perguntas
 

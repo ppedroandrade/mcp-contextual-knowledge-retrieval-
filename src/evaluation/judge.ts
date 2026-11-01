@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import type { ChatMessage, LlmProvider } from '../generation/provider.js';
-import { SOURCE_CATALOG } from '../sources/catalog.js';
+import { sourceInfo } from '../sources/catalog.js';
 import type { EvalItem } from './items.js';
 import { CRITERIA, RUBRIC_TEXT, type Scores } from './rubric.js';
 
@@ -22,7 +22,7 @@ export const JUDGE_SCHEMA = {
 };
 
 export function buildJudgeMessages(item: Pick<EvalItem, 'question' | 'referenceAnswer' | 'context' | 'answer'>): ChatMessage[] {
-  const context = item.context.map((c) => `[${c.unitId}] (fonte: ${SOURCE_CATALOG[c.source].title})\n${c.text}`).join('\n\n');
+  const context = item.context.map((c) => `[${c.unitId}] (fonte: ${sourceInfo(c.source).title})\n${c.text}`).join('\n\n');
   return [
     { role: 'system', content: JUDGE_SYSTEM_PROMPT },
     {

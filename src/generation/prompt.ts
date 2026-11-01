@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import type { Hit } from '../core/types.js';
-import { SOURCE_CATALOG } from '../sources/catalog.js';
+import { sourceInfo } from '../sources/catalog.js';
 import type { ChatMessage } from './provider.js';
 
 /** Trechos entregues ao LLM: os 5 primeiros da recuperação, iguais ao k da avaliação. */
@@ -21,7 +21,7 @@ export const SYSTEM_PROMPT = [
 
 /** Mensagens enviadas ao LLM: instruções fixas, trechos na ordem da recuperação e pergunta. */
 export function buildMessages(question: string, hits: Hit[]): ChatMessage[] {
-  const context = hits.map((h) => `[${h.unitId}] (fonte: ${SOURCE_CATALOG[h.source].title})\n${h.text}`).join('\n\n');
+  const context = hits.map((h) => `[${h.unitId}] (fonte: ${sourceInfo(h.source).title})\n${h.text}`).join('\n\n');
   return [
     { role: 'system', content: SYSTEM_PROMPT },
     { role: 'user', content: `Trechos:\n\n${context}\n\nPergunta: ${question}` },

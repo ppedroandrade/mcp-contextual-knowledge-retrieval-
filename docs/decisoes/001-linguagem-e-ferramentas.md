@@ -4,7 +4,7 @@ Data: 31/10/2026 · Situação: aceita
 
 **Contexto.** O TCC exige Node.js; a preferência é TypeScript.
 
-**Decisão.** Node.js 22 LTS (mínimo 22.12), TypeScript 5.9 em modo estrito, `tsx` para
+**Decisão.** Node.js 22 LTS (mínimo 22.12; fixado nas medições pelo ADR 009), TypeScript 5.9 em modo estrito, `tsx` para
 executar scripts sem build, Vitest 5 para testes e GitHub Actions para CI
 (typecheck + testes unitários a cada push e PR).
 
