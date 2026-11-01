@@ -1,10 +1,11 @@
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { parseArgs } from 'node:util';
 import { DATA_DIR, SEED } from '../corpus/generate.js';
 import { ALPHA, comparePaired, letter, perQuestion, type Comparison, type MeasureSpec } from '../evaluation/compare.js';
 import { median } from '../evaluation/metrics.js';
 import type { RetrievalScores } from '../evaluation/metrics.js';
+import { parseRatings, type BlindKey, type Ratings } from '../evaluation/human.js';
 import { CRITERIA } from '../evaluation/rubric.js';
 import type { ItemEvaluation } from './answers.js';
 import { ruleCorrect } from './answers.js';
@@ -17,8 +18,8 @@ import type { QuestionResult } from './retrieval.js';
 /**
  * Testes de hipótese sobre uma execução gravada (ADR 008): `npm run stats -- --run <id>`.
  * Reconhece o tipo da execução pelos arquivos: `bench:retrieval` (latência e métricas de
- * recuperação), `bench:generation` (latência com geração) ou `eval:answers` (notas das
- * respostas). Grava `estatistica.json` na pasta da execução e imprime a tabela.
+ * recuperação), `bench:generation` (latência com geração), `eval:answers` (notas das
+ * respostas) ou a planilha cega de `eval:human` com as notas importadas (H2). Grava `estatistica.json` na pasta da execução e imprime a tabela.
  */
 
 export const RESAMPLES = 10000;
@@ -64,7 +65,31 @@ export function answerMeasures(items: ItemEvaluation[]): MeasureSpec[] {
   ];
 }
 
+/**
+ * Notas humanas (H2): por pergunta e configuração, a média das notas dos avaliadores no item
+ * que a configuração gerou (C e D, quando iguais, dividem o item). Item sem nota de ninguém
+ * fica de fora do par (NaN).
+ */
+export function humanMeasures(key: BlindKey, raters: Ratings[]): MeasureSpec[] {
+  const rows = Object.entries(key).flatMap(([id, k]) => k.approaches.map((a) => ({ id, a: letter(a), q: k.questionId })));
+  const itemMean = (id: string, c: (typeof CRITERIA)[number]) => {
+    const xs = raters.map((r) => r.get(id)?.[c]).filter((v): v is number => v !== undefined);
+    return xs.length ? xs.reduce((s, v) => s + v, 0) / xs.length : NaN;
+  };
+  return CRITERIA.map((c): MeasureSpec => ({
+    name: `${c}, avaliação humana (1–5)`, estimator: 'mean', better: 'higher',
+    values: perQuestion(rows, (r) => r.a, (r) => r.q, (r) => itemMean(r.id, c)),
+  }));
+}
+
 export function measuresForRun(dir: string): { kind: string; measures: MeasureSpec[] } {
+  if (existsSync(join(dir, 'chave.json'))) {
+    const rated = join(dir, 'avaliacoes');
+    const files = existsSync(rated) ? readdirSync(rated).filter((f) => f.endsWith('.csv')).sort() : [];
+    if (!files.length) throw new Error('a planilha ainda não tem notas importadas: npm run eval:human -- --import <id> --ratings a.csv,b.csv');
+    const key = JSON.parse(readFileSync(join(dir, 'chave.json'), 'utf8')) as BlindKey;
+    return { kind: 'eval:human', measures: humanMeasures(key, files.map((f) => parseRatings(readFileSync(join(rated, f), 'utf8'), key))) };
+  }
   if (existsSync(join(dir, 'items.json'))) {
     return { kind: 'eval:answers', measures: answerMeasures(JSON.parse(readFileSync(join(dir, 'items.json'), 'utf8')) as ItemEvaluation[]) };
   }

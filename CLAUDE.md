@@ -58,9 +58,11 @@ npm run mcp:server                             # servidor MCP via stdio
 npm run demo                                   # API + UI de demonstração em http://127.0.0.1:3000 (fora das métricas)
 npm run demo -- --avaliacao <planilha>         # avaliação humana cega na UI (só Node); notas em avaliacoes-ui/
 npx tsx scripts/compare-c-d.ts <id>            # confere C = D e D − C numa execução
-npm run stats -- --run <id> [--style parafraseada]  # Wilcoxon + Holm + bootstrap (e Mann-Whitney) numa execução (ADR 008)
+npm run stats -- --run <id> [--style parafraseada]  # Wilcoxon + Holm + bootstrap (e Mann-Whitney) numa execução, inclusive a planilha com notas humanas (ADR 008)
 npm run eval:answers -- --run <geração> --out <id>   # regra dos fatos + juiz (ADR 007)
 npm run eval:human -- --run <geração> --out <id>     # planilha cega; --import <id> --ratings a.csv,b.csv
+scripts/experimento-final.sh                         # experimento final no Mac (ADR 011; docs/experimento-final.md); MODO=teste para ensaiar
+npx tsx scripts/tabelas-artigo.ts --recuperacao <id> ...  # tabelas do artigo, só a partir de results/runs/
 ```
 
 `bench:retrieval` aceita `--set dev|heldout|policies`, `--embedder ollama|hash`,
