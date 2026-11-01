@@ -1,6 +1,6 @@
 # Protocolo da H3: integração da 4ª fonte
 
-Situação: **executado** em 01/11/2026 (passos 1 a 5); passo 6 (bench no conjunto `policies` com `bge-m3`) **pendente**, no Mac.
+Situação: **executado** em 01/11/2026, passos 1 a 6 (passo 6: `results/runs/2026-11-01-politicas-recuperacao`, `bge-m3` + pgvector, no Mac, junto com a execução final).
 
 **Hipótese (TCC 1).** Maior portabilidade e organização no acesso a fontes heterogêneas com
 MCP, comparada a integrações customizadas sem MCP; análise qualitativa do esforço de adaptação
@@ -9,6 +9,15 @@ arquitetural.
 **Fonte nova.** Políticas internas em HTML (`data/corpus/policies/*.html`, 15 políticas, uma
 `<section>` por tópico), com 15 perguntas (`data/questions/policies.json`). O formato HTML não
 existe nas outras fontes. O leitor foi retirado do sistema antes do congelamento (ADR 009).
+
+**Natureza do ensaio.** Não é a integração de uma fonte desconhecida. O leitor HTML
+(`src/sources/policies.ts`), o caso em `parseSource`, a entrada no catálogo e o conjunto
+`policies` já existiam desde o commit do corpus (`e8901fc`); foram **retirados** em `7aa359b`,
+antes do congelamento (`1a1337a`), e **reinseridos** nas duas branches da H3. O
+`policies.ts` reinserido é o original sem a função `escapeHtml`, que tinha passado para o
+gerador do corpus. O autor conhecia o formato, o leitor e o código das duas variantes. O
+ensaio mede, portanto, o tamanho e o local das mudanças para **reintegrar** uma fonte
+previamente conhecida, não o esforço de integrar uma fonte nova.
 
 ## Procedimento
 
@@ -74,4 +83,25 @@ os commits ficaram em branches locais e os patches reproduzem cada integração 
 
 Depois da medida, a integração MCP (que contém a customizada) foi aplicada na `main`, para o
 passo 6 (ADR 010, "Correções depois do congelamento").
+
+## Leitura revisada (01/11/2026, posterior à v3 do artigo)
+
+A revisão do artigo delimitou o que o ensaio demonstra, sem mudar nenhum dado:
+
+- **Demonstrado:** (1) o tamanho e o local das mudanças para reintegrar a fonte em cada variante
+  (tabela acima), com o host intocado nas duas; (2) que um segundo cliente MCP, sem código do
+  projeto, descobriu e usou a tool da fonte reintegrada; (3) que, para esse segundo cliente,
+  nenhuma alteração no servidor foi necessária além das já contadas na variante MCP.
+- **Não demonstrado:** superioridade de portabilidade do MCP. O segundo cliente só foi testado
+  na variante MCP; não houve ensaio simétrico com um segundo cliente customizado (ex.: outro
+  programa que importasse `src/sources` ou chamasse uma API própria), então não há medida de
+  quanto custaria o reuso sem MCP.
+- **Linhas e arquivos alterados** medem o tamanho da mudança, não tempo, dificuldade ou esforço
+  humano, que não foram medidos.
+- **Formulação final da H3: inconclusiva.** Quanto ao esforço de adaptação, não há evidência de
+  vantagem do MCP: o tamanho das mudanças foi da mesma ordem (+43 −9 contra +56 −11), e linhas
+  não medem esforço. Quanto à portabilidade, o reuso por outro cliente sem alterar o servidor
+  foi demonstrado só na variante MCP, sem comparação com a alternativa sem MCP. O resultado é
+  compatível com a H3, mas não a testa como comparação; "sustentada em parte", usada na v3,
+  sugeria uma comparação que não foi feita.
 

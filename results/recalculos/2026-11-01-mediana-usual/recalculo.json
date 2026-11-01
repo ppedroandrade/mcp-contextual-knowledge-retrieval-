@@ -1,0 +1,1541 @@
+{
+  "posteriorAoExperimento": true,
+  "adr": "016",
+  "geradoEm": "2026-11-01T18:52:58.740Z",
+  "gitCommit": "745dc5694f2c4072c3f820c912a591666cdeb39c",
+  "execucoes": [
+    {
+      "execucao": "2026-11-01-heldout-recuperacao",
+      "commitDaExecucao": "2042154018d097310ff8b5e33a34bc97c9099fae",
+      "conjunto": "heldout",
+      "rodadas": 10,
+      "afetada": true,
+      "perguntasComMedianaAlterada": {
+        "latência da recuperação (ms)": 160
+      },
+      "resumo": {
+        "A-bm25": {
+          "latenciaMedianaMs": {
+            "publicado": 0.2523145499995735,
+            "recalculado": 0.24600729999974646
+          }
+        },
+        "B-rag": {
+          "latenciaMedianaMs": {
+            "publicado": 36.289817675000634,
+            "recalculado": 34.62235363750047
+          }
+        },
+        "C-por-fonte": {
+          "latenciaMedianaMs": {
+            "publicado": 112.21822702499921,
+            "recalculado": 108.35306873749978
+          }
+        },
+        "D-mcp": {
+          "latenciaMedianaMs": {
+            "publicado": 113.43736664999997,
+            "recalculado": 109.28619380000036
+          }
+        }
+      },
+      "estatistica": [
+        {
+          "arquivoPublicado": "estatistica.json",
+          "estilo": null,
+          "refeito": true,
+          "comparacoes": [
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × A",
+              "publicado": {
+                "n": 40,
+                "primeiro": 112.89549999999508,
+                "segundo": 0.23627049999777228,
+                "diferenca": 112.64772900000753,
+                "icBaixo": 102.49229149999883,
+                "icAlto": 122.75827099999151,
+                "pWilcoxon": 1.8189894035458565e-12,
+                "pWilcoxonHolm": 7.275957614183426e-12,
+                "r": 1,
+                "pMannWhitneyHolm": 5.740340756477362e-14,
+                "significativo": true
+              },
+              "recalculado": {
+                "n": 40,
+                "primeiro": 106.09776050000255,
+                "segundo": 0.23023974999705388,
+                "diferenca": 105.93917749999855,
+                "icBaixo": 101.43735375000324,
+                "icAlto": 118.24668774999918,
+                "pWilcoxon": 1.8189894035458565e-12,
+                "pWilcoxonHolm": 7.275957614183426e-12,
+                "r": 1,
+                "pMannWhitneyHolm": 5.740340756477362e-14,
+                "significativo": true
+              },
+              "completo": {
+                "measure": "latência da recuperação (ms)",
+                "pair": "D × A",
+                "n": 40,
+                "estimator": "median",
+                "first": 106.09776050000255,
+                "second": 0.23023974999705388,
+                "difference": {
+                  "estimate": 105.93917749999855,
+                  "low": 101.43735375000324,
+                  "high": 118.24668774999918,
+                  "level": 0.95,
+                  "resamples": 10000,
+                  "seed": 20261031
+                },
+                "wilcoxon": {
+                  "n": 40,
+                  "zeros": 0,
+                  "wPlus": 820,
+                  "wMinus": 0,
+                  "statistic": 0,
+                  "z": null,
+                  "p": 1.8189894035458565e-12,
+                  "method": "exato",
+                  "rankBiserial": 1,
+                  "pHolm": 7.275957614183426e-12
+                },
+                "mannWhitney": {
+                  "n1": 40,
+                  "n2": 40,
+                  "u": 1600,
+                  "z": 7.693192336951763,
+                  "p": 1.4350851891193404e-14,
+                  "method": "normal",
+                  "cliffsDelta": 1,
+                  "pHolm": 5.740340756477362e-14
+                },
+                "significant": true,
+                "reading": "D pior que A (p Holm = 7.3e-12)"
+              }
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × B",
+              "publicado": {
+                "n": 40,
+                "primeiro": 112.89549999999508,
+                "segundo": 35.33989549999933,
+                "diferenca": 73.65041650000421,
+                "icBaixo": 66.80077100000199,
+                "icAlto": 90.14491749999252,
+                "pWilcoxon": 1.8189894035458565e-12,
+                "pWilcoxonHolm": 7.275957614183426e-12,
+                "r": 1,
+                "pMannWhitneyHolm": 5.740340756477362e-14,
+                "significativo": true
+              },
+              "recalculado": {
+                "n": 40,
+                "primeiro": 106.09776050000255,
+                "segundo": 34.04082274999928,
+                "diferenca": 72.50686450000103,
+                "icBaixo": 61.11801075000221,
+                "icAlto": 84.37713550000171,
+                "pWilcoxon": 1.8189894035458565e-12,
+                "pWilcoxonHolm": 7.275957614183426e-12,
+                "r": 1,
+                "pMannWhitneyHolm": 5.740340756477362e-14,
+                "significativo": true
+              },
+              "completo": {
+                "measure": "latência da recuperação (ms)",
+                "pair": "D × B",
+                "n": 40,
+                "estimator": "median",
+                "first": 106.09776050000255,
+                "second": 34.04082274999928,
+                "difference": {
+                  "estimate": 72.50686450000103,
+                  "low": 61.11801075000221,
+                  "high": 84.37713550000171,
+                  "level": 0.95,
+                  "resamples": 10000,
+                  "seed": 20261031
+                },
+                "wilcoxon": {
+                  "n": 40,
+                  "zeros": 0,
+                  "wPlus": 820,
+                  "wMinus": 0,
+                  "statistic": 0,
+                  "z": null,
+                  "p": 1.8189894035458565e-12,
+                  "method": "exato",
+                  "rankBiserial": 1,
+                  "pHolm": 7.275957614183426e-12
+                },
+                "mannWhitney": {
+                  "n1": 40,
+                  "n2": 40,
+                  "u": 1600,
+                  "z": 7.693192336951763,
+                  "p": 1.4350851891193404e-14,
+                  "method": "normal",
+                  "cliffsDelta": 1,
+                  "pHolm": 5.740340756477362e-14
+                },
+                "significant": true,
+                "reading": "D pior que B (p Holm = 7.3e-12)"
+              }
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "C × B",
+              "publicado": {
+                "n": 40,
+                "primeiro": 108.87943749999249,
+                "segundo": 35.33989549999933,
+                "diferenca": 72.63231249999626,
+                "icBaixo": 66.59466700000121,
+                "icAlto": 82.31729149999774,
+                "pWilcoxon": 1.8189894035458565e-12,
+                "pWilcoxonHolm": 7.275957614183426e-12,
+                "r": 1,
+                "pMannWhitneyHolm": 5.740340756477362e-14,
+                "significativo": true
+              },
+              "recalculado": {
+                "n": 40,
+                "primeiro": 105.11833374999878,
+                "segundo": 34.04082274999928,
+                "diferenca": 68.69706200000019,
+                "icBaixo": 66.0127182499964,
+                "icAlto": 81.49689574999866,
+                "pWilcoxon": 1.8189894035458565e-12,
+                "pWilcoxonHolm": 7.275957614183426e-12,
+                "r": 1,
+                "pMannWhitneyHolm": 5.740340756477362e-14,
+                "significativo": true
+              },
+              "completo": {
+                "measure": "latência da recuperação (ms)",
+                "pair": "C × B",
+                "n": 40,
+                "estimator": "median",
+                "first": 105.11833374999878,
+                "second": 34.04082274999928,
+                "difference": {
+                  "estimate": 68.69706200000019,
+                  "low": 66.0127182499964,
+                  "high": 81.49689574999866,
+                  "level": 0.95,
+                  "resamples": 10000,
+                  "seed": 20261031
+                },
+                "wilcoxon": {
+                  "n": 40,
+                  "zeros": 0,
+                  "wPlus": 820,
+                  "wMinus": 0,
+                  "statistic": 0,
+                  "z": null,
+                  "p": 1.8189894035458565e-12,
+                  "method": "exato",
+                  "rankBiserial": 1,
+                  "pHolm": 7.275957614183426e-12
+                },
+                "mannWhitney": {
+                  "n1": 40,
+                  "n2": 40,
+                  "u": 1600,
+                  "z": 7.693192336951763,
+                  "p": 1.4350851891193404e-14,
+                  "method": "normal",
+                  "cliffsDelta": 1,
+                  "pHolm": 5.740340756477362e-14
+                },
+                "significant": true,
+                "reading": "C pior que B (p Holm = 7.3e-12)"
+              }
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × C",
+              "publicado": {
+                "n": 40,
+                "primeiro": 112.89549999999508,
+                "segundo": 108.87943749999249,
+                "diferenca": 1.8335830000069109,
+                "icBaixo": -5.4919169999993755,
+                "icAlto": 6.834583000007115,
+                "pWilcoxon": 0.6558992899281293,
+                "pWilcoxonHolm": 0.6558992899281293,
+                "r": 0.08292682926829269,
+                "pMannWhitneyHolm": 0.7254222510049617,
+                "significativo": false
+              },
+              "recalculado": {
+                "n": 40,
+                "primeiro": 106.09776050000255,
+                "segundo": 105.11833374999878,
+                "diferenca": 1.435646000005363,
+                "icBaixo": -6.846916750000673,
+                "icAlto": 5.962854250003147,
+                "pWilcoxon": 0.8471556244439853,
+                "pWilcoxonHolm": 0.8471556244439853,
+                "r": 0.036585365853658534,
+                "pMannWhitneyHolm": 0.8738490449056637,
+                "significativo": false
+              },
+              "completo": {
+                "measure": "latência da recuperação (ms)",
+                "pair": "D × C",
+                "n": 40,
+                "estimator": "median",
+                "first": 106.09776050000255,
+                "second": 105.11833374999878,
+                "difference": {
+                  "estimate": 1.435646000005363,
+                  "low": -6.846916750000673,
+                  "high": 5.962854250003147,
+                  "level": 0.95,
+                  "resamples": 10000,
+                  "seed": 20261031
+                },
+                "wilcoxon": {
+                  "n": 40,
+                  "zeros": 0,
+                  "wPlus": 425,
+                  "wMinus": 395,
+                  "statistic": 395,
+                  "z": null,
+                  "p": 0.8471556244439853,
+                  "method": "exato",
+                  "rankBiserial": 0.036585365853658534,
+                  "pHolm": 0.8471556244439853
+                },
+                "mannWhitney": {
+                  "n1": 40,
+                  "n2": 40,
+                  "u": 817,
+                  "z": 0.15877132402714708,
+                  "p": 0.8738490449056637,
+                  "method": "normal",
+                  "cliffsDelta": 0.02124999999999999,
+                  "pHolm": 0.8738490449056637
+                },
+                "significant": false,
+                "reading": "sem diferença significativa entre D e C (p Holm = 0.85)"
+              }
+            }
+          ]
+        },
+        {
+          "arquivoPublicado": "estatistica-literal.json",
+          "estilo": "literal",
+          "refeito": true,
+          "comparacoes": [
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × A",
+              "publicado": {
+                "n": 20,
+                "primeiro": 111.12664600000062,
+                "segundo": 0.21843749999970896,
+                "diferenca": 110.91012500000579,
+                "icBaixo": 99.85899949999657,
+                "icAlto": 134.2266660000023,
+                "pWilcoxon": 0.0000019073486328125,
+                "pWilcoxonHolm": 0.00000762939453125,
+                "r": 1,
+                "pMannWhitneyHolm": 2.718245917131964e-7,
+                "significativo": true
+              },
+              "recalculado": {
+                "n": 20,
+                "primeiro": 103.33189600000333,
+                "segundo": 0.21339599999737402,
+                "diferenca": 103.12434375000521,
+                "icBaixo": 97.9132914999982,
+                "icAlto": 129.98770825000338,
+                "pWilcoxon": 0.0000019073486328125,
+                "pWilcoxonHolm": 0.00000762939453125,
+                "r": 1,
+                "pMannWhitneyHolm": 2.718245917131964e-7,
+                "significativo": true
+              },
+              "completo": {
+                "measure": "latência da recuperação (ms)",
+                "pair": "D × A",
+                "n": 20,
+                "estimator": "median",
+                "first": 103.33189600000333,
+                "second": 0.21339599999737402,
+                "difference": {
+                  "estimate": 103.12434375000521,
+                  "low": 97.9132914999982,
+                  "high": 129.98770825000338,
+                  "level": 0.95,
+                  "resamples": 10000,
+                  "seed": 20261031
+                },
+                "wilcoxon": {
+                  "n": 20,
+                  "zeros": 0,
+                  "wPlus": 210,
+                  "wMinus": 0,
+                  "statistic": 0,
+                  "z": null,
+                  "p": 0.0000019073486328125,
+                  "method": "exato",
+                  "rankBiserial": 1,
+                  "pHolm": 0.00000762939453125
+                },
+                "mannWhitney": {
+                  "n1": 20,
+                  "n2": 20,
+                  "u": 400,
+                  "z": 5.396492763484582,
+                  "p": 6.79561479282991e-8,
+                  "method": "normal",
+                  "cliffsDelta": 1,
+                  "pHolm": 2.718245917131964e-7
+                },
+                "significant": true,
+                "reading": "D pior que A (p Holm = 0.0000076)"
+              }
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × B",
+              "publicado": {
+                "n": 20,
+                "primeiro": 111.12664600000062,
+                "segundo": 35.98585399999865,
+                "diferenca": 73.42845800000214,
+                "icBaixo": 66.80077100000199,
+                "icAlto": 93.94241599999259,
+                "pWilcoxon": 0.0000019073486328125,
+                "pWilcoxonHolm": 0.00000762939453125,
+                "r": 1,
+                "pMannWhitneyHolm": 2.718245917131964e-7,
+                "significativo": true
+              },
+              "recalculado": {
+                "n": 20,
+                "primeiro": 103.33189600000333,
+                "segundo": 34.04082274999928,
+                "diferenca": 71.52392725000573,
+                "icBaixo": 61.11801075000221,
+                "icAlto": 91.51031224999588,
+                "pWilcoxon": 0.0000019073486328125,
+                "pWilcoxonHolm": 0.00000762939453125,
+                "r": 1,
+                "pMannWhitneyHolm": 2.718245917131964e-7,
+                "significativo": true
+              },
+              "completo": {
+                "measure": "latência da recuperação (ms)",
+                "pair": "D × B",
+                "n": 20,
+                "estimator": "median",
+                "first": 103.33189600000333,
+                "second": 34.04082274999928,
+                "difference": {
+                  "estimate": 71.52392725000573,
+                  "low": 61.11801075000221,
+                  "high": 91.51031224999588,
+                  "level": 0.95,
+                  "resamples": 10000,
+                  "seed": 20261031
+                },
+                "wilcoxon": {
+                  "n": 20,
+                  "zeros": 0,
+                  "wPlus": 210,
+                  "wMinus": 0,
+                  "statistic": 0,
+                  "z": null,
+                  "p": 0.0000019073486328125,
+                  "method": "exato",
+                  "rankBiserial": 1,
+                  "pHolm": 0.00000762939453125
+                },
+                "mannWhitney": {
+                  "n1": 20,
+                  "n2": 20,
+                  "u": 400,
+                  "z": 5.396492763484582,
+                  "p": 6.79561479282991e-8,
+                  "method": "normal",
+                  "cliffsDelta": 1,
+                  "pHolm": 2.718245917131964e-7
+                },
+                "significant": true,
+                "reading": "D pior que B (p Holm = 0.0000076)"
+              }
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "C × B",
+              "publicado": {
+                "n": 20,
+                "primeiro": 110.10902100000021,
+                "segundo": 35.98585399999865,
+                "diferenca": 77.01035349999802,
+                "icBaixo": 66.59466700000121,
+                "icAlto": 83.70177050000348,
+                "pWilcoxon": 0.0000019073486328125,
+                "pWilcoxonHolm": 0.00000762939453125,
+                "r": 1,
+                "pMannWhitneyHolm": 2.718245917131964e-7,
+                "significativo": true
+              },
+              "recalculado": {
+                "n": 20,
+                "primeiro": 106.74856274999729,
+                "segundo": 34.04082274999928,
+                "diferenca": 74.00801024999691,
+                "icBaixo": 66.11873899999955,
+                "icAlto": 81.84578149999743,
+                "pWilcoxon": 0.0000019073486328125,
+                "pWilcoxonHolm": 0.00000762939453125,
+                "r": 1,
+                "pMannWhitneyHolm": 2.718245917131964e-7,
+                "significativo": true
+              },
+              "completo": {
+                "measure": "latência da recuperação (ms)",
+                "pair": "C × B",
+                "n": 20,
+                "estimator": "median",
+                "first": 106.74856274999729,
+                "second": 34.04082274999928,
+                "difference": {
+                  "estimate": 74.00801024999691,
+                  "low": 66.11873899999955,
+                  "high": 81.84578149999743,
+                  "level": 0.95,
+                  "resamples": 10000,
+                  "seed": 20261031
+                },
+                "wilcoxon": {
+                  "n": 20,
+                  "zeros": 0,
+                  "wPlus": 210,
+                  "wMinus": 0,
+                  "statistic": 0,
+                  "z": null,
+                  "p": 0.0000019073486328125,
+                  "method": "exato",
+                  "rankBiserial": 1,
+                  "pHolm": 0.00000762939453125
+                },
+                "mannWhitney": {
+                  "n1": 20,
+                  "n2": 20,
+                  "u": 400,
+                  "z": 5.396492763484582,
+                  "p": 6.79561479282991e-8,
+                  "method": "normal",
+                  "cliffsDelta": 1,
+                  "pHolm": 2.718245917131964e-7
+                },
+                "significant": true,
+                "reading": "C pior que B (p Holm = 0.0000076)"
+              }
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × C",
+              "publicado": {
+                "n": 20,
+                "primeiro": 111.12664600000062,
+                "segundo": 110.10902100000021,
+                "diferenca": -3.700438000003487,
+                "icBaixo": -8.913250000005064,
+                "icAlto": 5.727353999991465,
+                "pWilcoxon": 0.7561664581298828,
+                "pWilcoxonHolm": 0.7561664581298828,
+                "r": -0.08571428571428572,
+                "pMannWhitneyHolm": 0.8604309887676274,
+                "significativo": false
+              },
+              "recalculado": {
+                "n": 20,
+                "primeiro": 103.33189600000333,
+                "segundo": 106.74856274999729,
+                "diferenca": -2.3277605000012045,
+                "icBaixo": -10.614312000005157,
+                "icAlto": 4.311874999997599,
+                "pWilcoxon": 0.6476554870605469,
+                "pWilcoxonHolm": 0.6476554870605469,
+                "r": -0.12380952380952381,
+                "pMannWhitneyHolm": 0.6167746504231726,
+                "significativo": false
+              },
+              "completo": {
+                "measure": "latência da recuperação (ms)",
+                "pair": "D × C",
+                "n": 20,
+                "estimator": "median",
+                "first": 103.33189600000333,
+                "second": 106.74856274999729,
+                "difference": {
+                  "estimate": -2.3277605000012045,
+                  "low": -10.614312000005157,
+                  "high": 4.311874999997599,
+                  "level": 0.95,
+                  "resamples": 10000,
+                  "seed": 20261031
+                },
+                "wilcoxon": {
+                  "n": 20,
+                  "zeros": 0,
+                  "wPlus": 92,
+                  "wMinus": 118,
+                  "statistic": 92,
+                  "z": null,
+                  "p": 0.6476554870605469,
+                  "method": "exato",
+                  "rankBiserial": -0.12380952380952381,
+                  "pHolm": 0.6476554870605469
+                },
+                "mannWhitney": {
+                  "n1": 20,
+                  "n2": 20,
+                  "u": 181,
+                  "z": 0.5004266472404248,
+                  "p": 0.6167746504231726,
+                  "method": "normal",
+                  "cliffsDelta": -0.09499999999999997,
+                  "pHolm": 0.6167746504231726
+                },
+                "significant": false,
+                "reading": "sem diferença significativa entre D e C (p Holm = 0.65)"
+              }
+            }
+          ]
+        },
+        {
+          "arquivoPublicado": "estatistica-parafraseada.json",
+          "estilo": "parafraseada",
+          "refeito": true,
+          "comparacoes": [
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × A",
+              "publicado": {
+                "n": 16,
+                "primeiro": 120.0946669999903,
+                "segundo": 0.22768750000250293,
+                "diferenca": 119.91358349999064,
+                "icBaixo": 111.54674999999406,
+                "icAlto": 130.7709169999871,
+                "pWilcoxon": 0.000030517578125,
+                "pWilcoxonHolm": 0.0001220703125,
+                "r": 1,
+                "pMannWhitneyHolm": 0.000006179640750195964,
+                "significativo": true
+              },
+              "recalculado": {
+                "n": 16,
+                "primeiro": 116.58067749999464,
+                "segundo": 0.2206559999995079,
+                "diferenca": 116.3897087499954,
+                "icBaixo": 106.66872950000106,
+                "icAlto": 123.66235474999849,
+                "pWilcoxon": 0.000030517578125,
+                "pWilcoxonHolm": 0.0001220703125,
+                "r": 1,
+                "pMannWhitneyHolm": 0.000006179640750195964,
+                "significativo": true
+              },
+              "completo": {
+                "measure": "latência da recuperação (ms)",
+                "pair": "D × A",
+                "n": 16,
+                "estimator": "median",
+                "first": 116.58067749999464,
+                "second": 0.2206559999995079,
+                "difference": {
+                  "estimate": 116.3897087499954,
+                  "low": 106.66872950000106,
+                  "high": 123.66235474999849,
+                  "level": 0.95,
+                  "resamples": 10000,
+                  "seed": 20261031
+                },
+                "wilcoxon": {
+                  "n": 16,
+                  "zeros": 0,
+                  "wPlus": 136,
+                  "wMinus": 0,
+                  "statistic": 0,
+                  "z": null,
+                  "p": 0.000030517578125,
+                  "method": "exato",
+                  "rankBiserial": 1,
+                  "pHolm": 0.0001220703125
+                },
+                "mannWhitney": {
+                  "n1": 16,
+                  "n2": 16,
+                  "u": 256,
+                  "z": 4.805337054208108,
+                  "p": 0.000001544910187548991,
+                  "method": "normal",
+                  "cliffsDelta": 1,
+                  "pHolm": 0.000006179640750195964
+                },
+                "significant": true,
+                "reading": "D pior que A (p Holm = 0.00012)"
+              }
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × B",
+              "publicado": {
+                "n": 16,
+                "primeiro": 120.0946669999903,
+                "segundo": 38.05277049999859,
+                "diferenca": 86.54708350000146,
+                "icBaixo": 70.99862500000017,
+                "icAlto": 93.19062499999563,
+                "pWilcoxon": 0.000030517578125,
+                "pWilcoxonHolm": 0.0001220703125,
+                "r": 1,
+                "pMannWhitneyHolm": 0.000006179640750195964,
+                "significativo": true
+              },
+              "recalculado": {
+                "n": 16,
+                "primeiro": 116.58067749999464,
+                "segundo": 36.640010500001154,
+                "diferenca": 81.6333654999944,
+                "icBaixo": 70.44218749999709,
+                "icAlto": 89.03314599999794,
+                "pWilcoxon": 0.000030517578125,
+                "pWilcoxonHolm": 0.0001220703125,
+                "r": 1,
+                "pMannWhitneyHolm": 0.000006179640750195964,
+                "significativo": true
+              },
+              "completo": {
+                "measure": "latência da recuperação (ms)",
+                "pair": "D × B",
+                "n": 16,
+                "estimator": "median",
+                "first": 116.58067749999464,
+                "second": 36.640010500001154,
+                "difference": {
+                  "estimate": 81.6333654999944,
+                  "low": 70.44218749999709,
+                  "high": 89.03314599999794,
+                  "level": 0.95,
+                  "resamples": 10000,
+                  "seed": 20261031
+                },
+                "wilcoxon": {
+                  "n": 16,
+                  "zeros": 0,
+                  "wPlus": 136,
+                  "wMinus": 0,
+                  "statistic": 0,
+                  "z": null,
+                  "p": 0.000030517578125,
+                  "method": "exato",
+                  "rankBiserial": 1,
+                  "pHolm": 0.0001220703125
+                },
+                "mannWhitney": {
+                  "n1": 16,
+                  "n2": 16,
+                  "u": 256,
+                  "z": 4.805337054208108,
+                  "p": 0.000001544910187548991,
+                  "method": "normal",
+                  "cliffsDelta": 1,
+                  "pHolm": 0.000006179640750195964
+                },
+                "significant": true,
+                "reading": "D pior que B (p Holm = 0.00012)"
+              }
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "C × B",
+              "publicado": {
+                "n": 16,
+                "primeiro": 113.18000049999682,
+                "segundo": 38.05277049999859,
+                "diferenca": 74.39231249999648,
+                "icBaixo": 64.90883299999768,
+                "icAlto": 89.75969668748752,
+                "pWilcoxon": 0.000030517578125,
+                "pWilcoxonHolm": 0.0001220703125,
+                "r": 1,
+                "pMannWhitneyHolm": 0.000006179640750195964,
+                "significativo": true
+              },
+              "recalculado": {
+                "n": 16,
+                "primeiro": 108.36587525000141,
+                "segundo": 36.640010500001154,
+                "diferenca": 71.89446874999976,
+                "icBaixo": 65.0503330000065,
+                "icAlto": 86.16331569374417,
+                "pWilcoxon": 0.000030517578125,
+                "pWilcoxonHolm": 0.0001220703125,
+                "r": 1,
+                "pMannWhitneyHolm": 0.000006179640750195964,
+                "significativo": true
+              },
+              "completo": {
+                "measure": "latência da recuperação (ms)",
+                "pair": "C × B",
+                "n": 16,
+                "estimator": "median",
+                "first": 108.36587525000141,
+                "second": 36.640010500001154,
+                "difference": {
+                  "estimate": 71.89446874999976,
+                  "low": 65.0503330000065,
+                  "high": 86.16331569374417,
+                  "level": 0.95,
+                  "resamples": 10000,
+                  "seed": 20261031
+                },
+                "wilcoxon": {
+                  "n": 16,
+                  "zeros": 0,
+                  "wPlus": 136,
+                  "wMinus": 0,
+                  "statistic": 0,
+                  "z": null,
+                  "p": 0.000030517578125,
+                  "method": "exato",
+                  "rankBiserial": 1,
+                  "pHolm": 0.0001220703125
+                },
+                "mannWhitney": {
+                  "n1": 16,
+                  "n2": 16,
+                  "u": 256,
+                  "z": 4.805337054208108,
+                  "p": 0.000001544910187548991,
+                  "method": "normal",
+                  "cliffsDelta": 1,
+                  "pHolm": 0.000006179640750195964
+                },
+                "significant": true,
+                "reading": "C pior que B (p Holm = 0.00012)"
+              }
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × C",
+              "publicado": {
+                "n": 16,
+                "primeiro": 120.0946669999903,
+                "segundo": 113.18000049999682,
+                "diferenca": 8.257124499999918,
+                "icBaixo": -0.5307499999980791,
+                "icAlto": 15.438959000020986,
+                "pWilcoxon": 0.231201171875,
+                "pWilcoxonHolm": 0.231201171875,
+                "r": 0.35294117647058826,
+                "pMannWhitneyHolm": 0.3964376024919736,
+                "significativo": false
+              },
+              "recalculado": {
+                "n": 16,
+                "primeiro": 116.58067749999464,
+                "segundo": 108.36587525000141,
+                "diferenca": 5.962854250003147,
+                "icBaixo": -3.2264499249972967,
+                "icAlto": 13.363042000015412,
+                "pWilcoxon": 0.252227783203125,
+                "pWilcoxonHolm": 0.252227783203125,
+                "r": 0.3382352941176471,
+                "pMannWhitneyHolm": 0.46237972552965584,
+                "significativo": false
+              },
+              "completo": {
+                "measure": "latência da recuperação (ms)",
+                "pair": "D × C",
+                "n": 16,
+                "estimator": "median",
+                "first": 116.58067749999464,
+                "second": 108.36587525000141,
+                "difference": {
+                  "estimate": 5.962854250003147,
+                  "low": -3.2264499249972967,
+                  "high": 13.363042000015412,
+                  "level": 0.95,
+                  "resamples": 10000,
+                  "seed": 20261031
+                },
+                "wilcoxon": {
+                  "n": 16,
+                  "zeros": 0,
+                  "wPlus": 91,
+                  "wMinus": 45,
+                  "statistic": 45,
+                  "z": null,
+                  "p": 0.252227783203125,
+                  "method": "exato",
+                  "rankBiserial": 0.3382352941176471,
+                  "pHolm": 0.252227783203125
+                },
+                "mannWhitney": {
+                  "n1": 16,
+                  "n2": 16,
+                  "u": 148,
+                  "z": 0.7349339024082988,
+                  "p": 0.46237972552965584,
+                  "method": "normal",
+                  "cliffsDelta": 0.15625,
+                  "pHolm": 0.46237972552965584
+                },
+                "significant": false,
+                "reading": "sem diferença significativa entre D e C (p Holm = 0.25)"
+              }
+            }
+          ]
+        }
+      ],
+      "diagnosticoCxD": {
+        "recuperacao": {
+          "anterior": {
+            "dMenosC": {
+              "p25": -9.258417000004556,
+              "mediana": 2.0800410000083502,
+              "p75": 14.154125999993994,
+              "dMaisLento": 22,
+              "n": 40
+            },
+            "iqrDeCMediana": 29.552458999998635,
+            "dMenosTool": {
+              "p25": 1.5954579999961425,
+              "mediana": 1.6421660000050906,
+              "p75": 1.6832500000018626,
+              "n": 40
+            }
+          },
+          "corrigido": {
+            "dMenosC": {
+              "p25": -11.060004500001014,
+              "mediana": 1.435646000005363,
+              "p75": 10.66954137499215,
+              "dMaisLento": 21,
+              "n": 40
+            },
+            "iqrDeCMediana": 34.80957762500111,
+            "dMenosTool": {
+              "p25": 1.583125500001188,
+              "mediana": 1.6156149999987974,
+              "p75": 1.6595837499971822,
+              "n": 40
+            }
+          }
+        }
+      }
+    },
+    {
+      "execucao": "2026-11-01-heldout-geracao",
+      "commitDaExecucao": "2042154018d097310ff8b5e33a34bc97c9099fae",
+      "conjunto": "heldout",
+      "rodadas": 5,
+      "afetada": false,
+      "perguntasComMedianaAlterada": {},
+      "resumo": {
+        "D-mcp": {
+          "latenciaRecuperacaoMs": {
+            "publicado": 111.81430207497615,
+            "recalculado": 111.81430207497615
+          },
+          "latenciaTotalMs": {
+            "publicado": 5688.660143800019,
+            "recalculado": 5688.660143800019
+          }
+        },
+        "B-rag": {
+          "latenciaRecuperacaoMs": {
+            "publicado": 41.07100717499852,
+            "recalculado": 41.07100717499852
+          },
+          "latenciaTotalMs": {
+            "publicado": 5525.079926024994,
+            "recalculado": 5525.079926024994
+          }
+        },
+        "C-por-fonte": {
+          "latenciaRecuperacaoMs": {
+            "publicado": 113.65342192495591,
+            "recalculado": 113.65342192495591
+          },
+          "latenciaTotalMs": {
+            "publicado": 5753.230695874971,
+            "recalculado": 5753.230695874971
+          }
+        }
+      },
+      "estatistica": [
+        {
+          "arquivoPublicado": "estatistica.json",
+          "estilo": null,
+          "refeito": false,
+          "comparacoes": [
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × B",
+              "publicado": {
+                "n": 40,
+                "primeiro": 103.7878750001546,
+                "segundo": 40.229249999974854,
+                "diferenca": 64.72187499981374,
+                "icBaixo": 58.870583499839995,
+                "icAlto": 71.66462600021623,
+                "pWilcoxon": 1.8189894035458565e-12,
+                "pWilcoxonHolm": 5.4569682106375694e-12,
+                "r": 1,
+                "pMannWhitneyHolm": 4.305255567358021e-14,
+                "significativo": true
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "C × B",
+              "publicado": {
+                "n": 40,
+                "primeiro": 108.62391699990258,
+                "segundo": 40.229249999974854,
+                "diferenca": 67.94891749997623,
+                "icBaixo": 60.41031299997121,
+                "icAlto": 78.43141700001433,
+                "pWilcoxon": 1.8189894035458565e-12,
+                "pWilcoxonHolm": 5.4569682106375694e-12,
+                "r": 1,
+                "pMannWhitneyHolm": 4.305255567358021e-14,
+                "significativo": true
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × C",
+              "publicado": {
+                "n": 40,
+                "primeiro": 103.7878750001546,
+                "segundo": 108.62391699990258,
+                "diferenca": -2.9941039998666383,
+                "icBaixo": -6.746707999962382,
+                "icAlto": 3.513083000201732,
+                "pWilcoxon": 0.589975534387122,
+                "pWilcoxonHolm": 0.589975534387122,
+                "r": -0.1,
+                "pMannWhitneyHolm": 0.7987259386947666,
+                "significativo": false
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação + geração (ms)",
+              "par": "D × B",
+              "publicado": {
+                "n": 40,
+                "primeiro": 5231.935750499833,
+                "segundo": 5357.491041500005,
+                "diferenca": 88.11956250027288,
+                "icBaixo": -77.96835350006586,
+                "icAlto": 494.5788539998466,
+                "pWilcoxon": 0.2948169606661395,
+                "pWilcoxonHolm": 0.39370910510842805,
+                "r": 0.1926829268292683,
+                "pMannWhitneyHolm": 1,
+                "significativo": false
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação + geração (ms)",
+              "par": "C × B",
+              "publicado": {
+                "n": 40,
+                "primeiro": 5223.040708499961,
+                "segundo": 5357.491041500005,
+                "diferenca": 244.16210399987176,
+                "icBaixo": -18.216666500084102,
+                "icAlto": 458.66420800006017,
+                "pWilcoxon": 0.19685455255421402,
+                "pWilcoxonHolm": 0.39370910510842805,
+                "r": 0.23658536585365852,
+                "pMannWhitneyHolm": 1,
+                "significativo": false
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação + geração (ms)",
+              "par": "D × C",
+              "publicado": {
+                "n": 40,
+                "primeiro": 5231.935750499833,
+                "segundo": 5223.040708499961,
+                "diferenca": -56.22472900012508,
+                "icBaixo": -101.86610449990258,
+                "icAlto": 12.685291500005405,
+                "pWilcoxon": 0.048164484947847086,
+                "pWilcoxonHolm": 0.14449345484354126,
+                "r": -0.35853658536585364,
+                "pMannWhitneyHolm": 1,
+                "significativo": false
+              },
+              "recalculado": null
+            }
+          ]
+        },
+        {
+          "arquivoPublicado": "estatistica-literal.json",
+          "estilo": "literal",
+          "refeito": false,
+          "comparacoes": [
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × B",
+              "publicado": {
+                "n": 20,
+                "primeiro": 120.51070849993266,
+                "segundo": 39.55727099988144,
+                "diferenca": 69.59827099984977,
+                "icBaixo": 63.79162500007078,
+                "icAlto": 86.60487449989887,
+                "pWilcoxon": 0.0000019073486328125,
+                "pWilcoxonHolm": 0.0000057220458984375,
+                "r": 1,
+                "pMannWhitneyHolm": 2.0386844378489729e-7,
+                "significativo": true
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "C × B",
+              "publicado": {
+                "n": 20,
+                "primeiro": 114.83708299999125,
+                "segundo": 39.55727099988144,
+                "diferenca": 68.42768699978478,
+                "icBaixo": 63.621728999889456,
+                "icAlto": 86.22641600004863,
+                "pWilcoxon": 0.0000019073486328125,
+                "pWilcoxonHolm": 0.0000057220458984375,
+                "r": 1,
+                "pMannWhitneyHolm": 2.0386844378489729e-7,
+                "significativo": true
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × C",
+              "publicado": {
+                "n": 20,
+                "primeiro": 120.51070849993266,
+                "segundo": 114.83708299999125,
+                "diferenca": -0.8568750000558794,
+                "icBaixo": -4.710812499863096,
+                "icAlto": 11.444146499910858,
+                "pWilcoxon": 0.8694877624511719,
+                "pWilcoxonHolm": 0.8694877624511719,
+                "r": 0.047619047619047616,
+                "pMannWhitneyHolm": 0.7352681631350559,
+                "significativo": false
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação + geração (ms)",
+              "par": "D × B",
+              "publicado": {
+                "n": 20,
+                "primeiro": 5270.479708500032,
+                "segundo": 5396.733916499885,
+                "diferenca": 444.31883349991404,
+                "icBaixo": -166.4934999999823,
+                "icAlto": 749.6368950001197,
+                "pWilcoxon": 0.2305126190185547,
+                "pWilcoxonHolm": 0.6915378570556641,
+                "r": 0.3142857142857143,
+                "pMannWhitneyHolm": 1,
+                "significativo": false
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação + geração (ms)",
+              "par": "C × B",
+              "publicado": {
+                "n": 20,
+                "primeiro": 5310.348583000014,
+                "segundo": 5396.733916499885,
+                "diferenca": 335.05504149990156,
+                "icBaixo": -191.57268750015646,
+                "icAlto": 958.753958000103,
+                "pWilcoxon": 0.24548721313476562,
+                "pWilcoxonHolm": 0.6915378570556641,
+                "r": 0.3047619047619048,
+                "pMannWhitneyHolm": 1,
+                "significativo": false
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação + geração (ms)",
+              "par": "D × C",
+              "publicado": {
+                "n": 20,
+                "primeiro": 5270.479708500032,
+                "segundo": 5310.348583000014,
+                "diferenca": -69.10989550012164,
+                "icBaixo": -148.08247850008775,
+                "icAlto": 48.45037450012751,
+                "pWilcoxon": 0.2942523956298828,
+                "pWilcoxonHolm": 0.6915378570556641,
+                "r": -0.2761904761904762,
+                "pMannWhitneyHolm": 1,
+                "significativo": false
+              },
+              "recalculado": null
+            }
+          ]
+        },
+        {
+          "arquivoPublicado": "estatistica-parafraseada.json",
+          "estilo": "parafraseada",
+          "refeito": false,
+          "comparacoes": [
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × B",
+              "publicado": {
+                "n": 16,
+                "primeiro": 103.7878750001546,
+                "segundo": 41.79645850008819,
+                "diferenca": 59.54385449993424,
+                "icBaixo": 55.74604100023862,
+                "icAlto": 88.25654200022109,
+                "pWilcoxon": 0.000030517578125,
+                "pWilcoxonHolm": 0.000091552734375,
+                "r": 1,
+                "pMannWhitneyHolm": 0.0000046347305626469735,
+                "significativo": true
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "C × B",
+              "publicado": {
+                "n": 16,
+                "primeiro": 108.62391699990258,
+                "segundo": 41.79645850008819,
+                "diferenca": 64.15645849995781,
+                "icBaixo": 56.1132929995656,
+                "icAlto": 81.75883299997076,
+                "pWilcoxon": 0.000030517578125,
+                "pWilcoxonHolm": 0.000091552734375,
+                "r": 1,
+                "pMannWhitneyHolm": 0.0000046347305626469735,
+                "significativo": true
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × C",
+              "publicado": {
+                "n": 16,
+                "primeiro": 103.7878750001546,
+                "segundo": 108.62391699990258,
+                "diferenca": -5.34181249991525,
+                "icBaixo": -15.686167000210844,
+                "icAlto": 7.927707999944687,
+                "pWilcoxon": 0.781951904296875,
+                "pWilcoxonHolm": 0.781951904296875,
+                "r": -0.08823529411764706,
+                "pMannWhitneyHolm": 0.8653246300922184,
+                "significativo": false
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação + geração (ms)",
+              "par": "D × B",
+              "publicado": {
+                "n": 16,
+                "primeiro": 5332.440020999871,
+                "segundo": 5441.033124999958,
+                "diferenca": 18.17054200032726,
+                "icBaixo": -464.6772080003284,
+                "icAlto": 373.4640009996947,
+                "pWilcoxon": 0.860260009765625,
+                "pWilcoxonHolm": 1,
+                "r": 0.058823529411764705,
+                "pMannWhitneyHolm": 1,
+                "significativo": false
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação + geração (ms)",
+              "par": "C × B",
+              "publicado": {
+                "n": 16,
+                "primeiro": 5396.621978999814,
+                "segundo": 5441.033124999958,
+                "diferenca": 122.51425050012767,
+                "icBaixo": -497.72270800033584,
+                "icAlto": 377.5294589998666,
+                "pWilcoxon": 0.781951904296875,
+                "pWilcoxonHolm": 1,
+                "r": 0.08823529411764706,
+                "pMannWhitneyHolm": 1,
+                "significativo": false
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação + geração (ms)",
+              "par": "D × C",
+              "publicado": {
+                "n": 16,
+                "primeiro": 5332.440020999871,
+                "segundo": 5396.621978999814,
+                "diferenca": -1.3591665001004003,
+                "icBaixo": -90.73854200006463,
+                "icAlto": 59.821748999878764,
+                "pWilcoxon": 0.4637451171875,
+                "pWilcoxonHolm": 1,
+                "r": -0.22058823529411764,
+                "pMannWhitneyHolm": 1,
+                "significativo": false
+              },
+              "recalculado": null
+            }
+          ]
+        }
+      ],
+      "diagnosticoCxD": {
+        "recuperacao": {
+          "anterior": {
+            "dMenosC": {
+              "p25": -15.686167000210844,
+              "mediana": -1.9436669998103753,
+              "p75": 9.934667999856174,
+              "dMaisLento": 17,
+              "n": 40
+            },
+            "iqrDeCMediana": 29.991624999791384,
+            "dMenosTool": {
+              "p25": 0.9117499999701977,
+              "mediana": 0.9979159999638796,
+              "p75": 1.0505420002155006,
+              "n": 40
+            }
+          },
+          "corrigido": {
+            "dMenosC": {
+              "p25": -11.869042750127846,
+              "mediana": -2.9941039998666383,
+              "p75": 10.689407249883516,
+              "dMaisLento": 17,
+              "n": 40
+            },
+            "iqrDeCMediana": 29.940333000035025,
+            "dMenosTool": {
+              "p25": 0.9256565000396222,
+              "mediana": 0.9977080000098795,
+              "p75": 1.0516775001306087,
+              "n": 40
+            }
+          }
+        },
+        "recuperacaoMaisGeracao": {
+          "anterior": {
+            "dMenosC": {
+              "p25": -161.4094159998931,
+              "mediana": -54.85887400014326,
+              "p75": 59.821748999878764,
+              "dMaisLento": 16,
+              "n": 40
+            },
+            "iqrDeCMediana": 240.3946239997167,
+            "dMenosTool": null
+          },
+          "corrigido": {
+            "dMenosC": {
+              "p25": -157.0409472497995,
+              "mediana": -56.22472900012508,
+              "p75": 60.97159299987834,
+              "dMaisLento": 16,
+              "n": 40
+            },
+            "iqrDeCMediana": 237.58468699990772,
+            "dMenosTool": null
+          }
+        }
+      }
+    },
+    {
+      "execucao": "2026-11-01-politicas-recuperacao",
+      "commitDaExecucao": "2042154018d097310ff8b5e33a34bc97c9099fae",
+      "conjunto": "policies",
+      "rodadas": 5,
+      "afetada": false,
+      "perguntasComMedianaAlterada": {},
+      "resumo": {
+        "A-bm25": {
+          "latenciaMedianaMs": {
+            "publicado": 0.24904166666650174,
+            "recalculado": 0.24904166666650174
+          }
+        },
+        "B-rag": {
+          "latenciaMedianaMs": {
+            "publicado": 30.231316666667286,
+            "recalculado": 30.231316666667286
+          }
+        },
+        "C-por-fonte": {
+          "latenciaMedianaMs": {
+            "publicado": 109.62628326666636,
+            "recalculado": 109.62628326666636
+          }
+        },
+        "D-mcp": {
+          "latenciaMedianaMs": {
+            "publicado": 110.62354993333308,
+            "recalculado": 110.62354993333308
+          }
+        }
+      },
+      "estatistica": [
+        {
+          "arquivoPublicado": "estatistica.json",
+          "estilo": null,
+          "refeito": false,
+          "comparacoes": [
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × A",
+              "publicado": {
+                "n": 15,
+                "primeiro": 109.83466699999917,
+                "segundo": 0.22775000000183354,
+                "diferenca": 109.71983399999954,
+                "icBaixo": 106.32470900000408,
+                "icAlto": 128.07870799999728,
+                "pWilcoxon": 0.00006103515625,
+                "pWilcoxonHolm": 0.000244140625,
+                "r": 1,
+                "pMannWhitneyHolm": 0.000013567285913858646,
+                "significativo": true
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × B",
+              "publicado": {
+                "n": 15,
+                "primeiro": 109.83466699999917,
+                "segundo": 25.765917000000627,
+                "diferenca": 83.8658749999995,
+                "icBaixo": 73.06666699999914,
+                "icAlto": 87.28416699999798,
+                "pWilcoxon": 0.00006103515625,
+                "pWilcoxonHolm": 0.000244140625,
+                "r": 1,
+                "pMannWhitneyHolm": 0.000013567285913858646,
+                "significativo": true
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "C × B",
+              "publicado": {
+                "n": 15,
+                "primeiro": 100.83733300000313,
+                "segundo": 25.765917000000627,
+                "diferenca": 71.88391599999886,
+                "icBaixo": 66.8875420000004,
+                "icAlto": 95.875,
+                "pWilcoxon": 0.00006103515625,
+                "pWilcoxonHolm": 0.000244140625,
+                "r": 1,
+                "pMannWhitneyHolm": 0.000013567285913858646,
+                "significativo": true
+              },
+              "recalculado": null
+            },
+            {
+              "medida": "latência da recuperação (ms)",
+              "par": "D × C",
+              "publicado": {
+                "n": 15,
+                "primeiro": 109.83466699999917,
+                "segundo": 100.83733300000313,
+                "diferenca": -1.3317920000008598,
+                "icBaixo": -7.259249999999156,
+                "icAlto": 8.997333999996044,
+                "pWilcoxon": 0.76153564453125,
+                "pWilcoxonHolm": 0.76153564453125,
+                "r": 0.1,
+                "pMannWhitneyHolm": 0.7089232293026962,
+                "significativo": false
+              },
+              "recalculado": null
+            }
+          ]
+        }
+      ],
+      "diagnosticoCxD": {
+        "recuperacao": {
+          "anterior": {
+            "dMenosC": {
+              "p25": -7.259249999999156,
+              "mediana": -1.3317920000008598,
+              "p75": 8.897916999998415,
+              "dMaisLento": 7,
+              "n": 15
+            },
+            "iqrDeCMediana": 11.61487500000294,
+            "dMenosTool": {
+              "p25": 1.5469579999989946,
+              "mediana": 1.5559169999978621,
+              "p75": 1.6822919999976875,
+              "n": 15
+            }
+          },
+          "corrigido": {
+            "dMenosC": {
+              "p25": -5.637124499997299,
+              "mediana": -1.3317920000008598,
+              "p75": 8.94762549999723,
+              "dMaisLento": 7,
+              "n": 15
+            },
+            "iqrDeCMediana": 11.61487500000294,
+            "dMenosTool": {
+              "p25": 1.5478124999972351,
+              "mediana": 1.5559169999978621,
+              "p75": 1.7005829999989146,
+              "n": 15
+            }
+          }
+        }
+      }
+    }
+  ]
+}

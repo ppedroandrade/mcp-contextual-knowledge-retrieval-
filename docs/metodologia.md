@@ -29,11 +29,21 @@ Situação: **em implementação** (geração, avaliação das respostas e estat
 
 ## 2.1 Parâmetros de recuperação
 
-Cada abordagem devolve as 50 unidades mais bem pontuadas; P, R, MRR e nDCG são
-calculadas sobre os documentos dessa lista, na ordem da primeira aparição, com k = 5;
-ER@5 e "completas@5" são calculadas sobre as 5 primeiras unidades. Perguntas sem
-resposta ficam fora das métricas de recuperação. A latência é medida em várias rodadas,
-com uma rodada de aquecimento descartada e ordem das abordagens embaralhada.
+Os dois benchmarks pedem profundidades diferentes à mesma função `search(pergunta, k)`:
+
+| Benchmark | Profundidade pedida | O que é medido |
+| --- | --- | --- |
+| `bench:retrieval` | `search(q, 50)` (`SEARCH_DEPTH`) | P@5, R@5, MRR@5 e nDCG@5 sobre os **5 primeiros documentos distintos** da lista de 50 unidades, deduplicada pela ordem da primeira aparição (`rankedDocs`); ER@5 e completas@5 sobre as **5 primeiras unidades** da mesma lista |
+| `bench:generation` | `search(q, 5)` (`CONTEXT_UNITS`) | o gerador recebe essas **5 unidades**; a latência da recuperação nessa etapa é a de `search(q, 5)` |
+
+Os 5 primeiros documentos distintos podem vir de mais de 5 unidades (um documento com várias
+unidades no topo empurra os seguintes para baixo), então P/R/MRR/nDCG@5 olham uma lista que
+pode ir além dos 5 trechos entregues ao gerador. ER@5 e completas@5 olham exatamente os 5
+trechos. Na execução final, as 5 unidades entregues ao gerador foram as 5 primeiras de
+`search(q, 50)` em 120/120 casos (B, C e D × 40 perguntas; conferido a partir de
+`per-question.json` das duas execuções). Perguntas sem resposta ficam fora das métricas de
+recuperação. A latência é medida em várias rodadas, com uma rodada de aquecimento descartada
+e ordem das abordagens embaralhada; por pergunta, vale a mediana usual das rodadas (ADR 016).
 
 ## 3. Divergências entre o TCC 1 e o que será feito
 

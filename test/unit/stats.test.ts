@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { answerMeasures, generationMeasures, humanMeasures } from '../../src/bench/stats.js';
+import { summarize } from '../../src/bench/retrieval.js';
+import { answerMeasures, generationMeasures, humanMeasures, retrievalMeasures } from '../../src/bench/stats.js';
 import { comparePaired, perQuestion } from '../../src/evaluation/compare.js';
+import { median } from '../../src/evaluation/metrics.js';
 import { bootstrapCi, holm, mannWhitneyU, medianOf, quantile, ranks, wilcoxonSignedRank } from '../../src/evaluation/stats.js';
 
 // Valores de referência calculados com SciPy 1.18.1 e statsmodels (script auxiliar, fora do repositório):
@@ -93,6 +95,33 @@ describe('bootstrap', () => {
     expect(quantile([1, 2, 3, 4], 0.25)).toBeCloseTo(1.75, 12);
     expect(medianOf([4, 1, 3, 2])).toBe(2.5);
   });
+
+  // ADR 016: uma única mediana, a usual, nos resumos do bench, na estatística e nos scripts.
+  it('mediana usual: n ímpar dá o valor central', () => {
+    expect(medianOf([7])).toBe(7);
+    expect(medianOf([3, 1, 2])).toBe(2);
+    expect(medianOf([5, 100, 1, 2, 3])).toBe(3);
+  });
+
+  it('mediana usual: n par dá a média dos dois valores centrais, não o central superior', () => {
+    expect(medianOf([1, 2])).toBe(1.5);
+    expect(medianOf([10, 1, 4, 3])).toBe(3.5);
+    // 10 rodadas, como na execução final de recuperação: centrais 12 e 20.
+    const rounds = [30, 9, 12, 41, 20, 8, 25, 11, 22, 10];
+    expect(medianOf(rounds)).toBe(16);
+  });
+
+  it('mediana usual: não altera a entrada, aceita negativos e vazio dá NaN', () => {
+    const xs = [3, -1, 2, -5];
+    expect(medianOf(xs)).toBe(0.5);
+    expect(xs).toEqual([3, -1, 2, -5]);
+    expect(medianOf([])).toBeNaN();
+  });
+
+  it('a mediana dos resumos do bench é a mesma da estatística', () => {
+    for (const xs of [[1], [2, 1], [5, 3, 9], [4, 8, 1, 6], [0.25, 36.3, 112.6, 1.8, 7, 7]]) expect(median(xs)).toBe(medianOf(xs));
+    expect(median([])).toBeNaN();
+  });
 });
 
 describe('comparações pareadas', () => {
@@ -132,6 +161,20 @@ describe('comparações pareadas', () => {
 });
 
 describe('medidas a partir das execuções', () => {
+  it('recuperação: latência por pergunta com n par é a média dos centrais (ADR 016)', () => {
+    const row = (retriever: string, ms: number[]) => ({ questionId: 'q1', type: 'single-source', retriever, latencyMs: ms, scores: {} }) as never;
+    const [lat] = retrievalMeasures([row('A-bm25', [4, 1, 3, 2]), row('D-mcp', [10, 40, 20, 30, 50, 60])]);
+    expect(lat!.values.get('A')!.get('q1')).toBe(2.5);
+    expect(lat!.values.get('D')!.get('q1')).toBe(35);
+  });
+
+  it('resumo do bench de recuperação: média, entre as perguntas, da mediana usual das rodadas', () => {
+    const scores = { precision: 0, recall: 0, mrr: 0, ndcg: 0, evidenceRecall: 0, evidenceComplete: 0 };
+    const row = (questionId: string, ms: number[]) => ({ questionId, type: 'single-source', retriever: 'D-mcp', topUnits: [], scores, latencyMs: ms }) as never;
+    // q1: centrais 2 e 3 → 2,5 (o central superior daria 3); q2: ímpar → 7.
+    expect(summarize([row('q1', [1, 2, 3, 4]), row('q2', [9, 7, 5])])['D-mcp']!.latenciaMedianaMs).toBe(4.75);
+  });
+
   it('geração: latência por pergunta é a mediana das rodadas', () => {
     const row = (retriever: string, ms: number[]) => ({ questionId: 'q1', type: 'single-source', retriever, retrievalMs: ms, totalMs: ms.map((x) => x * 10) }) as never;
     const [ret, total] = generationMeasures([row('B-rag', [3, 1, 2]), row('D-mcp', [5, 4, 6])]);

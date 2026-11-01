@@ -168,8 +168,13 @@ export function holm(ps: number[]): number[] {
 
 export const meanOf = (xs: number[]) => xs.reduce((s, v) => s + v, 0) / xs.length;
 
-/** Mediana usual (com n par, a média dos dois valores centrais). */
+/**
+ * Mediana usual: com n ímpar, o valor central; com n par, a média dos dois valores centrais.
+ * Lista vazia dá NaN. É a única implementação de mediana do código medido (ADR 016): os resumos
+ * do bench (`median` em `metrics.ts`), a estatística e os scripts usam esta função.
+ */
 export function medianOf(xs: number[]): number {
+  if (xs.length === 0) return NaN;
   const s = [...xs].sort((a, b) => a - b);
   const m = Math.floor(s.length / 2);
   return s.length % 2 ? s[m]! : (s[m - 1]! + s[m]!) / 2;

@@ -1,4 +1,5 @@
 import type { Hit, Question } from '../core/types.js';
+import { medianOf } from './stats.js';
 
 /** Documentos na ordem da primeira aparição no ranking de unidades. */
 export function rankedDocs(hits: Hit[]): string[] {
@@ -69,5 +70,9 @@ export const mean = (xs: number[]) => {
   return v.length ? v.reduce((a, b) => a + b, 0) / v.length : NaN;
 };
 
-/** Mediana das rodadas de latência (com n par, o maior dos dois valores centrais). */
-export const median = (xs: number[]) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)] ?? NaN;
+/**
+ * Mediana das rodadas de latência: a mediana usual de `stats.ts` (com n par, a média dos dois
+ * valores centrais). Até a correção do ADR 016, posterior à execução final, esta função tomava
+ * o maior dos dois valores centrais quando n era par.
+ */
+export const median = medianOf;

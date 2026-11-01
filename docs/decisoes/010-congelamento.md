@@ -27,4 +27,10 @@ mudar parâmetros, correções de defeitos (registradas aqui, com o motivo) e a 
   (`results/runs/2026-11-01-h3-integracao-politicas`, patch `h3-mcp.patch`). Não muda nada para
   os conjuntos `dev` e `heldout`, que continuam com as três fontes; o servidor MCP iniciado à
   mão (`npm run mcp:server`) passa a expor as quatro por padrão.
-- Correções de defeitos: nenhuma até agora.
+- Correções de defeitos:
+  - 01/11/2026, **depois da execução final e da v3 do artigo**: mediana das rodadas com número
+    par de rodadas (`median` em `src/evaluation/metrics.ts` tomava o central superior;
+    `scripts/compare-c-d.ts` tinha cópia própria). Passa a ser a mediana usual, numa única
+    implementação (ADR 016). Afeta só a latência de `2026-11-01-heldout-recuperacao` (10
+    rodadas); os resultados publicados ficam intactos e o recálculo está em
+    `results/recalculos/2026-11-01-mediana-usual/`.

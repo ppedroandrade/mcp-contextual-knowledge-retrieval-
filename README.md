@@ -13,9 +13,37 @@ C existe para separar o efeito do protocolo (C × D) do efeito da estratégia de
 Stack: Node.js 22 + TypeScript. Status atual em [STATUS.md](STATUS.md);
 arquitetura em [docs/arquitetura.md](docs/arquitetura.md).
 
-> Em construção: as quatro abordagens, o servidor MCP, a geração e a avaliação das
-> respostas e a estatística existem. O que está pronto e testado está no
-> [STATUS.md](STATUS.md).
+## Situação da entrega
+
+- **Experimento final executado** em 01/11/2026 no commit
+  [`2042154`](https://github.com/ppedroandrade/mcp-contextual-knowledge-retrieval-/commit/2042154),
+  conforme o protocolo registrado antes (ADR 011): resultados brutos em
+  `results/runs/2026-11-01-*`, tabelas do artigo em `results/artigo/tabelas-2026-11-01.md`.
+- **Avaliação humana:** uma planilha de notas de **consenso de 2 avaliadores**, sem notas
+  independentes (desvio registrado no ADR 011); não há concordância entre avaliadores.
+- **Correção posterior ao experimento:** a mediana das rodadas passou a ser a mediana usual
+  (ADR 016). Os resultados publicados em `results/runs/` não foram alterados; a latência
+  recalculada a partir dos tempos brutos está em
+  [`results/recalculos/2026-11-01-mediana-usual/`](results/recalculos/2026-11-01-mediana-usual/recalculo.md).
+- **H3:** reintegração de uma fonte já conhecida (o leitor de políticas foi retirado antes do
+  congelamento e reinserido); leitura delimitada em [docs/h3-protocolo.md](docs/h3-protocolo.md).
+- O que está implementado, testado e validado, item a item, está no [STATUS.md](STATUS.md).
+
+## Reproduzir os números do artigo
+
+```bash
+nvm use                                  # Node 22 (.nvmrc)
+scripts/experimento-final.sh             # experimento final completo (roteiro em docs/experimento-final.md); MODO=teste para ensaiar
+npx tsx scripts/tabelas-artigo.ts --recuperacao 2026-11-01-heldout-recuperacao --geracao 2026-11-01-heldout-geracao \
+  --respostas 2026-11-01-heldout-avaliacao --humana 2026-11-01-heldout-planilha-cega \
+  --h3 2026-11-01-h3-integracao-politicas --politicas 2026-11-01-politicas-recuperacao
+npx tsx scripts/recalculo-mediana.ts     # latência com a mediana usual (ADR 016), sem medir de novo
+npx tsx scripts/compare-c-d.ts 2026-11-01-heldout-recuperacao   # C = D e D − C por pergunta
+```
+
+`tabelas-artigo.ts` lê os resumos e as estatísticas **publicados** (mediana anterior à correção);
+os valores de latência corrigidos que o artigo usa vêm de `recalculo-mediana.ts`. Não rode
+`npm run stats` de novo nas pastas de `results/runs/`: ele sobrescreve o `estatistica.json` publicado.
 
 ## Requisitos
 
@@ -50,8 +78,8 @@ docker compose exec ollama ollama pull bge-m3
 docker compose exec ollama ollama pull qwen3:4b-instruct-2507-q4_K_M
 npm run test:integration                       # pgvector contra a busca exata em memória
 npm run ingest                                 # indexa docs, chamados e incidentes no pgvector
-npm run bench:retrieval -- --approaches A,B,C,D  # métricas e latência no conjunto dev
-npm run bench:generation -- --approaches B,C,D   # recuperação + geração (A não gera resposta)
+npm run bench:retrieval -- --approaches A,B,C,D  # métricas e latência no conjunto dev (search com profundidade 50)
+npm run bench:generation -- --approaches B,C,D   # recuperação (search com 5) + geração dos 5 trechos (A não gera resposta)
 docker compose exec ollama ollama pull qwen3.5:4b  # juiz da avaliação (ADR 007)
 npm run eval:answers -- --run <execução da geração> --out <id>  # regra dos fatos + juiz
 npm run eval:human -- --run <execução da geração> --out <id>    # planilha cega para avaliadores
