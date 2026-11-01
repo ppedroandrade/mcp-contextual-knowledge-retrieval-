@@ -54,3 +54,31 @@ button[disabled] { opacity: .6; cursor: wait; }
 .viewer .unit .id { font-family: ui-monospace, monospace; font-size: .75rem; color: var(--muted); }
 .viewer .unit .text { white-space: pre-wrap; line-height: 1.5; font-size: .9rem; }
 .error { color: #b42335; }
+
+/* Modo de avaliação humana */
+.eval-start { max-width: 760px; margin: 1.5rem auto; }
+.instructions { max-height: 50vh; overflow: auto; font-size: .9rem; line-height: 1.45; border-bottom: 1px solid var(--line); margin-bottom: .75rem; }
+input[type=text] { flex: 1; font: inherit; padding: .5rem; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: inherit; }
+.eval-start button, .eval-form button { background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: .5rem 1rem; font: inherit; cursor: pointer; }
+.eval-form #prev { background: var(--accent-soft); color: var(--accent); }
+.eval-layout { flex: 1; display: grid; grid-template-columns: 220px 1fr 340px; gap: .75rem; padding: .75rem; min-height: 0; }
+.eval-layout[hidden] { display: none; }
+@media (max-width: 1000px) { .eval-layout { grid-template-columns: 1fr; overflow: auto; } }
+.eval-item h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: .8rem 0 .3rem; }
+.box { margin: 0; padding: .6rem .8rem; border: 1px solid var(--line); border-radius: 8px; white-space: pre-wrap; line-height: 1.45; }
+.box.answer { border-color: var(--accent); }
+.passage.static { cursor: default; }
+.passage .text { white-space: pre-wrap; color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: .25rem; margin: .5rem 0; }
+.cell { font-size: .72rem; padding: .25rem 0; border: 1px solid var(--line); border-radius: 6px; background: none; color: inherit; cursor: pointer; }
+.cell.done { background: var(--accent-soft); color: var(--accent); }
+.cell.current { outline: 2px solid var(--accent); }
+.spaced { margin-top: 1rem !important; }
+.criterion { border: 1px solid var(--line); border-radius: 8px; margin: 0 0 .6rem; padding: .4rem .6rem; }
+.criterion legend { font-weight: 600; padding: 0 .3rem; }
+.scale { display: flex; gap: .3rem; }
+.scale label { flex: 1; text-align: center; border: 1px solid var(--line); border-radius: 6px; padding: .3rem 0; cursor: pointer; }
+.scale input { display: none; }
+.scale label:has(input:checked) { background: var(--accent); color: #fff; border-color: var(--accent); }
+.nav { justify-content: space-between; margin-top: .6rem; }
+.eval-form textarea { width: 100%; }

@@ -73,8 +73,21 @@ npm run demo                                                     # ambiente real
 npm run demo -- --embedder hash --store memory --llm simulated   # sem Docker; sem valor experimental
 ```
 
-O modo de avaliação humana cega (resposta distinta avaliada uma vez, nota copiada para C e D,
-cálculo de concordância) será acrescentado sobre o formato de notas da avaliação das respostas.
+**Modo de avaliação humana cega** (`src/api/eval.ts`, `apps/demo/avaliar.*`; ADR 007):
+
+```bash
+npm run eval:human -- --run <execução de bench:generation> --out <planilha>   # gera planilha, chave e instruções
+npm run demo -- --avaliacao <planilha> [--host 0.0.0.0]                       # só Node; sem Ollama nem banco
+npm run eval:human -- --import <planilha> --ratings results/runs/<planilha>/avaliacoes-ui/a.csv,results/runs/<planilha>/avaliacoes-ui/b.csv
+```
+
+Com `--avaliacao`, só o modo de avaliação fica no ar (a demonstração revelaria as abordagens).
+Cada avaliador entra com o nome, vê uma resposta distinta por vez (C e D, quando iguais, são
+uma linha só; a nota vale para as duas), com pergunta, referência, trechos e resposta, e dá as
+três notas da rubrica. As notas são salvas a cada resposta em
+`results/runs/<planilha>/avaliacoes-ui/<avaliador>.csv`, no formato da planilha cega. A tela
+mostra a concordância (alfa de Krippendorff ordinal) com 2 ou mais avaliadores; as médias por
+abordagem só saem no `--import`, para não quebrar a cegueira.
 
 ## 5. Fora de escopo
 

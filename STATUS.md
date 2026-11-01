@@ -28,7 +28,8 @@ não têm rastreabilidade com este repositório.
 | Avaliação das respostas: regra dos fatos, juiz por LLM, planilha cega e importação das notas humanas | implementado, testado | `src/evaluation/`, `npm run eval:answers`, `npm run eval:human` (ADR 007); executado no dev (abaixo); avaliação humana **ainda não feita** (faltam os avaliadores) |
 | Estatística (Wilcoxon, Holm, bootstrap, Mann-Whitney) | implementado, testado | `src/evaluation/stats.ts`, `src/evaluation/compare.ts`, `npm run stats -- --run <id>` (ADR 008); testes conferidos contra o SciPy 1.18.1 e o statsmodels; aplicada às rodadas dev (abaixo), que **não são o resultado final** |
 | Benchmark reproduzível | implementado | `environment.json` grava commit lido na partida, árvore limpa (ignora `results/`), digests e versão do Ollama, uso de GPU (`sizeVram`), hash do prompt e fonte de energia |
-| API + UI de demonstração | implementado, testado (sem modo de avaliação humana) | `npm run demo`; `src/api/`, `apps/demo/`; 7 testes em `test/unit/api.test.ts` (hash + memória + LLM simulado); conferida no navegador com `--embedder hash --store memory --llm simulated` (D pelo stdio real). Ainda não aberta com bge-m3 + qwen3. Fora das métricas. Modo de avaliação humana cega: planejado, sobre o formato de notas da Etapa 3 |
+| API + UI de demonstração | implementado, testado | `npm run demo`; `src/api/`, `apps/demo/`; testes em `test/unit/api.test.ts` (hash + memória + LLM simulado); conferida no navegador com `--embedder hash --store memory --llm simulated` (D pelo stdio real). Ainda não aberta com bge-m3 + qwen3. Fora das métricas |
+| Modo de avaliação humana cega na UI | implementado, testado | `npm run demo -- --avaliacao <planilha>`: só Node, sem Ollama; uma resposta distinta por vez, sem pista da abordagem; grava `avaliacoes-ui/<avaliador>.csv` no formato da planilha cega (lido por `eval:human --import`); mostra o alfa de Krippendorff com 2 ou mais avaliadores; testes em `test/unit/eval-ui.test.ts`; conferido no navegador com a planilha piloto do dev. **Nenhuma avaliação humana feita ainda** |
 
 ## Ambiente validado (31/10/2026)
 
@@ -163,7 +164,7 @@ dependem da execução final no `heldout`.
 
 ## Próximos passos
 1. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
-2. Modo de avaliação humana na UI de demonstração; preparação da H3; congelamento e `heldout`.
+2. Preparação da H3; congelamento e `heldout`.
 3. Conseguir ao menos 2 avaliadores humanos para a H2 (a planilha sai da execução final no
    `heldout`; `results/runs/2026-10-31-planilha-cega-dev-piloto` serve para testar o
    instrumento antes).
