@@ -1,6 +1,6 @@
 # Protocolo da H3: integração da 4ª fonte
 
-Situação: **planejado** (executar depois do congelamento; ADR 009).
+Situação: **executado** em 01/11/2026 (passos 1 a 5); passo 6 (bench no conjunto `policies` com `bge-m3`) **pendente**, no Mac.
 
 **Hipótese (TCC 1).** Maior portabilidade e organização no acesso a fontes heterogêneas com
 MCP, comparada a integrações customizadas sem MCP; análise qualitativa do esforço de adaptação
@@ -38,3 +38,40 @@ existe nas outras fontes. O leitor foi retirado do sistema antes do congelamento
 
 **Limitação declarada.** O leitor HTML é o mesmo código nas duas branches; a diferença está
 em onde ele é ligado. O autor fez as duas integrações, conhecendo o código.
+
+## Resultado (01/11/2026)
+
+Execução: `results/runs/2026-11-01-h3-integracao-politicas` (`h3.json`, os dois patches e
+`segundo-cliente.json`). Contagem com `npx tsx scripts/h3-diff.ts 1a1337a <customizada> <mcp>`;
+os commits ficaram em branches locais e os patches reproduzem cada integração com
+`git checkout 1a1337a && git apply <patch>`.
+
+| Camada | Customizada (B/C) | MCP (D) |
+| --- | --- | --- |
+| leitor da fonte (`src/sources/policies.ts`, `index.ts`) | 2 arquivos, +25 −3 | 2 arquivos, +25 −3 |
+| catálogo das fontes | 1 arquivo, +4 | 1 arquivo, +4 |
+| host (`src/approaches`, `src/generation`, `src/retrieval`, `src/api`) | 0 | 0 |
+| servidor MCP (`src/mcp/stdio.ts`: fontes expostas por padrão) | 0 | 1 arquivo, +2 −2 |
+| configuração do experimento (`sourcesFor('policies')`) | 1 arquivo, +1 −2 | 1 arquivo, +1 −2 |
+| testes | 1 arquivo, +13 −4 | 2 arquivos, +24 −4 |
+| **total** | **5 arquivos, +43 −9** | **7 arquivos, +56 −11** |
+
+- **Segundo cliente** (`scripts/h3-segundo-cliente.ts`, só o SDK oficial, sem nenhum import de
+  `src/`): com a integração MCP, descobriu as 4 tools (`buscar_docs`, `buscar_tickets`,
+  `buscar_incidents`, `buscar_policies`) e recebeu trechos de `buscar_policies`, sem nenhuma
+  alteração no servidor. Teste funcional com embedder `hash` (sem valor de recuperação).
+- **Leitura.** Em linhas, o esforço foi praticamente o mesmo: neste protótipo, a integração
+  customizada (B/C) já usa a mesma camada de fontes que o servidor MCP, e C já itera sobre a
+  lista de fontes; a variante MCP teve 2 linhas de configuração do servidor e um teste a mais.
+  Nenhuma das duas alterou o código do host. A diferença observada é de **reuso**: com MCP, a
+  fonte nova ficou disponível para um cliente que não tem nenhum código do projeto; na variante
+  customizada, ela só existe para quem importa o código do projeto.
+- **Limitações.** O autor fez as duas integrações, conhecendo o código; o leitor é o mesmo nas
+  duas; o host de D importa o catálogo das fontes para o rótulo "fonte:" do prompt (acoplamento
+  do protótipo, por ser um único repositório); o segundo cliente é um script mínimo, não um
+  aplicativo de terceiros. Opcional, no Mac: repetir o passo 5 com o MCP Inspector oficial
+  (`npx @modelcontextprotocol/inspector --cli ...`) ou com outro aplicativo cliente.
+
+Depois da medida, a integração MCP (que contém a customizada) foi aplicada na `main`, para o
+passo 6 (ADR 010, "Correções depois do congelamento").
+

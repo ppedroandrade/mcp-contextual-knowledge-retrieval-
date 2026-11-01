@@ -25,7 +25,7 @@ Situação: **em implementação** (geração, avaliação das respostas e estat
 | H1 | Latência computacional por pergunta (ms): só recuperação e recuperação + geração, separadas | A × D (exigido); B × D e C × D (decomposição) | `src/bench`, `src/evaluation/stats` |
 | H2 (automática) | Recuperação: Recall@k, Precision@k, MRR, nDCG@k contra o gabarito. Resposta: checagem por regra dos fatos e juiz por LLM (correção, completude, sustentação) | B, C, D (geram resposta); A só recuperação | `src/evaluation/metrics.ts`, `facts.ts`, `judge.ts`; `npm run eval:answers` (ADR 007) |
 | H2 (humana) | Rubrica 1–5 de correção, completude e sustentação nas evidências, por ≥ 2 avaliadores cegos à configuração; concordância pelo alfa de Krippendorff ordinal | B, C, D | `src/evaluation/human.ts`; `npm run eval:human` exporta a planilha cega e importa as notas (ADR 007) |
-| H3 | Integração de uma 4ª fonte depois do congelamento: arquivos e linhas alteradas no host, no servidor e nos testes; reuso do servidor por um segundo cliente MCP sem alteração | B/C (customizado) × D (MCP) | `docs/h3-protocolo.md`, ADR 009, `results/runs/<id>/h3.json` |
+| H3 | Integração de uma 4ª fonte depois do congelamento: arquivos e linhas alteradas no host, no servidor e nos testes; reuso do servidor por um segundo cliente MCP sem alteração | B/C (customizado) × D (MCP) | `docs/h3-protocolo.md`, ADR 009, `results/runs/2026-11-01-h3-integracao-politicas/h3.json` |
 
 ## 2.1 Parâmetros de recuperação
 
