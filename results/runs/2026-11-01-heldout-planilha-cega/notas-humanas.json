@@ -1,0 +1,35 @@
+{
+  "importedAt": "2026-11-01T05:04:41.088Z",
+  "gitCommit": "55ce5e40537b4abff82a5357af08606244f535ad",
+  "avaliadores": [
+    {
+      "nome": "consenso-2-avaliadores",
+      "itensAvaliados": 79
+    }
+  ],
+  "concordancia": {
+    "correcao": null,
+    "completude": null,
+    "sustentacao": null
+  },
+  "porAbordagem": {
+    "B-rag": {
+      "itens": 40,
+      "correcao": 3.325,
+      "completude": 3.25,
+      "sustentacao": 5
+    },
+    "C-por-fonte": {
+      "itens": 40,
+      "correcao": 3.375,
+      "completude": 3.325,
+      "sustentacao": 4.9
+    },
+    "D-mcp": {
+      "itens": 40,
+      "correcao": 3.375,
+      "completude": 3.325,
+      "sustentacao": 4.9
+    }
+  }
+}

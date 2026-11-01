@@ -1,0 +1,46 @@
+{
+  "planilha": "2026-11-01-heldout-planilha-cega",
+  "avaliacaoAutomatica": "2026-11-01-heldout-avaliacao",
+  "avaliacaoHumana": "consenso-2-avaliadores.csv",
+  "todosOsItens": {
+    "correcao": {
+      "itens": 79,
+      "alfaOrdinal": 0.9148287569058684,
+      "notasIguais": 0.8354430379746836,
+      "diferencaMedia": -0.08860759493670886
+    },
+    "completude": {
+      "itens": 79,
+      "alfaOrdinal": 0.9154039254675952,
+      "notasIguais": 0.8227848101265823,
+      "diferencaMedia": -0.05063291139240506
+    },
+    "sustentacao": {
+      "itens": 79,
+      "alfaOrdinal": 0.7971888870623047,
+      "notasIguais": 0.9746835443037974,
+      "diferencaMedia": 0.05063291139240506
+    }
+  },
+  "soItensComNotaDoJuiz": {
+    "correcao": {
+      "itens": 44,
+      "alfaOrdinal": 0.5776753292324379,
+      "notasIguais": 0.7727272727272727,
+      "diferencaMedia": -0.29545454545454547
+    },
+    "completude": {
+      "itens": 44,
+      "alfaOrdinal": 0.6458065822697541,
+      "notasIguais": 0.75,
+      "diferencaMedia": -0.22727272727272727
+    },
+    "sustentacao": {
+      "itens": 44,
+      "alfaOrdinal": 0.794534632034632,
+      "notasIguais": 0.9545454545454546,
+      "diferencaMedia": 0.09090909090909091
+    }
+  },
+  "nota": "diferencaMedia = humano − juiz; alfa de Krippendorff ordinal entre as duas fontes de nota"
+}
