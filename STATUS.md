@@ -10,7 +10,7 @@ não têm rastreabilidade com este repositório.
 | --- | --- | --- |
 | Estrutura de pastas e documentação inicial | implementado | |
 | Ambiente real: Docker, PostgreSQL + pgvector, Ollama | testado (31/10/2026) | ver "Ambiente validado" abaixo |
-| Ferramental: TypeScript, Vitest, CI, docker-compose | implementado, testado | `npm run check` passa (45 testes unitários); imagens fixadas no compose: `pgvector/pgvector:0.8.7-pg16`, `ollama/ollama:0.40.13` |
+| Ferramental: TypeScript, Vitest, CI, docker-compose | implementado, testado | `npm run check` passa (TypeScript + 165 testes unitários em 01/11/2026, depois da correção do ADR 016; 130 no commit da execução final); imagens fixadas no compose: `pgvector/pgvector:0.8.7-pg16`, `ollama/ollama:0.40.13` |
 | Tipos compartilhados e interface `Retriever` | implementado | `src/core/types.ts` |
 | Escolha de stack | decidido | ADRs 001 a 007 em `docs/decisoes/`; LLM fixado em 31/10/2026 (ADR 003); juiz e avaliação das respostas (ADR 007) |
 | Mapeamento TCC 1 → métricas | documentado | `docs/metodologia.md`; divergências listadas |
@@ -33,7 +33,7 @@ não têm rastreabilidade com este repositório.
 | Protocolo da execução final e plano de análise | registrado, executado sem desvios (01/11/2026) | ADR 011 (antes de qualquer execução no `heldout`): 10 rodadas de recuperação, 5 de geração, juiz com 2 repetições, ≥ 2 avaliadores, conjunto `policies` com 5 rodadas |
 | Script do experimento final e tabelas do artigo | implementado, testado, validado | `scripts/experimento-final.sh` (roteiro em `docs/experimento-final.md`) e `scripts/tabelas-artigo.ts` (tabelas só a partir de `results/runs/`, com alerta para execuções sem valor experimental); ensaiados com `MODO=teste`; **experimento final executado em 01/11/2026** (abaixo); tabelas em `results/artigo/tabelas-2026-11-01.md` |
 | Estatística das notas humanas (H2) | implementado, testado | `npm run stats -- --run <planilha>` depois do `eval:human --import`: média dos avaliadores por item, mesmos pares e testes do ADR 008 |
-| Rascunho das seções 3 e 4 do artigo | rascunho | `docs/artigo/secoes-3-4.md`: seção 3 descreve o implementado; seção 4 (4.1 a 4.5) redigida com os números da execução final e da avaliação humana por consenso |
+| Rascunho das seções 3 e 4 do artigo | histórico | `docs/artigo/secoes-3-4.md`: base da v3; substituído pelo artigo v4 (pasta do projeto). Mantém os números de latência publicados na v3 (ver ADR 016) |
 | Tempo da tool dentro de D | implementado, testado, validado | `tempoMs` em cada tool; `toolMs` no bench só para D; `scripts/compare-c-d.ts` imprime D − tool (ADR 009); medido na execução final (01/11/2026) |
 | Node fixado nas medições | implementado | `.nvmrc` 22, `engines` `^22.12.0`, CI pelo `.nvmrc`; `bench:*` recusa outra versão (ADR 009) |
 | Benchmark reproduzível | implementado | `environment.json` grava commit lido na partida, árvore limpa (ignora `results/`), digests e versão do Ollama, uso de GPU (`sizeVram`), hash do prompt e fonte de energia |
