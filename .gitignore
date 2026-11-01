@@ -7,3 +7,7 @@ coverage/
 
 # Estado local do assistente (chave de cifragem, tokens dos conectores, conversas)
 .assistente/
+
+# Artefatos dos testes de interface
+/test-results/
+/playwright-report/

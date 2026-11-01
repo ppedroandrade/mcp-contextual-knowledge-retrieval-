@@ -55,10 +55,11 @@ Decisões de stack em [docs/decisoes/](docs/decisoes/).
 
 ## Assistente da empresa (fora do experimento)
 
-Protótipo de produto sobre a mesma arquitetura (configuração D): chat no estilo dos assistentes
-conhecidos, com as fontes da empresa (upload de PDF, Word, Markdown; Google Drive/Docs;
-Confluence) expostas como tools de um servidor MCP, respostas em streaming com citações e o
-mesmo servidor disponível em `/mcp` para outros clientes MCP. Não entra nas métricas (ADR 012).
+Protótipo de produto sobre a mesma arquitetura (configuração D), com a interface **Nexo**:
+início com consulta central, biblioteca de fontes e guia rápido acessíveis pela navegação. As fontes da empresa
+(upload de PDF, Word, Markdown; Google Drive/Docs; Confluence) são expostas como tools de um
+servidor MCP, também disponível em `/mcp` para outros clientes. Não entra nas métricas
+(ADRs 012 e 013). Testes de interface e comandos em [apps/assistant/README.md](apps/assistant/README.md).
 
 ```bash
 npm run assistente -- --exemplo   # http://127.0.0.1:3100, com a wiki de exemplo

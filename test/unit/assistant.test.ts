@@ -8,7 +8,11 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { createAssistantHandler } from '../../src/assistant/app.js';
-import { buildChatMessages, citedNumbers, OllamaChatStreamer, retrievalQuery, SimulatedChatStreamer, toCitations } from '../../src/assistant/chat.js';
+import {
+  ANSWER_RULES, citedNumbers, conversationMessages, isConversational, OllamaChatModel, retrievalQuery, SEARCH_TOOL, searchToolSpec, SimulatedChatModel, systemPrompt, toCitations,
+  toolResultText, withoutCitationMarks,
+  type ChatModel, type ModelEvent, type ModelMessage, type ToolSpec,
+} from '../../src/assistant/chat.js';
 import { confluenceConnector, googleAuthUrl, googleDriveConnector, googleExchangeCode, type Connector, type IncomingDocument } from '../../src/assistant/connectors.js';
 import { chunkDocument, htmlToSections, markdownToSections, parseFile, textToSections } from '../../src/assistant/documents.js';
 import { indexDocument, searchSource, syncSource } from '../../src/assistant/knowledge.js';
@@ -252,29 +256,63 @@ describe('conversa', () => {
     expect(retrievalQuery([], 'oi')).toBe('oi');
   });
 
-  it('numera os trechos com a fonte e lê as citações [n] da resposta', () => {
+  it('numera os trechos com a fonte, monta o resultado da busca e lê as citações [n]', () => {
     const sources = [{ id: 'f1', kind: 'confluence', name: 'Wiki' }] as KnowledgeSource[];
     const citations = toCitations([{ trecho: 'f1:d:0', fonte: 'f1', documento: 'd', titulo: 'Deploy', secao: 'Passos', url: 'https://x', texto: 'Rode o pipeline.', score: 0.9, rrf: 0.016 }], sources);
     expect(citations[0]).toMatchObject({ n: 1, sourceName: 'Wiki', sourceKind: 'confluence', docTitle: 'Deploy', cited: false });
-    const msgs = buildChatMessages([{ role: 'user', content: 'antes', createdAt: '' }], 'Como faço o deploy?', citations);
-    expect(msgs.map((m) => m.role)).toEqual(['system', 'user', 'user']);
-    expect(msgs[2]!.content).toBe('Trechos das fontes da empresa:\n\n[1] Wiki · Deploy — Passos\nRode o pipeline.\n\nPergunta: Como faço o deploy?');
+    expect(toolResultText(citations)).toBe(`${ANSWER_RULES}\n\nTrechos encontrados:\n\n[1] Wiki · Deploy — Passos\nRode o pipeline.`);
+    expect(toolResultText([])).toMatch(/Nenhum trecho/);
+    expect(withoutCitationMarks('Não encontrei [1], nem [2, 3].')).toBe('Não encontrei, nem.');
     expect([...citedNumbers('Rode o pipeline [1] e depois [2, 3]; não [x].')]).toEqual([1, 2, 3]);
   });
 
-  it('lê o streaming do Ollama mesmo com linhas cortadas entre pedaços, sem raciocínio', async () => {
+  it('a conversa leva as instruções, o histórico e a mensagem; a busca só existe com fontes', () => {
+    const sources = [{ id: 'f1', kind: 'confluence', name: 'Wiki' }] as KnowledgeSource[];
+    const msgs = conversationMessages([{ role: 'user', content: 'antes', createdAt: '' }, { role: 'assistant', content: 'resposta', createdAt: '' }], ' Como faço o deploy? ', sources);
+    expect(msgs.map((m) => [m.role, m.content.slice(0, 20)])).toEqual([['system', 'Você é o Nexo, o ass'], ['user', 'antes'], ['assistant', 'resposta'], ['user', 'Como faço o deploy?']]);
+    expect(msgs[0]!.content).toContain('- Wiki (Confluence)');
+    expect(msgs[0]!.content).toContain(`chame ${SEARCH_TOOL} antes de responder`);
+    expect(msgs[0]!.content).not.toMatch(/não encontrou/);
+    expect(systemPrompt([])).toContain('ainda não há fontes conectadas');
+    expect(searchToolSpec(sources).function).toMatchObject({ name: SEARCH_TOOL, parameters: { required: ['consulta'] } });
+  });
+
+  it('lê o streaming do Ollama: texto em pedaços cortados e o pedido de ferramenta', async () => {
     const bodies: string[] = [];
+    const reply = (parts: string[]) => new Response(new ReadableStream({ start(c) { for (const p of parts) c.enqueue(new TextEncoder().encode(p)); c.close(); } }));
+    let turn = 0;
     const fetchFn = vi.fn(async (url: string | URL | Request, init?: RequestInit) => {
-      if (String(url).endsWith('/api/show')) return Response.json({ capabilities: ['completion', 'thinking'] });
+      if (String(url).endsWith('/api/show')) return Response.json({ capabilities: ['completion', 'tools', 'thinking'] });
       bodies.push(String(init!.body));
-      const enc = new TextEncoder();
-      const parts = ['{"message":{"content":"Rode "}}\n{"messa', 'ge":{"content":"o pipeline [1]."}}\n', '{"done":true}\n'];
-      return new Response(new ReadableStream({ start(c) { for (const p of parts) c.enqueue(enc.encode(p)); c.close(); } }));
+      return (turn++ === 0)
+        ? reply(['{"message":{"content":"Olá! "}}\n{"messa', 'ge":{"content":"Tudo bem?"}}\n', '{"done":true}\n'])
+        : reply(['{"message":{"content":"","tool_calls":[{"function":{"name":"buscar_nas_fontes","arguments":{"consulta":"rollback do auth-service"}}}]}}\n']);
     });
-    const out: string[] = [];
-    for await (const t of new OllamaChatStreamer('http://o', 'm', undefined, fetchFn as unknown as typeof fetch).stream([{ role: 'user', content: 'x' }])) out.push(t);
-    expect(out).toEqual(['Rode ', 'o pipeline [1].']);
-    expect(JSON.parse(bodies[0]!)).toMatchObject({ model: 'm', stream: true, think: false, options: { temperature: 0 } });
+    const model = new OllamaChatModel('http://o', 'm', undefined, fetchFn as unknown as typeof fetch);
+    const collect = async (it: AsyncIterable<ModelEvent>) => { const out: ModelEvent[] = []; for await (const e of it) out.push(e); return out; };
+    const tool = searchToolSpec([{ id: 'f', kind: 'upload', name: 'RH' } as KnowledgeSource]);
+    expect(await collect(model.chat([{ role: 'user', content: 'oi' }], { tools: [tool] }))).toEqual([{ type: 'text', text: 'Olá! ' }, { type: 'text', text: 'Tudo bem?' }]);
+    expect(await collect(model.chat([{ role: 'user', content: 'rollback?' }]))).toEqual([{ type: 'tool', call: { function: { name: SEARCH_TOOL, arguments: { consulta: 'rollback do auth-service' } } } }]);
+    expect(JSON.parse(bodies[0]!)).toMatchObject({ model: 'm', stream: true, think: false, tools: [tool], options: { temperature: 0 } });
+    expect(JSON.parse(bodies[1]!)).not.toHaveProperty('tools');
+  });
+
+  it('só dispensa a busca em cumprimentos e em pedidos para transformar a resposta anterior', () => {
+    const answered = [{ role: 'user' as const, content: 'Como faço o rollback?', createdAt: '' }, { role: 'assistant' as const, content: 'Assim [1].', createdAt: '' }];
+    for (const m of ['olá', 'Olá, tudo bem?', 'bom dia!', 'valeu, ajudou muito', 'obrigada']) expect(isConversational(m, []), m).toBe(true);
+    for (const m of ['resuma isso em uma frase', 'coloca em tópicos', 'traduz para o inglês', 'deixa mais curto']) expect(isConversational(m, answered), m).toBe(true);
+    for (const m of ['qual o canal de plantão dele?', 'e quantos dias posso ficar em casa?', 'olámundo', 'Como faço o deploy?']) expect(isConversational(m, answered), m).toBe(false);
+    expect(isConversational('resuma isso', [])).toBe(false);
+  });
+
+  it('o modelo simulado conversa nos cumprimentos e busca nas perguntas', async () => {
+    const model = new SimulatedChatModel();
+    const collect = async (msgs: ModelMessage[], tools?: ToolSpec[]) => { const out: ModelEvent[] = []; for await (const e of model.chat(msgs, { tools })) out.push(e); return out; };
+    const tool = searchToolSpec([{ id: 'f', kind: 'upload', name: 'RH' } as KnowledgeSource]);
+    expect((await collect([{ role: 'user', content: 'Olá, tudo bem?' }], [tool])).map((e) => (e.type === 'text' ? e.text : '')).join('')).toMatch(/^Olá! Sou o Nexo/);
+    expect(await collect([{ role: 'user', content: 'Qual o prazo?' }], [tool])).toEqual([{ type: 'tool', call: { function: { name: SEARCH_TOOL, arguments: { consulta: 'Qual o prazo?' } } } }]);
+    const answer = await collect([{ role: 'tool', content: '[1] RH · Férias — Prazo\n30 dias.' }]);
+    expect(answer.map((e) => (e.type === 'text' ? e.text : '')).join('')).toBe('Segundo as fontes, 30 dias. [1].');
   });
 });
 
@@ -282,7 +320,7 @@ describe('API do assistente', () => {
   let server: Server | null = null;
   afterEach(() => server?.close());
 
-  async function start(connector?: Connector) {
+  async function start(connector?: Connector, model: ChatModel = new SimulatedChatModel()) {
     const embedder = new HashEmbedder();
     const ws = new Workspace(tempDir());
     const store = new MemoryChunkStore();
@@ -295,7 +333,7 @@ describe('API do assistente', () => {
     await new Promise<void>((r) => server!.listen(0, '127.0.0.1', r));
     const base = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
     const handler = createAssistantHandler({
-      ws, store, embedder, host, streamer: new SimulatedChatStreamer(), publicUrl: base,
+      ws, store, embedder, host, model, publicUrl: base,
       mcpServer: () => createKnowledgeMcpServer(ws, search),
       connectorFor: (s) => (s.kind === 'upload' ? null : connector ?? null),
       google: null, staticDir: join(import.meta.dirname, '..', '..', 'apps', 'assistant'), mode: {},
@@ -320,18 +358,82 @@ describe('API do assistente', () => {
     const { body: { conversation } } = await call('/api/conversas', { method: 'POST', body: '{}' });
     const sse = await call(`/api/conversas/${conversation.id}/mensagens`, { method: 'POST', body: JSON.stringify({ texto: 'Qual o prazo do pedido de férias?' }) });
     const evs = events(sse.body);
-    expect(evs.map((e) => e.event)).toEqual(['fontes', ...evs.slice(1, -1).map(() => 'token'), 'fim']);
+    expect(evs.map((e) => e.event)).toEqual(['busca', 'fontes', ...evs.slice(2, -1).map(() => 'token'), 'fim']);
+    expect(evs[0]!.data).toEqual({ query: 'Qual o prazo do pedido de férias?' });
     const end = evs.at(-1)!.data;
+    expect(end.turn.searchQuery).toBe('Qual o prazo do pedido de férias?');
     expect(end.turn.content).toContain('[1]');
     expect(end.turn.citations[0]).toMatchObject({ n: 1, docTitle: 'Férias', heading: 'Prazo', cited: true });
     expect(end.conversation.title).toBe('Qual o prazo do pedido de férias?');
     expect((await call(`/api/conversas/${conversation.id}`)).body.conversation.messages).toHaveLength(2);
   });
 
-  it('sem nenhuma fonte, orienta a conectar uma em vez de chamar o modelo', async () => {
+  it('conversa sem buscar: um olá é respondido direto, sem passar pelas fontes', async () => {
+    const { call } = await start();
+    const { body: { source } } = await call('/api/fontes', { method: 'POST', body: JSON.stringify({ kind: 'upload', name: 'RH' }) });
+    await call(`/api/fontes/${source.id}/arquivos?nome=ferias.md`, { method: 'POST', body: '# Férias\nPedido com 30 dias.', headers: { 'content-type': 'application/octet-stream' } });
+    const { body: { conversation } } = await call('/api/conversas', { method: 'POST', body: '{}' });
+    const evs = events((await call(`/api/conversas/${conversation.id}/mensagens`, { method: 'POST', body: JSON.stringify({ texto: 'olá' }) })).body);
+    expect(evs.some((e) => e.event === 'busca' || e.event === 'fontes')).toBe(false);
+    expect(evs.at(-1)!.data.turn).toMatchObject({ content: expect.stringMatching(/^Olá! Sou o Nexo/), citations: [] });
+    expect(evs.at(-1)!.data.turn).not.toHaveProperty('searchQuery');
+  });
+
+  it('o LLM escreve a consulta, recebe os trechos como resultado da ferramenta e lembra da conversa', async () => {
+    const seen: ModelMessage[][] = [];
+    const model: ChatModel = {
+      name: 'roteiro',
+      async *chat(messages, { tools } = {}) {
+        seen.push(messages);
+        const last = messages.at(-1)!;
+        if (last.role === 'tool') yield { type: 'text', text: 'São 30 dias de antecedência [1].' };
+        else if (/resuma/.test(last.content)) yield { type: 'text', text: 'Resumo: 30 dias.' };
+        else {
+          expect(tools?.[0]?.function.name).toBe(SEARCH_TOOL);
+          yield { type: 'tool', call: { function: { name: SEARCH_TOOL, arguments: { consulta: 'prazo do pedido de férias' } } } };
+        }
+      },
+    };
+    const { call } = await start(undefined, model);
+    const { body: { source } } = await call('/api/fontes', { method: 'POST', body: JSON.stringify({ kind: 'upload', name: 'RH' }) });
+    await call(`/api/fontes/${source.id}/arquivos?nome=ferias.md`, { method: 'POST', body: '# Férias\n## Prazo\nPedido com 30 dias de antecedência.', headers: { 'content-type': 'application/octet-stream' } });
+    const { body: { conversation } } = await call('/api/conversas', { method: 'POST', body: '{}' });
+    const first = events((await call(`/api/conversas/${conversation.id}/mensagens`, { method: 'POST', body: JSON.stringify({ texto: 'e as férias, como peço?' }) })).body);
+    expect(first[0]).toEqual({ event: 'busca', data: { query: 'prazo do pedido de férias' } });
+    const toolTurn = seen[1]!.slice(-2);
+    expect(toolTurn[0]).toMatchObject({ role: 'assistant', tool_calls: [{ function: { name: SEARCH_TOOL } }] });
+    expect(toolTurn[1]).toMatchObject({ role: 'tool', content: expect.stringContaining('[1] RH · Férias — Prazo') });
+    expect(first.at(-1)!.data.turn.citations[0]).toMatchObject({ cited: true, heading: 'Prazo' });
+    const second = events((await call(`/api/conversas/${conversation.id}/mensagens`, { method: 'POST', body: JSON.stringify({ texto: 'resuma em uma linha' }) })).body);
+    expect(second.map((e) => e.event)).toEqual(['token', 'fim']);
+    expect(seen[2]!.map((m) => m.role)).toEqual(['system', 'user', 'assistant', 'user']);
+    expect(seen[2]![2]!.content).toBe('São 30 dias de antecedência [1].');
+  });
+
+  it('se o modelo tentar responder direto a uma pergunta da empresa, a resposta é descartada e a busca acontece', async () => {
+    const model: ChatModel = {
+      name: 'apressado',
+      async *chat(messages) {
+        if (messages.at(-1)!.role === 'tool') yield { type: 'text', text: 'É o #oncall-plataforma [1].' };
+        else yield { type: 'text', text: 'É o #inventado.' };
+      },
+    };
+    const { call } = await start(undefined, model);
+    const { body: { source } } = await call('/api/fontes', { method: 'POST', body: JSON.stringify({ kind: 'upload', name: 'Wiki' }) });
+    await call(`/api/fontes/${source.id}/arquivos?nome=plantao.md`, { method: 'POST', body: '# Plantão\n## Canal\nO canal de plantão é o #oncall-plataforma.', headers: { 'content-type': 'application/octet-stream' } });
+    const { body: { conversation } } = await call('/api/conversas', { method: 'POST', body: '{}' });
+    const sse = (await call(`/api/conversas/${conversation.id}/mensagens`, { method: 'POST', body: JSON.stringify({ texto: 'qual o canal de plantão?' }) })).body as string;
+    expect(sse).not.toContain('inventado');
+    const evs = events(sse);
+    expect(evs[0]).toEqual({ event: 'busca', data: { query: 'qual o canal de plantão?' } });
+    expect(evs.at(-1)!.data.turn).toMatchObject({ content: 'É o #oncall-plataforma [1].', citations: [expect.objectContaining({ cited: true, heading: 'Canal' })] });
+  });
+
+  it('sem nenhuma fonte, não oferece a busca e orienta a conectar uma', async () => {
     const { call } = await start();
     const { body: { conversation } } = await call('/api/conversas', { method: 'POST', body: '{}' });
-    const evs = events((await call(`/api/conversas/${conversation.id}/mensagens`, { method: 'POST', body: JSON.stringify({ texto: 'oi' }) })).body);
+    const evs = events((await call(`/api/conversas/${conversation.id}/mensagens`, { method: 'POST', body: JSON.stringify({ texto: 'Qual o prazo das férias?' }) })).body);
+    expect(evs.some((e) => e.event === 'busca')).toBe(false);
     expect(evs.at(-1)!.data.turn.content).toMatch(/Ainda não há nenhuma fonte conectada/);
   });
 

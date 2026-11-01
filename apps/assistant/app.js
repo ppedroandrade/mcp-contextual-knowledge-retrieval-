@@ -4,7 +4,13 @@ const $ = (sel, el = document) => el.querySelector(sel);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const KIND_LABEL = { upload: 'Arquivos', 'google-drive': 'Google Drive', confluence: 'Confluence' };
 const STATUS_LABEL = { pronta: 'pronta', sincronizando: 'sincronizando', erro: 'erro', 'aguardando-conexao': 'falta conectar' };
-const LOGO = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h9A1.5 1.5 0 0 1 16 5.5V8h2.5A1.5 1.5 0 0 1 20 9.5v9a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 8 18.5V16H5.5A1.5 1.5 0 0 1 4 14.5z"/></svg>';
+const icon = (name) => `<svg class="icon" data-icon="${name}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#${name}"/></svg>`;
+const LOGO = '<svg class="nexo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="/nexo.svg#mark"/></svg>';
+const SOURCE_ICON = {
+  upload: icon('file-text'),
+  'google-drive': '<img class="brand-icon" src="google-drive.png" width="28" height="28" alt="" aria-hidden="true">',
+  confluence: '<img class="brand-icon" src="confluence.svg" width="28" height="28" alt="" aria-hidden="true">',
+};
 const UPLOADS_NAME = 'Arquivos enviados';
 
 const state = {
@@ -134,14 +140,22 @@ function renderSidebar() {
       <div class="conv ${state.current?.id === c.id ? 'active' : ''}">
         <a href="#c/${c.id}" title="${esc(c.title)}">${esc(c.title)}</a>
         <button type="button" data-delete-conv="${c.id}" aria-label="Apagar conversa ${esc(c.title)}">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M10 11v6M14 11v6M6 7l1 12h10l1-12M9 7V4h6v3"/></svg>
+          ${icon('trash-2')}
         </button>
-      </div>`).join('')}`).join('') || '<p class="conv-group">Nenhuma conversa ainda</p>';
+    </div>`).join('')}`).join('') || '<p class="history-empty">Nenhuma conversa ainda.</p>';
   const docs = state.sources.reduce((n, s) => n + s.documents.length, 0);
   $('#sources-summary').textContent = state.sources.length
-    ? `${state.sources.length} ${state.sources.length === 1 ? 'fonte' : 'fontes'} · ${docs} documentos`
-    : 'nenhuma fonte conectada';
-  if (state.config) $('#mode').textContent = `${state.config.mode.llm} · ${state.config.mode.embedder}`;
+    ? `${state.sources.length} ${state.sources.length === 1 ? 'fonte' : 'fontes'} · ${docs} ${docs === 1 ? 'documento' : 'documentos'}`
+    : 'Seu conhecimento começa aqui';
+  $('#source-count').textContent = state.sources.length;
+  $('#home-link').classList.toggle('active', !state.current);
+  if (state.current) $('#home-link').removeAttribute('aria-current');
+  else $('#home-link').setAttribute('aria-current', 'page');
+  if (state.config) {
+    const simulated = /simula/i.test(state.config.mode.llm);
+    $('#mode').textContent = simulated ? 'Modo de demonstração' : 'Processamento local';
+    $('#mode').title = `${state.config.mode.llm} · ${state.config.mode.embedder}`;
+  }
 }
 
 // ------------------------------------------------------------------------------ Conversa
@@ -159,58 +173,50 @@ function renderScope() {
     <hr>
     ${state.sources.map((s) => `
       <label><input type="checkbox" data-scope="${s.id}" ${!ids || ids.includes(s.id) ? 'checked' : ''}>
-        <i class="dot k-${s.kind}"></i>${esc(s.name)}<small>${s.documents.length} doc.</small></label>`).join('')}`
+        <span class="source-icon">${SOURCE_ICON[s.kind]}</span>${esc(s.name)}<small>${s.documents.length} doc.</small></label>`).join('')}`
     : '<p>Nenhuma fonte conectada ainda.</p>';
 }
 
 async function setScope(ids) {
   const all = !ids || ids.length === state.sources.length;
   const value = all ? null : ids;
-  if (state.current) state.current = (await api(`/api/conversas/${state.current.id}`, { method: 'PATCH', body: JSON.stringify({ sourceIds: value }) })).conversation;
+  if (state.current) {
+    const conv = state.current;
+    const { conversation } = await api(`/api/conversas/${conv.id}`, { method: 'PATCH', body: JSON.stringify({ sourceIds: value }) });
+    conv.sourceIds = conversation.sourceIds;
+  }
   else state.pendingScope = value;
   renderScope();
-}
-
-function suggestions() {
-  if (state.sources.some((s) => s.config.exemplo === 'orbital')) {
-    return [
-      ['Como faço o rollback do auth-service?', 'Wiki de exemplo'],
-      ['Qual é o endpoint de saúde do payments-adapter?', 'Wiki de exemplo'],
-      ['Qual equipe mantém o billing-api e qual é o canal de plantão?', 'Wiki de exemplo'],
-      ['Quantas vezes dá para reprocessar uma fatura com falha?', 'Wiki de exemplo'],
-    ];
-  }
-  const docs = state.sources.flatMap((s) => s.documents.map((d) => [d.title, s.name]));
-  return docs.slice(0, 4).map(([title, source]) => [`Resuma o documento "${title}"`, source]);
+  if (!state.current?.messages.length) renderThread();
 }
 
 function renderEmpty() {
-  const hasDocs = state.sources.some((s) => s.documents.length);
+  const hasDocuments = state.sources.some((source) => source.documents.length);
   return `
     <div class="empty">
-      <h2>O que você precisa saber?</h2>
-      <p>Respostas a partir da documentação da empresa, com a fonte de cada informação. Conecte o Google Drive ou o Confluence, ou envie arquivos.</p>
-      ${hasDocs ? `<div class="suggestions">${suggestions().map(([q, src]) => `
-        <button class="suggestion" type="button" data-suggest="${esc(q)}">${esc(q)}<small>${esc(src)}</small></button>`).join('')}</div>` : ''}
-      ${hasDocs ? '' : `
-        <div class="connect-card">
-          <h3>Conecte as fontes da empresa</h3>
-          <p>O assistente só responde com o que estiver nas fontes. Cada fonte vira uma ferramenta de busca que ele consulta a cada pergunta.</p>
-          <div class="add-row">
-            <button class="add-card" type="button" data-open-add="upload"><i class="kind kind-upload"></i><b>Enviar arquivos</b><span>PDF, Word, Markdown, texto</span></button>
-            <button class="add-card" type="button" data-open-add="google-drive"><i class="kind kind-google-drive"></i><b>Google Drive</b><span>Google Docs, PDF e Word</span></button>
-            <button class="add-card" type="button" data-open-add="confluence"><i class="kind kind-confluence"></i><b>Confluence</b><span>Páginas de um espaço</span></button>
-          </div>
-        </div>`}
+      <div class="hero">
+        <span class="home-mark" aria-hidden="true">${LOGO}</span>
+        <h2>O que você quer saber?</h2>
+      </div>
+      <div class="home-composer"></div>
+      ${hasDocuments ? '' : `<button class="home-setup" type="button" data-manage-sources>${icon('plus')} Adicionar documentos para começar</button>`}
     </div>`;
 }
 
+/**
+ * Rastro da resposta. O modelo decide se busca: enquanto decide, "Pensando…"; ao buscar, a
+ * consulta que ele escreveu e as fontes consultadas; em conversa sem busca, nada.
+ */
 function trailHtml(turn) {
+  const query = turn.searchQuery ? `<span class="trail-step">Buscou “${esc(turn.searchQuery)}”</span>` : '';
   if (!turn.citations) {
+    if (!turn.pending) return '';
+    if (!turn.searchQuery) return turn.content ? '' : '<div class="trail"><span class="trail-step searching">Pensando…</span></div>';
     const ids = scopeIds();
     const sources = ids ? state.sources.filter((s) => ids.includes(s.id)) : state.sources;
-    return `<div class="trail">${sources.map((s) => `<span class="trail-step searching"><i class="dot k-${s.kind}"></i>${esc(s.name)}</span>`).join('') || '<span class="trail-step searching">consultando as fontes</span>'}</div>`;
+    return `<div class="trail"><span class="trail-step searching">Buscando “${esc(turn.searchQuery)}”</span>${sources.map((s) => `<span class="trail-step searching"><span class="source-icon">${SOURCE_ICON[s.kind]}</span>${esc(s.name)}</span>`).join('')}</div>`;
   }
+  if (!turn.citations.length) return turn.searchQuery ? `<div class="trail">${query}<span class="trail-step">nenhum trecho encontrado</span></div>` : '';
   const bySource = new Map();
   for (const c of turn.citations) {
     const cur = bySource.get(c.sourceId) ?? { name: c.sourceName, kind: c.sourceKind, n: 0, cited: false };
@@ -218,26 +224,24 @@ function trailHtml(turn) {
     cur.cited ||= c.cited;
     bySource.set(c.sourceId, cur);
   }
-  if (!bySource.size) return '<div class="trail"><span class="trail-step">nenhum trecho encontrado nas fontes</span></div>';
   const done = !turn.pending;
-  return `<div class="trail">${[...bySource.values()].map((s) => `
+  return `<div class="trail">${query}${[...bySource.values()].map((s) => `
     <span class="trail-step" title="${s.n} trecho(s) desta fonte entre os ${turn.citations.length} entregues ao modelo">
-      <i class="dot k-${s.kind} ${done && !s.cited ? 'hollow' : ''}"></i>${esc(s.name)} · ${s.n} ${s.n === 1 ? 'trecho' : 'trechos'}</span>`).join('')}</div>`;
+      <span class="source-icon ${done && !s.cited ? 'hollow' : ''}">${SOURCE_ICON[s.kind]}</span>${esc(s.name)} · ${s.n} ${s.n === 1 ? 'trecho' : 'trechos'}</span>`).join('')}</div>`;
 }
 
 function refsHtml(turn) {
   if (!turn.citations?.length) return '';
   const done = !turn.pending;
   return `<div class="refs">${turn.citations.map((c) => `
-    <button type="button" class="ref ${done ? (c.cited ? 'cited' : 'uncited') : ''}" data-n="${c.n}">
+    <button type="button" class="ref ${done ? (c.cited ? 'cited' : 'uncited') : ''}" data-n="${c.n}" title="${esc(c.docTitle)} · ${esc(c.heading)}">
       <span class="ref-n">${c.n}</span>
       <span class="ref-title">${esc(c.docTitle)}</span>
-      <span class="ref-meta"><i class="dot k-${c.sourceKind}"></i>${esc(c.sourceName)} · ${esc(c.heading)}</span>
+      <span class="ref-meta"><span class="source-icon">${SOURCE_ICON[c.sourceKind]}</span>${esc(c.sourceName)} · ${esc(c.heading)}</span>
     </button>`).join('')}</div>`;
 }
 
 function assistantHtml(turn, index) {
-  const timing = turn.timing ? `busca ${Math.round(turn.timing.searchMs)} ms · resposta ${(turn.timing.totalMs / 1000).toFixed(1)} s` : '';
   return `
     <div class="msg msg-assistant" data-index="${index}">
       <div class="avatar">${LOGO}</div>
@@ -246,7 +250,7 @@ function assistantHtml(turn, index) {
         ${turn.content || !turn.pending ? `<div class="answer ${turn.pending ? 'streaming' : ''}">${markdown(turn.content)}</div>` : ''}
         ${turn.error ? `<p class="error-note">${esc(turn.error)}</p>` : ''}
         ${refsHtml(turn)}
-        ${turn.pending ? '' : `<div class="msg-foot"><button type="button" data-copy="${index}">copiar</button>${timing ? `<span>${timing}</span>` : ''}</div>`}
+        ${turn.pending ? '' : `<div class="msg-foot"><button type="button" data-copy="${index}">${icon('copy')} Copiar</button></div>`}
       </div>
     </div>`;
 }
@@ -254,9 +258,13 @@ function assistantHtml(turn, index) {
 function renderThread() {
   const thread = $('#thread');
   const conv = state.current;
-  $('#title').textContent = conv?.title ?? 'Nova conversa';
+  // Keep the same form and its listeners when moving between overview and conversation.
+  $('.main').insertBefore($('#composer'), $('#drop-hint'));
+  $('#title').textContent = conv?.title ?? 'Nexo';
   if (!conv || conv.messages.length === 0) {
     thread.innerHTML = renderEmpty();
+    $('.home-composer', thread).append($('#composer'));
+    thread.scrollTo({ top: 0, behavior: 'instant' });
     return;
   }
   thread.innerHTML = conv.messages.map((m, i) => (m.role === 'user'
@@ -266,11 +274,11 @@ function renderThread() {
 }
 
 let frame = 0;
-function updateLive() {
-  if (frame) return;
+function updateLive(conv) {
+  if (frame || state.current !== conv) return;
   frame = requestAnimationFrame(() => {
     frame = 0;
-    const conv = state.current;
+    if (state.current !== conv) return;
     const index = conv.messages.length - 1;
     const el = $(`.msg-assistant[data-index="${index}"]`);
     const thread = $('#thread');
@@ -285,68 +293,83 @@ function updateComposer() {
   const busy = !!state.streaming;
   send.classList.toggle('stop', busy);
   send.setAttribute('aria-label', busy ? 'Parar resposta' : 'Enviar');
-  send.innerHTML = busy
-    ? '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>'
-    : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>';
+  send.innerHTML = icon(busy ? 'square' : 'arrow-up');
   send.disabled = !busy && !$('#input').value.trim();
 }
 
 async function send(text) {
   if (state.streaming || !text.trim()) return;
-  if (!state.current) {
-    state.current = (await api('/api/conversas', { method: 'POST', body: JSON.stringify({ sourceIds: state.pendingScope }) })).conversation;
-    state.pendingScope = null;
-    history.replaceState(null, '', `#c/${state.current.id}`);
-  }
-  const conv = state.current;
-  conv.messages.push({ role: 'user', content: text.trim() });
-  const live = { role: 'assistant', content: '', citations: null, pending: true };
-  conv.messages.push(live);
-  $('#input').value = '';
-  autosize();
-  renderThread();
-  const abort = new AbortController();
-  state.streaming = { abort };
+  const operation = { abort: new AbortController(), conversation: null };
+  state.streaming = operation;
   updateComposer();
+  let conv;
+  let live;
   try {
+    if (!state.current) {
+      state.current = (await api('/api/conversas', { method: 'POST', body: JSON.stringify({ sourceIds: state.pendingScope }), signal: operation.abort.signal })).conversation;
+      state.pendingScope = null;
+      history.replaceState(null, '', `#c/${state.current.id}`);
+    }
+    conv = state.current;
+    operation.conversation = conv;
+    conv.messages.push({ role: 'user', content: text.trim() });
+    live = { role: 'assistant', content: '', citations: null, pending: true };
+    conv.messages.push(live);
+    $('#input').value = '';
+    autosize();
+    renderThread();
+    renderSidebar();
+    $('#response-status').textContent = 'Gerando a resposta.';
     const res = await fetch(`/api/conversas/${conv.id}/mensagens`, {
-      method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ texto: text.trim() }), signal: abort.signal,
+      method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ texto: text.trim() }), signal: operation.abort.signal,
     });
     if (!res.ok) throw new Error((await res.json()).error ?? `erro ${res.status}`);
     for await (const { event, data } of readEvents(res)) {
-      if (event === 'fontes') live.citations = data.citations;
+      if (event === 'busca') {
+        // O que o modelo escreveu antes de pedir a busca é substituído pela resposta citada.
+        live.searchQuery = data.query;
+        live.content = '';
+        $('#response-status').textContent = `Buscando nas fontes: ${data.query}`;
+      } else if (event === 'fontes') live.citations = data.citations;
       else if (event === 'token') live.content += data.t;
       else if (event === 'fim') {
         Object.assign(live, data.turn, { timing: data.timing });
         conv.title = data.conversation.title;
-        $('#title').textContent = conv.title;
+        if (state.current === conv) $('#title').textContent = conv.title;
       } else if (event === 'erro') live.error = data.message;
-      updateLive();
+      updateLive(conv);
     }
   } catch (err) {
-    if (err.name === 'AbortError') live.content += live.content ? ' …(interrompida)' : '';
-    else live.error = `Não foi possível responder: ${err.message}`;
+    if (err.name === 'AbortError') {
+      if (live) live.content += live.content ? ' …(interrompida)' : 'Consulta interrompida.';
+    } else if (live) live.error = `Não foi possível responder: ${err.message}`;
+    else toast(`Não foi possível iniciar a consulta: ${err.message}`, 6000);
   } finally {
-    live.pending = false;
-    live.citations ??= [];
+    if (live) {
+      live.pending = false;
+      live.citations ??= [];
+      if (state.current === conv) renderThread();
+    }
     state.streaming = null;
-    renderThread();
     updateComposer();
-    loadConversations();
+    $('#response-status').textContent = live?.error ? 'Não foi possível concluir a consulta.' : 'Consulta finalizada.';
+    loadConversations().catch((err) => toast(`Não foi possível atualizar o histórico: ${err.message}`));
   }
 }
 
+let citationOpener;
 function openCitation(turnIndex, n) {
+  citationOpener = document.activeElement;
   const turn = state.current?.messages[turnIndex];
   const c = turn?.citations?.find((x) => x.n === n);
   if (!c) return;
-  $('#drawer-eyebrow').innerHTML = `<i class="dot k-${c.sourceKind}"></i>[${c.n}] ${esc(c.sourceName)} · ${KIND_LABEL[c.sourceKind]}`;
+  $('#drawer-eyebrow').innerHTML = `<span class="source-icon">${SOURCE_ICON[c.sourceKind]}</span>[${c.n}] ${esc(c.sourceName)} · ${KIND_LABEL[c.sourceKind]}`;
   $('#drawer-body').innerHTML = `
     <h3>${esc(c.docTitle)}</h3>
     <p class="heading">${esc(c.heading)}</p>
     <blockquote>${esc(c.excerpt)}</blockquote>
     ${c.url ? `<a class="open-original" href="${esc(c.url)}" target="_blank" rel="noopener">Abrir o original
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>` : ''}`;
+      ${icon('external-link')}</a>` : ''}`;
   $('#drawer').hidden = false;
   $('#close-drawer').focus();
 }
@@ -365,16 +388,16 @@ function renderSources() {
   list.innerHTML = state.sources.length ? state.sources.map((s) => `
     <article class="source" data-source="${s.id}">
       <div class="source-head">
-        <i class="dot k-${s.kind}"></i>
+        <span class="source-icon">${SOURCE_ICON[s.kind]}</span>
         <span class="source-name">${esc(s.name)}</span>
         <span class="source-kind">${KIND_LABEL[s.kind]}</span>
         <span class="status status-${s.status}">${STATUS_LABEL[s.status]}</span>
         <div class="source-actions">
-          ${s.kind === 'upload' ? `<button class="btn" type="button" data-upload-to="${s.id}">Enviar arquivos</button>` : ''}
+          ${s.kind === 'upload' ? `<button class="btn" type="button" data-upload-to="${s.id}">${icon('upload')} Enviar arquivos</button>` : ''}
           ${s.kind === 'google-drive' && !s.connected ? `<a class="btn primary" href="/api/conectores/google/iniciar?fonte=${s.id}">Conectar conta Google</a>` : ''}
-          ${s.kind !== 'upload' && s.connected ? `<button class="btn" type="button" data-sync="${s.id}" ${s.status === 'sincronizando' ? 'disabled' : ''}>Sincronizar agora</button>` : ''}
-          ${s.documents.length ? `<button class="btn" type="button" data-docs="${s.id}" aria-expanded="${state.openDocs.has(s.id)}">Documentos</button>` : ''}
-          <button class="btn danger" type="button" data-remove="${s.id}">Remover</button>
+          ${s.kind !== 'upload' && s.connected ? `<button class="btn" type="button" data-sync="${s.id}" ${s.status === 'sincronizando' ? 'disabled' : ''}>${icon('refresh-cw')} Sincronizar agora</button>` : ''}
+          ${s.documents.length ? `<button class="btn" type="button" data-docs="${s.id}" aria-expanded="${state.openDocs.has(s.id)}">${icon('files')} Documentos</button>` : ''}
+          <button class="btn danger" type="button" data-remove="${s.id}">${icon('trash-2')} Remover</button>
         </div>
       </div>
       <p class="source-stats">${sourceStats(s)}</p>
@@ -390,13 +413,16 @@ function renderSources() {
   renderAddForm();
   if (state.config) {
     $('#mcp-note').innerHTML = `Use estas mesmas fontes no Claude Desktop, no Claude Code ou em outro cliente MCP: o servidor fica em
-      <code>${esc(state.config.mcpUrl)}</code> <button class="btn" type="button" data-copy-mcp>Copiar</button>`;
+      <code>${esc(state.config.mcpUrl)}</code> <button class="btn" type="button" data-copy-mcp>${icon('copy')} Copiar</button>`;
   }
 }
 
 function renderAddForm() {
   const form = $('#add-form');
   form.hidden = !state.adding;
+  const kind = state.adding ?? '';
+  if (form.dataset.kind === kind) return;
+  form.dataset.kind = kind;
   if (state.adding === 'upload') {
     form.innerHTML = `
       <label class="full">Nome da fonte<input name="name" required maxlength="80" value="Documentos da equipe"></label>
@@ -489,12 +515,16 @@ async function loadConversations() {
 
 async function route() {
   const hash = location.hash;
-  $('#sidebar').classList.remove('open');
-  if (hash === '#fontes') return openSources();
+  setSidebar(false);
+  if (hash === '#fontes') {
+    if (!$('#thread').children.length) renderThread();
+    return openSources();
+  }
+  if (!$('#sources-overlay').hidden) closeSources();
   const id = hash.match(/^#c\/([\w-]+)$/)?.[1];
   if (id && state.current?.id !== id) {
     try {
-      state.current = (await api(`/api/conversas/${id}`)).conversation;
+      state.current = state.streaming?.conversation?.id === id ? state.streaming.conversation : (await api(`/api/conversas/${id}`)).conversation;
     } catch {
       state.current = null;
       history.replaceState(null, '', '#');
@@ -504,20 +534,49 @@ async function route() {
   renderSidebar();
   renderScope();
   renderThread();
-  $('#input').focus();
 }
 
+let sourcesOpener;
 function openSources(kind) {
+  if ($('#sources-overlay').hidden) sourcesOpener = document.activeElement;
+  setSidebar(false);
   state.adding = kind ?? null;
   $('#sources-overlay').hidden = false;
+  $('.app').inert = true;
   renderSources();
   if (!kind) $('#close-sources').focus();
 }
 
 function closeSources() {
   $('#sources-overlay').hidden = true;
+  $('.app').inert = false;
   state.adding = null;
+  const focusTarget = sourcesOpener?.isConnected && !sourcesOpener.closest('[inert]') ? sourcesOpener
+    : window.matchMedia('(max-width: 760px)').matches ? $('#toggle-sidebar') : $('#open-sources');
+  focusTarget.focus();
   if (location.hash === '#fontes') history.replaceState(null, '', state.current ? `#c/${state.current.id}` : '#');
+}
+
+let sidebarCollapsed = false;
+function setSidebar(open) {
+  const mobile = window.matchMedia('(max-width: 760px)').matches;
+  $('.app').classList.toggle('sidebar-collapsed', !mobile && sidebarCollapsed);
+  $('#sidebar').classList.toggle('open', mobile && open);
+  $('#sidebar').inert = mobile ? !open : sidebarCollapsed;
+  $('.main').inert = mobile && open;
+  $('#sidebar-backdrop').hidden = !(mobile && open);
+  $('#toggle-sidebar').setAttribute('aria-expanded', String(mobile ? open : !sidebarCollapsed));
+  if (mobile && open) $('#home-link').focus();
+}
+
+function closeCitation() {
+  $('#drawer').hidden = true;
+  if (citationOpener?.isConnected) citationOpener.focus();
+  else $('#input').focus();
+}
+
+function run(action) {
+  Promise.resolve().then(action).catch((err) => toast(err.message, 6000));
 }
 
 // -------------------------------------------------------------------------- Eventos
@@ -545,18 +604,27 @@ $('#new-chat').addEventListener('click', () => {
   state.current = null;
   state.pendingScope = null;
   history.pushState(null, '', '#');
-  route();
+  run(async () => { await route(); $('#input').focus(); });
 });
 $('#open-sources').addEventListener('click', () => { history.pushState(null, '', '#fontes'); openSources(); });
 $('#close-sources').addEventListener('click', closeSources);
 $('#sources-overlay').addEventListener('click', (e) => { if (e.target === e.currentTarget) closeSources(); });
-$('#close-drawer').addEventListener('click', () => { $('#drawer').hidden = true; });
-$('#toggle-sidebar').addEventListener('click', () => $('#sidebar').classList.toggle('open'));
+$('#close-drawer').addEventListener('click', closeCitation);
+$('#toggle-sidebar').addEventListener('click', () => {
+  if (window.matchMedia('(max-width: 760px)').matches) setSidebar(!$('#sidebar').classList.contains('open'));
+  else { sidebarCollapsed = false; setSidebar(false); $('#collapse-sidebar').focus(); }
+});
+$('#collapse-sidebar').addEventListener('click', () => {
+  if (!window.matchMedia('(max-width: 760px)').matches) sidebarCollapsed = true;
+  setSidebar(false);
+  $('#toggle-sidebar').focus();
+});
+$('#sidebar-backdrop').addEventListener('click', () => { setSidebar(false); $('#toggle-sidebar').focus(); });
 $('#attach').addEventListener('click', () => { state.uploadTarget = null; $('#file-input').click(); });
 $('#file-input').addEventListener('change', async (e) => {
   const files = [...e.target.files];
   e.target.value = '';
-  await uploadFiles(files, state.uploadTarget);
+  run(() => uploadFiles(files, state.uploadTarget));
 });
 
 $('#scope-button').addEventListener('click', () => {
@@ -565,34 +633,33 @@ $('#scope-button').addEventListener('click', () => {
   $('#scope-button').setAttribute('aria-expanded', String(!menu.hidden));
 });
 $('#scope-menu').addEventListener('change', (e) => {
-  if (e.target.matches('[data-scope-all]')) return setScope(e.target.checked ? null : []);
+  if (e.target.matches('[data-scope-all]')) return run(() => setScope(e.target.checked ? null : []));
   const ids = [...document.querySelectorAll('[data-scope]:checked')].map((i) => i.dataset.scope);
-  setScope(ids);
+  run(() => setScope(ids));
 });
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.scope')) { $('#scope-menu').hidden = true; $('#scope-button').setAttribute('aria-expanded', 'false'); }
 });
 
-$('#thread').addEventListener('click', async (e) => {
+$('#thread').addEventListener('click', (e) => run(async () => {
   const t = e.target.closest('button');
   if (!t) return;
   const msg = t.closest('.msg-assistant');
   if (t.matches('.cite, .ref') && msg) return openCitation(Number(msg.dataset.index), Number(t.dataset.n));
-  if (t.dataset.suggest) return send(t.dataset.suggest);
-  if (t.dataset.openAdd) { history.pushState(null, '', '#fontes'); return openSources(t.dataset.openAdd); }
+  if (t.hasAttribute('data-manage-sources')) { history.pushState(null, '', '#fontes'); return openSources(); }
   if (t.dataset.copy) {
     await navigator.clipboard.writeText(state.current.messages[Number(t.dataset.copy)].content);
     toast('Resposta copiada');
   }
-});
+}));
 
-$('#conversations').addEventListener('click', async (e) => {
+$('#conversations').addEventListener('click', (e) => run(async () => {
   const id = e.target.closest('[data-delete-conv]')?.dataset.deleteConv;
   if (!id || !confirm('Apagar esta conversa?')) return;
   await api(`/api/conversas/${id}`, { method: 'DELETE' });
-  if (state.current?.id === id) { state.current = null; history.replaceState(null, '', '#'); renderThread(); }
+  if (state.current?.id === id) { state.current = null; history.replaceState(null, '', '#'); renderThread(); renderScope(); }
   await loadConversations();
-});
+}));
 
 document.querySelector('.add-row').addEventListener('click', (e) => {
   const kind = e.target.closest('[data-add]')?.dataset.add;
@@ -645,15 +712,37 @@ document.addEventListener('drop', (e) => {
   $('#drop-hint').hidden = true;
   const zone = e.target.closest?.('[data-drop]');
   document.querySelectorAll('.drop-zone').forEach((z) => z.classList.remove('over'));
-  uploadFiles([...e.dataTransfer.files], zone?.dataset.drop ?? null);
+  run(() => uploadFiles([...e.dataTransfer.files], zone?.dataset.drop ?? null));
+});
+
+document.addEventListener('click', (e) => {
+  if (e.target.closest('[data-guide]')) { setSidebar(false); $('#guide').showModal(); }
+});
+$('#close-guide').addEventListener('click', () => $('#guide').close());
+$('#guide-done').addEventListener('click', () => { $('#guide').close(); $('#input').focus(); });
+$('#guide').addEventListener('click', (e) => {
+  if (e.target !== e.currentTarget) return;
+  const rect = e.currentTarget.getBoundingClientRect();
+  if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) e.currentTarget.close();
 });
 
 document.addEventListener('keydown', (e) => {
-  if (e.key !== 'Escape') return;
+  if (!$('#sources-overlay').hidden && e.key === 'Tab') {
+    const controls = [...$('#sources-overlay').querySelectorAll('button, input, a[href], summary, [tabindex="0"]')].filter((el) =>
+      !el.disabled && el.getClientRects().length && (!el.closest('details:not([open])') || el.matches('summary')));
+    const first = controls[0];
+    const last = controls.at(-1);
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
+  }
+  if (e.key !== 'Escape' || $('#guide').open) return;
   if (!$('#sources-overlay').hidden) closeSources();
-  else if (!$('#drawer').hidden) $('#drawer').hidden = true;
+  else if (!$('#scope-menu').hidden) { $('#scope-menu').hidden = true; $('#scope-button').setAttribute('aria-expanded', 'false'); $('#scope-button').focus(); }
+  else if (!$('#drawer').hidden) closeCitation();
+  else if ($('#sidebar').classList.contains('open')) { setSidebar(false); $('#toggle-sidebar').focus(); }
 });
-window.addEventListener('hashchange', route);
+window.addEventListener('hashchange', () => run(route));
+window.matchMedia('(max-width: 760px)').addEventListener('change', () => setSidebar(false));
 
 (async function init() {
   try {
@@ -662,7 +751,10 @@ window.addEventListener('hashchange', route);
     await Promise.all([loadSources(), loadConversations()]);
     await route();
   } catch (err) {
+    $('#connection-dot').classList.add('offline');
+    $('#mode').textContent = 'Servidor indisponível';
     $('#thread').innerHTML = `<p class="error-note">Não foi possível falar com o servidor do assistente: ${esc(err.message)}</p>`;
   }
+  $('#thread').setAttribute('aria-busy', 'false');
   updateComposer();
 })();

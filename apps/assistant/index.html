@@ -3,94 +3,103 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Assistente da empresa</title>
+  <meta name="theme-color" content="#f6f7f5">
+  <meta name="description" content="O conhecimento da sua equipe, organizado. Consulte documentos e encontre respostas com as fontes originais.">
+  <title>Nexo · Conhecimento da equipe</title>
+  <link rel="icon" type="image/svg+xml" href="nexo.svg">
+  <script src="theme.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#input">Ir para a consulta</a>
   <div class="app">
-    <aside class="sidebar" id="sidebar">
-      <div class="brand">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h9A1.5 1.5 0 0 1 16 5.5V8h2.5A1.5 1.5 0 0 1 20 9.5v9a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 8 18.5V16H5.5A1.5 1.5 0 0 1 4 14.5z"/></svg>
-        <span>Assistente</span>
+    <aside class="sidebar" id="sidebar" aria-label="Navegação principal">
+      <div class="sidebar-header">
+        <a class="brand" id="home-link" href="#" aria-label="Nexo, início">
+          <span class="brand-mark"><svg class="nexo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="/nexo.svg#mark"/></svg></span>
+          <span>nexo</span>
+        </a>
+        <button class="icon-button" id="collapse-sidebar" type="button" aria-label="Recolher navegação" title="Recolher navegação"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#panel-left"/></svg></button>
       </div>
-      <button class="new-chat" id="new-chat" type="button">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-        Nova conversa
-      </button>
-      <nav class="conversations" id="conversations" aria-label="Conversas"></nav>
-      <button class="sources-button" id="open-sources" type="button">
-        <span class="sources-button-label">Fontes de conhecimento</span>
-        <span class="sources-button-meta" id="sources-summary">—</span>
-      </button>
-      <p class="mode" id="mode"></p>
+      <nav class="primary-nav" aria-label="Seu espaço">
+        <button class="nav-item new-chat" id="new-chat" type="button"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#square-pen"/></svg>Nova conversa</button>
+        <button class="nav-item sources-button" id="open-sources" type="button" aria-label="Fontes de conhecimento"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#folder-open"/></svg><span>Fontes</span><span class="nav-count" id="source-count">0</span></button>
+      </nav>
+      <div class="history-heading"><span class="sidebar-section-label">Recentes</span></div>
+      <nav class="conversations" id="conversations" aria-label="Conversas recentes"></nav>
+      <div class="sidebar-bottom">
+        <div class="workspace">
+          <span class="workspace-avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="/icons.svg#users"/></svg><span class="connection-dot" id="connection-dot"></span></span>
+          <span><b>Espaço da equipe</b><span id="sources-summary">Carregando…</span></span>
+          <button class="icon-button sidebar-help" type="button" data-guide aria-label="Como usar o Nexo" title="Como usar o Nexo"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#circle-help"/></svg></button>
+        </div>
+        <p class="mode" id="mode"></p>
+      </div>
     </aside>
+    <button class="sidebar-backdrop" id="sidebar-backdrop" type="button" aria-label="Fechar navegação" hidden></button>
 
     <main class="main">
       <header class="topbar">
-        <button class="icon-button only-mobile" id="toggle-sidebar" type="button" aria-label="Mostrar conversas">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-        </button>
-        <h1 class="title" id="title">Nova conversa</h1>
-        <div class="scope">
-          <button class="scope-button" id="scope-button" type="button" aria-haspopup="true" aria-expanded="false">
-            <span id="scope-label">Todas as fontes</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
-          </button>
-          <div class="scope-menu" id="scope-menu" hidden></div>
-        </div>
+        <button class="icon-button sidebar-toggle" id="toggle-sidebar" type="button" aria-label="Mostrar navegação" aria-controls="sidebar" aria-expanded="false"><svg class="icon" data-icon="panel-left" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#panel-left"/></svg></button>
+        <div class="breadcrumb"><h1 class="title" id="title">Nexo</h1></div>
+        <label class="theme-control">
+          <svg class="icon" id="theme-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#monitor"/></svg>
+          <select id="theme-select" aria-label="Aparência" title="Escolher aparência">
+            <option value="system">Automático</option>
+            <option value="light">Claro</option>
+            <option value="dark">Escuro</option>
+          </select>
+        </label>
       </header>
 
-      <section class="thread" id="thread" aria-live="polite"></section>
+      <section class="thread" id="thread" aria-label="Área de consulta" aria-busy="true"></section>
 
       <form class="composer" id="composer">
         <div class="composer-box">
-          <button class="icon-button" id="attach" type="button" aria-label="Enviar arquivos para as fontes" title="Enviar arquivos (PDF, Word, Markdown, texto)">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20.5 11.5-8.2 8.2a5 5 0 0 1-7.1-7.1l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7l-8.5 8.5a1.7 1.7 0 0 1-2.4-2.4l7.8-7.8"/></svg>
-          </button>
-          <textarea id="input" rows="1" placeholder="Pergunte sobre a documentação da empresa" aria-label="Mensagem"></textarea>
-          <button class="send" id="send" type="submit" aria-label="Enviar">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
-          </button>
+          <label class="sr-only" for="input">Sua pergunta sobre os documentos</label>
+          <textarea id="input" rows="2" maxlength="4000" placeholder="Pergunte ao Nexo" aria-describedby="composer-note"></textarea>
+          <div class="composer-toolbar">
+            <button class="attach-button" id="attach" type="button" aria-label="Adicionar arquivo" title="Adicionar arquivo às fontes"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#plus"/></svg></button>
+            <div class="scope">
+              <button class="scope-button" id="scope-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="scope-menu"><svg class="icon" data-icon="sliders-horizontal" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#sliders-horizontal"/></svg><span id="scope-label">Todas as fontes</span><svg class="icon chevron" data-icon="chevron-down" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#chevron-down"/></svg></button>
+              <div class="scope-menu" id="scope-menu" hidden></div>
+            </div>
+            <button class="send" id="send" type="submit" aria-label="Enviar" disabled><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#arrow-up"/></svg></button>
+          </div>
         </div>
         <input type="file" id="file-input" multiple hidden>
-        <p class="composer-note" id="composer-note">As respostas usam só as fontes conectadas e citam de onde veio cada informação. Confira as citações.</p>
+        <p class="composer-note" id="composer-note"><svg class="icon" data-icon="shield-check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#shield-check"/></svg>Respostas com fontes para conferir.</p>
       </form>
-      <div class="drop-hint" id="drop-hint" hidden>Solte para enviar os arquivos às fontes da empresa</div>
+      <div class="drop-hint" id="drop-hint" hidden>Solte os arquivos para adicionar ao conhecimento da equipe</div>
     </main>
 
-    <aside class="drawer" id="drawer" hidden aria-label="Trecho citado">
-      <header class="drawer-head">
-        <span class="drawer-eyebrow" id="drawer-eyebrow"></span>
-        <button class="icon-button" id="close-drawer" type="button" aria-label="Fechar">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
-        </button>
-      </header>
+    <aside class="drawer" id="drawer" hidden aria-label="Trecho original do documento">
+      <header class="drawer-head"><span class="drawer-eyebrow" id="drawer-eyebrow"></span><button class="icon-button" id="close-drawer" type="button" aria-label="Fechar trecho"><svg class="icon" data-icon="x" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#x"/></svg></button></header>
       <div class="drawer-body" id="drawer-body"></div>
     </aside>
   </div>
 
   <div class="overlay" id="sources-overlay" hidden>
-    <section class="sources-panel" role="dialog" aria-modal="true" aria-labelledby="sources-title">
-      <header class="panel-head">
-        <div>
-          <h2 id="sources-title">Fontes de conhecimento</h2>
-          <p>O assistente responde só com o que está aqui. Cada fonte vira uma ferramenta de busca que ele consulta a cada pergunta.</p>
-        </div>
-        <button class="icon-button" id="close-sources" type="button" aria-label="Fechar">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
-        </button>
-      </header>
+    <section class="sources-panel" role="dialog" aria-modal="true" aria-labelledby="sources-title" tabindex="-1">
+      <header class="panel-head"><div><span class="eyebrow">BIBLIOTECA DA EQUIPE</span><h2 id="sources-title">Tudo começa com uma boa fonte.</h2><p>Reúna os documentos que a equipe consulta no dia a dia. Você escolhe onde buscar a cada conversa.</p></div><button class="icon-button" id="close-sources" type="button" aria-label="Fechar fontes"><svg class="icon" data-icon="x" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#x"/></svg></button></header>
       <div class="add-row" role="group" aria-label="Adicionar fonte">
-        <button class="add-card" type="button" data-add="upload"><i class="kind kind-upload"></i><b>Enviar arquivos</b><span>PDF, Word, Markdown, texto</span></button>
-        <button class="add-card" type="button" data-add="google-drive"><i class="kind kind-google-drive"></i><b>Google Drive</b><span>Google Docs, PDF e Word de uma conta ou pasta</span></button>
-        <button class="add-card" type="button" data-add="confluence"><i class="kind kind-confluence"></i><b>Confluence</b><span>Páginas de um espaço da Atlassian</span></button>
+        <button class="add-card" type="button" data-add="upload"><span class="kind kind-upload" aria-hidden="true"><svg class="icon" data-icon="upload" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#upload"/></svg></span><b>Enviar arquivos</b><span>PDF, Word, texto e mais</span><span class="add-card-action">Criar uma fonte <svg class="icon" data-icon="arrow-up-right" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#arrow-up-right"/></svg></span></button>
+        <button class="add-card" type="button" data-add="google-drive" title="Conectar ao Google Drive"><span class="kind kind-google-drive" aria-hidden="true"><img class="brand-icon" src="google-drive.png" width="28" height="28" alt="" aria-hidden="true"></span><b>Google Drive</b><span>Documentos de uma conta ou pasta</span><span class="add-card-action">Conectar Google Drive <svg class="icon" data-icon="arrow-up-right" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#arrow-up-right"/></svg></span></button>
+        <button class="add-card" type="button" data-add="confluence"><span class="kind kind-confluence" aria-hidden="true"><img class="brand-icon" src="confluence.svg" width="28" height="28" alt="" aria-hidden="true"></span><b>Confluence</b><span>Páginas e wikis de um espaço</span><span class="add-card-action">Conectar espaço <svg class="icon" data-icon="arrow-up-right" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#arrow-up-right"/></svg></span></button>
       </div>
       <form class="add-form" id="add-form" hidden></form>
+      <h3 class="list-heading">Suas fontes</h3>
       <div class="source-list" id="source-list"></div>
-      <footer class="mcp-note" id="mcp-note"></footer>
+      <details class="advanced-settings"><summary>Integração com outros aplicativos</summary><div class="mcp-note" id="mcp-note"></div></details>
     </section>
   </div>
 
+  <dialog class="guide-panel" id="guide" aria-labelledby="guide-title">
+    <header class="panel-head"><div><span class="eyebrow">UM GUIA RÁPIDO</span><h2 id="guide-title">Do documento à resposta.</h2><p>Três passos para encontrar o que você precisa.</p></div><button class="icon-button" id="close-guide" type="button" aria-label="Fechar guia"><svg class="icon" data-icon="x" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#x"/></svg></button></header>
+    <ol class="guide-steps"><li><span>01</span><div><h3>Reúna o conhecimento</h3><p>Envie arquivos ou conecte o Google Drive e o Confluence em Fontes de conhecimento.</p></div></li><li><span>02</span><div><h3>Pergunte com suas palavras</h3><p>Descreva o que precisa saber. Use o seletor junto à mensagem para consultar todas as fontes ou apenas algumas.</p></div></li><li><span>03</span><div><h3>Confira na origem</h3><p>Clique nos números da resposta para ler o trecho usado. Quando disponível, abra também o documento original.</p></div></li></ol>
+    <footer><button class="btn primary" id="guide-done" type="button">Entendi, vamos começar <svg class="icon" data-icon="arrow-right" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#arrow-right"/></svg></button></footer>
+  </dialog>
+  <div class="sr-only" id="response-status" role="status" aria-live="polite"></div>
   <script src="app.js"></script>
 </body>
 </html>

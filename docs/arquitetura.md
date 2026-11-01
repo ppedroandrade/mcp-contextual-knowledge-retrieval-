@@ -52,6 +52,8 @@ flowchart LR
 | 10 | Congelamento | arquitetura congelada no commit `1a1337a`; `heldout` criado depois | [010](decisoes/010-congelamento.md) |
 | 11 | Protocolo da execução final | rodadas, juiz, avaliadores e plano de análise fixados antes do `heldout` | [011](decisoes/011-protocolo-da-execucao-final.md) |
 | 12 | Assistente da empresa | protótipo de produto sobre a configuração D, fora do experimento | [012](decisoes/012-assistente-da-empresa.md) |
+| 13 | Interface Nexo | visão geral, biblioteca e consulta; HTML/CSS/JS com verificação de UI em Playwright | [013](decisoes/013-interface-nexo.md) |
+| 14 | Conversa do assistente | o LLM decide buscar (tool calling); busca garantida fora de cumprimentos e pedidos sobre a resposta anterior | [014](decisoes/014-conversa-do-assistente.md) |
 
 Metodologia e métricas: [metodologia.md](metodologia.md). Corpus: [corpus.md](corpus.md).
 O LLM foi fixado em 31/10/2026, depois de um piloto com três modelos (ADR 003).

@@ -1,8 +1,9 @@
 # Assistente da empresa
 
-Protótipo de produto construído sobre a arquitetura do TCC (configuração D, MCP + RAG), com uma
-interface de chat como a dos assistentes conhecidos. **Fica fora do experimento**: nada daqui
-entra nas métricas (ADR 012).
+Protótipo de produto construído sobre a arquitetura do TCC (configuração D, MCP + RAG).
+A interface **Nexo** reúne consulta, fontes de conhecimento e histórico numa visão geral,
+com um guia em três passos e visual inspirado em aplicativos nativos (ADR 013).
+**Fica fora do experimento**: nada daqui entra nas métricas (ADR 012).
 
 ## Como rodar
 
@@ -19,26 +20,34 @@ do zero, apague essa pasta e a tabela `assistente_trechos_ollama_bge_m3` no Post
 ## Como o contexto funciona
 
 ```
-  pergunta ──► host ──tools/list──► servidor MCP da empresa
-                │                    ├─ buscar_<Arquivos enviados>   ──► trechos mais parecidos
-                │   (só as fontes    ├─ buscar_<Google Drive>        ──► trechos mais parecidos
-                │    da conversa)    └─ buscar_<Confluence>          ──► trechos mais parecidos
-                ▼
-        fusão RRF → 5 trechos numerados → qwen3 → resposta com [1], [2]… em streaming
+  mensagem ──► conversa? ("olá", "resuma isso") ──sim──► qwen3 responde pelo histórico
+                  │ não
+                  ▼
+        qwen3 escreve a consulta ──► host ──tools/list──► servidor MCP da empresa
+        (buscar_nas_fontes)           │                    ├─ buscar_<Arquivos enviados>
+                                      │  (só as fontes     ├─ buscar_<Google Drive>
+                                      │   da conversa)     └─ buscar_<Confluence>
+                                      ▼
+                 fusão RRF → 5 trechos numerados → qwen3 → resposta com [1], [2]… em streaming
 ```
 
 1. **Cada fonte vira uma ferramenta de busca** (uma tool MCP). Quando a empresa conecta uma fonte
    nova, a tool aparece sozinha; o assistente não muda.
-2. **A cada pergunta,** o assistente consulta as fontes escolhidas no seletor do topo da conversa
-   ("Todas as fontes" por padrão). Cada fonte devolve os trechos mais parecidos com a pergunta
-   (busca semântica com `bge-m3`), e as listas são fundidas por RRF.
-3. **Os 5 melhores trechos vão para o modelo,** numerados. Ele só pode responder com o que está
-   neles e cita cada informação como `[n]`. Se não houver resposta, diz que não encontrou.
-4. **Na tela,** o *rastro das fontes* mostra quantos trechos vieram de cada fonte. As citações
-   ficam realçadas e abrem o trecho original ao lado, com o link para o documento no Drive ou no
-   Confluence.
-5. **Perguntas de seguimento** ("e o rollback?") são buscadas junto com a pergunta anterior, e os
-   últimos 6 turnos da conversa vão para o modelo.
+2. **É uma conversa.** Cumprimentos, agradecimentos e pedidos sobre a resposta anterior
+   ("resuma isso", "em tópicos", "traduza") são respondidos direto, com a memória dos últimos 8
+   turnos, sem buscar.
+3. **Qualquer outra mensagem passa pelas fontes.** O modelo escreve a consulta a partir da
+   conversa ("qual o canal de plantão dele?" vira uma busca sobre o auth-service). As fontes
+   escolhidas no seletor junto ao campo de mensagem ("Todas as fontes" por padrão) devolvem os
+   trechos mais parecidos (busca semântica com `bge-m3`), e as listas são fundidas por RRF. Se o
+   modelo tentar responder sem buscar, a resposta é descartada e a busca acontece mesmo assim
+   (ADR 014): é o que impede dados da empresa inventados.
+4. **Os 5 melhores trechos vão para o modelo,** numerados. Informação da empresa sai só deles,
+   com a citação `[n]`; se não houver resposta, ele diz que não encontrou. Pedidos gerais
+   ("escreva uma mensagem pro time") são atendidos normalmente.
+5. **Na tela,** a resposta mostra a consulta que o modelo usou e quantos trechos vieram de cada
+   fonte. As citações abrem o trecho original ao lado, com o link para o documento no Drive ou
+   no Confluence.
 
 ## Como a empresa coloca o conhecimento
 

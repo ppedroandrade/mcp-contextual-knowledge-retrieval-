@@ -5,19 +5,23 @@ import { readFileSync } from 'node:fs';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { extname, join } from 'node:path';
 import type { Embedder } from '../indexing/embeddings.js';
-import { buildChatMessages, citedNumbers, CONTEXT_PASSAGES, retrievalQuery, toCitations, type ChatStreamer } from './chat.js';
+import {
+  citedNumbers, CONTEXT_PASSAGES, conversationMessages, isConversational, retrievalQuery, SEARCH_TOOL, searchToolSpec, toCitations, toolResultText, withoutCitationMarks,
+  type ChatModel, type ModelEvent, type ToolCall,
+} from './chat.js';
 import { googleAuthUrl, googleExchangeCode, type Connector, type GoogleOAuthConfig } from './connectors.js';
 import { SUPPORTED_EXTENSIONS } from './documents.js';
 import { indexDocument, removeDocument, syncSource } from './knowledge.js';
 import type { KnowledgeHost } from './mcp.js';
 import type { ChunkStore } from './store.js';
-import type { KnowledgeSource, SourceKind, Workspace } from './workspace.js';
+import type { Citation, KnowledgeSource, SourceKind, Workspace } from './workspace.js';
 
 export interface AssistantDeps {
   ws: Workspace;
   store: ChunkStore;
   embedder: Embedder;
-  streamer: ChatStreamer;
+  /** LLM da conversa; decide quando buscar nas fontes (tool calling). */
+  model: ChatModel;
   /** Host MCP ligado ao servidor de conhecimento do próprio processo. */
   host: KnowledgeHost;
   /** Servidor MCP novo para cada pedido do endpoint `/mcp` (sem estado). */
@@ -40,7 +44,7 @@ export class HttpError extends Error {
 const MAX_JSON = 64 * 1024;
 const MAX_UPLOAD = 25 * 1024 * 1024;
 const MAX_MESSAGE = 4000;
-const STATIC_TYPES: Record<string, string> = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml' };
+const STATIC_TYPES: Record<string, string> = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png' };
 
 async function readBody(req: IncomingMessage, limit: number): Promise<Buffer> {
   const chunks: Buffer[] = [];
@@ -140,7 +144,11 @@ export function createAssistantHandler(deps: AssistantDeps) {
     }
   }
 
-  /** Responde em Server-Sent Events: `fontes`, `token`…, `fim` (ou `erro`). */
+  /**
+   * Responde em Server-Sent Events. O LLM conversa direto (`token`…) ou pede a busca: aí vêm
+   * `busca` (a consulta que ele escreveu), `fontes` (os trechos) e a resposta citada. Termina
+   * com `fim` (ou `erro`).
+   */
   async function chat(conversationId: string, req: IncomingMessage, res: ServerResponse) {
     const body = await readJson(req);
     const question = text(body.texto, 'a mensagem', MAX_MESSAGE);
@@ -152,25 +160,64 @@ export function createAssistantHandler(deps: AssistantDeps) {
     const abort = new AbortController();
     res.on('close', () => { if (!res.writableFinished) abort.abort(); });
     const t0 = performance.now();
+    const sources = ws.listSources().filter((s) => !conversation.sourceIds || conversation.sourceIds.includes(s.id));
+    const messages = conversationMessages(history, question, sources);
     let answer = '';
-    try {
-      const passages = await deps.host.retrieve(retrievalQuery(history, question), conversation.sourceIds, CONTEXT_PASSAGES);
-      const citations = toCitations(passages, ws.listSources());
-      const searchMs = performance.now() - t0;
-      event('fontes', { citations, searchMs });
-      if (citations.length === 0) {
-        answer = ws.listSources().length === 0
-          ? 'Ainda não há nenhuma fonte conectada. Envie arquivos (📎) ou conecte o Google Drive ou o Confluence em **Fontes**.'
-          : 'Não encontrei nada sobre isso nas fontes selecionadas.';
-        event('token', { t: answer });
-      } else {
-        for await (const token of deps.streamer.stream(buildChatMessages(history, question, citations), abort.signal)) {
-          answer += token;
-          event('token', { t: token });
+    let citations: Citation[] = [];
+    let searchQuery: string | undefined;
+    let searchMs: number | null = null;
+    const stream = async (events: AsyncIterable<ModelEvent>) => {
+      for await (const ev of events) {
+        if (ev.type === 'text') {
+          answer += ev.text;
+          event('token', { t: ev.text });
         }
       }
+    };
+    /**
+     * Primeira passada, com a ferramenta: se o modelo pedir a busca, vale a consulta dele; se
+     * começar a responder direto, essa resposta é descartada (nada chega à tela) e a busca é
+     * feita com a consulta de reserva.
+     */
+    const plan = async (): Promise<ToolCall> => {
+      const pass = new AbortController();
+      const stop = () => pass.abort();
+      abort.signal.addEventListener('abort', stop);
+      try {
+        for await (const ev of deps.model.chat(messages, { tools: [searchToolSpec(sources)], signal: pass.signal })) {
+          if (ev.type === 'tool' && ev.call.function.name === SEARCH_TOOL) return ev.call;
+          if (ev.type === 'text' && ev.text.trim()) break;
+        }
+      } finally {
+        pass.abort();
+        abort.signal.removeEventListener('abort', stop);
+      }
+      return { function: { name: SEARCH_TOOL, arguments: { consulta: retrievalQuery(history, question) } } };
+    };
+    try {
+      if (!sources.length || isConversational(question, history)) {
+        await stream(deps.model.chat(messages, { signal: abort.signal }));
+      } else {
+        const call = await plan();
+        const asked = call.function.arguments.consulta;
+        searchQuery = typeof asked === 'string' && asked.trim() ? asked.trim().slice(0, 300) : retrievalQuery(history, question);
+        event('busca', { query: searchQuery });
+        const ts = performance.now();
+        citations = toCitations(await deps.host.retrieve(searchQuery, conversation.sourceIds, CONTEXT_PASSAGES), ws.listSources());
+        searchMs = performance.now() - ts;
+        event('fontes', { citations, searchMs, query: searchQuery });
+        const toolCall: ToolCall = { function: { name: SEARCH_TOOL, arguments: { consulta: searchQuery } } };
+        await stream(deps.model.chat([...messages, { role: 'assistant', content: '', tool_calls: [toolCall] }, { role: 'tool', content: toolResultText(citations) }], { signal: abort.signal }));
+      }
+      if (!answer.trim()) {
+        answer = 'Não consegui gerar uma resposta agora. Tente reformular a mensagem.';
+        event('token', { t: answer });
+      }
+      if (!searchQuery) answer = withoutCitationMarks(answer);
       const cited = citedNumbers(answer);
-      const turn = ws.appendTurn(conversationId, { role: 'assistant', content: answer.trim(), citations: citations.map((c) => ({ ...c, cited: cited.has(c.n) })) });
+      const turn = ws.appendTurn(conversationId, {
+        role: 'assistant', content: answer.trim(), citations: citations.map((c) => ({ ...c, cited: cited.has(c.n) })), ...(searchQuery ? { searchQuery } : {}),
+      });
       event('fim', { turn, conversation: { id: conversationId, title: ws.getConversation(conversationId).title }, timing: { searchMs, totalMs: performance.now() - t0 } });
     } catch (err) {
       if (abort.signal.aborted) {
@@ -284,7 +331,8 @@ export function createAssistantHandler(deps: AssistantDeps) {
       if (/^[\w.-]+$/.test(file) && !file.startsWith('.') && STATIC_TYPES[extname(file)]) {
         try {
           const content = readFileSync(join(deps.staticDir, file));
-          res.writeHead(200, { 'content-type': `${STATIC_TYPES[extname(file)]}; charset=utf-8` });
+          const type = STATIC_TYPES[extname(file)]!;
+          res.writeHead(200, { 'content-type': type === 'image/png' ? type : `${type}; charset=utf-8` });
           return res.end(content);
         } catch {
           /* cai no 404 */

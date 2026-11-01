@@ -8,7 +8,7 @@ import { makeEmbedder, type EmbedderKind } from '../bench/setup.js';
 import { loadConfig } from '../core/config.js';
 import { DATA_DIR } from '../corpus/generate.js';
 import { createAssistantHandler } from './app.js';
-import { OllamaChatStreamer, SimulatedChatStreamer } from './chat.js';
+import { OllamaChatModel, SimulatedChatModel } from './chat.js';
 import { confluenceConnector, googleDriveConnector, type GoogleOAuthConfig } from './connectors.js';
 import { indexDocument, searchSource } from './knowledge.js';
 import { createKnowledgeMcpServer, KnowledgeHost } from './mcp.js';
@@ -54,7 +54,7 @@ const host = await KnowledgeHost.connect(clientT);
 const google: GoogleOAuthConfig | null = process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET
   ? { clientId: process.env.GOOGLE_CLIENT_ID, clientSecret: process.env.GOOGLE_CLIENT_SECRET, redirectUri: `${publicUrl}/api/conectores/google/retorno` }
   : null;
-const streamer = values.llm === 'simulated' ? new SimulatedChatStreamer() : new OllamaChatStreamer(cfg.ollamaUrl, values.model ?? cfg.llmModel);
+const model = values.llm === 'simulated' ? new SimulatedChatModel() : new OllamaChatModel(cfg.ollamaUrl, values.model ?? cfg.llmModel);
 
 if (values.exemplo && !ws.listSources().some((s) => s.config.exemplo)) {
   const source = ws.createSource({ kind: 'upload', name: 'Wiki de exemplo (Orbital Software)', config: { exemplo: 'orbital' } });
@@ -65,17 +65,17 @@ if (values.exemplo && !ws.listSources().some((s) => s.config.exemplo)) {
 }
 
 const handler = createAssistantHandler({
-  ws, store, embedder, streamer, host, publicUrl,
+  ws, store, embedder, model, host, publicUrl,
   mcpServer: () => createKnowledgeMcpServer(ws, search),
   connectorFor: (s) => (s.kind === 'confluence' ? confluenceConnector() : s.kind === 'google-drive' && google ? googleDriveConnector(google) : null),
   google,
   staticDir: join(root, 'apps', 'assistant'),
-  mode: { embedder: embedder.name, store: values.store!, llm: streamer.name, dados: dataDir },
+  mode: { embedder: embedder.name, store: values.store!, llm: model.name, dados: dataDir },
 });
 
 const server = createServer((req, res) => void handler(req, res));
 server.listen(Number(values.port), values.host, () => {
-  console.error(`assistente em ${publicUrl} (${embedder.name}, ${values.store}, ${streamer.name}); servidor MCP em ${publicUrl}/mcp`);
+  console.error(`assistente em ${publicUrl} (${embedder.name}, ${values.store}, ${model.name}); servidor MCP em ${publicUrl}/mcp`);
   if (!google) console.error('conector do Google desligado: defina GOOGLE_CLIENT_ID e GOOGLE_CLIENT_SECRET no .env (docs/assistente.md)');
 });
 

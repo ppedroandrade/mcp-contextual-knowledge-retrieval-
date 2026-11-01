@@ -46,6 +46,8 @@ export interface ChatTurn {
   role: 'user' | 'assistant';
   content: string;
   citations?: Citation[];
+  /** Consulta que o LLM escreveu ao buscar nas fontes; ausente quando respondeu sem buscar. */
+  searchQuery?: string;
   createdAt: string;
 }
 
