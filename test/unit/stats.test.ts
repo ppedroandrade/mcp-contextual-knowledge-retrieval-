@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { answerMeasures, generationMeasures } from '../../src/bench/stats.js';
+import { answerMeasures, generationMeasures, humanMeasures } from '../../src/bench/stats.js';
 import { comparePaired, perQuestion } from '../../src/evaluation/compare.js';
 import { bootstrapCi, holm, mannWhitneyU, medianOf, quantile, ranks, wilcoxonSignedRank } from '../../src/evaluation/stats.js';
 
@@ -145,6 +145,22 @@ describe('medidas a partir das execuções', () => {
     expect(rule!.values.get('C')!.get('q1')).toBe(1);
     expect(rule!.values.get('D')!.get('q1')).toBe(1);
     expect(correcao!.values.get('D')!.get('q1')).toBe(5);
+  });
+
+  it('notas humanas: média dos avaliadores no item, que vale para C e D', () => {
+    const key = {
+      R001: { key: 'k1', questionId: 'q1', approaches: ['B-rag'] },
+      R002: { key: 'k2', questionId: 'q1', approaches: ['C-por-fonte', 'D-mcp'] },
+      R003: { key: 'k3', questionId: 'q2', approaches: ['B-rag'] },
+    };
+    const ana = new Map([['R001', { correcao: 4 }], ['R002', { correcao: 5, completude: 3 }]]);
+    const bruno = new Map([['R001', { correcao: 2 }], ['R002', { correcao: 4 }]]);
+    const [correcao, completude] = humanMeasures(key, [ana, bruno]);
+    expect(correcao!.values.get('B')!.get('q1')).toBe(3);
+    expect(correcao!.values.get('C')!.get('q1')).toBe(4.5);
+    expect(correcao!.values.get('D')!.get('q1')).toBe(4.5);
+    expect(correcao!.values.get('B')!.get('q2')).toBeNaN();
+    expect(completude!.values.get('D')!.get('q1')).toBe(3);
   });
 });
 

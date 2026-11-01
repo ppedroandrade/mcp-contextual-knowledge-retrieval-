@@ -29,6 +29,10 @@ não têm rastreabilidade com este repositório.
 | Avaliação das respostas: regra dos fatos, juiz por LLM, planilha cega e importação das notas humanas | implementado, testado | `src/evaluation/`, `npm run eval:answers`, `npm run eval:human` (ADR 007); executado no dev (abaixo); avaliação humana **ainda não feita** (faltam os avaliadores) |
 | Estatística (Wilcoxon, Holm, bootstrap, Mann-Whitney) | implementado, testado | `src/evaluation/stats.ts`, `src/evaluation/compare.ts`, `npm run stats -- --run <id>` (ADR 008); testes conferidos contra o SciPy 1.18.1 e o statsmodels; aplicada às rodadas dev (abaixo), que **não são o resultado final** |
 | H3: integração da 4ª fonte em duas variantes e segundo cliente MCP | executado (passos 1–5) | `results/runs/2026-11-01-h3-integracao-politicas`; customizada 5 arquivos +43 −9, MCP 7 arquivos +56 −11, host intocado nas duas; segundo cliente (só o SDK) usou `buscar_policies` sem alteração no servidor (embedder hash). Leitura e limitações em `docs/h3-protocolo.md`. Integração aplicada na `main` depois da medida (ADR 010). Passo 6 (bench `policies` com `bge-m3`) pendente no Mac |
+| Protocolo da execução final e plano de análise | registrado | ADR 011 (antes de qualquer execução no `heldout`): 10 rodadas de recuperação, 5 de geração, juiz com 2 repetições, ≥ 2 avaliadores, conjunto `policies` com 5 rodadas |
+| Script do experimento final e tabelas do artigo | implementado, testado | `scripts/experimento-final.sh` (roteiro em `docs/experimento-final.md`) e `scripts/tabelas-artigo.ts` (tabelas só a partir de `results/runs/`, com alerta para execuções sem valor experimental); ensaiados de ponta a ponta com `MODO=teste` (hash, memória, LLM simulado, notas humanas fictícias), sem gravar nada; **experimento final ainda não executado** |
+| Estatística das notas humanas (H2) | implementado, testado | `npm run stats -- --run <planilha>` depois do `eval:human --import`: média dos avaliadores por item, mesmos pares e testes do ADR 008 |
+| Rascunho das seções 3 e 4 do artigo | rascunho | `docs/artigo/secoes-3-4.md`: seção 3 descreve o implementado; seção 4 só estrutura, sem números |
 | Tempo da tool dentro de D | implementado, testado | `tempoMs` em cada tool; `toolMs` no bench só para D; `scripts/compare-c-d.ts` imprime D − tool (ADR 009); ainda sem execução real |
 | Node fixado nas medições | implementado | `.nvmrc` 22, `engines` `^22.12.0`, CI pelo `.nvmrc`; `bench:*` recusa outra versão (ADR 009) |
 | Benchmark reproduzível | implementado | `environment.json` grava commit lido na partida, árvore limpa (ignora `results/`), digests e versão do Ollama, uso de GPU (`sizeVram`), hash do prompt e fonte de energia |
@@ -168,7 +172,8 @@ dependem da execução final no `heldout`.
 
 ## Próximos passos
 1. Validar com o orientador as divergências da seção 3 de `docs/metodologia.md`.
-2. Executar o experimento final no `heldout` e o passo 6 da H3, no Mac.
+2. Executar o experimento final no `heldout` e o passo 6 da H3, no Mac: `scripts/experimento-final.sh`
+   (`docs/experimento-final.md`).
 3. Conseguir ao menos 2 avaliadores humanos para a H2 (a planilha sai da execução final no
    `heldout`; `results/runs/2026-10-31-planilha-cega-dev-piloto` serve para testar o
    instrumento antes).
