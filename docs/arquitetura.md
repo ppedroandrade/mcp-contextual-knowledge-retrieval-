@@ -50,17 +50,29 @@ flowchart LR
 Metodologia e métricas: [metodologia.md](metodologia.md). Corpus: [corpus.md](corpus.md).
 O LLM foi fixado em 31/10/2026, depois de um piloto com três modelos (ADR 003).
 
-## 4. Demonstração (opcional, depois do benchmark)
+## 4. Demonstração (implementada em 01/11/2026)
 
 Uma UI de demonstração, no estilo de um caderno de perguntas sobre as fontes (fontes à
-esquerda, chat no centro, trechos citados com a fonte de origem), ajuda na banca, mas
-**não faz parte do experimento** e não entra nas métricas. Para não custar retrabalho:
+esquerda, chat no centro, trecho citado à direita com a fonte de origem), ajuda na banca, mas
+**não faz parte do experimento** e não entra nas métricas.
 
-- `src/api/`: API HTTP fina (ex.: Fastify) com `GET /sources`, `POST /ask { question, approach }`
-  que só chama o mesmo `Retriever` + `generation` usados no benchmark;
-- `apps/demo/`: front simples que consome essa API, feito por último.
+- `src/api/app.ts`: API HTTP fina em `node:http` (sem dependência nova; Fastify não trazia
+  ganho para 4 rotas): `GET /api/config`, `GET /api/sources`, `GET /api/units/:id` e
+  `POST /api/ask { question, approach }`. O `ask` chama o mesmo `Retriever.search(q, 5)` e o
+  mesmo `generateAnswer` do `bench:generation`, então a demo mostra exatamente o que foi medido.
+  A só devolve os trechos.
+- `src/api/server.ts`: monta as abordagens com `src/bench/setup.ts` (D sobe o servidor MCP por
+  stdio, como no benchmark) e entrega o front.
+- `apps/demo/`: HTML, CSS e JS sem build; as citações `[id]` da resposta viram botões que abrem
+  o trecho.
 
-Assim a demo mostra exatamente o que foi medido, sem lógica própria.
+```bash
+npm run demo                                                     # ambiente real (depois de npm run ingest)
+npm run demo -- --embedder hash --store memory --llm simulated   # sem Docker; sem valor experimental
+```
+
+O modo de avaliação humana cega (resposta distinta avaliada uma vez, nota copiada para C e D,
+cálculo de concordância) será acrescentado sobre o formato de notas da avaliação das respostas.
 
 ## 5. Fora de escopo
 

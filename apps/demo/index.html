@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orbital Software · conhecimento corporativo (demonstração do TCC 2)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <strong>Orbital Software</strong> · perguntas sobre o conhecimento corporativo
+      <span class="badge">demonstração · fora das métricas · dados sintéticos</span>
+    </div>
+    <div id="mode" class="mode"></div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel sources">
+      <h2>Fontes</h2>
+      <div id="sources"><p class="muted">Carregando…</p></div>
+    </aside>
+
+    <section class="panel chat">
+      <div id="messages" class="messages">
+        <div class="empty">
+          <p>Faça uma pergunta sobre a wiki técnica, os chamados de suporte ou os incidentes.</p>
+          <p class="muted">Exemplo: <button type="button" class="link example">Qual é o endpoint de saúde do billing-api?</button></p>
+        </div>
+      </div>
+      <form id="ask" class="ask">
+        <div class="approaches" id="approaches" role="radiogroup" aria-label="Abordagem"></div>
+        <div class="row">
+          <textarea id="question" rows="2" maxlength="500" placeholder="Pergunte algo…" required></textarea>
+          <button type="submit" id="send">Perguntar</button>
+        </div>
+        <p id="approach-help" class="muted small"></p>
+      </form>
+    </section>
+
+    <aside class="panel viewer">
+      <h2>Trecho</h2>
+      <div id="viewer"><p class="muted">Clique numa citação ou num trecho para ver o texto completo e a fonte de origem.</p></div>
+    </aside>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
