@@ -20,7 +20,8 @@
     "bench:generation": "tsx src/bench/generation.ts",
     "eval:answers": "tsx src/bench/answers.ts",
     "eval:human": "tsx src/bench/human.ts",
-    "demo": "tsx src/api/server.ts"
+    "demo": "tsx src/api/server.ts",
+    "stats": "tsx src/bench/stats.ts"
   },
   "license": "MIT",
   "devDependencies": {

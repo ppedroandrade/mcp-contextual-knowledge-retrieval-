@@ -2,7 +2,7 @@
 
 Fonte: TCC 1 aprovado (`ANEXO_SR_122939_...pdf`, maio/2026), seções 4, 5, 8 e 10.
 Este documento liga cada hipótese e objetivo do TCC 1 ao que será medido e onde.
-Situação: **em implementação** (geração e avaliação das respostas implementadas; estatística planejada).
+Situação: **em implementação** (geração, avaliação das respostas e estatística implementadas; ADR 007 e 008).
 
 ## 1. O que o TCC 1 exige
 
@@ -43,10 +43,10 @@ Registrar no artigo, de preferência com o aval do orientador.
    mesma frase, "Node.js como linguagem principal". Será usado o SDK oficial em
    **TypeScript** (ADR 004), o que mantém um único runtime. O SDK é o mesmo protocolo.
 2. **Mann-Whitney U × dados pareados.** Todas as configurações respondem às mesmas
-   perguntas, então as observações são pareadas por pergunta. O teste adequado é o
-   **Wilcoxon pareado** (com correção de Holm para várias comparações e intervalo de
-   confiança por bootstrap). O Mann-Whitney U será reportado também, para cumprir o
-   texto do TCC 1, com a justificativa da troca.
+   perguntas, então as observações são pareadas por pergunta. O teste principal é o
+   **Wilcoxon pareado**, com correção de Holm para várias comparações e IC 95% por
+   bootstrap; o Mann-Whitney U é reportado ao lado, para cumprir o texto do TCC 1, com a
+   justificativa da troca. Implementado em `src/evaluation/stats.ts` (ADR 008).
 3. **RAGAS.** É uma biblioteca Python e depende de um LLM avaliador. Opções: (a) métricas
    equivalentes implementadas em TypeScript com o LLM local como avaliador; (b) RAGAS em
    script auxiliar Python, só na avaliação. Em qualquer caso, a avaliação automática

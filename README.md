@@ -14,7 +14,7 @@ Stack: Node.js 22 + TypeScript. Status atual em [STATUS.md](STATUS.md);
 arquitetura em [docs/arquitetura.md](docs/arquitetura.md).
 
 > Em construção: as quatro abordagens, o servidor MCP, a geração e a avaliação das
-> respostas existem; a estatística ainda não. O que está pronto e testado está no
+> respostas e a estatística existem. O que está pronto e testado está no
 > [STATUS.md](STATUS.md).
 
 ## Requisitos
