@@ -1,0 +1,25 @@
+# 010 — Congelamento da arquitetura
+
+Data: 01/11/2026 · Situação: aceita
+
+**Commit do congelamento:** `1a1337acf736ede43740d3bb06c03c2d52f5c9f0` (main, merge do PR #14).
+
+**O que fica congelado a partir daqui** (não se ajusta depois de ver o `heldout`):
+- as quatro configurações e o código de recuperação (`src/approaches/`, `src/retrieval/`,
+  `src/indexing/`, `src/mcp/`), com profundidade 50, k = 5, RRF com c = 60 e uma tool por
+  fonte (ADR 004 e 005);
+- as três fontes integradas (`docs`, `tickets`, `incidents`); a 4ª só entra pela H3, em branches
+  próprias, conforme `docs/h3-protocolo.md` (ADR 009);
+- embeddings `bge-m3`, gerador `qwen3:4b-instruct-2507-q4_K_M`, prompt (hash em
+  `environment.json`), temperatura 0, semente 42, `num_ctx` 5120, `num_predict` 512 (ADR 003);
+- avaliação das respostas: regra dos fatos, rubrica, juiz `qwen3.5:4b` e as notas fixadas por
+  regra (ADR 007);
+- métricas (`src/evaluation/metrics.ts`) e estatística (ADR 008);
+- protocolo de medição: aquecimento descartado, ordem das abordagens embaralhada por rodada,
+  Node 22 (ADR 006 e 009).
+
+**Depois do congelamento** só entram: o conjunto `heldout` (criado depois deste commit), a
+integração da 4ª fonte nas branches da H3, scripts que executam e resumem o experimento sem
+mudar parâmetros, correções de defeitos (registradas aqui, com o motivo) e a documentação.
+
+**Correções depois do congelamento:** nenhuma até agora.

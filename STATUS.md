@@ -17,6 +17,7 @@ não têm rastreabilidade com este repositório.
 | Corpus sintético (4 fontes, 146 documentos, 349 fatos) | implementado, testado | `npm run corpus`; `docs/corpus.md` |
 | Leitores das fontes (Markdown, JSON, CSV) | implementado, testado | `src/sources/`; o leitor HTML das políticas foi **retirado** antes do congelamento, para a medida da H3 (ADR 009) |
 | Perguntas dev (60) e de políticas (15) com gabarito derivado dos fatos | implementado, testado | `data/questions/` |
+| Congelamento da arquitetura | registrado | commit `1a1337acf736ede43740d3bb06c03c2d52f5c9f0` (ADR 010) |
 | Perguntas heldout (40) | planejado | criar só depois do congelamento da arquitetura |
 | Busca textual convencional (A, BM25) | implementado, testado | `src/approaches/a-bm25.ts`; rodada de verificação no dev, não é resultado do experimento |
 | Métricas de recuperação (P, R, MRR, nDCG, ER@k) e medição de latência | implementado, testado | `src/evaluation/metrics.ts`, `npm run bench:retrieval` |
