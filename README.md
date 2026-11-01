@@ -53,6 +53,20 @@ docker compose up -d     # banco vetorial e Ollama, necessários a partir da ind
 
 Decisões de stack em [docs/decisoes/](docs/decisoes/).
 
+## Assistente da empresa (fora do experimento)
+
+Protótipo de produto sobre a mesma arquitetura (configuração D): chat no estilo dos assistentes
+conhecidos, com as fontes da empresa (upload de PDF, Word, Markdown; Google Drive/Docs;
+Confluence) expostas como tools de um servidor MCP, respostas em streaming com citações e o
+mesmo servidor disponível em `/mcp` para outros clientes MCP. Não entra nas métricas (ADR 012).
+
+```bash
+npm run assistente -- --exemplo   # http://127.0.0.1:3100, com a wiki de exemplo
+```
+
+Como o contexto funciona e como conectar o Google Drive e o Confluence:
+[docs/assistente.md](docs/assistente.md).
+
 ## Estrutura
 
 ```
@@ -70,7 +84,9 @@ src/
   evaluation/  métricas e estatística
   bench/       execução dos experimentos
   api/         API HTTP fina para a demo (opcional)
+  assistant/   assistente da empresa: conectores, ingestão, servidor MCP e chat (ADR 012)
 apps/demo/   UI de demonstração (opcional, depois do benchmark)
+apps/assistant/  UI do assistente da empresa
 test/        unit/ e integration/
 scripts/     utilitários
 results/     resultados de execuções reais

@@ -50,6 +50,8 @@ flowchart LR
 | 8 | Estatística | Wilcoxon pareado + Holm + IC por bootstrap; Mann-Whitney U ao lado (TCC 1) | [008](decisoes/008-estatistica.md) |
 | 9 | Preparação da H3 | integração das políticas retirada antes do congelamento; tempo da tool em D; Node 22 nas medições | [009](decisoes/009-preparacao-da-h3.md) |
 | 10 | Congelamento | arquitetura congelada no commit `1a1337a`; `heldout` criado depois | [010](decisoes/010-congelamento.md) |
+| 11 | Protocolo da execução final | rodadas, juiz, avaliadores e plano de análise fixados antes do `heldout` | [011](decisoes/011-protocolo-da-execucao-final.md) |
+| 12 | Assistente da empresa | protótipo de produto sobre a configuração D, fora do experimento | [012](decisoes/012-assistente-da-empresa.md) |
 
 Metodologia e métricas: [metodologia.md](metodologia.md). Corpus: [corpus.md](corpus.md).
 O LLM foi fixado em 31/10/2026, depois de um piloto com três modelos (ADR 003).
@@ -91,6 +93,14 @@ três notas da rubrica. As notas são salvas a cada resposta em
 mostra a concordância (alfa de Krippendorff ordinal) com 2 ou mais avaliadores; as médias por
 abordagem só saem no `--import`, para não quebrar a cegueira.
 
-## 5. Fora de escopo
+**Assistente da empresa** (protótipo de produto, ADR 012): `npm run assistente` sobe uma
+interface de chat sobre a mesma arquitetura da configuração D, com as fontes da própria empresa
+(upload, Google Drive/Docs, Confluence) como tools de um servidor MCP. Código separado
+(`src/assistant/`, `apps/assistant/`), sem alterar nada do que foi medido. Ver
+[assistente.md](assistente.md).
 
-Autenticação, dados reais, deploy em nuvem, upload de documentos pelo usuário.
+## 5. Fora de escopo do experimento
+
+Autenticação, dados reais, deploy em nuvem e upload de documentos pelo usuário não fazem parte
+do experimento. O assistente da empresa (ADR 012) tem upload e conectores, mas fica fora das
+métricas.

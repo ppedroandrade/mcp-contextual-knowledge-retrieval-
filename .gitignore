@@ -4,3 +4,6 @@ coverage/
 .env
 *.log
 .DS_Store
+
+# Estado local do assistente (chave de cifragem, tokens dos conectores, conversas)
+.assistente/

@@ -57,6 +57,7 @@ npm run bench:generation -- --approaches B,C,D --rounds 3 --out <id>
 npm run mcp:server                             # servidor MCP via stdio
 npm run demo                                   # API + UI de demonstração em http://127.0.0.1:3000 (fora das métricas)
 npm run demo -- --avaliacao <planilha>         # avaliação humana cega na UI (só Node); notas em avaliacoes-ui/
+npm run assistente -- --exemplo                # assistente da empresa em http://127.0.0.1:3100 (fora das métricas, ADR 012)
 npx tsx scripts/compare-c-d.ts <id>            # confere C = D e D − C numa execução
 npm run stats -- --run <id> [--style parafraseada]  # Wilcoxon + Holm + bootstrap (e Mann-Whitney) numa execução, inclusive a planilha com notas humanas (ADR 008)
 npm run eval:answers -- --run <geração> --out <id>   # regra dos fatos + juiz (ADR 007)
@@ -82,3 +83,11 @@ deve ser o gerador; a planilha cega não pode revelar a abordagem (C e D numa li
 - Testes unitários em `test/unit` (rodam no CI, sem serviços externos); testes que
   precisam de banco ou Ollama em `test/integration`.
 - Mensagens de erro e documentação em português.
+
+## Assistente da empresa (fora do experimento)
+
+`src/assistant/` e `apps/assistant/` são um protótipo de produto (ADR 012, `docs/assistente.md`).
+Podem evoluir livremente, mas **não podem alterar o código medido no TCC** (`src/approaches`,
+`src/mcp`, `src/generation`, `src/evaluation`, `src/bench`, `src/indexing`, `src/retrieval`,
+`src/sources`, `src/corpus`): só importar dele. O estado local fica em `.assistente/` (fora do
+git; tem a chave que cifra os tokens dos conectores).
