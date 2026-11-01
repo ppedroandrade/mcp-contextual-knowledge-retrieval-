@@ -1,0 +1,1727 @@
+[
+  {
+    "questionId": "p001",
+    "type": "single-source",
+    "retriever": "A-bm25",
+    "topUnits": [
+      "POL-06#desligamentos",
+      "POL-06#periodicidade",
+      "DOC-023#quando-usar",
+      "DOC-017#quando-usar",
+      "T-1041#descricao"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      0.29275000000052387,
+      0.4581659999967087,
+      0.46987499999886495,
+      0.46333400000003166,
+      0.30129200000010314
+    ]
+  },
+  {
+    "questionId": "p002",
+    "type": "multi-source",
+    "retriever": "A-bm25",
+    "topUnits": [
+      "INC-2026-012#linha-do-tempo",
+      "INC-2026-012#resumo",
+      "POL-01#prazos-de-resposta",
+      "INC-2026-020#linha-do-tempo",
+      "INC-2026-005#linha-do-tempo"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      0.31670800000028976,
+      0.6616249999970023,
+      0.6244999999980791,
+      0.5964170000006561,
+      0.25262500000098953
+    ]
+  },
+  {
+    "questionId": "p003",
+    "type": "single-source",
+    "retriever": "A-bm25",
+    "topUnits": [
+      "POL-04#prazo",
+      "T-1023#descricao",
+      "T-1069#descricao",
+      "T-1023#resolucao",
+      "T-1069#resolucao"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      0.15250000000014552,
+      0.3362919999999576,
+      0.3099590000019816,
+      0.3325829999994312,
+      0.12279200000193669
+    ]
+  },
+  {
+    "questionId": "p004",
+    "type": "single-source",
+    "retriever": "A-bm25",
+    "topUnits": [
+      "POL-14#acesso-temporario",
+      "POL-14#registro",
+      "DOC-022#limites-e-observacoes",
+      "POL-02#segundo-fator",
+      "POL-04#prazo"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      0.11866700000064156,
+      0.7192080000022543,
+      0.22929199999998673,
+      0.26987500000177533,
+      0.09370800000033341
+    ]
+  },
+  {
+    "questionId": "p005",
+    "type": "single-source",
+    "retriever": "A-bm25",
+    "topUnits": [
+      "POL-15#horario",
+      "INC-2026-015#resumo",
+      "POL-12#canal-oficial",
+      "INC-2026-015#acoes",
+      "INC-2026-015#linha-do-tempo"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      0.13787500000034925,
+      0.46691700000155834,
+      0.26920800000152667,
+      0.2691659999982221,
+      0.13145799999983865
+    ]
+  },
+  {
+    "questionId": "p006",
+    "type": "single-source",
+    "retriever": "A-bm25",
+    "topUnits": [
+      "POL-01#postmortem",
+      "POL-04#prazo",
+      "POL-01#classificacao",
+      "POL-01#prazos-de-resposta",
+      "INC-2026-019#resumo"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      0.13391600000068138,
+      0.32537500000034925,
+      0.27283299999908195,
+      0.2594169999974838,
+      0.10958300000129384
+    ]
+  },
+  {
+    "questionId": "p007",
+    "type": "single-source",
+    "retriever": "A-bm25",
+    "topUnits": [
+      "POL-03#dados-de-log",
+      "POL-03#dados-de-cobranca",
+      "DOC-026#limites-e-observacoes",
+      "DOC-026#quando-usar",
+      "DOC-026#passo-a-passo"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      0.1040419999990263,
+      0.22320899999976973,
+      0.23745899999994435,
+      0.20345799999995506,
+      0.08087499999965075
+    ]
+  },
+  {
+    "questionId": "p008",
+    "type": "single-source",
+    "retriever": "A-bm25",
+    "topUnits": [
+      "POL-05#escala",
+      "T-1056#descricao",
+      "T-1072#descricao",
+      "T-1056#resolucao",
+      "T-1072#resolucao"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      0.09937499999978172,
+      0.1906249999992724,
+      0.19004100000165636,
+      0.18449999999938882,
+      0.07404200000019046
+    ]
+  },
+  {
+    "questionId": "p009",
+    "type": "multi-source",
+    "retriever": "A-bm25",
+    "topUnits": [
+      "INC-2026-001#linha-do-tempo",
+      "INC-2026-001#resumo",
+      "POL-01#prazos-de-resposta",
+      "POL-15#prazos-por-prioridade",
+      "INC-2026-014#linha-do-tempo"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      0.2879159999993135,
+      0.26154200000019046,
+      0.3736669999998412,
+      0.26091599999926984,
+      0.22820800000044983
+    ]
+  },
+  {
+    "questionId": "p010",
+    "type": "multi-source",
+    "retriever": "A-bm25",
+    "topUnits": [
+      "INC-2026-005#resumo",
+      "INC-2026-005#linha-do-tempo",
+      "POL-08#elegibilidade",
+      "T-1001#resolucao",
+      "T-1053#resolucao"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      0.2727919999997539,
+      0.24829099999988102,
+      0.2212500000023283,
+      0.22087500000270666,
+      0.21512499999880674
+    ]
+  },
+  {
+    "questionId": "p011",
+    "type": "single-source",
+    "retriever": "A-bm25",
+    "topUnits": [
+      "POL-04#canal",
+      "POL-04#prazo",
+      "DOC-007#dados-e-dependencias",
+      "INC-2026-011#linha-do-tempo",
+      "T-1017#resolucao"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      0.1246659999997064,
+      0.10704199999963748,
+      0.0974580000001879,
+      0.10308299999815063,
+      0.09662499999831198
+    ]
+  },
+  {
+    "questionId": "p012",
+    "type": "multi-source",
+    "retriever": "A-bm25",
+    "topUnits": [
+      "INC-2026-020#linha-do-tempo",
+      "POL-01#prazos-de-resposta",
+      "INC-2026-020#resumo",
+      "INC-2026-001#linha-do-tempo",
+      "INC-2026-005#linha-do-tempo"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      0.26970799999980954,
+      0.22775000000183354,
+      0.23775000000023283,
+      0.2139999999999418,
+      0.20729199999914272
+    ]
+  },
+  {
+    "questionId": "p013",
+    "type": "multi-source",
+    "retriever": "A-bm25",
+    "topUnits": [
+      "INC-2026-020#resumo",
+      "POL-08#elegibilidade",
+      "INC-2026-020#linha-do-tempo",
+      "T-1001#resolucao",
+      "T-1053#resolucao"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 0.6666666666666666,
+      "evidenceComplete": 0
+    },
+    "latencyMs": [
+      0.24633300000095915,
+      0.19904200000019046,
+      0.2114159999982803,
+      0.19333299999925657,
+      0.18995799999902374
+    ]
+  },
+  {
+    "questionId": "p014",
+    "type": "single-source",
+    "retriever": "A-bm25",
+    "topUnits": [
+      "POL-03#dados-de-cobranca",
+      "INC-2026-002#linha-do-tempo",
+      "INC-2026-019#linha-do-tempo",
+      "INC-2026-004#linha-do-tempo",
+      "INC-2026-011#linha-do-tempo"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      0.11954200000036508,
+      0.09737500000119326,
+      0.09775000000081491,
+      0.10904200000004494,
+      0.08979199999885168
+    ]
+  },
+  {
+    "questionId": "p015",
+    "type": "single-source",
+    "retriever": "A-bm25",
+    "topUnits": [
+      "DOC-025#limites-e-observacoes",
+      "POL-13#versao-v1",
+      "INC-2026-011#acoes",
+      "T-1050#descricao",
+      "T-1060#descricao"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 0.5,
+      "ndcg": 0.6309297535714575,
+      "evidenceRecall": 0,
+      "evidenceComplete": 0
+    },
+    "latencyMs": [
+      0.13724999999976717,
+      0.11483299999963492,
+      0.11300000000119326,
+      0.12191700000039418,
+      0.10904200000004494
+    ]
+  },
+  {
+    "questionId": "p001",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "topUnits": [
+      "POL-06#desligamentos",
+      "POL-04#prazo",
+      "POL-10#excecoes",
+      "DOC-017#limites-e-observacoes",
+      "POL-14#acesso-temporario"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      21.435750000000553,
+      22.91070899999977,
+      22.91700000000128,
+      25.04808299999786,
+      26.558208999998897
+    ]
+  },
+  {
+    "questionId": "p002",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "topUnits": [
+      "INC-2026-012#linha-do-tempo",
+      "INC-2026-012#resumo",
+      "INC-2026-005#resumo",
+      "INC-2026-009#resumo",
+      "INC-2026-009#linha-do-tempo"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 0.8503449055347546,
+      "evidenceRecall": 0.5,
+      "evidenceComplete": 0
+    },
+    "latencyMs": [
+      33.034332999999606,
+      36.9733750000014,
+      54.58550000000105,
+      56.953958000001876,
+      62.9945000000007
+    ]
+  },
+  {
+    "questionId": "p003",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "topUnits": [
+      "POL-04#prazo",
+      "POL-10#excecoes",
+      "T-1023#descricao",
+      "T-1069#descricao",
+      "T-1023#resolucao"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      23.769915999999284,
+      24.899833999999828,
+      41.968041000000085,
+      21.902374999997846,
+      44.70337499999732
+    ]
+  },
+  {
+    "questionId": "p004",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "topUnits": [
+      "POL-14#acesso-temporario",
+      "INC-2026-020#resumo",
+      "POL-08#elegibilidade",
+      "DOC-005#confiabilidade",
+      "POL-10#excecoes"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      23.81654200000048,
+      24.542750000000524,
+      70.27304100000038,
+      25.010167000000365,
+      105.18549999999959
+    ]
+  },
+  {
+    "questionId": "p005",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "topUnits": [
+      "POL-15#horario",
+      "INC-2026-015#linha-do-tempo",
+      "INC-2026-015#resumo",
+      "INC-2026-020#resumo",
+      "DOC-016#escalonamento"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      20.000958000000537,
+      17.76879199999894,
+      19.048957999999402,
+      43.74070800000118,
+      22.170916999999463
+    ]
+  },
+  {
+    "questionId": "p006",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "topUnits": [
+      "POL-01#postmortem",
+      "POL-01#prazos-de-resposta",
+      "INC-2026-019#resumo",
+      "POL-12#aprovacao",
+      "POL-08#elegibilidade"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      26.429000000000087,
+      24.721792000000278,
+      32.47999999999956,
+      25.765917000000627,
+      25.642833999998402
+    ]
+  },
+  {
+    "questionId": "p007",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "topUnits": [
+      "POL-03#dados-de-log",
+      "DOC-026#limites-e-observacoes",
+      "POL-11#frequencia",
+      "POL-03#dados-de-cobranca",
+      "POL-10#excecoes"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      31.507458000000042,
+      22.785541999997804,
+      24.44916600000215,
+      21.331083000000945,
+      26.27887499999997
+    ]
+  },
+  {
+    "questionId": "p008",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "topUnits": [
+      "POL-05#escala",
+      "POL-05#compensacao",
+      "T-1006#descricao",
+      "T-1025#descricao",
+      "T-1005#descricao"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      46.628208000000086,
+      21.074625000001106,
+      20.26941699999952,
+      17.657791000001453,
+      30.18512499999997
+    ]
+  },
+  {
+    "questionId": "p009",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "topUnits": [
+      "INC-2026-001#linha-do-tempo",
+      "INC-2026-001#resumo",
+      "POL-01#prazos-de-resposta",
+      "T-1001#descricao",
+      "T-1001#resolucao"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      38.77229199999965,
+      42.13916699999754,
+      31.144125000002532,
+      37.39079199999833,
+      47.1229170000006
+    ]
+  },
+  {
+    "questionId": "p010",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "topUnits": [
+      "POL-08#elegibilidade",
+      "INC-2026-005#resumo",
+      "T-1066#resolucao",
+      "T-1001#resolucao",
+      "INC-2026-005#linha-do-tempo"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      40.82449999999881,
+      28.28895900000134,
+      37.85925000000134,
+      29.897750000000087,
+      29.257832999999664
+    ]
+  },
+  {
+    "questionId": "p011",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "topUnits": [
+      "POL-04#canal",
+      "T-1023#descricao",
+      "T-1069#descricao",
+      "T-1057#descricao",
+      "T-1076#descricao"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      23.74291600000106,
+      46.614832999999635,
+      23.089790999998513,
+      26.51983300000211,
+      22.32129200000054
+    ]
+  },
+  {
+    "questionId": "p012",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "topUnits": [
+      "INC-2026-020#linha-do-tempo",
+      "INC-2026-001#linha-do-tempo",
+      "INC-2026-020#resumo",
+      "INC-2026-001#resumo",
+      "INC-2026-005#linha-do-tempo"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 0.8772153153380493,
+      "evidenceRecall": 0.5,
+      "evidenceComplete": 0
+    },
+    "latencyMs": [
+      32.212916999998924,
+      54.090125000002445,
+      43.94825000000128,
+      36.37016600000061,
+      53.94974999999977
+    ]
+  },
+  {
+    "questionId": "p013",
+    "type": "multi-source",
+    "retriever": "B-rag",
+    "topUnits": [
+      "POL-08#elegibilidade",
+      "T-1066#resolucao",
+      "T-1001#resolucao",
+      "INC-2026-020#linha-do-tempo",
+      "INC-2026-001#linha-do-tempo"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 0.8772153153380493,
+      "evidenceRecall": 0.3333333333333333,
+      "evidenceComplete": 0
+    },
+    "latencyMs": [
+      29.978417000000263,
+      29.091749999999593,
+      31.051750000002357,
+      29.87249999999767,
+      42.76195799999914
+    ]
+  },
+  {
+    "questionId": "p014",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "topUnits": [
+      "POL-03#dados-de-cobranca",
+      "INC-2026-002#linha-do-tempo",
+      "INC-2026-016#resumo",
+      "INC-2026-002#resumo",
+      "INC-2026-006#resumo"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      43.91687499999898,
+      20.418250000002445,
+      34.91716699999961,
+      25.466416000002937,
+      31.658957999999984
+    ]
+  },
+  {
+    "questionId": "p015",
+    "type": "single-source",
+    "retriever": "B-rag",
+    "topUnits": [
+      "POL-13#aviso-previo",
+      "POL-13#versao-v1",
+      "INC-2026-024#causa-raiz",
+      "INC-2026-024#resumo",
+      "DOC-017#limites-e-observacoes"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      25.13616600000023,
+      43.904583999999886,
+      53.516749999998865,
+      21.54058399999849,
+      36.76800000000003
+    ]
+  },
+  {
+    "questionId": "p001",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "topUnits": [
+      "POL-06#desligamentos",
+      "DOC-017#limites-e-observacoes",
+      "INC-2026-005#resumo",
+      "T-1069#descricao",
+      "POL-04#prazo"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      84.84016700000029,
+      103.41912500000035,
+      94.80091600000014,
+      91.80424999999741,
+      109.88808300000164
+    ]
+  },
+  {
+    "questionId": "p002",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "topUnits": [
+      "INC-2026-012#linha-do-tempo",
+      "POL-01#prazos-de-resposta",
+      "DOC-013#escalonamento",
+      "T-1009#descricao",
+      "INC-2026-012#resumo"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      139.53820900000028,
+      296.14287500000137,
+      155.24670799999876,
+      137.84708300000057,
+      160.60883399999875
+    ]
+  },
+  {
+    "questionId": "p003",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "topUnits": [
+      "POL-04#prazo",
+      "T-1023#descricao",
+      "INC-2026-001#resumo",
+      "DOC-020#limites-e-observacoes",
+      "POL-10#excecoes"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      91.82016699999986,
+      184.00950000000012,
+      101.82170799999949,
+      91.56804199999897,
+      106.3167910000011
+    ]
+  },
+  {
+    "questionId": "p004",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "topUnits": [
+      "POL-14#acesso-temporario",
+      "INC-2026-020#resumo",
+      "DOC-005#confiabilidade",
+      "T-1024#resolucao",
+      "POL-08#elegibilidade"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      101.97020899999916,
+      82.79604199999812,
+      84.73595899999782,
+      84.2310830000024,
+      94.955667000002
+    ]
+  },
+  {
+    "questionId": "p005",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "topUnits": [
+      "POL-15#horario",
+      "INC-2026-015#linha-do-tempo",
+      "DOC-016#escalonamento",
+      "T-1022#descricao",
+      "INC-2026-015#resumo"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      74.62962499999958,
+      93.10562500000015,
+      86.88850000000093,
+      74.46916699999929,
+      91.40729199999987
+    ]
+  },
+  {
+    "questionId": "p006",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "topUnits": [
+      "POL-01#postmortem",
+      "INC-2026-019#resumo",
+      "DOC-014#incidentes-anteriores",
+      "T-1032#descricao",
+      "POL-01#prazos-de-resposta"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      133.21941700000025,
+      92.92775000000256,
+      137.72695800000292,
+      93.71149999999761,
+      110.69083299999693
+    ]
+  },
+  {
+    "questionId": "p007",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "topUnits": [
+      "POL-03#dados-de-log",
+      "DOC-026#limites-e-observacoes",
+      "INC-2026-021#resumo",
+      "T-1051#resolucao",
+      "POL-11#frequencia"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      93.53737499999988,
+      83.99412500000108,
+      87.96929200000159,
+      108.94233299999905,
+      96.57379200000287
+    ]
+  },
+  {
+    "questionId": "p008",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "topUnits": [
+      "POL-05#escala",
+      "T-1006#descricao",
+      "DOC-024#passo-a-passo",
+      "INC-2026-013#linha-do-tempo",
+      "POL-05#compensacao"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      86.33595800000148,
+      82.6996250000011,
+      84.28291700000045,
+      75.54375000000073,
+      90.75195899999744
+    ]
+  },
+  {
+    "questionId": "p009",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "topUnits": [
+      "INC-2026-001#linha-do-tempo",
+      "POL-01#prazos-de-resposta",
+      "T-1001#descricao",
+      "DOC-011#verificacao-de-saude",
+      "INC-2026-001#resumo"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      139.87674999999945,
+      135.59949999999662,
+      129.8368330000012,
+      128.5190419999999,
+      191.59999999999854
+    ]
+  },
+  {
+    "questionId": "p010",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "topUnits": [
+      "POL-08#elegibilidade",
+      "INC-2026-005#resumo",
+      "T-1066#resolucao",
+      "DOC-019#limites-e-observacoes",
+      "T-1001#resolucao"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      193.96058300000004,
+      158.55333299999984,
+      128.1949999999997,
+      124.91983299999993,
+      147.46279200000208
+    ]
+  },
+  {
+    "questionId": "p011",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "topUnits": [
+      "POL-04#canal",
+      "T-1023#descricao",
+      "INC-2026-006#resumo",
+      "DOC-007#visao-geral",
+      "T-1069#descricao"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      88.45399999999972,
+      95.062417000001,
+      92.38787500000035,
+      84.4855409999982,
+      132.77074999999968
+    ]
+  },
+  {
+    "questionId": "p012",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "topUnits": [
+      "INC-2026-020#linha-do-tempo",
+      "POL-01#prazos-de-resposta",
+      "DOC-009#escalonamento",
+      "T-1008#resolucao",
+      "INC-2026-001#linha-do-tempo"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 0.5,
+      "evidenceComplete": 0
+    },
+    "latencyMs": [
+      170.83387500000026,
+      140.8992909999979,
+      124.79279099999985,
+      123.72162499999831,
+      133.82824999999866
+    ]
+  },
+  {
+    "questionId": "p013",
+    "type": "multi-source",
+    "retriever": "C-por-fonte",
+    "topUnits": [
+      "POL-08#elegibilidade",
+      "T-1066#resolucao",
+      "INC-2026-020#linha-do-tempo",
+      "DOC-003#confiabilidade",
+      "T-1001#resolucao"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 0.9197207891481876,
+      "evidenceRecall": 0.3333333333333333,
+      "evidenceComplete": 0
+    },
+    "latencyMs": [
+      125.85341700000026,
+      119.44637500000317,
+      114.30754100000195,
+      165.52570900000137,
+      146.32704100000046
+    ]
+  },
+  {
+    "questionId": "p014",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "topUnits": [
+      "POL-03#dados-de-cobranca",
+      "INC-2026-002#linha-do-tempo",
+      "T-1045#resolucao",
+      "DOC-002#confiabilidade",
+      "INC-2026-016#resumo"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      89.52041599999939,
+      96.42016599999988,
+      97.22754200000054,
+      87.9153750000005,
+      192.99941699999908
+    ]
+  },
+  {
+    "questionId": "p015",
+    "type": "single-source",
+    "retriever": "C-por-fonte",
+    "topUnits": [
+      "POL-13#aviso-previo",
+      "INC-2026-024#causa-raiz",
+      "DOC-017#limites-e-observacoes",
+      "T-1050#descricao",
+      "POL-13#versao-v1"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      106.3842910000003,
+      96.87675000000309,
+      91.26729200000045,
+      114.69433299999946,
+      100.83733300000313
+    ]
+  },
+  {
+    "questionId": "p001",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "topUnits": [
+      "POL-06#desligamentos",
+      "DOC-017#limites-e-observacoes",
+      "INC-2026-005#resumo",
+      "T-1069#descricao",
+      "POL-04#prazo"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      91.76529200000004,
+      117.54158399999869,
+      116.37404199999946,
+      106.78287500000079,
+      102.36883300000045
+    ],
+    "toolMs": [
+      89.85879199999908,
+      114.2937920000004,
+      114.50799999999799,
+      104.1552499999998,
+      100.65187499999956
+    ]
+  },
+  {
+    "questionId": "p002",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "topUnits": [
+      "INC-2026-012#linha-do-tempo",
+      "POL-01#prazos-de-resposta",
+      "DOC-013#escalonamento",
+      "T-1009#descricao",
+      "INC-2026-012#resumo"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      139.21316699999988,
+      133.30858400000216,
+      128.5295839999999,
+      134.47562499999913,
+      161.05729200000133
+    ],
+    "toolMs": [
+      137.498708000001,
+      131.67045900000085,
+      127.03549999999814,
+      132.96645799999897,
+      159.79516700000022
+    ]
+  },
+  {
+    "questionId": "p003",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "topUnits": [
+      "POL-04#prazo",
+      "T-1023#descricao",
+      "INC-2026-001#resumo",
+      "DOC-020#limites-e-observacoes",
+      "POL-10#excecoes"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      113.75516599999901,
+      101.64070800000263,
+      110.7196249999979,
+      123.62229099999968,
+      97.94820800000161
+    ],
+    "toolMs": [
+      112.20133299999907,
+      100.08316600000035,
+      109.14870800000062,
+      122.13925000000017,
+      96.47970799999894
+    ]
+  },
+  {
+    "questionId": "p004",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "topUnits": [
+      "POL-14#acesso-temporario",
+      "INC-2026-020#resumo",
+      "DOC-005#confiabilidade",
+      "T-1024#resolucao",
+      "POL-08#elegibilidade"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      87.4202920000007,
+      88.28616599999805,
+      95.34166699999696,
+      85.70891599999959,
+      98.76295899999968
+    ],
+    "toolMs": [
+      85.7122500000005,
+      86.76570899999933,
+      93.79300000000148,
+      84.27912500000093,
+      97.1248749999977
+    ]
+  },
+  {
+    "questionId": "p005",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "topUnits": [
+      "POL-15#horario",
+      "INC-2026-015#linha-do-tempo",
+      "DOC-016#escalonamento",
+      "T-1022#descricao",
+      "INC-2026-015#resumo"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      106.85266599999886,
+      87.7856670000001,
+      119.98387499999808,
+      107.44683299999815,
+      94.88983300000109
+    ],
+    "toolMs": [
+      105.34595900000022,
+      86.15124999999898,
+      118.49787500000093,
+      105.93204200000037,
+      93.38799999999901
+    ]
+  },
+  {
+    "questionId": "p006",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "topUnits": [
+      "POL-01#postmortem",
+      "INC-2026-019#resumo",
+      "DOC-014#incidentes-anteriores",
+      "T-1032#descricao",
+      "POL-01#prazos-de-resposta"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      94.49141699999927,
+      126.9522500000021,
+      116.15245800000048,
+      106.67583400000149,
+      101.95899999999892
+    ],
+    "toolMs": [
+      92.84725000000071,
+      125.06333299999824,
+      115.06983299999774,
+      105.18191699999807,
+      100.40308300000106
+    ]
+  },
+  {
+    "questionId": "p007",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "topUnits": [
+      "POL-03#dados-de-log",
+      "DOC-026#limites-e-observacoes",
+      "INC-2026-021#resumo",
+      "T-1051#resolucao",
+      "POL-11#frequencia"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      86.27333399999952,
+      97.09304200000042,
+      91.72145900000032,
+      89.46591700000135,
+      127.4676670000008
+    ],
+    "toolMs": [
+      84.71845799999937,
+      95.56108299999687,
+      90.38966600000276,
+      87.88012499999968,
+      125.72479200000089
+    ]
+  },
+  {
+    "questionId": "p008",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "topUnits": [
+      "POL-05#escala",
+      "T-1006#descricao",
+      "DOC-024#passo-a-passo",
+      "INC-2026-013#linha-do-tempo",
+      "POL-05#compensacao"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      76.15508299999965,
+      81.87895800000115,
+      88.81595799999923,
+      71.15529199999946,
+      76.8449580000015
+    ],
+    "toolMs": [
+      74.60812500000065,
+      80.07624999999825,
+      87.23920799999905,
+      69.68670900000143,
+      75.40045900000041
+    ]
+  },
+  {
+    "questionId": "p009",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "topUnits": [
+      "INC-2026-001#linha-do-tempo",
+      "POL-01#prazos-de-resposta",
+      "T-1001#descricao",
+      "DOC-011#verificacao-de-saude",
+      "INC-2026-001#resumo"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      127.09579099999974,
+      136.33050000000003,
+      125.12879199999952,
+      128.34024999999747,
+      171.8415419999983
+    ],
+    "toolMs": [
+      125.5955410000006,
+      134.3064579999991,
+      123.43108399999983,
+      126.77950000000055,
+      170.1592500000006
+    ]
+  },
+  {
+    "questionId": "p010",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "topUnits": [
+      "POL-08#elegibilidade",
+      "INC-2026-005#resumo",
+      "T-1066#resolucao",
+      "DOC-019#limites-e-observacoes",
+      "T-1001#resolucao"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      131.20045800000116,
+      140.25708300000042,
+      123.84287499999846,
+      123.054583000001,
+      222.73662500000137
+    ],
+    "toolMs": [
+      129.48158400000102,
+      138.6037090000027,
+      121.97912500000166,
+      121.64420799999789,
+      220.59041699999943
+    ]
+  },
+  {
+    "questionId": "p011",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "topUnits": [
+      "POL-04#canal",
+      "T-1023#descricao",
+      "INC-2026-006#resumo",
+      "DOC-007#visao-geral",
+      "T-1069#descricao"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      94.55354100000113,
+      88.2790410000016,
+      160.34858299999905,
+      93.61345799999981,
+      105.320208000001
+    ],
+    "toolMs": [
+      93.01654199999939,
+      87.40916700000162,
+      158.74112500000047,
+      91.94195900000341,
+      103.82629200000156
+    ]
+  },
+  {
+    "questionId": "p012",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "topUnits": [
+      "INC-2026-020#linha-do-tempo",
+      "POL-01#prazos-de-resposta",
+      "DOC-009#escalonamento",
+      "T-1008#resolucao",
+      "INC-2026-001#linha-do-tempo"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 0.5,
+      "evidenceComplete": 0
+    },
+    "latencyMs": [
+      123.70716599999832,
+      131.23241699999926,
+      125.56633300000249,
+      138.77850000000035,
+      202.29875000000175
+    ],
+    "toolMs": [
+      122.27666699999827,
+      129.8379169999971,
+      123.91654199999903,
+      137.06974999999875,
+      200.20754099999976
+    ]
+  },
+  {
+    "questionId": "p013",
+    "type": "multi-source",
+    "retriever": "D-mcp",
+    "topUnits": [
+      "POL-08#elegibilidade",
+      "T-1066#resolucao",
+      "INC-2026-020#linha-do-tempo",
+      "DOC-003#confiabilidade",
+      "T-1001#resolucao"
+    ],
+    "scores": {
+      "precision": 0.4,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 0.9197207891481876,
+      "evidenceRecall": 0.3333333333333333,
+      "evidenceComplete": 0
+    },
+    "latencyMs": [
+      124.5216249999994,
+      128.3546669999996,
+      114.73120799999742,
+      120.45129100000122,
+      141.82858300000225
+    ],
+    "toolMs": [
+      122.70754099999976,
+      126.87658399999782,
+      112.93504200000098,
+      118.54112499999974,
+      139.6239170000008
+    ]
+  },
+  {
+    "questionId": "p014",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "topUnits": [
+      "POL-03#dados-de-cobranca",
+      "INC-2026-002#linha-do-tempo",
+      "T-1045#resolucao",
+      "DOC-002#confiabilidade",
+      "INC-2026-016#resumo"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      93.22837499999878,
+      118.1907080000019,
+      90.5032910000009,
+      118.68137500000012,
+      117.31108300000051
+    ],
+    "toolMs": [
+      91.543040999999,
+      116.58941700000287,
+      88.88729199999943,
+      117.06741699999839,
+      115.72833299999911
+    ]
+  },
+  {
+    "questionId": "p015",
+    "type": "single-source",
+    "retriever": "D-mcp",
+    "topUnits": [
+      "POL-13#aviso-previo",
+      "INC-2026-024#causa-raiz",
+      "DOC-017#limites-e-observacoes",
+      "T-1050#descricao",
+      "POL-13#versao-v1"
+    ],
+    "scores": {
+      "precision": 0.2,
+      "recall": 1,
+      "mrr": 1,
+      "ndcg": 1,
+      "evidenceRecall": 1,
+      "evidenceComplete": 1
+    },
+    "latencyMs": [
+      112.04441700000098,
+      101.91204099999959,
+      88.8717089999991,
+      109.83466699999917,
+      115.21845799999937
+    ],
+    "toolMs": [
+      109.98241700000108,
+      100.5592089999991,
+      87.13291700000264,
+      108.3247500000034,
+      113.45083299999897
+    ]
+  }
+]

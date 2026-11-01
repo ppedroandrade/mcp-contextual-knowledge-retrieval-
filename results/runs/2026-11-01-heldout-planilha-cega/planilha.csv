@@ -1,0 +1,3421 @@
+﻿item;pergunta;resposta_referencia;trechos;resposta;correcao;completude;sustentacao;observacoes
+R001;Qual URL de homologação foi cadastrada para os webhooks do cliente Clínica Vitalis?;https://homolog.clinicavitalis.example/webhooks.;"[T-1067#descricao] (fonte: Chamados de suporte)
+Chamado T-1067: Webhook para ambiente de homologação
+Descrição
+Cliente: Clínica Vitalis
+Aberto em: 02/08/2026
+Serviço: webhook-dispatcher
+Prioridade: normal
+Assunto: Webhook para ambiente de homologação
+
+Bom dia. Queremos receber os eventos também no nosso ambiente de homologação.
+
+Comentários:
+- Carla (suporte) (02/08/2026): Solicitação recebida; vamos verificar.
+
+[INC-2026-003#resumo] (fonte: Registros de incidentes)
+INC-2026-003: Webhooks rejeitados por assinatura inválida
+Resumo
+Webhooks rejeitados por assinatura inválida.
+Data: 02/02/2026. Severidade: SEV2. Serviço afetado: webhook-dispatcher.
+Sintoma: clientes rejeitando webhooks por assinatura inválida.
+Duração: 47 minutos. Clientes afetados: 140.
+
+[DOC-018#passo-a-passo] (fonte: Wiki técnica)
+Como configurar e validar webhooks
+Passo a passo
+1. Cadastre a URL de destino em Configurações > Webhooks.
+2. Selecione os eventos desejados.
+3. Valide cada entrega conferindo a assinatura HMAC-SHA256 enviada no cabeçalho X-Orbital-Signature.
+4. Responda com status 2xx para confirmar o recebimento.
+
+[T-1067#resolucao] (fonte: Chamados de suporte)
+Chamado T-1067: Webhook para ambiente de homologação
+Resolução
+Cadastrada uma segunda URL de webhook (https://homolog.clinicavitalis.example/webhooks) apenas com eventos de teste.
+
+[INC-2026-003#acoes] (fonte: Registros de incidentes)
+INC-2026-003: Webhooks rejeitados por assinatura inválida
+Ação corretiva
+validação de variáveis obrigatórias no início do processo e bloqueio do deploy";A URL de homologação cadastrada para os webhooks do cliente Clínica Vitalis foi https://homolog.clinicavitalis.example/webhooks [T-1067#resolucao].;;;;
+R002;Por qual canal eu aciono o plantão responsável pelo customer-portal?;Pelo canal #oncall-web.;"[DOC-016#escalonamento] (fonte: Wiki técnica)
+Runbook do customer-portal
+Escalonamento
+Problemas no customer-portal são tratados pelo plantão do Time Web, acionado pelo canal #oncall-web. Se não houver resposta em 15 minutos, acione a liderança de engenharia.
+
+[T-1040#descricao] (fonte: Chamados de suporte)
+Chamado T-1040: Problema: nossa equipe não consegue acessar o painel
+Descrição
+Cliente: Clínica Vitalis
+Aberto em: 06/05/2026
+Serviço: auth-service
+Prioridade: urgente
+Assunto: Problema: nossa equipe não consegue acessar o painel
+
+Bom dia. Desde as 15h nossa equipe não consegue acessar o painel. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (06/05/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Clínica Vitalis (06/05/2026): Obrigado, aguardamos.
+
+[INC-2026-022#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-022: Portal lento
+Causa raiz
+chamada sem paginação à billing-api trazendo todas as faturas do cliente
+
+[DOC-008#visao-geral] (fonte: Wiki técnica)
+Arquitetura do customer-portal
+Visão geral
+O customer-portal é o painel web em que os clientes gerenciam assinaturas, chaves e relatórios. O serviço é mantido pelo Time Web e é implementado em Next.js 15 com React 19. Faz parte da plataforma Orbital Billing.
+
+[T-1041#descricao] (fonte: Chamados de suporte)
+Chamado T-1041: Login com a conta corporativa
+Descrição
+Cliente: Acme Logística
+Aberto em: 09/05/2026
+Serviço: auth-service
+Prioridade: alta
+Assunto: Login com a conta corporativa
+
+Oi, pessoal. Queremos que a nossa equipe entre no painel com o login da nossa empresa, sem senha separada.
+
+Comentários:
+- Carla (suporte) (09/05/2026): Obrigado pelo contato; vamos responder em seguida.";Você aciona o plantão responsável pelo customer-portal pelo canal #oncall-web [DOC-016#escalonamento].;;;;
+R003;O que estava quebrado por trás da reclamação do cliente Acme Logística em 27/02/2026?;O chamado foi ligado ao incidente INC-2026-005, cuja causa raiz foi: limite de conexões do PostgreSQL atingido (max_connections = 200) após aumento de réplicas da billing-api.;"[T-1066#descricao] (fonte: Chamados de suporte)
+Chamado T-1066: Problema: nossos clientes não estão conseguindo pagar com cartão
+Descrição
+Cliente: Acme Logística
+Aberto em: 29/07/2026
+Serviço: payments-adapter
+Prioridade: urgente
+Assunto: Problema: nossos clientes não estão conseguindo pagar com cartão
+
+Oi, pessoal. Desde as 16h nossos clientes não estão conseguindo pagar com cartão. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (29/07/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Acme Logística (29/07/2026): Obrigado, aguardamos.
+
+[DOC-011#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do payments-adapter
+Incidentes anteriores
+- INC-2026-001 (08/01/2026): Cobranças recusadas em massa
+- INC-2026-013 (15/05/2026): Cobranças duplicadas
+- INC-2026-020 (29/07/2026): Gateway indisponível
+
+[INC-2026-001#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-001: Cobranças recusadas em massa
+Causa raiz
+certificado TLS do gateway PagaFácil expirado no truststore do payments-adapter
+
+[T-1019#descricao] (fonte: Chamados de suporte)
+Chamado T-1019: Problema: nossas chamadas à API de cobranças estão falhando
+Descrição
+Cliente: Acme Logística
+Aberto em: 27/02/2026
+Serviço: billing-api
+Prioridade: urgente
+Assunto: Problema: nossas chamadas à API de cobranças estão falhando
+
+Oi, pessoal. Desde as 9h nossas chamadas à API de cobranças estão falhando. Podem verificar com urgência?
+
+Comentários:
+- Ana (suporte) (27/02/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Acme Logística (27/02/2026): Obrigado, aguardamos.
+
+[DOC-015#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do notification-service
+Incidentes anteriores
+- INC-2026-006 (11/03/2026): E-mails de fatura não entregues
+- INC-2026-017 (30/06/2026): E-mails com acentos quebrados
+- INC-2026-023 (02/09/2026): Avisos de cobrança enviados em duplicidade";"O que estava quebrado por trás da reclamação do cliente Acme Logística em 27/02/2026 foi a API de cobranças, pois o chamado T-1019 relata que ""nossas chamadas à API de cobranças estão falhando"" [T-1019#descricao].";;;;
+R004;Qual é o endpoint de saúde do tax-service?;O corpus não descreve nenhum serviço chamado tax-service.;"[DOC-013#verificacao-de-saude] (fonte: Wiki técnica)
+Runbook do auth-service
+Verificação de saúde
+Para conferir se o auth-service está saudável, chame GET /health/auth em cada instância. O alerta principal dispara quando há taxa de erro 5xx acima de 0,5% em 5 minutos.
+
+[INC-2026-010#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-010: Impostos calculados com alíquota errada
+Causa raiz
+feature flag new-tax-engine ativada para todos os clientes em vez de 5% do tráfego
+
+[T-1006#descricao] (fonte: Chamados de suporte)
+Chamado T-1006: Redução de plano
+Descrição
+Cliente: Farmácias Ipê
+Aberto em: 12/01/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Redução de plano
+
+Prezados, Queremos passar para um plano menor. A partir de quando a mudança vale?
+
+Comentários:
+- Diego (suporte) (12/01/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[DOC-016#verificacao-de-saude] (fonte: Wiki técnica)
+Runbook do customer-portal
+Verificação de saúde
+Para conferir se o customer-portal está saudável, chame GET /api/health em cada instância. O alerta principal dispara quando há taxa de erro de página acima de 1% em 10 minutos.
+
+[INC-2026-008#resumo] (fonte: Registros de incidentes)
+INC-2026-008: Gráficos do painel sem dados
+Resumo
+Gráficos do painel sem dados.
+Data: 30/03/2026. Severidade: SEV3. Serviço afetado: customer-portal.
+Sintoma: gráficos de receita do portal aparecendo vazios.
+Duração: 55 minutos. Clientes afetados: 60.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R005;Que sistema de gestão foi recomendado para o cliente Acme Logística integrar?;conector Pórtico ERP.;"[T-1080#descricao] (fonte: Chamados de suporte)
+Chamado T-1080: Integração com o nosso ERP
+Descrição
+Cliente: Acme Logística
+Aberto em: 24/09/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Integração com o nosso ERP
+
+Oi, pessoal. Vocês têm integração pronta com ERP para lançar as cobranças automaticamente?
+
+Comentários:
+- Ana (suporte) (24/09/2026): Solicitação recebida; vamos verificar.
+
+[T-1037#descricao] (fonte: Chamados de suporte)
+Chamado T-1037: Troca da chave de integração
+Descrição
+Cliente: Acme Logística
+Aberto em: 01/05/2026
+Serviço: customer-portal
+Prioridade: alta
+Assunto: Troca da chave de integração
+
+Olá, equipe. Um desenvolvedor saiu da empresa e precisamos trocar a chave usada pela nossa integração. Qual é o procedimento?
+
+Comentários:
+- Ana (suporte) (01/05/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[T-1061#descricao] (fonte: Chamados de suporte)
+Chamado T-1061: Aumento do número de usuários
+Descrição
+Cliente: Acme Logística
+Aberto em: 10/07/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Aumento do número de usuários
+
+Prezados, Atingimos o limite de usuários do plano e precisamos incluir mais pessoas.
+
+Comentários:
+- Diego (suporte) (10/07/2026): Solicitação recebida; vamos verificar.
+
+[T-1041#descricao] (fonte: Chamados de suporte)
+Chamado T-1041: Login com a conta corporativa
+Descrição
+Cliente: Acme Logística
+Aberto em: 09/05/2026
+Serviço: auth-service
+Prioridade: alta
+Assunto: Login com a conta corporativa
+
+Oi, pessoal. Queremos que a nossa equipe entre no painel com o login da nossa empresa, sem senha separada.
+
+Comentários:
+- Carla (suporte) (09/05/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[T-1035#descricao] (fonte: Chamados de suporte)
+Chamado T-1035: Alteração do e-mail de cobrança
+Descrição
+Cliente: Acme Logística
+Aberto em: 28/04/2026
+Serviço: customer-portal
+Prioridade: alta
+Assunto: Alteração do e-mail de cobrança
+
+Olá, equipe. Precisamos que as faturas passem a ser enviadas para o e-mail do financeiro.
+
+Comentários:
+- Bruno (suporte) (28/04/2026): Solicitação recebida; vamos verificar.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R006;Para qual e-mail passaram a ir as faturas do cliente Acme Logística?;financeiro@acmelogistica.example.;"[T-1035#descricao] (fonte: Chamados de suporte)
+Chamado T-1035: Alteração do e-mail de cobrança
+Descrição
+Cliente: Acme Logística
+Aberto em: 28/04/2026
+Serviço: customer-portal
+Prioridade: alta
+Assunto: Alteração do e-mail de cobrança
+
+Olá, equipe. Precisamos que as faturas passem a ser enviadas para o e-mail do financeiro.
+
+Comentários:
+- Bruno (suporte) (28/04/2026): Solicitação recebida; vamos verificar.
+
+[INC-2026-006#resumo] (fonte: Registros de incidentes)
+INC-2026-006: E-mails de fatura não entregues
+Resumo
+E-mails de fatura não entregues.
+Data: 11/03/2026. Severidade: SEV2. Serviço afetado: notification-service.
+Sintoma: e-mails de fatura não chegando aos clientes.
+Duração: 126 minutos. Clientes afetados: 410.
+
+[DOC-007#visao-geral] (fonte: Wiki técnica)
+Arquitetura do notification-service
+Visão geral
+O notification-service envia e-mails transacionais, como faturas e avisos de cobrança. O serviço é mantido pelo Time Integrações e é implementado em Node.js 22. Faz parte da plataforma Orbital Billing.
+
+[T-1035#resolucao] (fonte: Chamados de suporte)
+Chamado T-1035: Alteração do e-mail de cobrança
+Resolução
+E-mail de cobrança alterado para financeiro@acmelogistica.example, conforme solicitado.
+
+[INC-2026-006#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-006: E-mails de fatura não entregues
+Linha do tempo
+20:05 - Início do impacto: e-mails de fatura não chegando aos clientes.
+20:09 - Alerta recebido; plantão do Time Integrações assumiu o incidente.
+21:33 - Mitigação aplicada; métricas voltando ao normal.
+22:11 - Incidente encerrado.";As faturas do cliente Acme Logística passaram a ir para o e-mail financeiro@acmelogistica.example [T-1035#resolucao].;;;;
+R007;Qual método substitui client.invoices.list no SDK atual?;client.invoices.search.;"[DOC-025#passo-a-passo] (fonte: Wiki técnica)
+Como atualizar o SDK oficial para Node.js
+Passo a passo
+1. Atualize com npm install @orbital/billing@latest.
+2. Troque chamadas a client.invoices.list por client.invoices.search.
+3. Rode os testes de integração do cliente no sandbox.
+4. Publique a atualização.
+
+[T-1020#descricao] (fonte: Chamados de suporte)
+Chamado T-1020: Versão antiga do SDK
+Descrição
+Cliente: Mercado Serra Azul
+Aberto em: 04/03/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Versão antiga do SDK
+
+Oi, pessoal. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Bruno (suporte) (04/03/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[INC-2026-016#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-016: Fila de faturas parada
+Causa raiz
+atualização do RabbitMQ removeu a fila invoices.generate, que não era declarada como durável
+
+[T-1050#descricao] (fonte: Chamados de suporte)
+Chamado T-1050: Versão antiga do SDK
+Descrição
+Cliente: Editora Pampa
+Aberto em: 11/06/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Versão antiga do SDK
+
+Bom dia. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Diego (suporte) (11/06/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[DOC-011#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do payments-adapter
+Incidentes anteriores
+- INC-2026-001 (08/01/2026): Cobranças recusadas em massa
+- INC-2026-013 (15/05/2026): Cobranças duplicadas
+- INC-2026-020 (29/07/2026): Gateway indisponível";O método que substitui client.invoices.list no SDK atual é client.invoices.search [DOC-025#passo-a-passo].;;;;
+R008;"O cliente Mercado Serra Azul abriu um chamado sobre ""Erro 429 na rotina noturna"". Qual artigo foi enviado e, segundo ele, qual é o limite padrão de requisições?";"Foi enviado o artigo ""Limites de requisição da API""; 600 requisições por minuto.";"[T-1018#descricao] (fonte: Chamados de suporte)
+Chamado T-1018: Erro 429 na rotina noturna
+Descrição
+Cliente: Mercado Serra Azul
+Aberto em: 21/02/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Erro 429 na rotina noturna
+
+Bom dia. Nossa rotina noturna de sincronização recebe muitos erros 429. O que devemos fazer?
+
+Comentários:
+- Diego (suporte) (21/02/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[INC-2026-015#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-015: Erros 429 para clientes Enterprise
+Linha do tempo
+11:43 - Início do impacto: clientes Enterprise recebendo 429 abaixo do limite contratado.
+11:48 - Alerta recebido; plantão do Time Faturamento assumiu o incidente.
+12:50 - Mitigação aplicada; métricas voltando ao normal.
+13:18 - Incidente encerrado.
+
+[DOC-019#quando-usar] (fonte: Wiki técnica)
+Limites de requisição da API
+Quando usar
+Consulte quando o cliente receber respostas HTTP 429 (Too Many Requests).
+
+[T-1009#resolucao] (fonte: Chamados de suporte)
+Chamado T-1009: Erro 429 na rotina noturna
+Resolução
+Enviado ao cliente o artigo ""Limites de requisição da API"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[INC-2026-015#resumo] (fonte: Registros de incidentes)
+INC-2026-015: Erros 429 para clientes Enterprise
+Resumo
+Erros 429 para clientes Enterprise.
+Data: 09/06/2026. Severidade: SEV2. Serviço afetado: billing-api.
+Sintoma: clientes Enterprise recebendo 429 abaixo do limite contratado.
+Duração: 95 minutos. Clientes afetados: 12.";"O artigo enviado foi ""Limites de requisição da API"" [T-1009#resolucao]. Não sei: os trechos recuperados não contêm essa informação.";;;;
+R009;Durante o incidente em que houve erro 500 em todas as tentativas de login, em maio, qual endpoint mostraria a saúde do serviço afetado?;"O serviço afetado foi o auth-service; /health/auth.";"[INC-2026-012#resumo] (fonte: Registros de incidentes)
+INC-2026-012: Ninguém consegue entrar no portal
+Resumo
+Ninguém consegue entrar no portal.
+Data: 06/05/2026. Severidade: SEV1. Serviço afetado: auth-service.
+Sintoma: erro 500 em todas as tentativas de login.
+Duração: 29 minutos. Clientes afetados: 1180.
+
+[INC-2026-012#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-012: Ninguém consegue entrar no portal
+Linha do tempo
+12:40 - Início do impacto: erro 500 em todas as tentativas de login.
+12:50 - Alerta recebido; plantão do Time Plataforma assumiu o incidente.
+13:00 - Mitigação aplicada; métricas voltando ao normal.
+13:09 - Incidente encerrado.
+
+[DOC-013#verificacao-de-saude] (fonte: Wiki técnica)
+Runbook do auth-service
+Verificação de saúde
+Para conferir se o auth-service está saudável, chame GET /health/auth em cada instância. O alerta principal dispara quando há taxa de erro 5xx acima de 0,5% em 5 minutos.
+
+[DOC-013#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do auth-service
+Incidentes anteriores
+- INC-2026-009 (07/04/2026): Logins via SSO falhando
+- INC-2026-012 (06/05/2026): Ninguém consegue entrar no portal
+- INC-2026-021 (06/08/2026): Sessões encerradas no deploy
+
+[DOC-016#verificacao-de-saude] (fonte: Wiki técnica)
+Runbook do customer-portal
+Verificação de saúde
+Para conferir se o customer-portal está saudável, chame GET /api/health em cada instância. O alerta principal dispara quando há taxa de erro de página acima de 1% em 10 minutos.";O endpoint que mostraria a saúde do serviço afetado durante o incidente é GET /health/auth [DOC-013#verificacao-de-saude].;;;;
+R010;Quanto custa por mês o plano Enterprise?;O corpus não informa o preço dos planos.;"[INC-2026-015#resumo] (fonte: Registros de incidentes)
+INC-2026-015: Erros 429 para clientes Enterprise
+Resumo
+Erros 429 para clientes Enterprise.
+Data: 09/06/2026. Severidade: SEV2. Serviço afetado: billing-api.
+Sintoma: clientes Enterprise recebendo 429 abaixo do limite contratado.
+Duração: 95 minutos. Clientes afetados: 12.
+
+[DOC-024#limites-e-observacoes] (fonte: Wiki técnica)
+Como mudar o plano de uma assinatura
+Limites e observações
+O upgrade é cobrado pró-rata no mesmo dia; o downgrade só passa a valer no próximo ciclo de cobrança, sem reembolso proporcional.
+
+[T-1006#descricao] (fonte: Chamados de suporte)
+Chamado T-1006: Redução de plano
+Descrição
+Cliente: Farmácias Ipê
+Aberto em: 12/01/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Redução de plano
+
+Prezados, Queremos passar para um plano menor. A partir de quando a mudança vale?
+
+Comentários:
+- Diego (suporte) (12/01/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[INC-2026-015#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-015: Erros 429 para clientes Enterprise
+Linha do tempo
+11:43 - Início do impacto: clientes Enterprise recebendo 429 abaixo do limite contratado.
+11:48 - Alerta recebido; plantão do Time Faturamento assumiu o incidente.
+12:50 - Mitigação aplicada; métricas voltando ao normal.
+13:18 - Incidente encerrado.
+
+[T-1025#descricao] (fonte: Chamados de suporte)
+Chamado T-1025: Redução de plano
+Descrição
+Cliente: Jota Telecom
+Aberto em: 21/03/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Redução de plano
+
+Prezados, Queremos passar para um plano menor. A partir de quando a mudança vale?
+
+Comentários:
+- Ana (suporte) (21/03/2026): Obrigado pelo contato; vamos responder em seguida.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R011;Quem estava de plantão no incidente de 03/03/2026?;Não há incidente registrado nessa data.;"[INC-2026-005#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-005: API fora do ar
+Linha do tempo
+05:59 - Início do impacto: API respondendo 503 para todas as chamadas.
+06:14 - Alerta recebido; plantão do Time Faturamento assumiu o incidente.
+06:26 - Mitigação aplicada; métricas voltando ao normal.
+06:37 - Incidente encerrado.
+
+[T-1012#resolucao] (fonte: Chamados de suporte)
+Chamado T-1012: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+Resolução
+O problema foi causado pelo incidente INC-2026-003, já resolvido pela equipe responsável.
+
+[DOC-013#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do auth-service
+Incidentes anteriores
+- INC-2026-009 (07/04/2026): Logins via SSO falhando
+- INC-2026-012 (06/05/2026): Ninguém consegue entrar no portal
+- INC-2026-021 (06/08/2026): Sessões encerradas no deploy
+
+[INC-2026-016#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-016: Fila de faturas parada
+Linha do tempo
+07:54 - Início do impacto: nenhuma fatura gerada por mais de uma hora.
+08:02 - Alerta recebido; plantão do Time Faturamento assumiu o incidente.
+08:40 - Mitigação aplicada; métricas voltando ao normal.
+09:00 - Incidente encerrado.
+
+[T-1031#resolucao] (fonte: Chamados de suporte)
+Chamado T-1031: Problema: nossa equipe não consegue acessar o painel
+Resolução
+O problema foi causado pelo incidente INC-2026-009, já resolvido pela equipe responsável.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R012;Que compromisso de disponibilidade ou de prazo tem a integração com o gateway de cartão?;99,95% de disponibilidade mensal.;"[DOC-003#confiabilidade] (fonte: Wiki técnica)
+Arquitetura do payments-adapter
+Confiabilidade
+O objetivo de nível de serviço (SLO) do payments-adapter é 99,95% de disponibilidade mensal. Em falhas temporárias, a política de novas tentativas é: nenhuma nova tentativa automática em cobranças; timeout de 10 segundos por chamada ao gateway.
+
+[INC-2026-020#resumo] (fonte: Registros de incidentes)
+INC-2026-020: Gateway indisponível
+Resumo
+Gateway indisponível.
+Data: 29/07/2026. Severidade: SEV1. Serviço afetado: payments-adapter.
+Sintoma: todas as cobranças falhando por timeout.
+Duração: 112 minutos. Clientes afetados: 960.
+
+[INC-2026-020#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-020: Gateway indisponível
+Linha do tempo
+00:05 - Início do impacto: todas as cobranças falhando por timeout.
+00:15 - Alerta recebido; plantão do Time Pagamentos assumiu o incidente.
+01:23 - Mitigação aplicada; métricas voltando ao normal.
+01:57 - Incidente encerrado.
+
+[INC-2026-013#acoes] (fonte: Registros de incidentes)
+INC-2026-013: Cobranças duplicadas
+Ação corretiva
+idempotência mantida por 24 horas e conciliação diária com o gateway
+
+[DOC-003#visao-geral] (fonte: Wiki técnica)
+Arquitetura do payments-adapter
+Visão geral
+O payments-adapter integra o Orbital Billing ao gateway de pagamentos PagaFácil. O serviço é mantido pelo Time Pagamentos e é implementado em Kotlin com Spring Boot 3. Faz parte da plataforma Orbital Billing.";O compromisso de disponibilidade do payments-adapter é de 99,95% de disponibilidade mensal [DOC-003#confiabilidade]. Não há informação sobre prazos específicos de integração com o gateway de cartão.;;;;
+R013;O que estava quebrado por trás da reclamação do cliente Clínica Vitalis em 18/06/2026?;O chamado foi ligado ao incidente INC-2026-016, cuja causa raiz foi: atualização do RabbitMQ removeu a fila invoices.generate, que não era declarada como durável.;"[T-1053#descricao] (fonte: Chamados de suporte)
+Chamado T-1053: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+Descrição
+Cliente: Clínica Vitalis
+Aberto em: 18/06/2026
+Serviço: invoice-worker
+Prioridade: urgente
+Assunto: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+
+Oi, pessoal. Desde as 18h as faturas dos nossos clientes não estão saindo como deveriam. Podem verificar com urgência?
+
+Comentários:
+- Ana (suporte) (18/06/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Clínica Vitalis (18/06/2026): Obrigado, aguardamos.
+
+[INC-2026-007#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-007: Webhooks de pagamento parados
+Causa raiz
+memória do Redis esgotada porque chaves de entrega foram gravadas sem TTL
+
+[DOC-015#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do notification-service
+Incidentes anteriores
+- INC-2026-006 (11/03/2026): E-mails de fatura não entregues
+- INC-2026-017 (30/06/2026): E-mails com acentos quebrados
+- INC-2026-023 (02/09/2026): Avisos de cobrança enviados em duplicidade
+
+[T-1040#descricao] (fonte: Chamados de suporte)
+Chamado T-1040: Problema: nossa equipe não consegue acessar o painel
+Descrição
+Cliente: Clínica Vitalis
+Aberto em: 06/05/2026
+Serviço: auth-service
+Prioridade: urgente
+Assunto: Problema: nossa equipe não consegue acessar o painel
+
+Bom dia. Desde as 15h nossa equipe não consegue acessar o painel. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (06/05/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Clínica Vitalis (06/05/2026): Obrigado, aguardamos.
+
+[INC-2026-001#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-001: Cobranças recusadas em massa
+Causa raiz
+certificado TLS do gateway PagaFácil expirado no truststore do payments-adapter";O que estava quebrado por trás da reclamação do cliente Clínica Vitalis em 18/06/2026 foi o serviço invoice-worker, devido à memória do Redis esgotada porque chaves de entrega foram gravadas sem TTL [T-1053#descricao][INC-2026-007#causa-raiz].;;;;
+R014;Qual método substitui client.invoices.list no SDK atual?;client.invoices.search.;"[DOC-025#passo-a-passo] (fonte: Wiki técnica)
+Como atualizar o SDK oficial para Node.js
+Passo a passo
+1. Atualize com npm install @orbital/billing@latest.
+2. Troque chamadas a client.invoices.list por client.invoices.search.
+3. Rode os testes de integração do cliente no sandbox.
+4. Publique a atualização.
+
+[T-1020#descricao] (fonte: Chamados de suporte)
+Chamado T-1020: Versão antiga do SDK
+Descrição
+Cliente: Mercado Serra Azul
+Aberto em: 04/03/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Versão antiga do SDK
+
+Oi, pessoal. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Bruno (suporte) (04/03/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[T-1050#descricao] (fonte: Chamados de suporte)
+Chamado T-1050: Versão antiga do SDK
+Descrição
+Cliente: Editora Pampa
+Aberto em: 11/06/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Versão antiga do SDK
+
+Bom dia. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Diego (suporte) (11/06/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[T-1060#descricao] (fonte: Chamados de suporte)
+Chamado T-1060: Versão antiga do SDK
+Descrição
+Cliente: Jota Telecom
+Aberto em: 10/07/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Versão antiga do SDK
+
+Olá, equipe. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Ana (suporte) (10/07/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[DOC-011#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do payments-adapter
+Incidentes anteriores
+- INC-2026-001 (08/01/2026): Cobranças recusadas em massa
+- INC-2026-013 (15/05/2026): Cobranças duplicadas
+- INC-2026-020 (29/07/2026): Gateway indisponível";O método que substitui client.invoices.list no SDK atual é client.invoices.search [DOC-025#passo-a-passo].;;;;
+R015;Onde peço ajuda à equipe de sobreaviso da API pública que os clientes usam para assinaturas e cobranças?;Pelo canal #oncall-faturamento.;"[DOC-001#visao-geral] (fonte: Wiki técnica)
+Arquitetura do billing-api
+Visão geral
+O billing-api expõe a API pública de assinaturas, planos e cobranças. O serviço é mantido pelo Time Faturamento e é implementado em Node.js 22 com Fastify. Faz parte da plataforma Orbital Billing.
+
+[T-1077#descricao] (fonte: Chamados de suporte)
+Chamado T-1077: Problema: nossas chamadas à API de cobranças estão falhando
+Descrição
+Cliente: Grupo Nébula
+Aberto em: 15/09/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Problema: nossas chamadas à API de cobranças estão falhando
+
+Olá, equipe. Desde as 18h nossas chamadas à API de cobranças estão falhando. Podem verificar com urgência?
+
+Comentários:
+- Diego (suporte) (15/09/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Grupo Nébula (15/09/2026): Obrigado, aguardamos.
+
+[T-1019#descricao] (fonte: Chamados de suporte)
+Chamado T-1019: Problema: nossas chamadas à API de cobranças estão falhando
+Descrição
+Cliente: Acme Logística
+Aberto em: 27/02/2026
+Serviço: billing-api
+Prioridade: urgente
+Assunto: Problema: nossas chamadas à API de cobranças estão falhando
+
+Oi, pessoal. Desde as 9h nossas chamadas à API de cobranças estão falhando. Podem verificar com urgência?
+
+Comentários:
+- Ana (suporte) (27/02/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Acme Logística (27/02/2026): Obrigado, aguardamos.
+
+[T-1047#descricao] (fonte: Chamados de suporte)
+Chamado T-1047: Problema: nossas chamadas à API de cobranças estão falhando
+Descrição
+Cliente: Acme Logística
+Aberto em: 09/06/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Problema: nossas chamadas à API de cobranças estão falhando
+
+Prezados, Desde as 11h nossas chamadas à API de cobranças estão falhando. Podem verificar com urgência?
+
+Comentários:
+- Bruno (suporte) (09/06/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Acme Logística (09/06/2026): Obrigado, aguardamos.
+
+[T-1009#resolucao] (fonte: Chamados de suporte)
+Chamado T-1009: Erro 429 na rotina noturna
+Resolução
+Enviado ao cliente o artigo ""Limites de requisição da API"" da base de conhecimento, com orientação para seguir o passo a passo.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R016;Quanto custa por mês o plano Enterprise?;O corpus não informa o preço dos planos.;"[INC-2026-015#resumo] (fonte: Registros de incidentes)
+INC-2026-015: Erros 429 para clientes Enterprise
+Resumo
+Erros 429 para clientes Enterprise.
+Data: 09/06/2026. Severidade: SEV2. Serviço afetado: billing-api.
+Sintoma: clientes Enterprise recebendo 429 abaixo do limite contratado.
+Duração: 95 minutos. Clientes afetados: 12.
+
+[INC-2026-015#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-015: Erros 429 para clientes Enterprise
+Linha do tempo
+11:43 - Início do impacto: clientes Enterprise recebendo 429 abaixo do limite contratado.
+11:48 - Alerta recebido; plantão do Time Faturamento assumiu o incidente.
+12:50 - Mitigação aplicada; métricas voltando ao normal.
+13:18 - Incidente encerrado.
+
+[INC-2026-015#acoes] (fonte: Registros de incidentes)
+INC-2026-015: Erros 429 para clientes Enterprise
+Ação corretiva
+teste de contrato dos limites por plano antes de cada deploy
+
+[DOC-024#limites-e-observacoes] (fonte: Wiki técnica)
+Como mudar o plano de uma assinatura
+Limites e observações
+O upgrade é cobrado pró-rata no mesmo dia; o downgrade só passa a valer no próximo ciclo de cobrança, sem reembolso proporcional.
+
+[T-1006#descricao] (fonte: Chamados de suporte)
+Chamado T-1006: Redução de plano
+Descrição
+Cliente: Farmácias Ipê
+Aberto em: 12/01/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Redução de plano
+
+Prezados, Queremos passar para um plano menor. A partir de quando a mudança vale?
+
+Comentários:
+- Diego (suporte) (12/01/2026): Obrigado pelo contato; vamos responder em seguida.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R017;Se a falha de 17/07/2026 tivesse vindo de uma versão nova, como voltar o componente afetado para a anterior?;"O serviço afetado foi o reporting-service; orbctl rollback reporting-service --to previous.";"[DOC-011#rollback] (fonte: Wiki técnica)
+Runbook do payments-adapter
+Rollback
+Se um deploy do payments-adapter causar erros, execute `orbctl rollback payments-adapter --to previous --require-approval` e confirme a recuperação no endpoint de saúde. Registre o rollback no canal do plantão.
+
+[DOC-012#rollback] (fonte: Wiki técnica)
+Runbook do webhook-dispatcher
+Rollback
+Se um deploy do webhook-dispatcher causar erros, execute `orbctl rollback webhook-dispatcher --to previous` e confirme a recuperação no endpoint de saúde. Registre o rollback no canal do plantão.
+
+[T-1060#descricao] (fonte: Chamados de suporte)
+Chamado T-1060: Versão antiga do SDK
+Descrição
+Cliente: Jota Telecom
+Aberto em: 10/07/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Versão antiga do SDK
+
+Olá, equipe. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Ana (suporte) (10/07/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[T-1060#resolucao] (fonte: Chamados de suporte)
+Chamado T-1060: Versão antiga do SDK
+Resolução
+Enviado ao cliente o artigo ""Como atualizar o SDK oficial para Node.js"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[T-1020#resolucao] (fonte: Chamados de suporte)
+Chamado T-1020: Versão antiga do SDK
+Resolução
+Enviado ao cliente o artigo ""Como atualizar o SDK oficial para Node.js"" da base de conhecimento, com orientação para seguir o passo a passo.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R018;"O cliente Mercado Serra Azul abriu um chamado sobre ""Erro 429 na rotina noturna"". Qual artigo foi enviado e, segundo ele, qual é o limite padrão de requisições?";"Foi enviado o artigo ""Limites de requisição da API""; 600 requisições por minuto.";"[T-1018#descricao] (fonte: Chamados de suporte)
+Chamado T-1018: Erro 429 na rotina noturna
+Descrição
+Cliente: Mercado Serra Azul
+Aberto em: 21/02/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Erro 429 na rotina noturna
+
+Bom dia. Nossa rotina noturna de sincronização recebe muitos erros 429. O que devemos fazer?
+
+Comentários:
+- Diego (suporte) (21/02/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[T-1009#resolucao] (fonte: Chamados de suporte)
+Chamado T-1009: Erro 429 na rotina noturna
+Resolução
+Enviado ao cliente o artigo ""Limites de requisição da API"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[T-1021#resolucao] (fonte: Chamados de suporte)
+Chamado T-1021: Erro 429 na rotina noturna
+Resolução
+Enviado ao cliente o artigo ""Limites de requisição da API"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[T-1018#resolucao] (fonte: Chamados de suporte)
+Chamado T-1018: Erro 429 na rotina noturna
+Resolução
+Enviado ao cliente o artigo ""Limites de requisição da API"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[T-1074#descricao] (fonte: Chamados de suporte)
+Chamado T-1074: Aumento do número de usuários
+Descrição
+Cliente: Mercado Serra Azul
+Aberto em: 24/08/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Aumento do número de usuários
+
+Prezados, Atingimos o limite de usuários do plano e precisamos incluir mais pessoas.
+
+Comentários:
+- Bruno (suporte) (24/08/2026): Solicitação recebida; vamos verificar.";"O artigo enviado foi ""Limites de requisição da API"" da base de conhecimento. Os trechos não contêm informação sobre o limite padrão de requisições.";;;;
+R019;Onde, no painel, eu crio uma credencial nova para integrar com a API?;Configurações > Chaves de API.;"[DOC-017#passo-a-passo] (fonte: Wiki técnica)
+Como rotacionar uma chave de API
+Passo a passo
+1. Acesse o portal e abra Configurações > Chaves de API.
+2. Clique em ""Gerar nova chave"" e copie o valor exibido, que não será mostrado de novo.
+3. Atualize a chave nos sistemas do cliente.
+4. Revogue a chave antiga no mesmo menu.
+
+[T-1041#descricao] (fonte: Chamados de suporte)
+Chamado T-1041: Login com a conta corporativa
+Descrição
+Cliente: Acme Logística
+Aberto em: 09/05/2026
+Serviço: auth-service
+Prioridade: alta
+Assunto: Login com a conta corporativa
+
+Oi, pessoal. Queremos que a nossa equipe entre no painel com o login da nossa empresa, sem senha separada.
+
+Comentários:
+- Carla (suporte) (09/05/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[INC-2026-015#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-015: Erros 429 para clientes Enterprise
+Causa raiz
+configuração de limite de requisições aplicada por IP em vez de por chave de API
+
+[DOC-023#passo-a-passo] (fonte: Wiki técnica)
+Como habilitar login único (SSO)
+Passo a passo
+1. Peça ao cliente o arquivo de metadados SAML do provedor de identidade.
+2. Cadastre o arquivo em Configurações > Segurança > SSO.
+3. Envie ao cliente a URL de ACS https://auth.orbital.example/saml/acs.
+4. Teste o login com um usuário do cliente antes de tornar o SSO obrigatório.
+
+[T-1033#descricao] (fonte: Chamados de suporte)
+Chamado T-1033: Troca da chave de integração
+Descrição
+Cliente: Editora Pampa
+Aberto em: 14/04/2026
+Serviço: customer-portal
+Prioridade: normal
+Assunto: Troca da chave de integração
+
+Prezados, Um desenvolvedor saiu da empresa e precisamos trocar a chave usada pela nossa integração. Qual é o procedimento?
+
+Comentários:
+- Bruno (suporte) (14/04/2026): Obrigado pelo contato; vamos responder em seguida.";No painel, você acessa Configurações > Chaves de API para criar uma nova credencial para integrar com a API [DOC-017#passo-a-passo].;;;;
+R020;Qual é a meta de nível de serviço do auth-service?;99,99% de disponibilidade mensal.;"[DOC-005#confiabilidade] (fonte: Wiki técnica)
+Arquitetura do auth-service
+Confiabilidade
+O objetivo de nível de serviço (SLO) do auth-service é 99,99% de disponibilidade mensal. Em falhas temporárias, a política de novas tentativas é: sem novas tentativas; tokens de acesso expiram em 15 minutos.
+
+[INC-2026-009#resumo] (fonte: Registros de incidentes)
+INC-2026-009: Logins via SSO falhando
+Resumo
+Logins via SSO falhando.
+Data: 07/04/2026. Severidade: SEV2. Serviço afetado: auth-service.
+Sintoma: usuários com SSO sem conseguir entrar no portal.
+Duração: 83 minutos. Clientes afetados: 37.
+
+[T-1061#descricao] (fonte: Chamados de suporte)
+Chamado T-1061: Aumento do número de usuários
+Descrição
+Cliente: Acme Logística
+Aberto em: 10/07/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Aumento do número de usuários
+
+Prezados, Atingimos o limite de usuários do plano e precisamos incluir mais pessoas.
+
+Comentários:
+- Diego (suporte) (10/07/2026): Solicitação recebida; vamos verificar.
+
+[DOC-005#visao-geral] (fonte: Wiki técnica)
+Arquitetura do auth-service
+Visão geral
+O auth-service autentica usuários e emite tokens de acesso para a API e o portal. O serviço é mantido pelo Time Plataforma e é implementado em Go 1.23. Faz parte da plataforma Orbital Billing.
+
+[INC-2026-021#resumo] (fonte: Registros de incidentes)
+INC-2026-021: Sessões encerradas no deploy
+Resumo
+Sessões encerradas no deploy.
+Data: 06/08/2026. Severidade: SEV3. Serviço afetado: auth-service.
+Sintoma: usuários deslogados após cada deploy.
+Duração: 20 minutos. Clientes afetados: 300.";A meta de nível de serviço do auth-service é 99,99% de disponibilidade mensal [DOC-005#confiabilidade].;;;;
+R021;"O cliente Hotel Maré Alta abriu um chamado sobre ""Login com a conta corporativa"". Qual artigo foi enviado e, segundo ele, em qual plano o recurso está disponível?";"Foi enviado o artigo ""Como habilitar login único (SSO)""; plano Enterprise.";"[T-1055#descricao] (fonte: Chamados de suporte)
+Chamado T-1055: Login com a conta corporativa
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 23/06/2026
+Serviço: auth-service
+Prioridade: normal
+Assunto: Login com a conta corporativa
+
+Olá, equipe. Queremos que a nossa equipe entre no painel com o login da nossa empresa, sem senha separada.
+
+Comentários:
+- Bruno (suporte) (23/06/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[INC-2026-015#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-015: Erros 429 para clientes Enterprise
+Linha do tempo
+11:43 - Início do impacto: clientes Enterprise recebendo 429 abaixo do limite contratado.
+11:48 - Alerta recebido; plantão do Time Faturamento assumiu o incidente.
+12:50 - Mitigação aplicada; métricas voltando ao normal.
+13:18 - Incidente encerrado.
+
+[DOC-023#limites-e-observacoes] (fonte: Wiki técnica)
+Como habilitar login único (SSO)
+Limites e observações
+O SSO via SAML 2.0 só está disponível no plano Enterprise. Não há suporte a OpenID Connect nesta versão.
+
+[T-1078#resolucao] (fonte: Chamados de suporte)
+Chamado T-1078: Login com a conta corporativa
+Resolução
+Enviado ao cliente o artigo ""Como habilitar login único (SSO)"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[DOC-024#quando-usar] (fonte: Wiki técnica)
+Como mudar o plano de uma assinatura
+Quando usar
+Use quando o cliente quiser fazer upgrade ou downgrade de plano.";"O artigo enviado foi ""Como habilitar login único (SSO)"" [T-1078#resolucao]. O recurso está disponível no plano Enterprise [DOC-023#limites-e-observacoes].";;;;
+R022;O que estava quebrado por trás da reclamação do cliente Lume Energia em 08/01/2026?;O chamado foi ligado ao incidente INC-2026-001, cuja causa raiz foi: certificado TLS do gateway PagaFácil expirado no truststore do payments-adapter.;"[T-1022#descricao] (fonte: Chamados de suporte)
+Chamado T-1022: Problema: nossos clientes estão reclamando dos e-mails de cobrança
+Descrição
+Cliente: Lume Energia
+Aberto em: 11/03/2026
+Serviço: notification-service
+Prioridade: alta
+Assunto: Problema: nossos clientes estão reclamando dos e-mails de cobrança
+
+Oi, pessoal. Desde as 7h nossos clientes estão reclamando dos e-mails de cobrança. Podem verificar com urgência?
+
+Comentários:
+- Diego (suporte) (11/03/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Lume Energia (11/03/2026): Obrigado, aguardamos.
+
+[INC-2026-001#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-001: Cobranças recusadas em massa
+Causa raiz
+certificado TLS do gateway PagaFácil expirado no truststore do payments-adapter
+
+[DOC-011#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do payments-adapter
+Incidentes anteriores
+- INC-2026-001 (08/01/2026): Cobranças recusadas em massa
+- INC-2026-013 (15/05/2026): Cobranças duplicadas
+- INC-2026-020 (29/07/2026): Gateway indisponível
+
+[T-1079#descricao] (fonte: Chamados de suporte)
+Chamado T-1079: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+Descrição
+Cliente: Lume Energia
+Aberto em: 24/09/2026
+Serviço: invoice-worker
+Prioridade: alta
+Assunto: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+
+Prezados, Desde as 7h as faturas dos nossos clientes não estão saindo como deveriam. Podem verificar com urgência?
+
+Comentários:
+- Bruno (suporte) (24/09/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Lume Energia (24/09/2026): Obrigado, aguardamos.
+
+[INC-2026-016#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-016: Fila de faturas parada
+Causa raiz
+atualização do RabbitMQ removeu a fila invoices.generate, que não era declarada como durável";O que estava quebrado por trás da reclamação do cliente Lume Energia em 08/01/2026 foi o sistema de cobranças, especificamente devido ao certificado TLS do gateway PagaFácil expirado no truststore do payments-adapter [INC-2026-001#causa-raiz]. Este problema está associado ao incidente INC-2026-001, que ocorreu em 08/01/2026 [DOC-011#incidentes-anteriores].;;;;
+R023;Qual URL de ACS devo passar ao cliente que está configurando SSO?;https://auth.orbital.example/saml/acs.;"[DOC-023#passo-a-passo] (fonte: Wiki técnica)
+Como habilitar login único (SSO)
+Passo a passo
+1. Peça ao cliente o arquivo de metadados SAML do provedor de identidade.
+2. Cadastre o arquivo em Configurações > Segurança > SSO.
+3. Envie ao cliente a URL de ACS https://auth.orbital.example/saml/acs.
+4. Teste o login com um usuário do cliente antes de tornar o SSO obrigatório.
+
+[T-1055#resolucao] (fonte: Chamados de suporte)
+Chamado T-1055: Login com a conta corporativa
+Resolução
+Enviado ao cliente o artigo ""Como habilitar login único (SSO)"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[T-1041#resolucao] (fonte: Chamados de suporte)
+Chamado T-1041: Login com a conta corporativa
+Resolução
+Enviado ao cliente o artigo ""Como habilitar login único (SSO)"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[T-1078#resolucao] (fonte: Chamados de suporte)
+Chamado T-1078: Login com a conta corporativa
+Resolução
+Enviado ao cliente o artigo ""Como habilitar login único (SSO)"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[DOC-023#quando-usar] (fonte: Wiki técnica)
+Como habilitar login único (SSO)
+Quando usar
+Use quando o cliente quiser que os usuários entrem no portal com o provedor de identidade da própria empresa.";A URL de ACS que deve ser passada ao cliente é https://auth.orbital.example/saml/acs [DOC-023#passo-a-passo].;;;;
+R024;Qual é a meta de nível de serviço do reporting-service?;99% dos relatórios entregues em até 30 minutos.;"[DOC-006#confiabilidade] (fonte: Wiki técnica)
+Arquitetura do reporting-service
+Confiabilidade
+O objetivo de nível de serviço (SLO) do reporting-service é 99% dos relatórios entregues em até 30 minutos. Em falhas temporárias, a política de novas tentativas é: até 2 tentativas por relatório, com intervalo de 5 minutos.
+
+[DOC-006#visao-geral] (fonte: Wiki técnica)
+Arquitetura do reporting-service
+Visão geral
+O reporting-service gera relatórios financeiros e exportações para os clientes. O serviço é mantido pelo Time Dados e é implementado em Python 3.12 com FastAPI. Faz parte da plataforma Orbital Billing.
+
+[DOC-007#confiabilidade] (fonte: Wiki técnica)
+Arquitetura do notification-service
+Confiabilidade
+O objetivo de nível de serviço (SLO) do notification-service é 99,5% dos e-mails aceitos pelo provedor em até 5 minutos. Em falhas temporárias, a política de novas tentativas é: até 4 tentativas com intervalo fixo de 2 minutos.
+
+[DOC-008#confiabilidade] (fonte: Wiki técnica)
+Arquitetura do customer-portal
+Confiabilidade
+O objetivo de nível de serviço (SLO) do customer-portal é 99,9% de disponibilidade mensal. Em falhas temporárias, a política de novas tentativas é: até 2 tentativas no cliente HTTP para chamadas idempotentes.
+
+[DOC-001#confiabilidade] (fonte: Wiki técnica)
+Arquitetura do billing-api
+Confiabilidade
+O objetivo de nível de serviço (SLO) do billing-api é 99,9% de disponibilidade mensal. Em falhas temporárias, a política de novas tentativas é: até 3 tentativas com backoff exponencial começando em 200 ms.";A meta de nível de serviço do reporting-service é 99% dos relatórios entregues em até 30 minutos [DOC-006#confiabilidade].;;;;
+R025;Quanto tempo durou o incidente em que houve clientes rejeitando webhooks por assinatura inválida?;47 minutos.;"[INC-2026-003#resumo] (fonte: Registros de incidentes)
+INC-2026-003: Webhooks rejeitados por assinatura inválida
+Resumo
+Webhooks rejeitados por assinatura inválida.
+Data: 02/02/2026. Severidade: SEV2. Serviço afetado: webhook-dispatcher.
+Sintoma: clientes rejeitando webhooks por assinatura inválida.
+Duração: 47 minutos. Clientes afetados: 140.
+
+[INC-2026-003#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-003: Webhooks rejeitados por assinatura inválida
+Linha do tempo
+05:32 - Início do impacto: clientes rejeitando webhooks por assinatura inválida.
+05:34 - Alerta recebido; plantão do Time Integrações assumiu o incidente.
+06:05 - Mitigação aplicada; métricas voltando ao normal.
+06:19 - Incidente encerrado.
+
+[DOC-012#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do webhook-dispatcher
+Incidentes anteriores
+- INC-2026-003 (02/02/2026): Webhooks rejeitados por assinatura inválida
+- INC-2026-007 (19/03/2026): Webhooks de pagamento parados
+- INC-2026-018 (08/07/2026): Webhooks duplicados
+
+[INC-2026-007#resumo] (fonte: Registros de incidentes)
+INC-2026-007: Webhooks de pagamento parados
+Resumo
+Webhooks de pagamento parados.
+Data: 19/03/2026. Severidade: SEV1. Serviço afetado: webhook-dispatcher.
+Sintoma: eventos invoice.paid parados por mais de uma hora.
+Duração: 71 minutos. Clientes afetados: 655.
+
+[INC-2026-018#resumo] (fonte: Registros de incidentes)
+INC-2026-018: Webhooks duplicados
+Resumo
+Webhooks duplicados.
+Data: 08/07/2026. Severidade: SEV2. Serviço afetado: webhook-dispatcher.
+Sintoma: clientes recebendo o mesmo evento várias vezes.
+Duração: 140 minutos. Clientes afetados: 98.";O incidente em que houve clientes rejeitando webhooks por assinatura inválida durou 47 minutos [INC-2026-003#resumo].;;;;
+R026;Que artigo da base mandaram para o cliente Editora Pampa no atendimento de 11/06/2026, e o que ele diz sobre qual é a versão mais antiga ainda atendida?;"Foi enviado o artigo ""Como atualizar o SDK oficial para Node.js""; 4.2.0.";"[T-1076#descricao] (fonte: Chamados de suporte)
+Chamado T-1076: Problema: nossos clientes estão reclamando dos e-mails de cobrança
+Descrição
+Cliente: Editora Pampa
+Aberto em: 02/09/2026
+Serviço: notification-service
+Prioridade: urgente
+Assunto: Problema: nossos clientes estão reclamando dos e-mails de cobrança
+
+Prezados, Desde as 8h nossos clientes estão reclamando dos e-mails de cobrança. Podem verificar com urgência?
+
+Comentários:
+- Ana (suporte) (02/09/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Editora Pampa (02/09/2026): Obrigado, aguardamos.
+
+[DOC-015#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do notification-service
+Incidentes anteriores
+- INC-2026-006 (11/03/2026): E-mails de fatura não entregues
+- INC-2026-017 (30/06/2026): E-mails com acentos quebrados
+- INC-2026-023 (02/09/2026): Avisos de cobrança enviados em duplicidade
+
+[INC-2026-024#resumo] (fonte: Registros de incidentes)
+INC-2026-024: Documentação da API desatualizada
+Resumo
+Documentação da API desatualizada.
+Data: 15/09/2026. Severidade: SEV3. Serviço afetado: billing-api.
+Sintoma: exemplos da documentação retornando 404.
+Duração: 400 minutos. Clientes afetados: 15.
+
+[T-1068#descricao] (fonte: Chamados de suporte)
+Chamado T-1068: Problema: nossa equipe não consegue acessar o painel
+Descrição
+Cliente: Editora Pampa
+Aberto em: 06/08/2026
+Serviço: auth-service
+Prioridade: normal
+Assunto: Problema: nossa equipe não consegue acessar o painel
+
+Prezados, Desde as 18h nossa equipe não consegue acessar o painel. Podem verificar com urgência?
+
+Comentários:
+- Bruno (suporte) (06/08/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Editora Pampa (06/08/2026): Obrigado, aguardamos.
+
+[DOC-009#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do billing-api
+Incidentes anteriores
+- INC-2026-005 (27/02/2026): API fora do ar
+- INC-2026-015 (09/06/2026): Erros 429 para clientes Enterprise
+- INC-2026-024 (15/09/2026): Documentação da API desatualizada";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R027;Que rota da API troca o pacote contratado?;PATCH /v2/subscriptions/{id}.;"[T-1033#resolucao] (fonte: Chamados de suporte)
+Chamado T-1033: Troca da chave de integração
+Resolução
+Enviado ao cliente o artigo ""Como rotacionar uma chave de API"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[T-1037#resolucao] (fonte: Chamados de suporte)
+Chamado T-1037: Troca da chave de integração
+Resolução
+Enviado ao cliente o artigo ""Como rotacionar uma chave de API"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[T-1064#resolucao] (fonte: Chamados de suporte)
+Chamado T-1064: Troca da chave de integração
+Resolução
+Enviado ao cliente o artigo ""Como rotacionar uma chave de API"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[DOC-017#limites-e-observacoes] (fonte: Wiki técnica)
+Como rotacionar uma chave de API
+Limites e observações
+As chaves de API expiram em 90 dias. Durante a rotação, a chave antiga e a nova funcionam juntas por até 24 horas.
+
+[DOC-017#passo-a-passo] (fonte: Wiki técnica)
+Como rotacionar uma chave de API
+Passo a passo
+1. Acesse o portal e abra Configurações > Chaves de API.
+2. Clique em ""Gerar nova chave"" e copie o valor exibido, que não será mostrado de novo.
+3. Atualize a chave nos sistemas do cliente.
+4. Revogue a chave antiga no mesmo menu.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R028;O que causou o problema de links de exportação não enviados por e-mail em abril de 2026?;token de serviço do reporting-service para o notification-service expirado.;"[INC-2026-011#resumo] (fonte: Registros de incidentes)
+INC-2026-011: Exportações assíncronas sem e-mail
+Resumo
+Exportações assíncronas sem e-mail.
+Data: 29/04/2026. Severidade: SEV3. Serviço afetado: reporting-service.
+Sintoma: links de exportação não enviados por e-mail.
+Duração: 240 minutos. Clientes afetados: 19.
+
+[DOC-014#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do reporting-service
+Incidentes anteriores
+- INC-2026-004 (14/02/2026): Relatórios mensais vazios
+- INC-2026-011 (29/04/2026): Exportações assíncronas sem e-mail
+- INC-2026-019 (17/07/2026): Relatórios lentos
+
+[T-1016#descricao] (fonte: Chamados de suporte)
+Chamado T-1016: Problema: os relatórios que exportamos estão com problema
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 14/02/2026
+Serviço: reporting-service
+Prioridade: normal
+Assunto: Problema: os relatórios que exportamos estão com problema
+
+Bom dia. Desde as 7h os relatórios que exportamos estão com problema. Podem verificar com urgência?
+
+Comentários:
+- Bruno (suporte) (14/02/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Hotel Maré Alta (14/02/2026): Obrigado, aguardamos.
+
+[INC-2026-011#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-011: Exportações assíncronas sem e-mail
+Linha do tempo
+21:22 - Início do impacto: links de exportação não enviados por e-mail.
+21:33 - Alerta recebido; plantão do Time Dados assumiu o incidente.
+00:10 - Mitigação aplicada; métricas voltando ao normal.
+01:22 - Incidente encerrado.
+
+[DOC-016#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do customer-portal
+Incidentes anteriores
+- INC-2026-008 (30/03/2026): Gráficos do painel sem dados
+- INC-2026-014 (28/05/2026): Botão de exportar sem resposta
+- INC-2026-022 (19/08/2026): Portal lento";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R029;Qual é o tamanho máximo de uma exportação direta de relatório?;100 mil linhas.;"[DOC-022#limites-e-observacoes] (fonte: Wiki técnica)
+Como exportar relatórios financeiros
+Limites e observações
+A exportação direta vai até 100 mil linhas. Acima disso, a exportação é assíncrona e o link enviado por e-mail vale por 72 horas.
+
+[DOC-022#passo-a-passo] (fonte: Wiki técnica)
+Como exportar relatórios financeiros
+Passo a passo
+1. Abra Relatórios no portal.
+2. Escolha o período e os filtros.
+3. Clique em Exportar CSV.
+4. Para volumes grandes, aguarde o e-mail com o link de download.
+
+[T-1016#descricao] (fonte: Chamados de suporte)
+Chamado T-1016: Problema: os relatórios que exportamos estão com problema
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 14/02/2026
+Serviço: reporting-service
+Prioridade: normal
+Assunto: Problema: os relatórios que exportamos estão com problema
+
+Bom dia. Desde as 7h os relatórios que exportamos estão com problema. Podem verificar com urgência?
+
+Comentários:
+- Bruno (suporte) (14/02/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Hotel Maré Alta (14/02/2026): Obrigado, aguardamos.
+
+[T-1029#resolucao] (fonte: Chamados de suporte)
+Chamado T-1029: Exportação anual incompleta
+Resolução
+Enviado ao cliente o artigo ""Como exportar relatórios financeiros"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[T-1036#descricao] (fonte: Chamados de suporte)
+Chamado T-1036: Problema: os relatórios que exportamos estão com problema
+Descrição
+Cliente: Kappa Seguros
+Aberto em: 29/04/2026
+Serviço: reporting-service
+Prioridade: normal
+Assunto: Problema: os relatórios que exportamos estão com problema
+
+Olá, equipe. Desde as 14h os relatórios que exportamos estão com problema. Podem verificar com urgência?
+
+Comentários:
+- Ana (suporte) (29/04/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Kappa Seguros (29/04/2026): Obrigado, aguardamos.";O tamanho máximo de uma exportação direta de relatório é 100 mil linhas [DOC-022#limites-e-observacoes].;;;;
+R030;Quanto tempo durou o incidente em que houve clientes rejeitando webhooks por assinatura inválida?;47 minutos.;"[INC-2026-003#resumo] (fonte: Registros de incidentes)
+INC-2026-003: Webhooks rejeitados por assinatura inválida
+Resumo
+Webhooks rejeitados por assinatura inválida.
+Data: 02/02/2026. Severidade: SEV2. Serviço afetado: webhook-dispatcher.
+Sintoma: clientes rejeitando webhooks por assinatura inválida.
+Duração: 47 minutos. Clientes afetados: 140.
+
+[DOC-012#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do webhook-dispatcher
+Incidentes anteriores
+- INC-2026-003 (02/02/2026): Webhooks rejeitados por assinatura inválida
+- INC-2026-007 (19/03/2026): Webhooks de pagamento parados
+- INC-2026-018 (08/07/2026): Webhooks duplicados
+
+[T-1059#descricao] (fonte: Chamados de suporte)
+Chamado T-1059: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 08/07/2026
+Serviço: webhook-dispatcher
+Prioridade: alta
+Assunto: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+
+Oi, pessoal. Desde as 10h nosso sistema parou de receber corretamente os eventos de vocês. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (08/07/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Hotel Maré Alta (08/07/2026): Obrigado, aguardamos.
+
+[INC-2026-003#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-003: Webhooks rejeitados por assinatura inválida
+Linha do tempo
+05:32 - Início do impacto: clientes rejeitando webhooks por assinatura inválida.
+05:34 - Alerta recebido; plantão do Time Integrações assumiu o incidente.
+06:05 - Mitigação aplicada; métricas voltando ao normal.
+06:19 - Incidente encerrado.
+
+[DOC-018#limites-e-observacoes] (fonte: Wiki técnica)
+Como configurar e validar webhooks
+Limites e observações
+O sistema do cliente precisa responder em até 5 segundos; acima disso a entrega é considerada falha e entra na política de novas tentativas.";O incidente durou 47 minutos [INC-2026-003#resumo]. Este tempo está alinhado com a linha do tempo que indica o início (05:32) e o encerramento (06:19) do incidente [INC-2026-003#linha-do-tempo].;;;;
+R031;Em que situação dispara o alerta principal do notification-service?;Quando há taxa de rejeição do provedor acima de 3% em 15 minutos.;"[DOC-015#verificacao-de-saude] (fonte: Wiki técnica)
+Runbook do notification-service
+Verificação de saúde
+Para conferir se o notification-service está saudável, chame GET /health/notifications em cada instância. O alerta principal dispara quando há taxa de rejeição do provedor acima de 3% em 15 minutos.
+
+[DOC-014#verificacao-de-saude] (fonte: Wiki técnica)
+Runbook do reporting-service
+Verificação de saúde
+Para conferir se o reporting-service está saudável, chame GET /health/reports em cada instância. O alerta principal dispara quando há mais de 50 relatórios na fila por 20 minutos.
+
+[DOC-007#visao-geral] (fonte: Wiki técnica)
+Arquitetura do notification-service
+Visão geral
+O notification-service envia e-mails transacionais, como faturas e avisos de cobrança. O serviço é mantido pelo Time Integrações e é implementado em Node.js 22. Faz parte da plataforma Orbital Billing.
+
+[DOC-007#dados-e-dependencias] (fonte: Wiki técnica)
+Arquitetura do notification-service
+Dados e dependências
+O notification-service persiste seus dados em PostgreSQL 16 (banco notifications) e provedor de e-mail MailRelay. Mudanças de esquema seguem o processo de migração revisada pelo time responsável.
+
+[DOC-007#confiabilidade] (fonte: Wiki técnica)
+Arquitetura do notification-service
+Confiabilidade
+O objetivo de nível de serviço (SLO) do notification-service é 99,5% dos e-mails aceitos pelo provedor em até 5 minutos. Em falhas temporárias, a política de novas tentativas é: até 4 tentativas com intervalo fixo de 2 minutos.";O alerta principal do notification-service dispara quando há taxa de rejeição do provedor acima de 3% em 15 minutos [DOC-015#verificacao-de-saude].;;;;
+R032;Se a falha de 11/03/2026 tivesse vindo de uma versão nova, como voltar o componente afetado para a anterior?;"O serviço afetado foi o notification-service; orbctl rollback notification-service --to previous.";"[DOC-011#rollback] (fonte: Wiki técnica)
+Runbook do payments-adapter
+Rollback
+Se um deploy do payments-adapter causar erros, execute `orbctl rollback payments-adapter --to previous --require-approval` e confirme a recuperação no endpoint de saúde. Registre o rollback no canal do plantão.
+
+[T-1060#descricao] (fonte: Chamados de suporte)
+Chamado T-1060: Versão antiga do SDK
+Descrição
+Cliente: Jota Telecom
+Aberto em: 10/07/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Versão antiga do SDK
+
+Olá, equipe. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Ana (suporte) (10/07/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[T-1050#descricao] (fonte: Chamados de suporte)
+Chamado T-1050: Versão antiga do SDK
+Descrição
+Cliente: Editora Pampa
+Aberto em: 11/06/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Versão antiga do SDK
+
+Bom dia. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Diego (suporte) (11/06/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[DOC-012#rollback] (fonte: Wiki técnica)
+Runbook do webhook-dispatcher
+Rollback
+Se um deploy do webhook-dispatcher causar erros, execute `orbctl rollback webhook-dispatcher --to previous` e confirme a recuperação no endpoint de saúde. Registre o rollback no canal do plantão.
+
+[DOC-015#rollback] (fonte: Wiki técnica)
+Runbook do notification-service
+Rollback
+Se um deploy do notification-service causar erros, execute `orbctl rollback notification-service --to previous` e confirme a recuperação no endpoint de saúde. Registre o rollback no canal do plantão.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R033;Durante o incidente em que houve erro 500 em todas as tentativas de login, em maio, qual endpoint mostraria a saúde do serviço afetado?;"O serviço afetado foi o auth-service; /health/auth.";"[INC-2026-012#resumo] (fonte: Registros de incidentes)
+INC-2026-012: Ninguém consegue entrar no portal
+Resumo
+Ninguém consegue entrar no portal.
+Data: 06/05/2026. Severidade: SEV1. Serviço afetado: auth-service.
+Sintoma: erro 500 em todas as tentativas de login.
+Duração: 29 minutos. Clientes afetados: 1180.
+
+[DOC-013#verificacao-de-saude] (fonte: Wiki técnica)
+Runbook do auth-service
+Verificação de saúde
+Para conferir se o auth-service está saudável, chame GET /health/auth em cada instância. O alerta principal dispara quando há taxa de erro 5xx acima de 0,5% em 5 minutos.
+
+[T-1024#resolucao] (fonte: Chamados de suporte)
+Chamado T-1024: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+Resolução
+O problema foi causado pelo incidente INC-2026-007, já resolvido pela equipe responsável. Crédito automático aplicado conforme a política de créditos por indisponibilidade.
+
+[INC-2026-012#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-012: Ninguém consegue entrar no portal
+Linha do tempo
+12:40 - Início do impacto: erro 500 em todas as tentativas de login.
+12:50 - Alerta recebido; plantão do Time Plataforma assumiu o incidente.
+13:00 - Mitigação aplicada; métricas voltando ao normal.
+13:09 - Incidente encerrado.
+
+[DOC-013#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do auth-service
+Incidentes anteriores
+- INC-2026-009 (07/04/2026): Logins via SSO falhando
+- INC-2026-012 (06/05/2026): Ninguém consegue entrar no portal
+- INC-2026-021 (06/08/2026): Sessões encerradas no deploy";O endpoint que mostraria a saúde do serviço afetado é GET /health/auth [DOC-013#verificacao-de-saude]. Este endpoint é usado para verificar se o auth-service está saudável [DOC-013#verificacao-de-saude]. O incidente com erro 500 em todas as tentativas de login ocorreu em 06/05/2026 [INC-2026-012#resumo].;;;;
+R034;Onde peço ajuda à equipe de sobreaviso da API pública que os clientes usam para assinaturas e cobranças?;Pelo canal #oncall-faturamento.;"[DOC-001#visao-geral] (fonte: Wiki técnica)
+Arquitetura do billing-api
+Visão geral
+O billing-api expõe a API pública de assinaturas, planos e cobranças. O serviço é mantido pelo Time Faturamento e é implementado em Node.js 22 com Fastify. Faz parte da plataforma Orbital Billing.
+
+[T-1077#descricao] (fonte: Chamados de suporte)
+Chamado T-1077: Problema: nossas chamadas à API de cobranças estão falhando
+Descrição
+Cliente: Grupo Nébula
+Aberto em: 15/09/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Problema: nossas chamadas à API de cobranças estão falhando
+
+Olá, equipe. Desde as 18h nossas chamadas à API de cobranças estão falhando. Podem verificar com urgência?
+
+Comentários:
+- Diego (suporte) (15/09/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Grupo Nébula (15/09/2026): Obrigado, aguardamos.
+
+[INC-2026-024#resumo] (fonte: Registros de incidentes)
+INC-2026-024: Documentação da API desatualizada
+Resumo
+Documentação da API desatualizada.
+Data: 15/09/2026. Severidade: SEV3. Serviço afetado: billing-api.
+Sintoma: exemplos da documentação retornando 404.
+Duração: 400 minutos. Clientes afetados: 15.
+
+[T-1019#descricao] (fonte: Chamados de suporte)
+Chamado T-1019: Problema: nossas chamadas à API de cobranças estão falhando
+Descrição
+Cliente: Acme Logística
+Aberto em: 27/02/2026
+Serviço: billing-api
+Prioridade: urgente
+Assunto: Problema: nossas chamadas à API de cobranças estão falhando
+
+Oi, pessoal. Desde as 9h nossas chamadas à API de cobranças estão falhando. Podem verificar com urgência?
+
+Comentários:
+- Ana (suporte) (27/02/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Acme Logística (27/02/2026): Obrigado, aguardamos.
+
+[DOC-009#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do billing-api
+Incidentes anteriores
+- INC-2026-005 (27/02/2026): API fora do ar
+- INC-2026-015 (09/06/2026): Erros 429 para clientes Enterprise
+- INC-2026-024 (15/09/2026): Documentação da API desatualizada";Você pode pedir ajuda à equipe de suporte através dos chamados de suporte, como no caso do Chamado T-1077 e T-1019, onde os clientes relatam problemas com as chamadas à API de cobranças [T-1077#descricao][T-1019#descricao]. A API pública de assinaturas, planos e cobranças é exposta pelo billing-api [DOC-001#visao-geral].;;;;
+R035;Que artigo da base mandaram para o cliente Banco Horizonte no atendimento de 10/05/2026, e o que ele diz sobre quanto tempo o sistema do cliente tem para confirmar o recebimento?;"Foi enviado o artigo ""Como configurar e validar webhooks""; 5 segundos.";"[T-1042#descricao] (fonte: Chamados de suporte)
+Chamado T-1042: Validação dos eventos recebidos
+Descrição
+Cliente: Banco Horizonte
+Aberto em: 10/05/2026
+Serviço: webhook-dispatcher
+Prioridade: normal
+Assunto: Validação dos eventos recebidos
+
+Olá, equipe. Como garantimos que os eventos que chegam no nosso endpoint foram enviados mesmo por vocês?
+
+Comentários:
+- Bruno (suporte) (10/05/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[INC-2026-006#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-006: E-mails de fatura não entregues
+Linha do tempo
+20:05 - Início do impacto: e-mails de fatura não chegando aos clientes.
+20:09 - Alerta recebido; plantão do Time Integrações assumiu o incidente.
+21:33 - Mitigação aplicada; métricas voltando ao normal.
+22:11 - Incidente encerrado.
+
+[DOC-018#limites-e-observacoes] (fonte: Wiki técnica)
+Como configurar e validar webhooks
+Limites e observações
+O sistema do cliente precisa responder em até 5 segundos; acima disso a entrega é considerada falha e entra na política de novas tentativas.
+
+[T-1007#descricao] (fonte: Chamados de suporte)
+Chamado T-1007: Pedido de nota de crédito
+Descrição
+Cliente: Banco Horizonte
+Aberto em: 20/01/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Pedido de nota de crédito
+
+Prezados, Fomos cobrados por usuários que já tinham sido desativados. Pedimos o estorno.
+
+Comentários:
+- Carla (suporte) (20/01/2026): Solicitação recebida; vamos verificar.
+
+[INC-2026-022#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-022: Portal lento
+Linha do tempo
+14:59 - Início do impacto: páginas do portal levando mais de 10 segundos.
+15:02 - Alerta recebido; plantão do Time Web assumiu o incidente.
+15:52 - Mitigação aplicada; métricas voltando ao normal.
+16:14 - Incidente encerrado.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R036;"O cliente Banco Horizonte abriu um chamado sobre ""Exportação anual incompleta"". Qual artigo foi enviado e, segundo ele, até quantas linhas vai a exportação direta?";"Foi enviado o artigo ""Como exportar relatórios financeiros""; 100 mil linhas.";"[T-1038#descricao] (fonte: Chamados de suporte)
+Chamado T-1038: Exportação anual incompleta
+Descrição
+Cliente: Banco Horizonte
+Aberto em: 02/05/2026
+Serviço: reporting-service
+Prioridade: normal
+Assunto: Exportação anual incompleta
+
+Oi, pessoal. Precisamos exportar todas as cobranças do ano, mas o arquivo baixado não vem completo.
+
+Comentários:
+- Diego (suporte) (02/05/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[DOC-022#limites-e-observacoes] (fonte: Wiki técnica)
+Como exportar relatórios financeiros
+Limites e observações
+A exportação direta vai até 100 mil linhas. Acima disso, a exportação é assíncrona e o link enviado por e-mail vale por 72 horas.
+
+[T-1038#resolucao] (fonte: Chamados de suporte)
+Chamado T-1038: Exportação anual incompleta
+Resolução
+Enviado ao cliente o artigo ""Como exportar relatórios financeiros"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[T-1011#resolucao] (fonte: Chamados de suporte)
+Chamado T-1011: Exportação anual incompleta
+Resolução
+Enviado ao cliente o artigo ""Como exportar relatórios financeiros"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[T-1029#resolucao] (fonte: Chamados de suporte)
+Chamado T-1029: Exportação anual incompleta
+Resolução
+Enviado ao cliente o artigo ""Como exportar relatórios financeiros"" da base de conhecimento, com orientação para seguir o passo a passo.";"O artigo enviado foi ""Como exportar relatórios financeiros"". A exportação direta vai até 100 mil linhas [DOC-022#limites-e-observacoes].";;;;
+R037;Qual foi a causa técnica do problema que o cliente Lume Energia relatou em 24/09/2026?;O chamado foi ligado ao incidente INC-2026-025, cuja causa raiz foi: fonte tipográfica ausente na nova imagem de contêiner do invoice-worker.;"[T-1079#descricao] (fonte: Chamados de suporte)
+Chamado T-1079: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+Descrição
+Cliente: Lume Energia
+Aberto em: 24/09/2026
+Serviço: invoice-worker
+Prioridade: alta
+Assunto: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+
+Prezados, Desde as 7h as faturas dos nossos clientes não estão saindo como deveriam. Podem verificar com urgência?
+
+Comentários:
+- Bruno (suporte) (24/09/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Lume Energia (24/09/2026): Obrigado, aguardamos.
+
+[T-1024#descricao] (fonte: Chamados de suporte)
+Chamado T-1024: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+Descrição
+Cliente: Lume Energia
+Aberto em: 19/03/2026
+Serviço: webhook-dispatcher
+Prioridade: urgente
+Assunto: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+
+Oi, pessoal. Desde as 11h nosso sistema parou de receber corretamente os eventos de vocês. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (19/03/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Lume Energia (19/03/2026): Obrigado, aguardamos.
+
+[T-1001#descricao] (fonte: Chamados de suporte)
+Chamado T-1001: Problema: nossos clientes não estão conseguindo pagar com cartão
+Descrição
+Cliente: Lume Energia
+Aberto em: 08/01/2026
+Serviço: payments-adapter
+Prioridade: urgente
+Assunto: Problema: nossos clientes não estão conseguindo pagar com cartão
+
+Bom dia. Desde as 7h nossos clientes não estão conseguindo pagar com cartão. Podem verificar com urgência?
+
+Comentários:
+- Ana (suporte) (08/01/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Lume Energia (08/01/2026): Obrigado, aguardamos.
+
+[T-1022#descricao] (fonte: Chamados de suporte)
+Chamado T-1022: Problema: nossos clientes estão reclamando dos e-mails de cobrança
+Descrição
+Cliente: Lume Energia
+Aberto em: 11/03/2026
+Serviço: notification-service
+Prioridade: alta
+Assunto: Problema: nossos clientes estão reclamando dos e-mails de cobrança
+
+Oi, pessoal. Desde as 7h nossos clientes estão reclamando dos e-mails de cobrança. Podem verificar com urgência?
+
+Comentários:
+- Diego (suporte) (11/03/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Lume Energia (11/03/2026): Obrigado, aguardamos.
+
+[T-1049#descricao] (fonte: Chamados de suporte)
+Chamado T-1049: Usuário bloqueado no painel
+Descrição
+Cliente: Lume Energia
+Aberto em: 10/06/2026
+Serviço: auth-service
+Prioridade: alta
+Assunto: Usuário bloqueado no painel
+
+Olá, equipe. Uma colega da equipe financeira não consegue entrar no painel; aparece ""conta bloqueada"".
+
+Comentários:
+- Ana (suporte) (10/06/2026): Solicitação recebida; vamos verificar.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R038;Qual foi a causa técnica do problema que o cliente Hotel Maré Alta relatou em 08/07/2026?;O chamado foi ligado ao incidente INC-2026-018, cuja causa raiz foi: novas tentativas disparadas antes do timeout de 5 segundos do cliente terminar.;"[T-1059#descricao] (fonte: Chamados de suporte)
+Chamado T-1059: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 08/07/2026
+Serviço: webhook-dispatcher
+Prioridade: alta
+Assunto: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+
+Oi, pessoal. Desde as 10h nosso sistema parou de receber corretamente os eventos de vocês. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (08/07/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Hotel Maré Alta (08/07/2026): Obrigado, aguardamos.
+
+[INC-2026-018#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-018: Webhooks duplicados
+Causa raiz
+novas tentativas disparadas antes do timeout de 5 segundos do cliente terminar
+
+[DOC-016#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do customer-portal
+Incidentes anteriores
+- INC-2026-008 (30/03/2026): Gráficos do painel sem dados
+- INC-2026-014 (28/05/2026): Botão de exportar sem resposta
+- INC-2026-022 (19/08/2026): Portal lento
+
+[T-1008#descricao] (fonte: Chamados de suporte)
+Chamado T-1008: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 21/01/2026
+Serviço: invoice-worker
+Prioridade: alta
+Assunto: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+
+Bom dia. Desde as 14h as faturas dos nossos clientes não estão saindo como deveriam. Podem verificar com urgência?
+
+Comentários:
+- Ana (suporte) (21/01/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Hotel Maré Alta (21/01/2026): Obrigado, aguardamos.
+
+[INC-2026-022#resumo] (fonte: Registros de incidentes)
+INC-2026-022: Portal lento
+Resumo
+Portal lento.
+Data: 19/08/2026. Severidade: SEV2. Serviço afetado: customer-portal.
+Sintoma: páginas do portal levando mais de 10 segundos.
+Duração: 75 minutos. Clientes afetados: 230.";A causa técnica do problema relatado pelo cliente Hotel Maré Alta em 08/07/2026 foi novas tentativas disparadas antes do timeout de 5 segundos do cliente terminar, o que resultou em webhooks duplicados [INC-2026-018#causa-raiz].;;;;
+R039;Quem estava de plantão no incidente de 03/03/2026?;Não há incidente registrado nessa data.;"[INC-2026-005#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-005: API fora do ar
+Linha do tempo
+05:59 - Início do impacto: API respondendo 503 para todas as chamadas.
+06:14 - Alerta recebido; plantão do Time Faturamento assumiu o incidente.
+06:26 - Mitigação aplicada; métricas voltando ao normal.
+06:37 - Incidente encerrado.
+
+[INC-2026-016#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-016: Fila de faturas parada
+Linha do tempo
+07:54 - Início do impacto: nenhuma fatura gerada por mais de uma hora.
+08:02 - Alerta recebido; plantão do Time Faturamento assumiu o incidente.
+08:40 - Mitigação aplicada; métricas voltando ao normal.
+09:00 - Incidente encerrado.
+
+[INC-2026-006#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-006: E-mails de fatura não entregues
+Linha do tempo
+20:05 - Início do impacto: e-mails de fatura não chegando aos clientes.
+20:09 - Alerta recebido; plantão do Time Integrações assumiu o incidente.
+21:33 - Mitigação aplicada; métricas voltando ao normal.
+22:11 - Incidente encerrado.
+
+[INC-2026-009#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-009: Logins via SSO falhando
+Linha do tempo
+14:57 - Início do impacto: usuários com SSO sem conseguir entrar no portal.
+15:12 - Alerta recebido; plantão do Time Plataforma assumiu o incidente.
+15:55 - Mitigação aplicada; métricas voltando ao normal.
+16:20 - Incidente encerrado.
+
+[INC-2026-008#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-008: Gráficos do painel sem dados
+Linha do tempo
+00:26 - Início do impacto: gráficos de receita do portal aparecendo vazios.
+00:34 - Alerta recebido; plantão do Time Web assumiu o incidente.
+01:05 - Mitigação aplicada; métricas voltando ao normal.
+01:21 - Incidente encerrado.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R040;Qual foi a causa técnica do problema que o cliente Grupo Nébula relatou em 15/05/2026?;O chamado foi ligado ao incidente INC-2026-013, cuja causa raiz foi: chave de idempotência descartada quando o PagaFácil respondeu após o timeout de 10 segundos.;"[T-1043#descricao] (fonte: Chamados de suporte)
+Chamado T-1043: Problema: nossos clientes não estão conseguindo pagar com cartão
+Descrição
+Cliente: Grupo Nébula
+Aberto em: 15/05/2026
+Serviço: payments-adapter
+Prioridade: alta
+Assunto: Problema: nossos clientes não estão conseguindo pagar com cartão
+
+Olá, equipe. Desde as 13h nossos clientes não estão conseguindo pagar com cartão. Podem verificar com urgência?
+
+Comentários:
+- Diego (suporte) (15/05/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Grupo Nébula (15/05/2026): Obrigado, aguardamos.
+
+[T-1046#descricao] (fonte: Chamados de suporte)
+Chamado T-1046: Problema: o painel de vocês está com um comportamento estranho
+Descrição
+Cliente: Grupo Nébula
+Aberto em: 28/05/2026
+Serviço: customer-portal
+Prioridade: normal
+Assunto: Problema: o painel de vocês está com um comportamento estranho
+
+Olá, equipe. Desde as 14h o painel de vocês está com um comportamento estranho. Podem verificar com urgência?
+
+Comentários:
+- Diego (suporte) (28/05/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Grupo Nébula (28/05/2026): Obrigado, aguardamos.
+
+[T-1077#descricao] (fonte: Chamados de suporte)
+Chamado T-1077: Problema: nossas chamadas à API de cobranças estão falhando
+Descrição
+Cliente: Grupo Nébula
+Aberto em: 15/09/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Problema: nossas chamadas à API de cobranças estão falhando
+
+Olá, equipe. Desde as 18h nossas chamadas à API de cobranças estão falhando. Podem verificar com urgência?
+
+Comentários:
+- Diego (suporte) (15/09/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Grupo Nébula (15/09/2026): Obrigado, aguardamos.
+
+[T-1043#resolucao] (fonte: Chamados de suporte)
+Chamado T-1043: Problema: nossos clientes não estão conseguindo pagar com cartão
+Resolução
+O problema foi causado pelo incidente INC-2026-013, já resolvido pela equipe responsável.
+
+[T-1076#resolucao] (fonte: Chamados de suporte)
+Chamado T-1076: Problema: nossos clientes estão reclamando dos e-mails de cobrança
+Resolução
+O problema foi causado pelo incidente INC-2026-023, já resolvido pela equipe responsável.";A causa técnica do problema relatado pelo cliente Grupo Nébula em 15/05/2026 foi o incidente INC-2026-013 [T-1043#resolucao].;;;;
+R041;O que estava quebrado por trás da reclamação do cliente Lume Energia em 08/01/2026?;O chamado foi ligado ao incidente INC-2026-001, cuja causa raiz foi: certificado TLS do gateway PagaFácil expirado no truststore do payments-adapter.;"[T-1022#descricao] (fonte: Chamados de suporte)
+Chamado T-1022: Problema: nossos clientes estão reclamando dos e-mails de cobrança
+Descrição
+Cliente: Lume Energia
+Aberto em: 11/03/2026
+Serviço: notification-service
+Prioridade: alta
+Assunto: Problema: nossos clientes estão reclamando dos e-mails de cobrança
+
+Oi, pessoal. Desde as 7h nossos clientes estão reclamando dos e-mails de cobrança. Podem verificar com urgência?
+
+Comentários:
+- Diego (suporte) (11/03/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Lume Energia (11/03/2026): Obrigado, aguardamos.
+
+[T-1079#descricao] (fonte: Chamados de suporte)
+Chamado T-1079: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+Descrição
+Cliente: Lume Energia
+Aberto em: 24/09/2026
+Serviço: invoice-worker
+Prioridade: alta
+Assunto: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+
+Prezados, Desde as 7h as faturas dos nossos clientes não estão saindo como deveriam. Podem verificar com urgência?
+
+Comentários:
+- Bruno (suporte) (24/09/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Lume Energia (24/09/2026): Obrigado, aguardamos.
+
+[T-1001#descricao] (fonte: Chamados de suporte)
+Chamado T-1001: Problema: nossos clientes não estão conseguindo pagar com cartão
+Descrição
+Cliente: Lume Energia
+Aberto em: 08/01/2026
+Serviço: payments-adapter
+Prioridade: urgente
+Assunto: Problema: nossos clientes não estão conseguindo pagar com cartão
+
+Bom dia. Desde as 7h nossos clientes não estão conseguindo pagar com cartão. Podem verificar com urgência?
+
+Comentários:
+- Ana (suporte) (08/01/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Lume Energia (08/01/2026): Obrigado, aguardamos.
+
+[T-1024#descricao] (fonte: Chamados de suporte)
+Chamado T-1024: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+Descrição
+Cliente: Lume Energia
+Aberto em: 19/03/2026
+Serviço: webhook-dispatcher
+Prioridade: urgente
+Assunto: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+
+Oi, pessoal. Desde as 11h nosso sistema parou de receber corretamente os eventos de vocês. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (19/03/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Lume Energia (19/03/2026): Obrigado, aguardamos.
+
+[T-1070#descricao] (fonte: Chamados de suporte)
+Chamado T-1070: Investigar chamada com erro
+Descrição
+Cliente: Lume Energia
+Aberto em: 15/08/2026
+Serviço: customer-portal
+Prioridade: normal
+Assunto: Investigar chamada com erro
+
+Oi, pessoal. Uma chamada da nossa integração falhou ontem à tarde. Como conseguimos ver o que aconteceu?
+
+Comentários:
+- Diego (suporte) (15/08/2026): Obrigado pelo contato; vamos responder em seguida.";O que estava quebrado por trás da reclamação do cliente Lume Energia em 08/01/2026 foi o serviço de pagamento com cartão, conforme descrito no chamado T-1001 [T-1001#descricao].;;;;
+R042;Qual URL de ACS devo passar ao cliente que está configurando SSO?;https://auth.orbital.example/saml/acs.;"[DOC-023#passo-a-passo] (fonte: Wiki técnica)
+Como habilitar login único (SSO)
+Passo a passo
+1. Peça ao cliente o arquivo de metadados SAML do provedor de identidade.
+2. Cadastre o arquivo em Configurações > Segurança > SSO.
+3. Envie ao cliente a URL de ACS https://auth.orbital.example/saml/acs.
+4. Teste o login com um usuário do cliente antes de tornar o SSO obrigatório.
+
+[T-1055#resolucao] (fonte: Chamados de suporte)
+Chamado T-1055: Login com a conta corporativa
+Resolução
+Enviado ao cliente o artigo ""Como habilitar login único (SSO)"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[INC-2026-009#resumo] (fonte: Registros de incidentes)
+INC-2026-009: Logins via SSO falhando
+Resumo
+Logins via SSO falhando.
+Data: 07/04/2026. Severidade: SEV2. Serviço afetado: auth-service.
+Sintoma: usuários com SSO sem conseguir entrar no portal.
+Duração: 83 minutos. Clientes afetados: 37.
+
+[T-1041#resolucao] (fonte: Chamados de suporte)
+Chamado T-1041: Login com a conta corporativa
+Resolução
+Enviado ao cliente o artigo ""Como habilitar login único (SSO)"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[DOC-023#quando-usar] (fonte: Wiki técnica)
+Como habilitar login único (SSO)
+Quando usar
+Use quando o cliente quiser que os usuários entrem no portal com o provedor de identidade da própria empresa.";A URL de ACS que deve ser passada ao cliente é https://auth.orbital.example/saml/acs [DOC-023#passo-a-passo].;;;;
+R043;Que equipe cuida do componente que falhou em 21/01/2026?;"O serviço afetado foi o invoice-worker; Time Faturamento.";"[T-1031#resolucao] (fonte: Chamados de suporte)
+Chamado T-1031: Problema: nossa equipe não consegue acessar o painel
+Resolução
+O problema foi causado pelo incidente INC-2026-009, já resolvido pela equipe responsável.
+
+[INC-2026-020#resumo] (fonte: Registros de incidentes)
+INC-2026-020: Gateway indisponível
+Resumo
+Gateway indisponível.
+Data: 29/07/2026. Severidade: SEV1. Serviço afetado: payments-adapter.
+Sintoma: todas as cobranças falhando por timeout.
+Duração: 112 minutos. Clientes afetados: 960.
+
+[DOC-009#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do billing-api
+Incidentes anteriores
+- INC-2026-005 (27/02/2026): API fora do ar
+- INC-2026-015 (09/06/2026): Erros 429 para clientes Enterprise
+- INC-2026-024 (15/09/2026): Documentação da API desatualizada
+
+[T-1031#descricao] (fonte: Chamados de suporte)
+Chamado T-1031: Problema: nossa equipe não consegue acessar o painel
+Descrição
+Cliente: Kappa Seguros
+Aberto em: 07/04/2026
+Serviço: auth-service
+Prioridade: alta
+Assunto: Problema: nossa equipe não consegue acessar o painel
+
+Prezados, Desde as 19h nossa equipe não consegue acessar o painel. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (07/04/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Kappa Seguros (07/04/2026): Obrigado, aguardamos.
+
+[INC-2026-020#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-020: Gateway indisponível
+Linha do tempo
+00:05 - Início do impacto: todas as cobranças falhando por timeout.
+00:15 - Alerta recebido; plantão do Time Pagamentos assumiu o incidente.
+01:23 - Mitigação aplicada; métricas voltando ao normal.
+01:57 - Incidente encerrado.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R044;Qual é a meta de nível de serviço do auth-service?;99,99% de disponibilidade mensal.;"[DOC-005#confiabilidade] (fonte: Wiki técnica)
+Arquitetura do auth-service
+Confiabilidade
+O objetivo de nível de serviço (SLO) do auth-service é 99,99% de disponibilidade mensal. Em falhas temporárias, a política de novas tentativas é: sem novas tentativas; tokens de acesso expiram em 15 minutos.
+
+[DOC-005#visao-geral] (fonte: Wiki técnica)
+Arquitetura do auth-service
+Visão geral
+O auth-service autentica usuários e emite tokens de acesso para a API e o portal. O serviço é mantido pelo Time Plataforma e é implementado em Go 1.23. Faz parte da plataforma Orbital Billing.
+
+[DOC-008#confiabilidade] (fonte: Wiki técnica)
+Arquitetura do customer-portal
+Confiabilidade
+O objetivo de nível de serviço (SLO) do customer-portal é 99,9% de disponibilidade mensal. Em falhas temporárias, a política de novas tentativas é: até 2 tentativas no cliente HTTP para chamadas idempotentes.
+
+[DOC-013#verificacao-de-saude] (fonte: Wiki técnica)
+Runbook do auth-service
+Verificação de saúde
+Para conferir se o auth-service está saudável, chame GET /health/auth em cada instância. O alerta principal dispara quando há taxa de erro 5xx acima de 0,5% em 5 minutos.
+
+[DOC-001#confiabilidade] (fonte: Wiki técnica)
+Arquitetura do billing-api
+Confiabilidade
+O objetivo de nível de serviço (SLO) do billing-api é 99,9% de disponibilidade mensal. Em falhas temporárias, a política de novas tentativas é: até 3 tentativas com backoff exponencial começando em 200 ms.";A meta de nível de serviço (SLO) do auth-service é 99,99% de disponibilidade mensal [DOC-005#confiabilidade].;;;;
+R045;Se a falha de 11/03/2026 tivesse vindo de uma versão nova, como voltar o componente afetado para a anterior?;"O serviço afetado foi o notification-service; orbctl rollback notification-service --to previous.";"[DOC-011#rollback] (fonte: Wiki técnica)
+Runbook do payments-adapter
+Rollback
+Se um deploy do payments-adapter causar erros, execute `orbctl rollback payments-adapter --to previous --require-approval` e confirme a recuperação no endpoint de saúde. Registre o rollback no canal do plantão.
+
+[T-1060#descricao] (fonte: Chamados de suporte)
+Chamado T-1060: Versão antiga do SDK
+Descrição
+Cliente: Jota Telecom
+Aberto em: 10/07/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Versão antiga do SDK
+
+Olá, equipe. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Ana (suporte) (10/07/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[INC-2026-009#acoes] (fonte: Registros de incidentes)
+INC-2026-009: Logins via SSO falhando
+Ação corretiva
+sincronização de horário via NTP monitorada em todos os nós
+
+[T-1050#descricao] (fonte: Chamados de suporte)
+Chamado T-1050: Versão antiga do SDK
+Descrição
+Cliente: Editora Pampa
+Aberto em: 11/06/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Versão antiga do SDK
+
+Bom dia. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Diego (suporte) (11/06/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[DOC-012#rollback] (fonte: Wiki técnica)
+Runbook do webhook-dispatcher
+Rollback
+Se um deploy do webhook-dispatcher causar erros, execute `orbctl rollback webhook-dispatcher --to previous` e confirme a recuperação no endpoint de saúde. Registre o rollback no canal do plantão.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R046;Que equipe responde pelo componente que avisa os sistemas dos clientes sobre eventos?;Time Integrações.;"[DOC-015#escalonamento] (fonte: Wiki técnica)
+Runbook do notification-service
+Escalonamento
+Problemas no notification-service são tratados pelo plantão do Time Integrações, acionado pelo canal #oncall-integracoes. Se não houver resposta em 15 minutos, acione a liderança de engenharia.
+
+[T-1059#descricao] (fonte: Chamados de suporte)
+Chamado T-1059: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 08/07/2026
+Serviço: webhook-dispatcher
+Prioridade: alta
+Assunto: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+
+Oi, pessoal. Desde as 10h nosso sistema parou de receber corretamente os eventos de vocês. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (08/07/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Hotel Maré Alta (08/07/2026): Obrigado, aguardamos.
+
+[INC-2026-015#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-015: Erros 429 para clientes Enterprise
+Linha do tempo
+11:43 - Início do impacto: clientes Enterprise recebendo 429 abaixo do limite contratado.
+11:48 - Alerta recebido; plantão do Time Faturamento assumiu o incidente.
+12:50 - Mitigação aplicada; métricas voltando ao normal.
+13:18 - Incidente encerrado.
+
+[DOC-007#visao-geral] (fonte: Wiki técnica)
+Arquitetura do notification-service
+Visão geral
+O notification-service envia e-mails transacionais, como faturas e avisos de cobrança. O serviço é mantido pelo Time Integrações e é implementado em Node.js 22. Faz parte da plataforma Orbital Billing.
+
+[T-1024#descricao] (fonte: Chamados de suporte)
+Chamado T-1024: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+Descrição
+Cliente: Lume Energia
+Aberto em: 19/03/2026
+Serviço: webhook-dispatcher
+Prioridade: urgente
+Assunto: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+
+Oi, pessoal. Desde as 11h nosso sistema parou de receber corretamente os eventos de vocês. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (19/03/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Lume Energia (19/03/2026): Obrigado, aguardamos.";A equipe que responde pelo componente que avisa os sistemas dos clientes sobre eventos é o Time Integrações [DOC-015#escalonamento]. Esse time é responsável pelo notification-service, que envia e-mails transacionais como faturas e avisos de cobrança [DOC-007#visao-geral].;;;;
+R047;Que sistema de gestão foi recomendado para o cliente Acme Logística integrar?;conector Pórtico ERP.;"[T-1080#descricao] (fonte: Chamados de suporte)
+Chamado T-1080: Integração com o nosso ERP
+Descrição
+Cliente: Acme Logística
+Aberto em: 24/09/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Integração com o nosso ERP
+
+Oi, pessoal. Vocês têm integração pronta com ERP para lançar as cobranças automaticamente?
+
+Comentários:
+- Ana (suporte) (24/09/2026): Solicitação recebida; vamos verificar.
+
+[DOC-003#visao-geral] (fonte: Wiki técnica)
+Arquitetura do payments-adapter
+Visão geral
+O payments-adapter integra o Orbital Billing ao gateway de pagamentos PagaFácil. O serviço é mantido pelo Time Pagamentos e é implementado em Kotlin com Spring Boot 3. Faz parte da plataforma Orbital Billing.
+
+[INC-2026-006#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-006: E-mails de fatura não entregues
+Linha do tempo
+20:05 - Início do impacto: e-mails de fatura não chegando aos clientes.
+20:09 - Alerta recebido; plantão do Time Integrações assumiu o incidente.
+21:33 - Mitigação aplicada; métricas voltando ao normal.
+22:11 - Incidente encerrado.
+
+[T-1037#descricao] (fonte: Chamados de suporte)
+Chamado T-1037: Troca da chave de integração
+Descrição
+Cliente: Acme Logística
+Aberto em: 01/05/2026
+Serviço: customer-portal
+Prioridade: alta
+Assunto: Troca da chave de integração
+
+Olá, equipe. Um desenvolvedor saiu da empresa e precisamos trocar a chave usada pela nossa integração. Qual é o procedimento?
+
+Comentários:
+- Ana (suporte) (01/05/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[DOC-015#escalonamento] (fonte: Wiki técnica)
+Runbook do notification-service
+Escalonamento
+Problemas no notification-service são tratados pelo plantão do Time Integrações, acionado pelo canal #oncall-integracoes. Se não houver resposta em 15 minutos, acione a liderança de engenharia.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R048;Que equipe cuida do componente que falhou em 21/01/2026?;"O serviço afetado foi o invoice-worker; Time Faturamento.";"[T-1031#resolucao] (fonte: Chamados de suporte)
+Chamado T-1031: Problema: nossa equipe não consegue acessar o painel
+Resolução
+O problema foi causado pelo incidente INC-2026-009, já resolvido pela equipe responsável.
+
+[T-1031#descricao] (fonte: Chamados de suporte)
+Chamado T-1031: Problema: nossa equipe não consegue acessar o painel
+Descrição
+Cliente: Kappa Seguros
+Aberto em: 07/04/2026
+Serviço: auth-service
+Prioridade: alta
+Assunto: Problema: nossa equipe não consegue acessar o painel
+
+Prezados, Desde as 19h nossa equipe não consegue acessar o painel. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (07/04/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Kappa Seguros (07/04/2026): Obrigado, aguardamos.
+
+[T-1068#resolucao] (fonte: Chamados de suporte)
+Chamado T-1068: Problema: nossa equipe não consegue acessar o painel
+Resolução
+O problema foi causado pelo incidente INC-2026-021, já resolvido pela equipe responsável.
+
+[INC-2026-020#resumo] (fonte: Registros de incidentes)
+INC-2026-020: Gateway indisponível
+Resumo
+Gateway indisponível.
+Data: 29/07/2026. Severidade: SEV1. Serviço afetado: payments-adapter.
+Sintoma: todas as cobranças falhando por timeout.
+Duração: 112 minutos. Clientes afetados: 960.
+
+[T-1024#resolucao] (fonte: Chamados de suporte)
+Chamado T-1024: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+Resolução
+O problema foi causado pelo incidente INC-2026-007, já resolvido pela equipe responsável. Crédito automático aplicado conforme a política de créditos por indisponibilidade.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R049;Qual foi a causa técnica do problema que o cliente Lume Energia relatou em 24/09/2026?;O chamado foi ligado ao incidente INC-2026-025, cuja causa raiz foi: fonte tipográfica ausente na nova imagem de contêiner do invoice-worker.;"[T-1079#descricao] (fonte: Chamados de suporte)
+Chamado T-1079: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+Descrição
+Cliente: Lume Energia
+Aberto em: 24/09/2026
+Serviço: invoice-worker
+Prioridade: alta
+Assunto: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+
+Prezados, Desde as 7h as faturas dos nossos clientes não estão saindo como deveriam. Podem verificar com urgência?
+
+Comentários:
+- Bruno (suporte) (24/09/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Lume Energia (24/09/2026): Obrigado, aguardamos.
+
+[INC-2026-022#resumo] (fonte: Registros de incidentes)
+INC-2026-022: Portal lento
+Resumo
+Portal lento.
+Data: 19/08/2026. Severidade: SEV2. Serviço afetado: customer-portal.
+Sintoma: páginas do portal levando mais de 10 segundos.
+Duração: 75 minutos. Clientes afetados: 230.
+
+[DOC-011#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do payments-adapter
+Incidentes anteriores
+- INC-2026-001 (08/01/2026): Cobranças recusadas em massa
+- INC-2026-013 (15/05/2026): Cobranças duplicadas
+- INC-2026-020 (29/07/2026): Gateway indisponível
+
+[T-1024#descricao] (fonte: Chamados de suporte)
+Chamado T-1024: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+Descrição
+Cliente: Lume Energia
+Aberto em: 19/03/2026
+Serviço: webhook-dispatcher
+Prioridade: urgente
+Assunto: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+
+Oi, pessoal. Desde as 11h nosso sistema parou de receber corretamente os eventos de vocês. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (19/03/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Lume Energia (19/03/2026): Obrigado, aguardamos.
+
+[INC-2026-020#resumo] (fonte: Registros de incidentes)
+INC-2026-020: Gateway indisponível
+Resumo
+Gateway indisponível.
+Data: 29/07/2026. Severidade: SEV1. Serviço afetado: payments-adapter.
+Sintoma: todas as cobranças falhando por timeout.
+Duração: 112 minutos. Clientes afetados: 960.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R050;Qual versão do Kubernetes roda em produção?;O corpus não informa a versão do Kubernetes.;"[T-1050#descricao] (fonte: Chamados de suporte)
+Chamado T-1050: Versão antiga do SDK
+Descrição
+Cliente: Editora Pampa
+Aberto em: 11/06/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Versão antiga do SDK
+
+Bom dia. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Diego (suporte) (11/06/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[DOC-025#limites-e-observacoes] (fonte: Wiki técnica)
+Como atualizar o SDK oficial para Node.js
+Limites e observações
+A versão mínima suportada do SDK é a 4.2.0. A linha 3.x foi descontinuada em 30/06/2026.
+
+[INC-2026-024#resumo] (fonte: Registros de incidentes)
+INC-2026-024: Documentação da API desatualizada
+Resumo
+Documentação da API desatualizada.
+Data: 15/09/2026. Severidade: SEV3. Serviço afetado: billing-api.
+Sintoma: exemplos da documentação retornando 404.
+Duração: 400 minutos. Clientes afetados: 15.
+
+[T-1060#descricao] (fonte: Chamados de suporte)
+Chamado T-1060: Versão antiga do SDK
+Descrição
+Cliente: Jota Telecom
+Aberto em: 10/07/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Versão antiga do SDK
+
+Olá, equipe. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Ana (suporte) (10/07/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[DOC-006#visao-geral] (fonte: Wiki técnica)
+Arquitetura do reporting-service
+Visão geral
+O reporting-service gera relatórios financeiros e exportações para os clientes. O serviço é mantido pelo Time Dados e é implementado em Python 3.12 com FastAPI. Faz parte da plataforma Orbital Billing.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R051;Durante o incidente em que houve clientes finais recebendo o mesmo aviso de cobrança dezenas de vezes, em setembro, qual endpoint mostraria a saúde do serviço afetado?;"O serviço afetado foi o notification-service; /health/notifications.";"[INC-2026-023#resumo] (fonte: Registros de incidentes)
+INC-2026-023: Avisos de cobrança enviados em duplicidade
+Resumo
+Avisos de cobrança enviados em duplicidade.
+Data: 02/09/2026. Severidade: SEV1. Serviço afetado: notification-service.
+Sintoma: clientes finais recebendo o mesmo aviso de cobrança dezenas de vezes.
+Duração: 44 minutos. Clientes afetados: 520.
+
+[DOC-015#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do notification-service
+Incidentes anteriores
+- INC-2026-006 (11/03/2026): E-mails de fatura não entregues
+- INC-2026-017 (30/06/2026): E-mails com acentos quebrados
+- INC-2026-023 (02/09/2026): Avisos de cobrança enviados em duplicidade
+
+[T-1076#resolucao] (fonte: Chamados de suporte)
+Chamado T-1076: Problema: nossos clientes estão reclamando dos e-mails de cobrança
+Resolução
+O problema foi causado pelo incidente INC-2026-023, já resolvido pela equipe responsável.
+
+[INC-2026-023#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-023: Avisos de cobrança enviados em duplicidade
+Linha do tempo
+11:49 - Início do impacto: clientes finais recebendo o mesmo aviso de cobrança dezenas de vezes.
+11:59 - Alerta recebido; plantão do Time Integrações assumiu o incidente.
+12:20 - Mitigação aplicada; métricas voltando ao normal.
+12:33 - Incidente encerrado.
+
+[T-1057#resolucao] (fonte: Chamados de suporte)
+Chamado T-1057: Problema: nossos clientes estão reclamando dos e-mails de cobrança
+Resolução
+O problema foi causado pelo incidente INC-2026-017, já resolvido pela equipe responsável.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R052;"O cliente Banco Horizonte abriu um chamado sobre ""Exportação anual incompleta"". Qual artigo foi enviado e, segundo ele, até quantas linhas vai a exportação direta?";"Foi enviado o artigo ""Como exportar relatórios financeiros""; 100 mil linhas.";"[T-1038#descricao] (fonte: Chamados de suporte)
+Chamado T-1038: Exportação anual incompleta
+Descrição
+Cliente: Banco Horizonte
+Aberto em: 02/05/2026
+Serviço: reporting-service
+Prioridade: normal
+Assunto: Exportação anual incompleta
+
+Oi, pessoal. Precisamos exportar todas as cobranças do ano, mas o arquivo baixado não vem completo.
+
+Comentários:
+- Diego (suporte) (02/05/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[DOC-022#limites-e-observacoes] (fonte: Wiki técnica)
+Como exportar relatórios financeiros
+Limites e observações
+A exportação direta vai até 100 mil linhas. Acima disso, a exportação é assíncrona e o link enviado por e-mail vale por 72 horas.
+
+[INC-2026-011#resumo] (fonte: Registros de incidentes)
+INC-2026-011: Exportações assíncronas sem e-mail
+Resumo
+Exportações assíncronas sem e-mail.
+Data: 29/04/2026. Severidade: SEV3. Serviço afetado: reporting-service.
+Sintoma: links de exportação não enviados por e-mail.
+Duração: 240 minutos. Clientes afetados: 19.
+
+[T-1038#resolucao] (fonte: Chamados de suporte)
+Chamado T-1038: Exportação anual incompleta
+Resolução
+Enviado ao cliente o artigo ""Como exportar relatórios financeiros"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[INC-2026-011#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-011: Exportações assíncronas sem e-mail
+Linha do tempo
+21:22 - Início do impacto: links de exportação não enviados por e-mail.
+21:33 - Alerta recebido; plantão do Time Dados assumiu o incidente.
+00:10 - Mitigação aplicada; métricas voltando ao normal.
+01:22 - Incidente encerrado.";"O artigo enviado foi ""Como exportar relatórios financeiros"" [T-1038#resolucao]. A exportação direta vai até 100 mil linhas [DOC-022#limites-e-observacoes].";;;;
+R053;Que compromisso de disponibilidade ou de prazo tem a integração com o gateway de cartão?;99,95% de disponibilidade mensal.;"[DOC-003#confiabilidade] (fonte: Wiki técnica)
+Arquitetura do payments-adapter
+Confiabilidade
+O objetivo de nível de serviço (SLO) do payments-adapter é 99,95% de disponibilidade mensal. Em falhas temporárias, a política de novas tentativas é: nenhuma nova tentativa automática em cobranças; timeout de 10 segundos por chamada ao gateway.
+
+[INC-2026-020#resumo] (fonte: Registros de incidentes)
+INC-2026-020: Gateway indisponível
+Resumo
+Gateway indisponível.
+Data: 29/07/2026. Severidade: SEV1. Serviço afetado: payments-adapter.
+Sintoma: todas as cobranças falhando por timeout.
+Duração: 112 minutos. Clientes afetados: 960.
+
+[T-1043#descricao] (fonte: Chamados de suporte)
+Chamado T-1043: Problema: nossos clientes não estão conseguindo pagar com cartão
+Descrição
+Cliente: Grupo Nébula
+Aberto em: 15/05/2026
+Serviço: payments-adapter
+Prioridade: alta
+Assunto: Problema: nossos clientes não estão conseguindo pagar com cartão
+
+Olá, equipe. Desde as 13h nossos clientes não estão conseguindo pagar com cartão. Podem verificar com urgência?
+
+Comentários:
+- Diego (suporte) (15/05/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Grupo Nébula (15/05/2026): Obrigado, aguardamos.
+
+[INC-2026-020#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-020: Gateway indisponível
+Linha do tempo
+00:05 - Início do impacto: todas as cobranças falhando por timeout.
+00:15 - Alerta recebido; plantão do Time Pagamentos assumiu o incidente.
+01:23 - Mitigação aplicada; métricas voltando ao normal.
+01:57 - Incidente encerrado.
+
+[DOC-003#visao-geral] (fonte: Wiki técnica)
+Arquitetura do payments-adapter
+Visão geral
+O payments-adapter integra o Orbital Billing ao gateway de pagamentos PagaFácil. O serviço é mantido pelo Time Pagamentos e é implementado em Kotlin com Spring Boot 3. Faz parte da plataforma Orbital Billing.";O compromisso de disponibilidade do payments-adapter é de 99,95% de disponibilidade mensal [DOC-003#confiabilidade]. Não há informação sobre prazos específicos de resposta ou mitigação para a integração com o gateway de cartão.;;;;
+R054;Qual versão do Kubernetes roda em produção?;O corpus não informa a versão do Kubernetes.;"[T-1050#descricao] (fonte: Chamados de suporte)
+Chamado T-1050: Versão antiga do SDK
+Descrição
+Cliente: Editora Pampa
+Aberto em: 11/06/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Versão antiga do SDK
+
+Bom dia. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Diego (suporte) (11/06/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[DOC-025#limites-e-observacoes] (fonte: Wiki técnica)
+Como atualizar o SDK oficial para Node.js
+Limites e observações
+A versão mínima suportada do SDK é a 4.2.0. A linha 3.x foi descontinuada em 30/06/2026.
+
+[T-1060#descricao] (fonte: Chamados de suporte)
+Chamado T-1060: Versão antiga do SDK
+Descrição
+Cliente: Jota Telecom
+Aberto em: 10/07/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Versão antiga do SDK
+
+Olá, equipe. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Ana (suporte) (10/07/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[T-1020#descricao] (fonte: Chamados de suporte)
+Chamado T-1020: Versão antiga do SDK
+Descrição
+Cliente: Mercado Serra Azul
+Aberto em: 04/03/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Versão antiga do SDK
+
+Oi, pessoal. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Bruno (suporte) (04/03/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[DOC-006#visao-geral] (fonte: Wiki técnica)
+Arquitetura do reporting-service
+Visão geral
+O reporting-service gera relatórios financeiros e exportações para os clientes. O serviço é mantido pelo Time Dados e é implementado em Python 3.12 com FastAPI. Faz parte da plataforma Orbital Billing.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R055;Qual é o endpoint de saúde do tax-service?;O corpus não descreve nenhum serviço chamado tax-service.;"[DOC-013#verificacao-de-saude] (fonte: Wiki técnica)
+Runbook do auth-service
+Verificação de saúde
+Para conferir se o auth-service está saudável, chame GET /health/auth em cada instância. O alerta principal dispara quando há taxa de erro 5xx acima de 0,5% em 5 minutos.
+
+[DOC-016#verificacao-de-saude] (fonte: Wiki técnica)
+Runbook do customer-portal
+Verificação de saúde
+Para conferir se o customer-portal está saudável, chame GET /api/health em cada instância. O alerta principal dispara quando há taxa de erro de página acima de 1% em 10 minutos.
+
+[DOC-005#confiabilidade] (fonte: Wiki técnica)
+Arquitetura do auth-service
+Confiabilidade
+O objetivo de nível de serviço (SLO) do auth-service é 99,99% de disponibilidade mensal. Em falhas temporárias, a política de novas tentativas é: sem novas tentativas; tokens de acesso expiram em 15 minutos.
+
+[DOC-014#verificacao-de-saude] (fonte: Wiki técnica)
+Runbook do reporting-service
+Verificação de saúde
+Para conferir se o reporting-service está saudável, chame GET /health/reports em cada instância. O alerta principal dispara quando há mais de 50 relatórios na fila por 20 minutos.
+
+[DOC-003#confiabilidade] (fonte: Wiki técnica)
+Arquitetura do payments-adapter
+Confiabilidade
+O objetivo de nível de serviço (SLO) do payments-adapter é 99,95% de disponibilidade mensal. Em falhas temporárias, a política de novas tentativas é: nenhuma nova tentativa automática em cobranças; timeout de 10 segundos por chamada ao gateway.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R056;Por qual canal eu aciono o plantão responsável pelo customer-portal?;Pelo canal #oncall-web.;"[DOC-016#escalonamento] (fonte: Wiki técnica)
+Runbook do customer-portal
+Escalonamento
+Problemas no customer-portal são tratados pelo plantão do Time Web, acionado pelo canal #oncall-web. Se não houver resposta em 15 minutos, acione a liderança de engenharia.
+
+[DOC-008#visao-geral] (fonte: Wiki técnica)
+Arquitetura do customer-portal
+Visão geral
+O customer-portal é o painel web em que os clientes gerenciam assinaturas, chaves e relatórios. O serviço é mantido pelo Time Web e é implementado em Next.js 15 com React 19. Faz parte da plataforma Orbital Billing.
+
+[DOC-016#rollback] (fonte: Wiki técnica)
+Runbook do customer-portal
+Rollback
+Se um deploy do customer-portal causar erros, execute `orbctl rollback customer-portal --to previous --purge-cdn` e confirme a recuperação no endpoint de saúde. Registre o rollback no canal do plantão.
+
+[DOC-013#escalonamento] (fonte: Wiki técnica)
+Runbook do auth-service
+Escalonamento
+Problemas no auth-service são tratados pelo plantão do Time Plataforma, acionado pelo canal #oncall-plataforma. Se não houver resposta em 15 minutos, acione a liderança de engenharia.
+
+[DOC-008#dados-e-dependencias] (fonte: Wiki técnica)
+Arquitetura do customer-portal
+Dados e dependências
+O customer-portal persiste seus dados em sem banco próprio; consome a billing-api e o auth-service. Mudanças de esquema seguem o processo de migração revisada pelo time responsável.";Você aciona o plantão responsável pelo customer-portal pelo canal #oncall-web [DOC-016#escalonamento].;;;;
+R057;Se a falha de 17/07/2026 tivesse vindo de uma versão nova, como voltar o componente afetado para a anterior?;"O serviço afetado foi o reporting-service; orbctl rollback reporting-service --to previous.";"[DOC-011#rollback] (fonte: Wiki técnica)
+Runbook do payments-adapter
+Rollback
+Se um deploy do payments-adapter causar erros, execute `orbctl rollback payments-adapter --to previous --require-approval` e confirme a recuperação no endpoint de saúde. Registre o rollback no canal do plantão.
+
+[T-1060#descricao] (fonte: Chamados de suporte)
+Chamado T-1060: Versão antiga do SDK
+Descrição
+Cliente: Jota Telecom
+Aberto em: 10/07/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Versão antiga do SDK
+
+Olá, equipe. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Ana (suporte) (10/07/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[INC-2026-024#resumo] (fonte: Registros de incidentes)
+INC-2026-024: Documentação da API desatualizada
+Resumo
+Documentação da API desatualizada.
+Data: 15/09/2026. Severidade: SEV3. Serviço afetado: billing-api.
+Sintoma: exemplos da documentação retornando 404.
+Duração: 400 minutos. Clientes afetados: 15.
+
+[DOC-012#rollback] (fonte: Wiki técnica)
+Runbook do webhook-dispatcher
+Rollback
+Se um deploy do webhook-dispatcher causar erros, execute `orbctl rollback webhook-dispatcher --to previous` e confirme a recuperação no endpoint de saúde. Registre o rollback no canal do plantão.
+
+[T-1060#resolucao] (fonte: Chamados de suporte)
+Chamado T-1060: Versão antiga do SDK
+Resolução
+Enviado ao cliente o artigo ""Como atualizar o SDK oficial para Node.js"" da base de conhecimento, com orientação para seguir o passo a passo.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R058;Qual URL de homologação foi cadastrada para os webhooks do cliente Clínica Vitalis?;https://homolog.clinicavitalis.example/webhooks.;"[T-1067#descricao] (fonte: Chamados de suporte)
+Chamado T-1067: Webhook para ambiente de homologação
+Descrição
+Cliente: Clínica Vitalis
+Aberto em: 02/08/2026
+Serviço: webhook-dispatcher
+Prioridade: normal
+Assunto: Webhook para ambiente de homologação
+
+Bom dia. Queremos receber os eventos também no nosso ambiente de homologação.
+
+Comentários:
+- Carla (suporte) (02/08/2026): Solicitação recebida; vamos verificar.
+
+[T-1067#resolucao] (fonte: Chamados de suporte)
+Chamado T-1067: Webhook para ambiente de homologação
+Resolução
+Cadastrada uma segunda URL de webhook (https://homolog.clinicavitalis.example/webhooks) apenas com eventos de teste.
+
+[T-1052#resolucao] (fonte: Chamados de suporte)
+Chamado T-1052: Webhook para ambiente de homologação
+Resolução
+Cadastrada uma segunda URL de webhook (https://homolog.hotelmarealta.example/webhooks) apenas com eventos de teste.
+
+[T-1032#descricao] (fonte: Chamados de suporte)
+Chamado T-1032: Validação dos eventos recebidos
+Descrição
+Cliente: Clínica Vitalis
+Aberto em: 12/04/2026
+Serviço: webhook-dispatcher
+Prioridade: normal
+Assunto: Validação dos eventos recebidos
+
+Olá, equipe. Como garantimos que os eventos que chegam no nosso endpoint foram enviados mesmo por vocês?
+
+Comentários:
+- Carla (suporte) (12/04/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[T-1013#resolucao] (fonte: Chamados de suporte)
+Chamado T-1013: Validação dos eventos recebidos
+Resolução
+Enviado ao cliente o artigo ""Como configurar e validar webhooks"" da base de conhecimento, com orientação para seguir o passo a passo.";A URL de homologação cadastrada para os webhooks do cliente Clínica Vitalis é https://homolog.clinicavitalis.example/webhooks [T-1067#resolucao].;;;;
+R059;Por qual canal deveria ser acionado o plantão do serviço afetado no incidente em que houve relatórios de fevereiro exportados sem linhas?;"O serviço afetado foi o reporting-service; #oncall-dados.";"[INC-2026-004#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-004: Relatórios mensais vazios
+Linha do tempo
+07:01 - Início do impacto: relatórios de fevereiro exportados sem linhas.
+07:13 - Alerta recebido; plantão do Time Dados assumiu o incidente.
+10:31 - Mitigação aplicada; métricas voltando ao normal.
+12:01 - Incidente encerrado.
+
+[DOC-014#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do reporting-service
+Incidentes anteriores
+- INC-2026-004 (14/02/2026): Relatórios mensais vazios
+- INC-2026-011 (29/04/2026): Exportações assíncronas sem e-mail
+- INC-2026-019 (17/07/2026): Relatórios lentos
+
+[T-1016#descricao] (fonte: Chamados de suporte)
+Chamado T-1016: Problema: os relatórios que exportamos estão com problema
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 14/02/2026
+Serviço: reporting-service
+Prioridade: normal
+Assunto: Problema: os relatórios que exportamos estão com problema
+
+Bom dia. Desde as 7h os relatórios que exportamos estão com problema. Podem verificar com urgência?
+
+Comentários:
+- Bruno (suporte) (14/02/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Hotel Maré Alta (14/02/2026): Obrigado, aguardamos.
+
+[INC-2026-004#resumo] (fonte: Registros de incidentes)
+INC-2026-004: Relatórios mensais vazios
+Resumo
+Relatórios mensais vazios.
+Data: 14/02/2026. Severidade: SEV3. Serviço afetado: reporting-service.
+Sintoma: relatórios de fevereiro exportados sem linhas.
+Duração: 300 minutos. Clientes afetados: 25.
+
+[DOC-014#escalonamento] (fonte: Wiki técnica)
+Runbook do reporting-service
+Escalonamento
+Problemas no reporting-service são tratados pelo plantão do Time Dados, acionado pelo canal #oncall-dados. Se não houver resposta em 15 minutos, acione a liderança de engenharia.";O plantão do serviço afetado deveria ser acionado pelo canal #oncall-dados [DOC-014#escalonamento].;;;;
+R060;O que estava quebrado por trás da reclamação do cliente Acme Logística em 27/02/2026?;O chamado foi ligado ao incidente INC-2026-005, cuja causa raiz foi: limite de conexões do PostgreSQL atingido (max_connections = 200) após aumento de réplicas da billing-api.;"[T-1066#descricao] (fonte: Chamados de suporte)
+Chamado T-1066: Problema: nossos clientes não estão conseguindo pagar com cartão
+Descrição
+Cliente: Acme Logística
+Aberto em: 29/07/2026
+Serviço: payments-adapter
+Prioridade: urgente
+Assunto: Problema: nossos clientes não estão conseguindo pagar com cartão
+
+Oi, pessoal. Desde as 16h nossos clientes não estão conseguindo pagar com cartão. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (29/07/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Acme Logística (29/07/2026): Obrigado, aguardamos.
+
+[T-1019#descricao] (fonte: Chamados de suporte)
+Chamado T-1019: Problema: nossas chamadas à API de cobranças estão falhando
+Descrição
+Cliente: Acme Logística
+Aberto em: 27/02/2026
+Serviço: billing-api
+Prioridade: urgente
+Assunto: Problema: nossas chamadas à API de cobranças estão falhando
+
+Oi, pessoal. Desde as 9h nossas chamadas à API de cobranças estão falhando. Podem verificar com urgência?
+
+Comentários:
+- Ana (suporte) (27/02/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Acme Logística (27/02/2026): Obrigado, aguardamos.
+
+[T-1047#descricao] (fonte: Chamados de suporte)
+Chamado T-1047: Problema: nossas chamadas à API de cobranças estão falhando
+Descrição
+Cliente: Acme Logística
+Aberto em: 09/06/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Problema: nossas chamadas à API de cobranças estão falhando
+
+Prezados, Desde as 11h nossas chamadas à API de cobranças estão falhando. Podem verificar com urgência?
+
+Comentários:
+- Bruno (suporte) (09/06/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Acme Logística (09/06/2026): Obrigado, aguardamos.
+
+[T-1061#descricao] (fonte: Chamados de suporte)
+Chamado T-1061: Aumento do número de usuários
+Descrição
+Cliente: Acme Logística
+Aberto em: 10/07/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Aumento do número de usuários
+
+Prezados, Atingimos o limite de usuários do plano e precisamos incluir mais pessoas.
+
+Comentários:
+- Diego (suporte) (10/07/2026): Solicitação recebida; vamos verificar.
+
+[T-1035#descricao] (fonte: Chamados de suporte)
+Chamado T-1035: Alteração do e-mail de cobrança
+Descrição
+Cliente: Acme Logística
+Aberto em: 28/04/2026
+Serviço: customer-portal
+Prioridade: alta
+Assunto: Alteração do e-mail de cobrança
+
+Olá, equipe. Precisamos que as faturas passem a ser enviadas para o e-mail do financeiro.
+
+Comentários:
+- Bruno (suporte) (28/04/2026): Solicitação recebida; vamos verificar.";O que estava quebrado por trás da reclamação do cliente Acme Logística em 27/02/2026 era a API de cobranças [T-1019#descricao].;;;;
+R061;Que artigo da base mandaram para o cliente Editora Pampa no atendimento de 11/06/2026, e o que ele diz sobre qual é a versão mais antiga ainda atendida?;"Foi enviado o artigo ""Como atualizar o SDK oficial para Node.js""; 4.2.0.";"[T-1076#descricao] (fonte: Chamados de suporte)
+Chamado T-1076: Problema: nossos clientes estão reclamando dos e-mails de cobrança
+Descrição
+Cliente: Editora Pampa
+Aberto em: 02/09/2026
+Serviço: notification-service
+Prioridade: urgente
+Assunto: Problema: nossos clientes estão reclamando dos e-mails de cobrança
+
+Prezados, Desde as 8h nossos clientes estão reclamando dos e-mails de cobrança. Podem verificar com urgência?
+
+Comentários:
+- Ana (suporte) (02/09/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Editora Pampa (02/09/2026): Obrigado, aguardamos.
+
+[T-1068#descricao] (fonte: Chamados de suporte)
+Chamado T-1068: Problema: nossa equipe não consegue acessar o painel
+Descrição
+Cliente: Editora Pampa
+Aberto em: 06/08/2026
+Serviço: auth-service
+Prioridade: normal
+Assunto: Problema: nossa equipe não consegue acessar o painel
+
+Prezados, Desde as 18h nossa equipe não consegue acessar o painel. Podem verificar com urgência?
+
+Comentários:
+- Bruno (suporte) (06/08/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Editora Pampa (06/08/2026): Obrigado, aguardamos.
+
+[T-1050#descricao] (fonte: Chamados de suporte)
+Chamado T-1050: Versão antiga do SDK
+Descrição
+Cliente: Editora Pampa
+Aberto em: 11/06/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Versão antiga do SDK
+
+Bom dia. Usamos a versão 3 do SDK para Node.js. Precisamos atualizar? O que muda no código?
+
+Comentários:
+- Diego (suporte) (11/06/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[T-1034#descricao] (fonte: Chamados de suporte)
+Chamado T-1034: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+Descrição
+Cliente: Editora Pampa
+Aberto em: 16/04/2026
+Serviço: invoice-worker
+Prioridade: alta
+Assunto: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+
+Bom dia. Desde as 15h as faturas dos nossos clientes não estão saindo como deveriam. Podem verificar com urgência?
+
+Comentários:
+- Ana (suporte) (16/04/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Editora Pampa (16/04/2026): Obrigado, aguardamos.
+
+[T-1026#descricao] (fonte: Chamados de suporte)
+Chamado T-1026: Problema: o painel de vocês está com um comportamento estranho
+Descrição
+Cliente: Editora Pampa
+Aberto em: 30/03/2026
+Serviço: customer-portal
+Prioridade: normal
+Assunto: Problema: o painel de vocês está com um comportamento estranho
+
+Bom dia. Desde as 8h o painel de vocês está com um comportamento estranho. Podem verificar com urgência?
+
+Comentários:
+- Bruno (suporte) (30/03/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Editora Pampa (30/03/2026): Obrigado, aguardamos.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R062;Que artigo da base mandaram para o cliente Acme Logística no atendimento de 08/01/2026, e o que ele diz sobre quantas novas tentativas são permitidas?;"Foi enviado o artigo ""Como reprocessar uma fatura com falha""; 3 reprocessamentos.";"[T-1061#descricao] (fonte: Chamados de suporte)
+Chamado T-1061: Aumento do número de usuários
+Descrição
+Cliente: Acme Logística
+Aberto em: 10/07/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Aumento do número de usuários
+
+Prezados, Atingimos o limite de usuários do plano e precisamos incluir mais pessoas.
+
+Comentários:
+- Diego (suporte) (10/07/2026): Solicitação recebida; vamos verificar.
+
+[INC-2026-023#acoes] (fonte: Registros de incidentes)
+INC-2026-023: Avisos de cobrança enviados em duplicidade
+Ação corretiva
+limite de 4 tentativas aplicado na camada de envio e alerta por volume anômalo
+
+[DOC-011#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do payments-adapter
+Incidentes anteriores
+- INC-2026-001 (08/01/2026): Cobranças recusadas em massa
+- INC-2026-013 (15/05/2026): Cobranças duplicadas
+- INC-2026-020 (29/07/2026): Gateway indisponível
+
+[T-1005#descricao] (fonte: Chamados de suporte)
+Chamado T-1005: Redução de plano
+Descrição
+Cliente: Acme Logística
+Aberto em: 10/01/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Redução de plano
+
+Olá, equipe. Queremos passar para um plano menor. A partir de quando a mudança vale?
+
+Comentários:
+- Bruno (suporte) (10/01/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[INC-2026-023#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-023: Avisos de cobrança enviados em duplicidade
+Causa raiz
+laço de novas tentativas sem limite após mudança na biblioteca de fila";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R063;Durante o incidente em que houve clientes finais recebendo o mesmo aviso de cobrança dezenas de vezes, em setembro, qual endpoint mostraria a saúde do serviço afetado?;"O serviço afetado foi o notification-service; /health/notifications.";"[INC-2026-023#resumo] (fonte: Registros de incidentes)
+INC-2026-023: Avisos de cobrança enviados em duplicidade
+Resumo
+Avisos de cobrança enviados em duplicidade.
+Data: 02/09/2026. Severidade: SEV1. Serviço afetado: notification-service.
+Sintoma: clientes finais recebendo o mesmo aviso de cobrança dezenas de vezes.
+Duração: 44 minutos. Clientes afetados: 520.
+
+[INC-2026-023#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-023: Avisos de cobrança enviados em duplicidade
+Linha do tempo
+11:49 - Início do impacto: clientes finais recebendo o mesmo aviso de cobrança dezenas de vezes.
+11:59 - Alerta recebido; plantão do Time Integrações assumiu o incidente.
+12:20 - Mitigação aplicada; métricas voltando ao normal.
+12:33 - Incidente encerrado.
+
+[DOC-015#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do notification-service
+Incidentes anteriores
+- INC-2026-006 (11/03/2026): E-mails de fatura não entregues
+- INC-2026-017 (30/06/2026): E-mails com acentos quebrados
+- INC-2026-023 (02/09/2026): Avisos de cobrança enviados em duplicidade
+
+[INC-2026-013#resumo] (fonte: Registros de incidentes)
+INC-2026-013: Cobranças duplicadas
+Resumo
+Cobranças duplicadas.
+Data: 15/05/2026. Severidade: SEV2. Serviço afetado: payments-adapter.
+Sintoma: clientes cobrados duas vezes pela mesma fatura.
+Duração: 160 minutos. Clientes afetados: 74.
+
+[INC-2026-018#resumo] (fonte: Registros de incidentes)
+INC-2026-018: Webhooks duplicados
+Resumo
+Webhooks duplicados.
+Data: 08/07/2026. Severidade: SEV2. Serviço afetado: webhook-dispatcher.
+Sintoma: clientes recebendo o mesmo evento várias vezes.
+Duração: 140 minutos. Clientes afetados: 98.";O serviço afetado foi o notification-service [INC-2026-023#resumo]. No entanto, os trechos não especificam qual endpoint mostraria a saúde desse serviço. Não sei: os trechos recuperados não contêm essa informação.;;;;
+R064;Em que situação dispara o alerta principal do notification-service?;Quando há taxa de rejeição do provedor acima de 3% em 15 minutos.;"[DOC-015#verificacao-de-saude] (fonte: Wiki técnica)
+Runbook do notification-service
+Verificação de saúde
+Para conferir se o notification-service está saudável, chame GET /health/notifications em cada instância. O alerta principal dispara quando há taxa de rejeição do provedor acima de 3% em 15 minutos.
+
+[INC-2026-023#resumo] (fonte: Registros de incidentes)
+INC-2026-023: Avisos de cobrança enviados em duplicidade
+Resumo
+Avisos de cobrança enviados em duplicidade.
+Data: 02/09/2026. Severidade: SEV1. Serviço afetado: notification-service.
+Sintoma: clientes finais recebendo o mesmo aviso de cobrança dezenas de vezes.
+Duração: 44 minutos. Clientes afetados: 520.
+
+[T-1007#descricao] (fonte: Chamados de suporte)
+Chamado T-1007: Pedido de nota de crédito
+Descrição
+Cliente: Banco Horizonte
+Aberto em: 20/01/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Pedido de nota de crédito
+
+Prezados, Fomos cobrados por usuários que já tinham sido desativados. Pedimos o estorno.
+
+Comentários:
+- Carla (suporte) (20/01/2026): Solicitação recebida; vamos verificar.
+
+[DOC-014#verificacao-de-saude] (fonte: Wiki técnica)
+Runbook do reporting-service
+Verificação de saúde
+Para conferir se o reporting-service está saudável, chame GET /health/reports em cada instância. O alerta principal dispara quando há mais de 50 relatórios na fila por 20 minutos.
+
+[INC-2026-011#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-011: Exportações assíncronas sem e-mail
+Causa raiz
+token de serviço do reporting-service para o notification-service expirado";O alerta principal do notification-service dispara quando há taxa de rejeição do provedor acima de 3% em 15 minutos [DOC-015#verificacao-de-saude].;;;;
+R065;Qual foi a causa técnica do problema que o cliente Grupo Nébula relatou em 15/05/2026?;O chamado foi ligado ao incidente INC-2026-013, cuja causa raiz foi: chave de idempotência descartada quando o PagaFácil respondeu após o timeout de 10 segundos.;"[T-1043#descricao] (fonte: Chamados de suporte)
+Chamado T-1043: Problema: nossos clientes não estão conseguindo pagar com cartão
+Descrição
+Cliente: Grupo Nébula
+Aberto em: 15/05/2026
+Serviço: payments-adapter
+Prioridade: alta
+Assunto: Problema: nossos clientes não estão conseguindo pagar com cartão
+
+Olá, equipe. Desde as 13h nossos clientes não estão conseguindo pagar com cartão. Podem verificar com urgência?
+
+Comentários:
+- Diego (suporte) (15/05/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Grupo Nébula (15/05/2026): Obrigado, aguardamos.
+
+[INC-2026-020#resumo] (fonte: Registros de incidentes)
+INC-2026-020: Gateway indisponível
+Resumo
+Gateway indisponível.
+Data: 29/07/2026. Severidade: SEV1. Serviço afetado: payments-adapter.
+Sintoma: todas as cobranças falhando por timeout.
+Duração: 112 minutos. Clientes afetados: 960.
+
+[DOC-016#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do customer-portal
+Incidentes anteriores
+- INC-2026-008 (30/03/2026): Gráficos do painel sem dados
+- INC-2026-014 (28/05/2026): Botão de exportar sem resposta
+- INC-2026-022 (19/08/2026): Portal lento
+
+[T-1046#descricao] (fonte: Chamados de suporte)
+Chamado T-1046: Problema: o painel de vocês está com um comportamento estranho
+Descrição
+Cliente: Grupo Nébula
+Aberto em: 28/05/2026
+Serviço: customer-portal
+Prioridade: normal
+Assunto: Problema: o painel de vocês está com um comportamento estranho
+
+Olá, equipe. Desde as 14h o painel de vocês está com um comportamento estranho. Podem verificar com urgência?
+
+Comentários:
+- Diego (suporte) (28/05/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Grupo Nébula (28/05/2026): Obrigado, aguardamos.
+
+[INC-2026-022#resumo] (fonte: Registros de incidentes)
+INC-2026-022: Portal lento
+Resumo
+Portal lento.
+Data: 19/08/2026. Severidade: SEV2. Serviço afetado: customer-portal.
+Sintoma: páginas do portal levando mais de 10 segundos.
+Duração: 75 minutos. Clientes afetados: 230.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R066;Qual foi a causa técnica do problema que o cliente Hotel Maré Alta relatou em 08/07/2026?;O chamado foi ligado ao incidente INC-2026-018, cuja causa raiz foi: novas tentativas disparadas antes do timeout de 5 segundos do cliente terminar.;"[T-1059#descricao] (fonte: Chamados de suporte)
+Chamado T-1059: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 08/07/2026
+Serviço: webhook-dispatcher
+Prioridade: alta
+Assunto: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+
+Oi, pessoal. Desde as 10h nosso sistema parou de receber corretamente os eventos de vocês. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (08/07/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Hotel Maré Alta (08/07/2026): Obrigado, aguardamos.
+
+[T-1008#descricao] (fonte: Chamados de suporte)
+Chamado T-1008: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 21/01/2026
+Serviço: invoice-worker
+Prioridade: alta
+Assunto: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+
+Bom dia. Desde as 14h as faturas dos nossos clientes não estão saindo como deveriam. Podem verificar com urgência?
+
+Comentários:
+- Ana (suporte) (21/01/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Hotel Maré Alta (21/01/2026): Obrigado, aguardamos.
+
+[T-1016#descricao] (fonte: Chamados de suporte)
+Chamado T-1016: Problema: os relatórios que exportamos estão com problema
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 14/02/2026
+Serviço: reporting-service
+Prioridade: normal
+Assunto: Problema: os relatórios que exportamos estão com problema
+
+Bom dia. Desde as 7h os relatórios que exportamos estão com problema. Podem verificar com urgência?
+
+Comentários:
+- Bruno (suporte) (14/02/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Hotel Maré Alta (14/02/2026): Obrigado, aguardamos.
+
+[T-1069#descricao] (fonte: Chamados de suporte)
+Chamado T-1069: Pedido de exclusão de dados de um titular
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 11/08/2026
+Serviço: customer-portal
+Prioridade: normal
+Assunto: Pedido de exclusão de dados de um titular
+
+Prezados, Recebemos um pedido de um cliente final para apagar os dados dele. Como encaminhamos?
+
+Comentários:
+- Ana (suporte) (11/08/2026): Solicitação recebida; vamos verificar.
+
+[T-1075#descricao] (fonte: Chamados de suporte)
+Chamado T-1075: Fatura não aparece no painel
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 26/08/2026
+Serviço: customer-portal
+Prioridade: normal
+Assunto: Fatura não aparece no painel
+
+Bom dia. A fatura do mês passado não aparece na lista do painel, mas foi paga.
+
+Comentários:
+- Diego (suporte) (26/08/2026): Solicitação recebida; vamos verificar.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R067;Onde, no painel, eu crio uma credencial nova para integrar com a API?;Configurações > Chaves de API.;"[DOC-017#passo-a-passo] (fonte: Wiki técnica)
+Como rotacionar uma chave de API
+Passo a passo
+1. Acesse o portal e abra Configurações > Chaves de API.
+2. Clique em ""Gerar nova chave"" e copie o valor exibido, que não será mostrado de novo.
+3. Atualize a chave nos sistemas do cliente.
+4. Revogue a chave antiga no mesmo menu.
+
+[T-1041#descricao] (fonte: Chamados de suporte)
+Chamado T-1041: Login com a conta corporativa
+Descrição
+Cliente: Acme Logística
+Aberto em: 09/05/2026
+Serviço: auth-service
+Prioridade: alta
+Assunto: Login com a conta corporativa
+
+Oi, pessoal. Queremos que a nossa equipe entre no painel com o login da nossa empresa, sem senha separada.
+
+Comentários:
+- Carla (suporte) (09/05/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[DOC-023#passo-a-passo] (fonte: Wiki técnica)
+Como habilitar login único (SSO)
+Passo a passo
+1. Peça ao cliente o arquivo de metadados SAML do provedor de identidade.
+2. Cadastre o arquivo em Configurações > Segurança > SSO.
+3. Envie ao cliente a URL de ACS https://auth.orbital.example/saml/acs.
+4. Teste o login com um usuário do cliente antes de tornar o SSO obrigatório.
+
+[DOC-023#quando-usar] (fonte: Wiki técnica)
+Como habilitar login único (SSO)
+Quando usar
+Use quando o cliente quiser que os usuários entrem no portal com o provedor de identidade da própria empresa.
+
+[T-1033#descricao] (fonte: Chamados de suporte)
+Chamado T-1033: Troca da chave de integração
+Descrição
+Cliente: Editora Pampa
+Aberto em: 14/04/2026
+Serviço: customer-portal
+Prioridade: normal
+Assunto: Troca da chave de integração
+
+Prezados, Um desenvolvedor saiu da empresa e precisamos trocar a chave usada pela nossa integração. Qual é o procedimento?
+
+Comentários:
+- Bruno (suporte) (14/04/2026): Obrigado pelo contato; vamos responder em seguida.";No painel, você acessa Configurações > Chaves de API para criar uma credencial nova para integrar com a API [DOC-017#passo-a-passo].;;;;
+R068;Que artigo da base mandaram para o cliente Banco Horizonte no atendimento de 10/05/2026, e o que ele diz sobre quanto tempo o sistema do cliente tem para confirmar o recebimento?;"Foi enviado o artigo ""Como configurar e validar webhooks""; 5 segundos.";"[T-1042#descricao] (fonte: Chamados de suporte)
+Chamado T-1042: Validação dos eventos recebidos
+Descrição
+Cliente: Banco Horizonte
+Aberto em: 10/05/2026
+Serviço: webhook-dispatcher
+Prioridade: normal
+Assunto: Validação dos eventos recebidos
+
+Olá, equipe. Como garantimos que os eventos que chegam no nosso endpoint foram enviados mesmo por vocês?
+
+Comentários:
+- Bruno (suporte) (10/05/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[T-1007#descricao] (fonte: Chamados de suporte)
+Chamado T-1007: Pedido de nota de crédito
+Descrição
+Cliente: Banco Horizonte
+Aberto em: 20/01/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Pedido de nota de crédito
+
+Prezados, Fomos cobrados por usuários que já tinham sido desativados. Pedimos o estorno.
+
+Comentários:
+- Carla (suporte) (20/01/2026): Solicitação recebida; vamos verificar.
+
+[T-1028#descricao] (fonte: Chamados de suporte)
+Chamado T-1028: Usuário bloqueado no painel
+Descrição
+Cliente: Banco Horizonte
+Aberto em: 01/04/2026
+Serviço: auth-service
+Prioridade: alta
+Assunto: Usuário bloqueado no painel
+
+Olá, equipe. Uma colega da equipe financeira não consegue entrar no painel; aparece ""conta bloqueada"".
+
+Comentários:
+- Ana (suporte) (01/04/2026): Solicitação recebida; vamos verificar.
+
+[T-1038#descricao] (fonte: Chamados de suporte)
+Chamado T-1038: Exportação anual incompleta
+Descrição
+Cliente: Banco Horizonte
+Aberto em: 02/05/2026
+Serviço: reporting-service
+Prioridade: normal
+Assunto: Exportação anual incompleta
+
+Oi, pessoal. Precisamos exportar todas as cobranças do ano, mas o arquivo baixado não vem completo.
+
+Comentários:
+- Diego (suporte) (02/05/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[INC-2026-006#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-006: E-mails de fatura não entregues
+Linha do tempo
+20:05 - Início do impacto: e-mails de fatura não chegando aos clientes.
+20:09 - Alerta recebido; plantão do Time Integrações assumiu o incidente.
+21:33 - Mitigação aplicada; métricas voltando ao normal.
+22:11 - Incidente encerrado.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R069;O que ficou combinado para a falha do processo que monta os PDFs das faturas em 18/06/2026 não se repetir?;declaração das filas como duráveis e verificação pós-atualização.;"[DOC-010#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do invoice-worker
+Incidentes anteriores
+- INC-2026-002 (21/01/2026): Atraso na geração de faturas
+- INC-2026-010 (16/04/2026): Impostos calculados com alíquota errada
+- INC-2026-016 (18/06/2026): Fila de faturas parada
+- INC-2026-025 (24/09/2026): PDFs de fatura em branco
+
+[T-1053#resolucao] (fonte: Chamados de suporte)
+Chamado T-1053: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+Resolução
+O problema foi causado pelo incidente INC-2026-016, já resolvido pela equipe responsável. Crédito automático aplicado conforme a política de créditos por indisponibilidade.
+
+[INC-2026-016#resumo] (fonte: Registros de incidentes)
+INC-2026-016: Fila de faturas parada
+Resumo
+Fila de faturas parada.
+Data: 18/06/2026. Severidade: SEV1. Serviço afetado: invoice-worker.
+Sintoma: nenhuma fatura gerada por mais de uma hora.
+Duração: 66 minutos. Clientes afetados: 870.
+
+[DOC-011#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do payments-adapter
+Incidentes anteriores
+- INC-2026-001 (08/01/2026): Cobranças recusadas em massa
+- INC-2026-013 (15/05/2026): Cobranças duplicadas
+- INC-2026-020 (29/07/2026): Gateway indisponível
+
+[T-1008#resolucao] (fonte: Chamados de suporte)
+Chamado T-1008: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+Resolução
+O problema foi causado pelo incidente INC-2026-002, já resolvido pela equipe responsável.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R070;Para qual e-mail passaram a ir as faturas do cliente Acme Logística?;financeiro@acmelogistica.example.;"[T-1035#descricao] (fonte: Chamados de suporte)
+Chamado T-1035: Alteração do e-mail de cobrança
+Descrição
+Cliente: Acme Logística
+Aberto em: 28/04/2026
+Serviço: customer-portal
+Prioridade: alta
+Assunto: Alteração do e-mail de cobrança
+
+Olá, equipe. Precisamos que as faturas passem a ser enviadas para o e-mail do financeiro.
+
+Comentários:
+- Bruno (suporte) (28/04/2026): Solicitação recebida; vamos verificar.
+
+[T-1035#resolucao] (fonte: Chamados de suporte)
+Chamado T-1035: Alteração do e-mail de cobrança
+Resolução
+E-mail de cobrança alterado para financeiro@acmelogistica.example, conforme solicitado.
+
+[T-1030#descricao] (fonte: Chamados de suporte)
+Chamado T-1030: Alteração do e-mail de cobrança
+Descrição
+Cliente: Lume Energia
+Aberto em: 03/04/2026
+Serviço: customer-portal
+Prioridade: normal
+Assunto: Alteração do e-mail de cobrança
+
+Oi, pessoal. Precisamos que as faturas passem a ser enviadas para o e-mail do financeiro.
+
+Comentários:
+- Ana (suporte) (03/04/2026): Solicitação recebida; vamos verificar.
+
+[T-1061#descricao] (fonte: Chamados de suporte)
+Chamado T-1061: Aumento do número de usuários
+Descrição
+Cliente: Acme Logística
+Aberto em: 10/07/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Aumento do número de usuários
+
+Prezados, Atingimos o limite de usuários do plano e precisamos incluir mais pessoas.
+
+Comentários:
+- Diego (suporte) (10/07/2026): Solicitação recebida; vamos verificar.
+
+[T-1022#descricao] (fonte: Chamados de suporte)
+Chamado T-1022: Problema: nossos clientes estão reclamando dos e-mails de cobrança
+Descrição
+Cliente: Lume Energia
+Aberto em: 11/03/2026
+Serviço: notification-service
+Prioridade: alta
+Assunto: Problema: nossos clientes estão reclamando dos e-mails de cobrança
+
+Oi, pessoal. Desde as 7h nossos clientes estão reclamando dos e-mails de cobrança. Podem verificar com urgência?
+
+Comentários:
+- Diego (suporte) (11/03/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Lume Energia (11/03/2026): Obrigado, aguardamos.";As faturas do cliente Acme Logística passaram a ir para o e-mail financeiro@acmelogistica.example [T-1035#resolucao].;;;;
+R071;Qual é o tamanho máximo de uma exportação direta de relatório?;100 mil linhas.;"[DOC-022#limites-e-observacoes] (fonte: Wiki técnica)
+Como exportar relatórios financeiros
+Limites e observações
+A exportação direta vai até 100 mil linhas. Acima disso, a exportação é assíncrona e o link enviado por e-mail vale por 72 horas.
+
+[T-1016#descricao] (fonte: Chamados de suporte)
+Chamado T-1016: Problema: os relatórios que exportamos estão com problema
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 14/02/2026
+Serviço: reporting-service
+Prioridade: normal
+Assunto: Problema: os relatórios que exportamos estão com problema
+
+Bom dia. Desde as 7h os relatórios que exportamos estão com problema. Podem verificar com urgência?
+
+Comentários:
+- Bruno (suporte) (14/02/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Hotel Maré Alta (14/02/2026): Obrigado, aguardamos.
+
+[INC-2026-011#resumo] (fonte: Registros de incidentes)
+INC-2026-011: Exportações assíncronas sem e-mail
+Resumo
+Exportações assíncronas sem e-mail.
+Data: 29/04/2026. Severidade: SEV3. Serviço afetado: reporting-service.
+Sintoma: links de exportação não enviados por e-mail.
+Duração: 240 minutos. Clientes afetados: 19.
+
+[DOC-022#passo-a-passo] (fonte: Wiki técnica)
+Como exportar relatórios financeiros
+Passo a passo
+1. Abra Relatórios no portal.
+2. Escolha o período e os filtros.
+3. Clique em Exportar CSV.
+4. Para volumes grandes, aguarde o e-mail com o link de download.
+
+[T-1029#resolucao] (fonte: Chamados de suporte)
+Chamado T-1029: Exportação anual incompleta
+Resolução
+Enviado ao cliente o artigo ""Como exportar relatórios financeiros"" da base de conhecimento, com orientação para seguir o passo a passo.";O tamanho máximo de uma exportação direta de relatório é 100 mil linhas [DOC-022#limites-e-observacoes].;;;;
+R072;O que causou o problema de links de exportação não enviados por e-mail em abril de 2026?;token de serviço do reporting-service para o notification-service expirado.;"[INC-2026-011#resumo] (fonte: Registros de incidentes)
+INC-2026-011: Exportações assíncronas sem e-mail
+Resumo
+Exportações assíncronas sem e-mail.
+Data: 29/04/2026. Severidade: SEV3. Serviço afetado: reporting-service.
+Sintoma: links de exportação não enviados por e-mail.
+Duração: 240 minutos. Clientes afetados: 19.
+
+[INC-2026-011#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-011: Exportações assíncronas sem e-mail
+Linha do tempo
+21:22 - Início do impacto: links de exportação não enviados por e-mail.
+21:33 - Alerta recebido; plantão do Time Dados assumiu o incidente.
+00:10 - Mitigação aplicada; métricas voltando ao normal.
+01:22 - Incidente encerrado.
+
+[INC-2026-014#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-014: Botão de exportar sem resposta
+Causa raiz
+uso de API de download não suportada pelo Safari 17
+
+[INC-2026-011#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-011: Exportações assíncronas sem e-mail
+Causa raiz
+token de serviço do reporting-service para o notification-service expirado
+
+[INC-2026-014#resumo] (fonte: Registros de incidentes)
+INC-2026-014: Botão de exportar sem resposta
+Resumo
+Botão de exportar sem resposta.
+Data: 28/05/2026. Severidade: SEV3. Serviço afetado: customer-portal.
+Sintoma: botão Exportar CSV sem efeito no Safari.
+Duração: 600 minutos. Clientes afetados: 33.";O problema de links de exportação não enviados por e-mail em abril de 2026 foi causado pelo token de serviço do reporting-service para o notification-service expirado [INC-2026-011#causa-raiz].;;;;
+R073;"O cliente Hotel Maré Alta abriu um chamado sobre ""Login com a conta corporativa"". Qual artigo foi enviado e, segundo ele, em qual plano o recurso está disponível?";"Foi enviado o artigo ""Como habilitar login único (SSO)""; plano Enterprise.";"[T-1055#descricao] (fonte: Chamados de suporte)
+Chamado T-1055: Login com a conta corporativa
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 23/06/2026
+Serviço: auth-service
+Prioridade: normal
+Assunto: Login com a conta corporativa
+
+Olá, equipe. Queremos que a nossa equipe entre no painel com o login da nossa empresa, sem senha separada.
+
+Comentários:
+- Bruno (suporte) (23/06/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[T-1078#resolucao] (fonte: Chamados de suporte)
+Chamado T-1078: Login com a conta corporativa
+Resolução
+Enviado ao cliente o artigo ""Como habilitar login único (SSO)"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[T-1041#resolucao] (fonte: Chamados de suporte)
+Chamado T-1041: Login com a conta corporativa
+Resolução
+Enviado ao cliente o artigo ""Como habilitar login único (SSO)"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[T-1041#descricao] (fonte: Chamados de suporte)
+Chamado T-1041: Login com a conta corporativa
+Descrição
+Cliente: Acme Logística
+Aberto em: 09/05/2026
+Serviço: auth-service
+Prioridade: alta
+Assunto: Login com a conta corporativa
+
+Oi, pessoal. Queremos que a nossa equipe entre no painel com o login da nossa empresa, sem senha separada.
+
+Comentários:
+- Carla (suporte) (09/05/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[T-1055#resolucao] (fonte: Chamados de suporte)
+Chamado T-1055: Login com a conta corporativa
+Resolução
+Enviado ao cliente o artigo ""Como habilitar login único (SSO)"" da base de conhecimento, com orientação para seguir o passo a passo.";"O artigo ""Como habilitar login único (SSO)"" foi enviado para o cliente Hotel Maré Alta. Não sei: os trechos recuperados não contêm essa informação.";;;;
+R074;Que rota da API troca o pacote contratado?;PATCH /v2/subscriptions/{id}.;"[T-1033#resolucao] (fonte: Chamados de suporte)
+Chamado T-1033: Troca da chave de integração
+Resolução
+Enviado ao cliente o artigo ""Como rotacionar uma chave de API"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[DOC-017#limites-e-observacoes] (fonte: Wiki técnica)
+Como rotacionar uma chave de API
+Limites e observações
+As chaves de API expiram em 90 dias. Durante a rotação, a chave antiga e a nova funcionam juntas por até 24 horas.
+
+[INC-2026-024#acoes] (fonte: Registros de incidentes)
+INC-2026-024: Documentação da API desatualizada
+Ação corretiva
+checagem automática de rotas descontinuadas contra o calendário publicado
+
+[T-1037#resolucao] (fonte: Chamados de suporte)
+Chamado T-1037: Troca da chave de integração
+Resolução
+Enviado ao cliente o artigo ""Como rotacionar uma chave de API"" da base de conhecimento, com orientação para seguir o passo a passo.
+
+[DOC-017#passo-a-passo] (fonte: Wiki técnica)
+Como rotacionar uma chave de API
+Passo a passo
+1. Acesse o portal e abra Configurações > Chaves de API.
+2. Clique em ""Gerar nova chave"" e copie o valor exibido, que não será mostrado de novo.
+3. Atualize a chave nos sistemas do cliente.
+4. Revogue a chave antiga no mesmo menu.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R075;Qual é a meta de nível de serviço do reporting-service?;99% dos relatórios entregues em até 30 minutos.;"[DOC-006#confiabilidade] (fonte: Wiki técnica)
+Arquitetura do reporting-service
+Confiabilidade
+O objetivo de nível de serviço (SLO) do reporting-service é 99% dos relatórios entregues em até 30 minutos. Em falhas temporárias, a política de novas tentativas é: até 2 tentativas por relatório, com intervalo de 5 minutos.
+
+[INC-2026-019#resumo] (fonte: Registros de incidentes)
+INC-2026-019: Relatórios lentos
+Resumo
+Relatórios lentos.
+Data: 17/07/2026. Severidade: SEV2. Serviço afetado: reporting-service.
+Sintoma: relatórios demorando mais de 2 horas.
+Duração: 330 minutos. Clientes afetados: 54.
+
+[T-1016#descricao] (fonte: Chamados de suporte)
+Chamado T-1016: Problema: os relatórios que exportamos estão com problema
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 14/02/2026
+Serviço: reporting-service
+Prioridade: normal
+Assunto: Problema: os relatórios que exportamos estão com problema
+
+Bom dia. Desde as 7h os relatórios que exportamos estão com problema. Podem verificar com urgência?
+
+Comentários:
+- Bruno (suporte) (14/02/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Hotel Maré Alta (14/02/2026): Obrigado, aguardamos.
+
+[DOC-006#visao-geral] (fonte: Wiki técnica)
+Arquitetura do reporting-service
+Visão geral
+O reporting-service gera relatórios financeiros e exportações para os clientes. O serviço é mantido pelo Time Dados e é implementado em Python 3.12 com FastAPI. Faz parte da plataforma Orbital Billing.
+
+[INC-2026-011#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-011: Exportações assíncronas sem e-mail
+Causa raiz
+token de serviço do reporting-service para o notification-service expirado";A meta de nível de serviço do reporting-service é 99% dos relatórios entregues em até 30 minutos [DOC-006#confiabilidade].;;;;
+R076;Que artigo da base mandaram para o cliente Acme Logística no atendimento de 08/01/2026, e o que ele diz sobre quantas novas tentativas são permitidas?;"Foi enviado o artigo ""Como reprocessar uma fatura com falha""; 3 reprocessamentos.";"[T-1061#descricao] (fonte: Chamados de suporte)
+Chamado T-1061: Aumento do número de usuários
+Descrição
+Cliente: Acme Logística
+Aberto em: 10/07/2026
+Serviço: billing-api
+Prioridade: normal
+Assunto: Aumento do número de usuários
+
+Prezados, Atingimos o limite de usuários do plano e precisamos incluir mais pessoas.
+
+Comentários:
+- Diego (suporte) (10/07/2026): Solicitação recebida; vamos verificar.
+
+[T-1005#descricao] (fonte: Chamados de suporte)
+Chamado T-1005: Redução de plano
+Descrição
+Cliente: Acme Logística
+Aberto em: 10/01/2026
+Serviço: billing-api
+Prioridade: alta
+Assunto: Redução de plano
+
+Olá, equipe. Queremos passar para um plano menor. A partir de quando a mudança vale?
+
+Comentários:
+- Bruno (suporte) (10/01/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[T-1066#descricao] (fonte: Chamados de suporte)
+Chamado T-1066: Problema: nossos clientes não estão conseguindo pagar com cartão
+Descrição
+Cliente: Acme Logística
+Aberto em: 29/07/2026
+Serviço: payments-adapter
+Prioridade: urgente
+Assunto: Problema: nossos clientes não estão conseguindo pagar com cartão
+
+Oi, pessoal. Desde as 16h nossos clientes não estão conseguindo pagar com cartão. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (29/07/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Acme Logística (29/07/2026): Obrigado, aguardamos.
+
+[INC-2026-023#acoes] (fonte: Registros de incidentes)
+INC-2026-023: Avisos de cobrança enviados em duplicidade
+Ação corretiva
+limite de 4 tentativas aplicado na camada de envio e alerta por volume anômalo
+
+[T-1035#descricao] (fonte: Chamados de suporte)
+Chamado T-1035: Alteração do e-mail de cobrança
+Descrição
+Cliente: Acme Logística
+Aberto em: 28/04/2026
+Serviço: customer-portal
+Prioridade: alta
+Assunto: Alteração do e-mail de cobrança
+
+Olá, equipe. Precisamos que as faturas passem a ser enviadas para o e-mail do financeiro.
+
+Comentários:
+- Bruno (suporte) (28/04/2026): Solicitação recebida; vamos verificar.";Não sei: os trechos recuperados não contêm essa informação.;;;;
+R077;Por qual canal deveria ser acionado o plantão do serviço afetado no incidente em que houve relatórios de fevereiro exportados sem linhas?;"O serviço afetado foi o reporting-service; #oncall-dados.";"[INC-2026-004#linha-do-tempo] (fonte: Registros de incidentes)
+INC-2026-004: Relatórios mensais vazios
+Linha do tempo
+07:01 - Início do impacto: relatórios de fevereiro exportados sem linhas.
+07:13 - Alerta recebido; plantão do Time Dados assumiu o incidente.
+10:31 - Mitigação aplicada; métricas voltando ao normal.
+12:01 - Incidente encerrado.
+
+[INC-2026-004#resumo] (fonte: Registros de incidentes)
+INC-2026-004: Relatórios mensais vazios
+Resumo
+Relatórios mensais vazios.
+Data: 14/02/2026. Severidade: SEV3. Serviço afetado: reporting-service.
+Sintoma: relatórios de fevereiro exportados sem linhas.
+Duração: 300 minutos. Clientes afetados: 25.
+
+[DOC-014#incidentes-anteriores] (fonte: Wiki técnica)
+Runbook do reporting-service
+Incidentes anteriores
+- INC-2026-004 (14/02/2026): Relatórios mensais vazios
+- INC-2026-011 (29/04/2026): Exportações assíncronas sem e-mail
+- INC-2026-019 (17/07/2026): Relatórios lentos
+
+[DOC-014#escalonamento] (fonte: Wiki técnica)
+Runbook do reporting-service
+Escalonamento
+Problemas no reporting-service são tratados pelo plantão do Time Dados, acionado pelo canal #oncall-dados. Se não houver resposta em 15 minutos, acione a liderança de engenharia.
+
+[INC-2026-011#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-011: Exportações assíncronas sem e-mail
+Causa raiz
+token de serviço do reporting-service para o notification-service expirado";O plantão do serviço afetado deveria ser acionado pelo canal #oncall-dados [DOC-014#escalonamento].;;;;
+R078;O que estava quebrado por trás da reclamação do cliente Clínica Vitalis em 18/06/2026?;O chamado foi ligado ao incidente INC-2026-016, cuja causa raiz foi: atualização do RabbitMQ removeu a fila invoices.generate, que não era declarada como durável.;"[T-1053#descricao] (fonte: Chamados de suporte)
+Chamado T-1053: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+Descrição
+Cliente: Clínica Vitalis
+Aberto em: 18/06/2026
+Serviço: invoice-worker
+Prioridade: urgente
+Assunto: Problema: as faturas dos nossos clientes não estão saindo como deveriam
+
+Oi, pessoal. Desde as 18h as faturas dos nossos clientes não estão saindo como deveriam. Podem verificar com urgência?
+
+Comentários:
+- Ana (suporte) (18/06/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Clínica Vitalis (18/06/2026): Obrigado, aguardamos.
+
+[T-1040#descricao] (fonte: Chamados de suporte)
+Chamado T-1040: Problema: nossa equipe não consegue acessar o painel
+Descrição
+Cliente: Clínica Vitalis
+Aberto em: 06/05/2026
+Serviço: auth-service
+Prioridade: urgente
+Assunto: Problema: nossa equipe não consegue acessar o painel
+
+Bom dia. Desde as 15h nossa equipe não consegue acessar o painel. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (06/05/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Clínica Vitalis (06/05/2026): Obrigado, aguardamos.
+
+[T-1064#descricao] (fonte: Chamados de suporte)
+Chamado T-1064: Troca da chave de integração
+Descrição
+Cliente: Clínica Vitalis
+Aberto em: 21/07/2026
+Serviço: customer-portal
+Prioridade: normal
+Assunto: Troca da chave de integração
+
+Prezados, Um desenvolvedor saiu da empresa e precisamos trocar a chave usada pela nossa integração. Qual é o procedimento?
+
+Comentários:
+- Bruno (suporte) (21/07/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[T-1032#descricao] (fonte: Chamados de suporte)
+Chamado T-1032: Validação dos eventos recebidos
+Descrição
+Cliente: Clínica Vitalis
+Aberto em: 12/04/2026
+Serviço: webhook-dispatcher
+Prioridade: normal
+Assunto: Validação dos eventos recebidos
+
+Olá, equipe. Como garantimos que os eventos que chegam no nosso endpoint foram enviados mesmo por vocês?
+
+Comentários:
+- Carla (suporte) (12/04/2026): Obrigado pelo contato; vamos responder em seguida.
+
+[INC-2026-007#causa-raiz] (fonte: Registros de incidentes)
+INC-2026-007: Webhooks de pagamento parados
+Causa raiz
+memória do Redis esgotada porque chaves de entrega foram gravadas sem TTL";O que estava quebrado por trás da reclamação do cliente Clínica Vitalis em 18/06/2026 foi o serviço invoice-worker, que não estava gerando as faturas corretamente [T-1053#descricao]. Não há informação nos trechos sobre a causa raiz desse problema no serviço invoice-worker [T-1053#descricao].;;;;
+R079;Que equipe responde pelo componente que avisa os sistemas dos clientes sobre eventos?;Time Integrações.;"[DOC-015#escalonamento] (fonte: Wiki técnica)
+Runbook do notification-service
+Escalonamento
+Problemas no notification-service são tratados pelo plantão do Time Integrações, acionado pelo canal #oncall-integracoes. Se não houver resposta em 15 minutos, acione a liderança de engenharia.
+
+[DOC-007#visao-geral] (fonte: Wiki técnica)
+Arquitetura do notification-service
+Visão geral
+O notification-service envia e-mails transacionais, como faturas e avisos de cobrança. O serviço é mantido pelo Time Integrações e é implementado em Node.js 22. Faz parte da plataforma Orbital Billing.
+
+[DOC-007#dados-e-dependencias] (fonte: Wiki técnica)
+Arquitetura do notification-service
+Dados e dependências
+O notification-service persiste seus dados em PostgreSQL 16 (banco notifications) e provedor de e-mail MailRelay. Mudanças de esquema seguem o processo de migração revisada pelo time responsável.
+
+[T-1059#descricao] (fonte: Chamados de suporte)
+Chamado T-1059: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+Descrição
+Cliente: Hotel Maré Alta
+Aberto em: 08/07/2026
+Serviço: webhook-dispatcher
+Prioridade: alta
+Assunto: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+
+Oi, pessoal. Desde as 10h nosso sistema parou de receber corretamente os eventos de vocês. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (08/07/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Hotel Maré Alta (08/07/2026): Obrigado, aguardamos.
+
+[T-1024#descricao] (fonte: Chamados de suporte)
+Chamado T-1024: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+Descrição
+Cliente: Lume Energia
+Aberto em: 19/03/2026
+Serviço: webhook-dispatcher
+Prioridade: urgente
+Assunto: Problema: nosso sistema parou de receber corretamente os eventos de vocês
+
+Oi, pessoal. Desde as 11h nosso sistema parou de receber corretamente os eventos de vocês. Podem verificar com urgência?
+
+Comentários:
+- Carla (suporte) (19/03/2026): Recebemos o relato e há um incidente aberto. Vamos atualizar por aqui.
+- Lume Energia (19/03/2026): Obrigado, aguardamos.";A equipe que responde pelo componente que avisa os sistemas dos clientes sobre eventos é o Time Integrações, pois o notification-service, que envia e-mails transacionais e é mantido por esse time, faz parte da plataforma Orbital Billing [DOC-007#visao-geral].;;;;
