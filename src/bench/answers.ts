@@ -3,8 +3,9 @@ import { join } from 'node:path';
 import { parseArgs } from 'node:util';
 import { loadConfig } from '../core/config.js';
 import type { Question } from '../core/types.js';
-import { DATA_DIR } from '../corpus/generate.js';
+import { DATA_DIR, SEED } from '../corpus/generate.js';
 import type { Fact } from '../corpus/model.js';
+import { Rng } from '../corpus/random.js';
 import { cohenKappa, krippendorffAlpha } from '../evaluation/agreement.js';
 import { checkFacts, type FactCheck } from '../evaluation/facts.js';
 import { distinctItems, type EvalItem } from '../evaluation/items.js';
@@ -41,8 +42,9 @@ export function finalScores(e: { type: string; abstained: boolean; judge: Scores
 
 /**
  * Aplica a checagem por regra e a rubrica a cada resposta distinta (ADR 007). O juiz só é
- * chamado quando a rubrica não fixa todas as notas, salvo com `judgeAll` (calibração). As
- * repetições percorrem todos os itens em sequência, para medir se o juiz repete as notas.
+ * chamado quando a rubrica não fixa todas as notas, salvo com `judgeAll` (calibração). A 1ª
+ * repetição segue a ordem dos itens e dá a nota; as seguintes usam ordens embaralhadas,
+ * porque na mesma ordem o juiz repete a sequência de pedidos e parece mais estável do que é.
  */
 export async function evaluateAnswers(items: EvalItem[], questions: Question[], facts: Map<string, Fact>, judge: LlmProvider | null, repeats: number, { judgeAll = false, log = (_: string) => {} } = {}) {
   const factIds = new Map(questions.map((q) => [q.id, q.factIds]));
@@ -54,9 +56,10 @@ export async function evaluateAnswers(items: EvalItem[], questions: Question[], 
     scores: null,
   }));
   if (judge) {
+    const indexes = items.map((_, i) => i);
     for (let r = 0; r < repeats; r++) {
       log(`juiz: repetição ${r + 1}/${repeats}`);
-      for (let i = 0; i < items.length; i++) {
+      for (const i of r === 0 ? indexes : new Rng(SEED + r).shuffle(indexes)) {
         if (judgeAll || !fixedByRule(items[i]!)) evals[i]!.judge.push(await judgeItem(judge, items[i]!));
       }
     }

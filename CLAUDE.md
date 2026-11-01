@@ -54,6 +54,8 @@ npm run bench:retrieval -- --approaches A,B,C,D --rounds 5 --out <id>
 npm run bench:generation -- --approaches B,C,D --rounds 3 --out <id>
 npm run mcp:server                             # servidor MCP via stdio
 npx tsx scripts/compare-c-d.ts <id>            # confere C = D e D − C numa execução
+npm run eval:answers -- --run <geração> --out <id>   # regra dos fatos + juiz (ADR 007)
+npm run eval:human -- --run <geração> --out <id>     # planilha cega; --import <id> --ratings a.csv,b.csv
 ```
 
 `bench:retrieval` aceita `--set dev|policies`, `--embedder ollama|hash`,
@@ -62,8 +64,9 @@ npx tsx scripts/compare-c-d.ts <id>            # confere C = D e D − C numa ex
 os mesmos e `--llm ollama|simulated`, `--model`; recusa a abordagem A.
 
 Medições longas: Mac na tomada, tampa aberta, árvore do git limpa e sem trocar de branch
-durante a execução. Ao trocar de LLM, `docker compose exec ollama ollama stop <modelo>`
-antes (a VM do Docker tem 7,7 GiB).
+durante a execução. Ao trocar de LLM, `docker compose exec ollama ollama stop <modelo>` e
+esperar `/api/ps` vazio antes (a VM do Docker tem 7,7 GiB). O juiz (`JUDGE_MODEL`) nunca
+deve ser o gerador; a planilha cega não pode revelar a abordagem (C e D numa linha só).
 
 ## Convenções
 
